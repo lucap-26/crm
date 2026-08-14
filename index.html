@@ -1,264 +1,308 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nine Collection | Tienda de Regalos en Vilassar de Mar</title>
+    <title>Nine Collection | Boutique de Regalos y Bisutería en Vilassar de Mar</title>
+    
+    <!-- Google Fonts: Playfair Display (Elegancia) & Lato (Legibilidad) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            cream: '#FAF8F5',
+                            gold: '#C8A97E',
+                            goldHover: '#B39368',
+                            dark: '#1A1A1A',
+                            gray: '#595959'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* Variables de colores y fuentes */
-        :root {
-            --primary-color: #d4a373; /* Tono cálido, elegante */
-            --secondary-color: #fefae0; /* Fondo claro crema */
-            --text-dark: #333333;
-            --text-light: #ffffff;
-            --whatsapp-color: #25D366;
-            --call-color: #007BFF;
+        /* Detalles finos de diseño */
+        .glass-header {
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        .image-hover-zoom {
+            overflow: hidden;
         }
-
-        body {
-            background-color: #faf8f5;
-            color: var(--text-dark);
-            line-height: 1.6;
+        .image-hover-zoom img {
+            transition: transform 0.7s ease;
         }
-
-        /* Header / Navbar */
-        header {
-            background-color: #fff;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        .image-hover-zoom:hover img {
+            transform: scale(1.05);
         }
-
-        header h1 {
-            font-size: 24px;
-            color: var(--primary-color);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1513885535751-8b9238bd345a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-            height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--text-light);
-            padding: 0 20px;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
-
-        /* Botones de Contacto (Mezcla de lo anterior) */
-        .botones-contacto {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn-contacto {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            color: #ffffff;
-            transition: transform 0.2s ease, filter 0.2s ease;
-        }
-
-        .btn-contacto:hover {
-            filter: brightness(0.9);
-            transform: translateY(-2px);
-        }
-
-        .btn-whatsapp {
-            background-color: var(--whatsapp-color);
-            box-shadow: 0 4px 6px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-llamar {
-            background-color: var(--call-color);
-            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
-        }
-
-        /* Secciones de Contenido */
-        .section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .section h3 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 40px;
-        }
-
-        /* Grid de Servicios/Productos */
-        .grid-productos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h4 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .card p {
-            color: #666;
-        }
-
-        /* Footer y Ubicación */
-        footer {
-            background-color: #222;
-            color: #ccc;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .info-contacto {
-            margin-bottom: 20px;
-        }
-
-        .info-contacto p {
-            margin: 5px 0;
-        }
-        
-        .highlight {
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
-            }
-            .hero h2 {
-                font-size: 2.2rem;
-            }
+        .btn-bounce:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body>
+<body class="bg-brand-cream text-brand-dark font-sans antialiased">
 
-    <header>
-        <h1>Nine Collection</h1>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#coleccion">Nuestra Colección</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
+    <!-- HEADER / NAVEGACIÓN -->
+    <header class="fixed w-full top-0 z-50 glass-header border-b border-gray-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="font-serif font-bold text-3xl tracking-wide text-brand-dark uppercase">
+                Nine <span class="text-brand-gold italic">Collection</span>
+            </a>
+            
+            <!-- Menú Desktop -->
+            <nav class="hidden md:flex gap-8 text-sm uppercase tracking-widest font-bold text-brand-gray">
+                <a href="#inicio" class="hover:text-brand-gold transition-colors duration-300">Inicio</a>
+                <a href="#coleccion" class="hover:text-brand-gold transition-colors duration-300">Colección</a>
+                <a href="#nosotros" class="hover:text-brand-gold transition-colors duration-300">La Boutique</a>
+            </nav>
+
+            <!-- Acciones -->
+            <div class="hidden md:flex gap-4">
+                <a href="https://wa.me/34687751926?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20vuestros%20productos." target="_blank" class="text-brand-dark hover:text-[#25D366] transition-colors text-xl">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="text-brand-dark hover:text-[#E1306C] transition-colors text-xl">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            
+            <!-- Botón Menú Móvil -->
+            <button class="md:hidden text-2xl text-brand-dark">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </header>
 
-    <section id="inicio" class="hero">
-        <h2>Detalles que enamoran</h2>
-        <p>Tu tienda especializada en regalos únicos, bisutería y complementos en el corazón de Vilassar de Mar.</p>
-        
-        <div class="botones-contacto">
-            <!-- Botón de WhatsApp -->
-            <a href="https://wa.me/34687751926?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20vuestros%20productos." target="_blank" rel="noopener noreferrer" class="btn-contacto btn-whatsapp">
-                💬 Enviar WhatsApp
-            </a>
-            <!-- Botón de Llamada -->
-            <a href="tel:+34687751926" class="btn-contacto btn-llamar">
-                📞 Llamar ahora
-            </a>
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center pt-20">
+        <!-- Imagen de fondo premium -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?q=80&w=2000&auto=format&fit=crop" alt="Joyas Nine Collection" class="w-full h-full object-cover">
+            <!-- Gradiente oscuro sutil para que el texto resalte -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-16">
+            <span class="block text-brand-gold uppercase tracking-[0.3em] text-sm font-bold mb-4 drop-shadow-md">Vilassar de Mar</span>
+            <h1 class="font-serif text-5xl md:text-7xl text-white mb-6 leading-tight drop-shadow-lg">
+                El arte de regalar con <span class="italic text-brand-gold">elegancia</span>.
+            </h1>
+            <p class="text-lg text-gray-200 mb-12 font-light max-w-2xl mx-auto leading-relaxed">
+                Descubre nuestra cuidada selección de bisutería fina, complementos exclusivos y detalles únicos que marcan la diferencia.
+            </p>
+            
+            <!-- BOTONES DE CONTACTO PREMIUM -->
+            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/34687751926?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20vuestros%20productos." 
+                   target="_blank" 
+                   class="flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm transition-all duration-300 btn-bounce w-full sm:w-auto justify-center">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    Catálogo por WhatsApp
+                </a>
+                
+                <!-- Llamada -->
+                <a href="tel:+34687751926" 
+                   class="flex items-center gap-3 bg-white text-brand-dark px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm transition-all duration-300 btn-bounce w-full sm:w-auto justify-center">
+                    <i class="fa-solid fa-phone text-brand-gold text-lg"></i>
+                    Llamar a la Tienda
+                </a>
+            </div>
         </div>
     </section>
 
-    <section id="coleccion" class="section">
-        <h3>¿Qué encontrarás en Nine Collection?</h3>
-        <div class="grid-productos">
-            <div class="card">
-                <h4>💍 Bisutería Exclusiva</h4>
-                <p>Piezas seleccionadas con cuidado para darle un toque especial a tu día a día o para deslumbrar en ocasiones especiales.</p>
+    <!-- BARRA DE VALOR (Highlights) -->
+    <div class="bg-brand-dark text-brand-gold py-8 border-b-4 border-brand-gold">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-700">
+            <div class="flex flex-col items-center py-2">
+                <i class="fa-solid fa-gift text-2xl mb-3 text-white"></i>
+                <h4 class="font-serif text-lg text-white">Envoltorio Premium</h4>
+                <p class="text-sm font-light mt-1">Cuidamos cada detalle de tu regalo.</p>
             </div>
-            <div class="card">
-                <h4>🎁 Regalos Originales</h4>
-                <p>Encuentra el detalle perfecto para cumpleaños, aniversarios o simplemente para sorprender a quien más quieres.</p>
+            <div class="flex flex-col items-center py-2">
+                <i class="fa-regular fa-star text-2xl mb-3 text-white"></i>
+                <h4 class="font-serif text-lg text-white">Excelente Valoración</h4>
+                <p class="text-sm font-light mt-1">5 Estrellas en reseñas de Google.</p>
             </div>
-            <div class="card">
-                <h4>✨ Complementos</h4>
-                <p>Bolsos, pañuelos y accesorios que marcan la diferencia. Calidad y diseño a tu alcance.</p>
+            <div class="flex flex-col items-center py-2">
+                <i class="fa-solid fa-gem text-2xl mb-3 text-white"></i>
+                <h4 class="font-serif text-lg text-white">Selección Exclusiva</h4>
+                <p class="text-sm font-light mt-1">Piezas que no encontrarás en otro lugar.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COLECCIÓN / CATEGORÍAS -->
+    <section id="coleccion" class="py-24 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl text-brand-dark mb-4">Nuestra Colección</h2>
+                <div class="w-16 h-0.5 bg-brand-gold mx-auto mb-6"></div>
+                <p class="text-brand-gray max-w-2xl mx-auto font-light text-lg">Explora nuestras categorías principales y encuentra la pieza perfecta para ti o para esa persona especial.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Categoría 1 -->
+                <a href="https://wa.me/34687751926?text=Hola,%20quería%20preguntar%20por%20la%20sección%20de%20Bisutería." target="_blank" class="group block cursor-pointer">
+                    <div class="image-hover-zoom rounded-t-2xl shadow-lg relative h-[400px]">
+                        <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=800&auto=format&fit=crop" alt="Bisutería" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                    </div>
+                    <div class="bg-white p-8 text-center rounded-b-2xl shadow-lg border-t-4 border-brand-gold transform transition-transform group-hover:-translate-y-2 relative z-10 -mt-4 mx-4">
+                        <h3 class="font-serif text-2xl text-brand-dark mb-2">Bisutería Fina</h3>
+                        <p class="text-brand-gray text-sm mb-4">Collares, anillos y pulseras de diseño.</p>
+                        <span class="text-brand-gold text-sm uppercase tracking-widest font-bold group-hover:text-brand-dark transition-colors">Ver disponibilidad <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+
+                <!-- Categoría 2 -->
+                <a href="https://wa.me/34687751926?text=Hola,%20quería%20preguntar%20por%20los%20Regalos%20Originales." target="_blank" class="group block cursor-pointer">
+                    <div class="image-hover-zoom rounded-t-2xl shadow-lg relative h-[400px]">
+                        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop" alt="Regalos" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                    </div>
+                    <div class="bg-white p-8 text-center rounded-b-2xl shadow-lg border-t-4 border-brand-gold transform transition-transform group-hover:-translate-y-2 relative z-10 -mt-4 mx-4">
+                        <h3 class="font-serif text-2xl text-brand-dark mb-2">Regalos Originales</h3>
+                        <p class="text-brand-gray text-sm mb-4">Detalles que emocionan y sorprenden.</p>
+                        <span class="text-brand-gold text-sm uppercase tracking-widest font-bold group-hover:text-brand-dark transition-colors">Saber más <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+
+                <!-- Categoría 3 -->
+                <a href="https://wa.me/34687751926?text=Hola,%20quería%20preguntar%20por%20los%20Complementos." target="_blank" class="group block cursor-pointer">
+                    <div class="image-hover-zoom rounded-t-2xl shadow-lg relative h-[400px]">
+                        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=800&auto=format&fit=crop" alt="Complementos" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                    </div>
+                    <div class="bg-white p-8 text-center rounded-b-2xl shadow-lg border-t-4 border-brand-gold transform transition-transform group-hover:-translate-y-2 relative z-10 -mt-4 mx-4">
+                        <h3 class="font-serif text-2xl text-brand-dark mb-2">Complementos</h3>
+                        <p class="text-brand-gray text-sm mb-4">Bolsos, pañuelos y accesorios con estilo.</p>
+                        <span class="text-brand-gold text-sm uppercase tracking-widest font-bold group-hover:text-brand-dark transition-colors">Descubrir <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <footer id="contacto">
-        <div class="info-contacto">
-            <h3 style="color: white; margin-bottom: 20px;">Visítanos</h3>
-            <p>📍 <span class="highlight">Dirección:</span> Carrer de Sant Joan, 72, 08340 Vilassar de Mar, Barcelona</p>
-            <p>📞 <span class="highlight">Teléfono:</span> +34 687 75 19 26</p>
+    <!-- SOBRE NOSOTROS / LA BOUTIQUE -->
+    <section id="nosotros" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2">
+                <div class="relative">
+                    <div class="absolute inset-0 border-2 border-brand-gold transform translate-x-4 translate-y-4 rounded-lg z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?q=80&w=1000&auto=format&fit=crop" alt="Tienda Nine Collection" class="relative z-10 rounded-lg shadow-xl w-full h-[500px] object-cover">
+                </div>
+            </div>
+            
+            <div class="w-full md:w-1/2">
+                <span class="text-brand-gold uppercase tracking-[0.2em] text-sm font-bold mb-2 block">Carrer de Sant Joan, 72</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-brand-dark mb-6 leading-tight">Tu boutique de confianza en el corazón del Maresme.</h2>
+                <p class="text-lg text-brand-gray font-light mb-6 leading-relaxed">
+                    En <strong class="font-bold text-brand-dark">Nine Collection</strong> creemos que un regalo no es solo un objeto, es una emoción. Por eso, asesoramos de forma personalizada a cada cliente que cruza nuestras puertas.
+                </p>
+                <p class="text-lg text-brand-gray font-light mb-8 leading-relaxed">
+                    Trato cercano, envoltorios que enamoran a primera vista y colecciones que se renuevan constantemente para ofrecerte siempre las últimas tendencias en moda y regalos.
+                </p>
+                
+                <div class="flex gap-4">
+                    <div class="text-center p-4 bg-brand-cream rounded-lg w-32 border border-gray-100">
+                        <i class="fa-brands fa-google text-2xl text-brand-gold mb-2"></i>
+                        <p class="font-bold text-xl text-brand-dark">5.0</p>
+                        <p class="text-xs text-brand-gray uppercase tracking-widest mt-1">Estrellas</p>
+                    </div>
+                    <div class="text-center p-4 bg-brand-cream rounded-lg w-32 border border-gray-100">
+                        <i class="fa-solid fa-heart text-2xl text-brand-gold mb-2"></i>
+                        <p class="font-bold text-xl text-brand-dark">+1000</p>
+                        <p class="text-xs text-brand-gray uppercase tracking-widest mt-1">Clientes</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p style="margin-top: 30px; font-size: 0.9em; opacity: 0.7;">
-            &copy; 2026 Nine Collection. Creado con un diseño moderno.
-        </p>
+    </section>
+
+    <!-- MAPA Y CONTACTO FINAL -->
+    <section class="bg-brand-cream py-16 border-t border-gray-200">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="font-serif text-3xl text-brand-dark mb-8">¿Vienes a visitarnos?</h2>
+            
+            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8 border border-gray-100">
+                <div class="text-left">
+                    <h3 class="font-serif text-2xl text-brand-dark mb-4">Nine Collection</h3>
+                    <ul class="space-y-4 text-brand-gray">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-brand-gold"></i>
+                            <span>Carrer de Sant Joan, 72<br>08340 Vilassar de Mar, BCN</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-brand-gold"></i>
+                            <span class="font-bold text-brand-dark">+34 687 75 19 26</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-regular fa-clock text-brand-gold"></i>
+                            <span>Abierto de Lunes a Sábado</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="flex flex-col gap-4 w-full md:w-auto">
+                    <a href="https://wa.me/34687751926?text=Hola,%20voy%20a%20ir%20a%20la%20tienda,%20¿estáis%20abiertos?" target="_blank" class="bg-[#25D366] text-white px-8 py-4 rounded-lg font-bold text-center hover:bg-[#20bd5a] transition-colors shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Escribir WhatsApp
+                    </a>
+                    <a href="https://maps.google.com/?q=Carrer+de+Sant+Joan+72+Vilassar+de+Mar" target="_blank" class="bg-brand-dark text-white px-8 py-4 rounded-lg font-bold text-center hover:bg-black transition-colors shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-map-location-dot"></i> Cómo llegar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-white pt-16 pb-8 border-t-4 border-brand-gold">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <a href="#" class="font-serif font-bold text-3xl tracking-wide text-white uppercase block mb-6">
+                Nine <span class="text-brand-gold italic">Collection</span>
+            </a>
+            <p class="text-gray-400 font-light max-w-md mx-auto mb-8">El destino definitivo para encontrar ese detalle perfecto en Vilassar de Mar.</p>
+            
+            <div class="flex justify-center gap-6 mb-10">
+                <a href="https://instagram.com" class="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:text-white hover:border-brand-gold hover:bg-brand-gold transition-all">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                </a>
+                <a href="https://wa.me/34687751926" class="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:text-white hover:border-[#25D366] hover:bg-[#25D366] transition-all">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                </a>
+                <a href="tel:+34687751926" class="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:text-white hover:border-brand-gold hover:bg-brand-gold transition-all">
+                    <i class="fa-solid fa-phone text-xl"></i>
+                </a>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 uppercase tracking-widest">
+                <p>&copy; 2026 Nine Collection. Todos los derechos reservados.</p>
+                <div class="mt-4 md:mt-0 flex gap-4">
+                    <a href="#" class="hover:text-brand-gold transition-colors">Aviso Legal</a>
+                    <a href="#" class="hover:text-brand-gold transition-colors">Privacidad</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
 </body>
