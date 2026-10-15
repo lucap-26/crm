@@ -1,309 +1,799 @@
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nine Collection | Boutique de Regalos y Bisutería en Vilassar de Mar</title>
-    
-    <!-- Google Fonts: Playfair Display (Elegancia) & Lato (Legibilidad) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Lato', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            cream: '#FAF8F5',
-                            gold: '#C8A97E',
-                            goldHover: '#B39368',
-                            dark: '#1A1A1A',
-                            gray: '#595959'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Krexon</title>
+<meta name="description" content="Soluciones industriales de corte por láser de fibra. Transforma tu producción con tecnología de vanguardia.">
+<link rel="canonical" href="https://krexon.com/">
+<meta name="theme-color" content="#0F172A">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Krexon">
+<meta property="og:title" content="Krexon">
+<meta property="og:description" content="Soluciones industriales de corte por láser de fibra. Transforma tu producción con tecnología de vanguardia.">
+<meta property="og:url" content="https://krexon.com/">
+<meta property="og:image" content="https://krexon.com/wp-content/uploads/2025/09/krexon-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="https://krexon.com/wp-content/uploads/2025/12/cropped-FAVICON-1-32x32.jpg" sizes="32x32">
+<link rel="icon" href="https://krexon.com/wp-content/uploads/2025/12/cropped-FAVICON-1-192x192.jpg" sizes="192x192">
+<link rel="apple-touch-icon" href="https://krexon.com/wp-content/uploads/2025/12/cropped-FAVICON-1-180x180.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://krexon.com/#organization","name":"Krexon","url":"https://krexon.com/","logo":"https://krexon.com/wp-content/uploads/2025/09/krexon-logo.png","email":"info@krexon.com","telephone":"+34623968619","description":"Soluciones industriales de corte por láser de fibra."},{"@type":"WebSite","@id":"https://krexon.com/#website","url":"https://krexon.com/","name":"Krexon","inLanguage":"es","publisher":{"@id":"https://krexon.com/#organization"}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   MARCA KREXON (sacada de la web actual)
+   ========================================================== */
+:root{
+  --brand:#1f5a7e;        /* azul Krexon */
+  --brand-2:#2997AA;      /* turquesa (decoración y fondos oscuros) */
+  --brand-2-d:#1B7686;    /* turquesa oscuro: texto y botones (contraste AA) */
+  --font-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --ink:#0F172A;          /* azul noche */
+  --ink-2:#141f36;
+  --ink-3:#22304a;
+  --text:#454F5E;
+  --soft:#E9F8F9;         /* fondo claro de la web actual */
+  --soft-2:#CAE6E8;
+  --line:#d9e6e8;
+  --radius:4px;
+  --max:1280px;
+  --font:'Syne',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:var(--font-body);color:var(--text);background:#fff;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+h1,h2,h3,h4{font-family:var(--font);font-weight:700;text-transform:uppercase;letter-spacing:-1px;line-height:1.15;color:var(--ink)}
+section{padding:110px 0}
 
-    <style>
-        /* Detalles finos de diseño */
-        .glass-header {
-            background: rgba(250, 248, 245, 0.95);
-            backdrop-filter: blur(10px);
-        }
-        .image-hover-zoom {
-            overflow: hidden;
-        }
-        .image-hover-zoom img {
-            transition: transform 0.7s ease;
-        }
-        .image-hover-zoom:hover img {
-            transform: scale(1.05);
-        }
-        .btn-bounce:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:12px;padding:18px 34px;border-radius:0;font-family:var(--font);font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;border:0;cursor:pointer;background:var(--brand);color:#fff;transition:background .3s,transform .3s,box-shadow .3s;will-change:transform}
+.btn:hover{background:var(--brand-2-d);box-shadow:0 14px 34px rgba(31,90,126,.35)}
+.btn svg{transition:transform .3s}
+.btn:hover svg{transform:translateX(5px)}
+.btn::after{content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn:hover::after{left:130%}
+.btn-light{background:#fff;color:var(--brand)}
+.btn-light:hover{background:var(--brand-2-d);color:#fff}
+
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--brand-2-d);margin-bottom:18px}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--brand-2)}
+
+/* ---------- Header ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);transition:box-shadow .3s}
+header.scrolled{box-shadow:0 8px 30px rgba(15,23,42,.1)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:84px;transition:height .3s}
+header.scrolled .nav{height:66px}
+.logo img{width:110px;height:auto}
+.logo-txt{font-weight:800;font-size:26px;letter-spacing:-1px;color:var(--ink);display:none}
+.menu{display:flex;gap:38px;margin-left:auto;margin-right:38px}
+.menu a{position:relative;font-weight:500;font-size:15px;text-transform:uppercase;color:var(--ink);padding:6px 0;transition:color .3s}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--brand);transform:scaleX(0);transform-origin:0 50%;transition:transform .3s}
+.menu a:hover,.menu a.active{color:var(--brand)}
+.menu a:hover::after,.menu a.active::after{transform:scaleX(1)}
+.nav .btn{padding:16px 34px}
+.burger{display:none;background:var(--brand);border:0;width:44px;height:44px;cursor:pointer;color:#fff;font-size:22px}
+
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--brand),var(--brand-2));transform:scaleX(0);transform-origin:0 50%;z-index:100;box-shadow:0 0 12px rgba(41,151,170,.8)}
+.preloader{position:fixed;inset:0;background:var(--ink);z-index:200;display:grid;place-items:center;transition:opacity .6s ease,visibility .6s}
+.preloader.done{opacity:0;visibility:hidden}
+.pl{position:relative;padding-bottom:16px;color:#fff;font-weight:800;font-size:34px;letter-spacing:.18em}
+.pl img{width:170px}
+.pl::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:linear-gradient(90deg,var(--brand),var(--brand-2));transform:scaleX(0);transform-origin:0 50%;animation:plbar .9s ease forwards;box-shadow:0 0 14px var(--brand-2)}
+@keyframes plbar{to{transform:scaleX(1)}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:calc(100vh - 84px);display:flex;align-items:center;background:var(--ink);color:#fff;overflow:hidden;padding:90px 0 110px}
+.hero canvas,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero video{opacity:0;transition:opacity 1.2s}
+.hero video.ready{opacity:1}
+.hero canvas{transition:opacity 1.2s}
+.hero.has-video canvas{opacity:0}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(15,23,42,.94) 0%,rgba(15,23,42,.78) 45%,rgba(15,23,42,.25) 100%)}
+.hero::after{content:"";position:absolute;z-index:1;width:520px;height:520px;border-radius:50%;background:rgba(41,151,170,.25);filter:blur(110px);left:-160px;bottom:-220px;animation:orb 14s ease-in-out infinite alternate;pointer-events:none}
+@keyframes orb{to{transform:translate(220px,-80px) scale(1.25)}}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero h1{color:#fff;font-size:clamp(36px,5.6vw,76px);line-height:1.12;max-width:900px;margin-bottom:26px}
+.hero h2{color:#c4d3e3;font-size:clamp(17px,1.8vw,23px);font-weight:500;text-transform:none;letter-spacing:0;max-width:620px;margin-bottom:44px;line-height:1.5}
+.hero .in-1,.hero .in-2,.hero .in-3{opacity:0;transform:translateY(30px);animation:heroin 1s cubic-bezier(.2,.7,.2,1) forwards}
+.hero .in-1{animation-delay:.9s}.hero .in-2{animation-delay:1.1s}.hero .in-3{animation-delay:1.3s}
+@keyframes heroin{to{opacity:1;transform:none}}
+.scroll-ind{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);width:26px;height:44px;border:2px solid rgba(255,255,255,.35);border-radius:16px;z-index:3}
+.scroll-ind::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:9px;border-radius:2px;background:var(--brand-2);transform:translateX(-50%);animation:wheel 1.8s infinite}
+@keyframes wheel{0%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,16px)}}
+
+/* ---------- Marquee ---------- */
+.marquee{background:var(--ink);overflow:hidden;padding:30px 0;border-top:1px solid var(--ink-3)}
+.marquee-track{display:flex;width:max-content;animation:scrollx 46s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{font-size:clamp(34px,5vw,64px);font-weight:800;text-transform:uppercase;letter-spacing:-1px;color:transparent;-webkit-text-stroke:1.5px #56698c;padding:0 32px;white-space:nowrap;transition:.3s}
+.marquee-track span:nth-child(4n+3){-webkit-text-stroke:0;color:#223253}
+.marquee-track span:hover{color:var(--brand-2);-webkit-text-stroke:0}
+.marquee-track i{align-self:center;width:12px;height:12px;background:var(--brand-2);transform:rotate(45deg);flex:none;box-shadow:0 0 16px var(--brand-2)}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+/* ---------- Datos ---------- */
+.facts{background:linear-gradient(135deg,var(--brand),#17486a);color:#fff;padding:54px 0}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.fact{position:relative;text-align:left;padding-left:22px;border-left:2px solid rgba(255,255,255,.25)}
+.fact b{display:block;white-space:nowrap;font-size:clamp(22px,2.4vw,32px);font-weight:800;line-height:1.1;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+.fact span{display:block;margin-top:6px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#bfe6ee}
+
+/* ---------- Maquinaria ---------- */
+.machines{background:var(--soft)}
+.machines .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:56px}
+.machines h2{font-size:clamp(34px,4.6vw,60px)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.card{position:relative;background:#fff;display:grid;grid-template-columns:.9fr 1.1fr;overflow:hidden;box-shadow:0 2px 0 rgba(15,23,42,.04);transition:transform .25s ease-out,box-shadow .35s}
+.card:hover{box-shadow:0 26px 60px rgba(15,23,42,.14)}
+.card .pic{position:relative;overflow:hidden;background:linear-gradient(135deg,#0F172A,#22304a);min-height:260px}
+.card .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover .pic img{transform:scale(1.09)}
+.card .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 40%,rgba(41,151,170,.28));opacity:0;transition:opacity .4s}
+.card:hover .pic::after{opacity:1}
+.card .num{position:absolute;top:18px;left:18px;z-index:2;background:var(--ink);color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;padding:6px 12px}
+.card .body{padding:38px 34px;display:flex;flex-direction:column}
+.card h3{font-size:clamp(17px,1.5vw,21px);font-weight:700;line-height:1.25;margin-bottom:14px;letter-spacing:-.5px}
+.card h3 a:hover{color:var(--brand)}
+.card p{font-size:16.5px;line-height:1.7;flex:1;max-width:62ch}
+.more{display:inline-flex;align-items:center;gap:10px;margin-top:24px;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--brand)}
+.more::after{content:"";width:34px;height:2px;background:currentColor;transition:width .3s}
+.card:hover .more::after,.more:hover::after{width:56px}
+.tilt::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;z-index:3;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(41,151,170,.14),transparent 45%)}
+.tilt:hover::before{opacity:1}
+.tilt{transform-style:preserve-3d}
+
+/* ---------- Banner final ---------- */
+.cta{position:relative;background:var(--ink);color:#fff;overflow:hidden;padding:130px 0}
+.cta canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.cta::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(900px 400px at 15% 50%,rgba(31,90,126,.55),transparent 70%)}
+.cta .wrap{position:relative;z-index:2}
+.cta h2{color:#fff;font-size:clamp(34px,5vw,68px);margin-bottom:24px}
+.cta p{font-size:clamp(17px,1.6vw,21px);color:#b9c8da;max-width:62ch;margin-bottom:42px;line-height:1.6}
+
+/* ---------- Footer ---------- */
+footer{background:var(--brand);color:#fff;padding:70px 0 40px}
+.foot{display:grid;grid-template-columns:1.2fr 1fr 1.2fr;gap:50px;align-items:start}
+footer img{width:150px;margin-bottom:22px}
+footer a{color:#fff;opacity:.92;transition:opacity .3s}
+footer a:hover{opacity:1;text-decoration:underline}
+footer li{margin-bottom:10px}
+footer p{margin-top:24px;font-size:14px;color:#cfe6ef}
+.foot h4{display:none}
+
+.to-top{position:fixed;right:26px;bottom:26px;width:48px;height:48px;background:var(--ink);color:#fff;border:0;display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;transition:.3s;z-index:60;font-size:20px}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{background:var(--brand-2-d)}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.hero .in-1,.hero .in-2,.hero .in-3{opacity:1!important;transform:none!important}
+  .preloader{display:none}
+}
+@media (hover:none){.tilt{transform:none!important}}
+
+
+/* ==========================================================
+   MEJORAS inspiradas en TRUMPF / Ferpa Laser / X-trong
+   - cabecera transparente sobre el hero + barra de contacto (Ferpa, X-trong)
+   - submenú de maquinaria (TRUMPF, Ferpa)
+   - menú móvil a pantalla completa (X-trong, Ferpa)
+   - pestaña lateral "Contacto" (columna "Servicio y contacto" de TRUMPF)
+   - carga de imágenes con esqueleto (lazy-load de TRUMPF)
+   - accesibilidad: enlace "Ir al contenido", foco visible
+   ========================================================== */
+html{scroll-padding-top:90px}
+.skip{position:fixed;left:16px;top:-80px;z-index:300;background:var(--brand);color:#fff;padding:12px 22px;font-weight:700;transition:top .25s}
+.skip:focus{top:14px}
+:focus-visible{outline:2px dashed var(--brand-2);outline-offset:3px}
+body.menu-open{overflow:hidden}
+
+header{position:fixed;left:0;right:0;top:0;z-index:100;background:transparent;backdrop-filter:none;box-shadow:none;transition:box-shadow .35s}
+header::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);opacity:0;transition:opacity .35s}
+header.light::before{opacity:1}
+header.light,header.scrolled.light{box-shadow:0 8px 30px rgba(15,23,42,.1)}
+header.scrolled:not(.light){box-shadow:none}
+
+.topbar{background:rgba(15,23,42,.5);backdrop-filter:blur(8px);color:#cbd5e1;font-size:13px;max-height:44px;overflow:hidden;transition:max-height .35s,opacity .35s;border-bottom:1px solid rgba(255,255,255,.08)}
+header.scrolled .topbar{max-height:0;opacity:0;border-bottom:0}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;height:40px}
+.topbar a{display:inline-flex;align-items:center;gap:8px;transition:color .3s}
+.topbar a:hover{color:#fff}
+.tb-l{display:flex;gap:28px}
+.topbar svg{width:14px;height:14px;opacity:.85;flex:none}
+.tb-cta{font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:12px;color:#fff!important}
+.tb-cta:hover{color:#6fd3e3!important}
+
+.logo{position:relative;z-index:120;display:flex;align-items:center;min-height:30px}
+.logo img{transition:opacity .35s}
+.logo .logo-dark{position:absolute;left:0;top:50%;transform:translateY(-50%);opacity:0}
+header.light .logo .logo-light{opacity:0}
+header.light .logo .logo-dark{opacity:1}
+.logo-txt{display:none;font-weight:800;font-size:26px;letter-spacing:-1px;color:#fff;transition:color .35s}
+.logo.noimg img{display:none}
+.logo.noimg .logo-txt{display:block}
+header.light .logo-txt{color:var(--ink)}
+
+.menu{display:block;margin-left:auto;margin-right:38px}
+.menu-list{display:flex;gap:38px;align-items:center}
+.menu li{position:relative}
+.menu>.menu-list>li>a{color:#fff}
+header.light .menu>.menu-list>li>a{color:var(--ink)}
+.menu>.menu-list>li>a:hover,.menu>.menu-list>li>a.active{color:#6fd3e3}
+header.light .menu>.menu-list>li>a:hover,header.light .menu>.menu-list>li>a.active{color:var(--brand)}
+.menu a::after{background:currentColor}
+.has-sub>a{display:inline-flex;align-items:center;gap:9px}
+.has-sub>a::before{content:"";order:2;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .3s}
+.has-sub:hover>a::before{transform:rotate(225deg) translate(-2px,0)}
+.has-sub::after{content:"";position:absolute;left:0;right:0;top:100%;height:44px}
+.sub{position:absolute;left:-24px;top:calc(100% + 24px);min-width:370px;background:#fff;padding:12px;box-shadow:0 34px 70px rgba(15,23,42,.22);border-top:3px solid var(--brand-2);opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .3s,transform .3s,visibility .3s;z-index:5}
+.has-sub:hover .sub,.has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
+.sub a{display:flex;align-items:center;gap:16px;padding:15px 16px;color:var(--ink)!important;text-transform:uppercase;font-size:13px;font-weight:700;letter-spacing:-.2px;line-height:1.35;transition:background .25s,padding .25s,color .25s}
+.sub a::after{display:none}
+.sub a:hover{background:var(--soft);padding-left:26px;color:var(--brand)!important}
+.sub a b{font-size:11px;color:var(--brand-2-d);letter-spacing:.12em;flex:none}
+
+.burger{background:transparent;border:1px solid rgba(255,255,255,.45);width:48px;height:48px;position:relative;z-index:120;padding:0;transition:border-color .3s}
+header.light .burger{border-color:#c9d6d9}
+.burger span{position:absolute;left:13px;right:13px;height:2px;background:#fff;transition:transform .35s,opacity .25s,background .3s}
+header.light .burger span{background:var(--ink)}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){top:23px}.burger span:nth-child(3){top:30px}
+.burger[aria-expanded="true"] span{background:#fff}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.hero{min-height:100vh;padding:200px 0 120px}
+.hero h1 .grad{background:linear-gradient(90deg,#6fd3e3,var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1.split{opacity:1;transform:none;animation:none}
+.hero h1.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.hero h1.split .w>span{display:inline-block;transform:translateY(115%);animation:wordup .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.95s + var(--i)*.08s)}
+.hero h1.split .grad{background:none;color:transparent}
+.hero h1.split .grad .w>span{background:linear-gradient(90deg,#6fd3e3,var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes wordup{to{transform:none}}
+
+/* Pestaña lateral de contacto */
+.dock-tab{position:fixed;right:0;top:50%;z-index:90;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;padding:24px 15px;background:var(--brand);color:#fff;border:0;font-family:var(--font);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;box-shadow:-8px 10px 30px rgba(15,23,42,.25);transition:right .45s cubic-bezier(.2,.7,.2,1),background .3s,opacity .4s}
+.dock-tab:hover{background:var(--brand-2-d)}
+.dock-panel{position:fixed;right:0;top:50%;z-index:89;width:340px;max-width:92vw;transform:translate(110%,-50%);background:var(--ink);color:#fff;padding:34px 30px;box-shadow:-20px 20px 60px rgba(0,0,0,.35);border-left:3px solid var(--brand-2);transition:transform .45s cubic-bezier(.2,.7,.2,1);visibility:hidden}
+.dock.open .dock-panel{transform:translate(0,-50%);visibility:visible}
+.dock.open .dock-tab{right:340px}
+.dock-panel h3{color:#fff;font-size:24px;margin-bottom:22px}
+.dock-panel a.dl{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--ink-3);color:#cfe3ee;transition:color .3s,padding .3s}
+.dock-panel a.dl:hover{color:#6fd3e3;padding-left:6px}
+.dock-panel a.dl svg{width:20px;height:20px;flex:none;color:var(--brand-2)}
+.dock-panel .btn{margin-top:26px;width:100%;justify-content:center;font-size:12px;padding:16px 18px}
+.dock-x{position:absolute;right:14px;top:10px;background:none;border:0;color:#9fb3c8;font-size:30px;cursor:pointer;line-height:1}
+.dock-x:hover{color:#fff}
+
+/* Esqueleto de carga de imágenes */
+.card .pic::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,.13) 50%,transparent 75%) 200% 0/200% 100% no-repeat,#16223a;animation:shimmer 1.5s linear infinite;transition:opacity .6s}
+.card .pic.loaded::before,.card .pic.err::before{opacity:0;animation:none;pointer-events:none}
+@keyframes shimmer{to{background-position:-200% 0,0 0}}
+.card .pic img{opacity:0;transition:opacity .6s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.card .pic.loaded img{opacity:1}
+.card .pic .num{z-index:3}
+
+@media (max-width:1000px){
+  .menu{position:fixed;inset:0;margin:0;background:var(--ink);padding:140px 30px 50px;overflow:auto;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;z-index:110}
+  .menu.open{opacity:1;visibility:visible}
+  .menu-list{flex-direction:column;align-items:flex-start;gap:4px}
+  .menu li{opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}
+  .menu.open li{opacity:1;transform:none}
+  .menu.open .menu-list>li:nth-child(1){transition-delay:.12s}
+  .menu.open .menu-list>li:nth-child(2){transition-delay:.18s}
+  .menu.open .menu-list>li:nth-child(3){transition-delay:.24s}
+  .menu.open .menu-list>li:nth-child(4){transition-delay:.3s}
+  .menu>.menu-list>li>a,header.light .menu>.menu-list>li>a{color:#fff;font-size:clamp(30px,8vw,46px);font-weight:700;letter-spacing:-1px;line-height:1.25}
+  .menu a::after{display:none}
+  .has-sub>a::before,.has-sub::after{display:none}
+  .sub{position:static;min-width:0;opacity:1;visibility:visible;transform:none;background:transparent;box-shadow:none;border:0;padding:4px 0 14px 4px}
+  .sub a{color:#9fb3c8!important;text-transform:none;font-size:17px;font-weight:500;padding:8px 0;letter-spacing:0}
+  .sub a:hover{background:transparent;padding-left:8px;color:#6fd3e3!important}
+  .sub a b{display:none}
+  .burger{display:block;margin-left:14px}
+  .hero{padding:170px 0 110px}
+  .dock-tab{writing-mode:horizontal-tb;transform:none;top:auto;bottom:26px;right:auto;left:20px;padding:15px 22px;font-size:12px}
+  .dock.open .dock-tab{right:auto;opacity:0;pointer-events:none}
+  .dock-panel{top:auto;bottom:0;left:0;right:0;width:auto;max-width:none;transform:translateY(110%);border-left:0;border-top:3px solid var(--brand-2)}
+  .dock.open .dock-panel{transform:none}
+}
+@media (max-width:640px){
+  .topbar{display:none}
+  .logo img{width:96px}
+}
+
+
+/* ==========================================================
+   REVISIÓN UI/UX: tipografía, jerarquía, ritmo y movimiento
+   ========================================================== */
+/* Tipografía: Syne para marca/títulos, Inter para lectura */
+.menu a,.eyebrow,.more,.fact span,.card .num,.tb-cta,.dock-tab,.dock-panel h3,.dock-panel .btn{font-family:var(--font)}
+
+/* Jerarquía: tarjeta principal ancha + 3 tarjetas verticales */
+.grid{grid-template-columns:repeat(3,1fr);gap:28px}
+.card{grid-template-columns:1fr}
+.card .pic{min-height:0;aspect-ratio:16/10}
+.card:first-child{grid-column:1/-1;grid-template-columns:1.2fr .8fr}
+.card:first-child .pic{aspect-ratio:auto;min-height:420px}
+.card:first-child .body{padding:54px 52px;justify-content:center}
+.card:first-child h3{font-size:clamp(26px,3vw,40px);letter-spacing:-1px;margin-bottom:20px}
+.card:first-child p{font-size:18px}
+.card .body{padding:30px 28px 32px}
+.card:first-child .pic .num{background:var(--brand)}
+.more{margin-top:26px;padding:14px 24px;border:2px solid var(--brand);color:var(--brand);align-self:flex-start;transition:background .3s,color .3s,gap .3s}
+.more::after{content:"→";width:auto;height:auto;background:none;font-size:16px;transition:transform .3s}
+.card:hover .more::after,.more:hover::after{width:auto;transform:translateX(4px)}
+.more:hover{background:var(--brand);color:#fff;gap:14px}
+.card:first-child .more{background:var(--brand);color:#fff}
+.card:first-child .more:hover{background:var(--brand-2-d);border-color:var(--brand-2-d)}
+
+/* Ritmo: franja de datos con vídeo a sangre y más aire */
+.facts{position:relative;overflow:hidden;padding:120px 0;background:linear-gradient(135deg,var(--brand),#12405c)}
+.facts-video{position:absolute;left:0;top:-12%;width:100%;height:124%;object-fit:cover;opacity:0;transition:opacity 1.2s;will-change:transform}
+.facts-video.ready{opacity:.55}
+.facts::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(31,90,126,.88),rgba(15,23,42,.8))}
+.facts .wrap{position:relative;z-index:2}
+.fact{padding-left:24px}
+.fact span{color:#d4eef4}
+.cta h2 .grad{background:linear-gradient(90deg,#6fd3e3,var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.marquee-track span{font-size:clamp(30px,4vw,52px)}
+
+/* Movimiento más sobrio: el preloader solo aparece si la carga tarda */
+.preloader{opacity:0;visibility:hidden}
+.preloader.show{opacity:1;visibility:visible}
+.hero .in-1,.hero .in-2,.hero .in-3,.hero h1.split .w>span{animation-play-state:paused}
+body.ready .hero .in-1,body.ready .hero .in-2,body.ready .hero .in-3,body.ready .hero h1.split .w>span{animation-play-state:running}
+.hero .in-1{animation-delay:.15s}.hero .in-2{animation-delay:.3s}.hero .in-3{animation-delay:.45s}
+.hero h1.split .w>span{animation-delay:calc(.2s + var(--i)*.07s)}
+
+@media (max-width:1000px){
+  .grid{grid-template-columns:1fr 1fr}
+  .card:first-child{grid-template-columns:1fr}
+  .card:first-child .pic{min-height:0;aspect-ratio:16/10}
+  .card:first-child .body{padding:32px 28px}
+}
+@media (max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .facts{padding:84px 0}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1000px){
+  .nav .btn{display:none}
+  .nav{justify-content:space-between}
+  .facts .wrap{grid-template-columns:1fr 1fr}
+  .foot{grid-template-columns:1fr 1fr}
+  .hero::before{background:linear-gradient(180deg,rgba(15,23,42,.85),rgba(15,23,42,.7))}
+}
+@media (max-width:640px){
+  section{padding:76px 0}
+  .wrap{padding:0 20px}
+  .card .body{padding:28px 24px}
+  .foot{grid-template-columns:1fr;text-align:left}
+  .facts .wrap{gap:26px 18px}
+  .hero{padding:150px 0 100px}
+  .btn{padding:17px 26px}
+}
+</style>
 </head>
-<body class="bg-brand-cream text-brand-dark font-sans antialiased">
+<body>
+<div class="progress" id="progress"></div>
+<div class="preloader" id="preloader"><div class="pl"><img src="https://krexon.com/wp-content/uploads/2025/11/krexon-logo-footer.png" alt="KREXON" onerror="this.replaceWith(document.createTextNode('KREXON'))"></div></div>
 
-    <!-- HEADER / NAVEGACIÓN -->
-    <header class="fixed w-full top-0 z-50 glass-header border-b border-gray-200 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="font-serif font-bold text-3xl tracking-wide text-brand-dark uppercase">
-                Nine <span class="text-brand-gold italic">Collection</span>
-            </a>
-            
-            <!-- Menú Desktop -->
-            <nav class="hidden md:flex gap-8 text-sm uppercase tracking-widest font-bold text-brand-gray">
-                <a href="#inicio" class="hover:text-brand-gold transition-colors duration-300">Inicio</a>
-                <a href="#coleccion" class="hover:text-brand-gold transition-colors duration-300">Colección</a>
-                <a href="#nosotros" class="hover:text-brand-gold transition-colors duration-300">La Boutique</a>
-            </nav>
+<a class="skip" href="#content">Ir al contenido</a>
 
-            <!-- Acciones -->
-            <div class="hidden md:flex gap-4">
-                <a href="https://wa.me/34687751926?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20vuestros%20productos." target="_blank" class="text-brand-dark hover:text-[#25D366] transition-colors text-xl">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <a href="https://instagram.com" target="_blank" class="text-brand-dark hover:text-[#E1306C] transition-colors text-xl">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-            </div>
-            
-            <!-- Botón Menú Móvil -->
-            <button class="md:hidden text-2xl text-brand-dark">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section id="inicio" class="relative h-screen flex items-center justify-center pt-20">
-        <!-- Imagen de fondo premium -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?q=80&w=2000&auto=format&fit=crop" alt="Joyas Nine Collection" class="w-full h-full object-cover">
-            <!-- Gradiente oscuro sutil para que el texto resalte -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
-        </div>
-
-        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-16">
-            <span class="block text-brand-gold uppercase tracking-[0.3em] text-sm font-bold mb-4 drop-shadow-md">Vilassar de Mar</span>
-            <h1 class="font-serif text-5xl md:text-7xl text-white mb-6 leading-tight drop-shadow-lg">
-                El arte de regalar con <span class="italic text-brand-gold">elegancia</span>.
-            </h1>
-            <p class="text-lg text-gray-200 mb-12 font-light max-w-2xl mx-auto leading-relaxed">
-                Descubre nuestra cuidada selección de bisutería fina, complementos exclusivos y detalles únicos que marcan la diferencia.
-            </p>
-            
-            <!-- BOTONES DE CONTACTO PREMIUM -->
-            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                <!-- WhatsApp -->
-                <a href="https://wa.me/34687751926?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20vuestros%20productos." 
-                   target="_blank" 
-                   class="flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm transition-all duration-300 btn-bounce w-full sm:w-auto justify-center">
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
-                    Catálogo por WhatsApp
-                </a>
-                
-                <!-- Llamada -->
-                <a href="tel:+34687751926" 
-                   class="flex items-center gap-3 bg-white text-brand-dark px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm transition-all duration-300 btn-bounce w-full sm:w-auto justify-center">
-                    <i class="fa-solid fa-phone text-brand-gold text-lg"></i>
-                    Llamar a la Tienda
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- BARRA DE VALOR (Highlights) -->
-    <div class="bg-brand-dark text-brand-gold py-8 border-b-4 border-brand-gold">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-700">
-            <div class="flex flex-col items-center py-2">
-                <i class="fa-solid fa-gift text-2xl mb-3 text-white"></i>
-                <h4 class="font-serif text-lg text-white">Envoltorio Premium</h4>
-                <p class="text-sm font-light mt-1">Cuidamos cada detalle de tu regalo.</p>
-            </div>
-            <div class="flex flex-col items-center py-2">
-                <i class="fa-regular fa-star text-2xl mb-3 text-white"></i>
-                <h4 class="font-serif text-lg text-white">Excelente Valoración</h4>
-                <p class="text-sm font-light mt-1">5 Estrellas en reseñas de Google.</p>
-            </div>
-            <div class="flex flex-col items-center py-2">
-                <i class="fa-solid fa-gem text-2xl mb-3 text-white"></i>
-                <h4 class="font-serif text-lg text-white">Selección Exclusiva</h4>
-                <p class="text-sm font-light mt-1">Piezas que no encontrarás en otro lugar.</p>
-            </div>
-        </div>
+<header>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="tb-l">
+        <a href="tel:+34623968619"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+34623968619</a>
+        <a href="mailto:info@krexon.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>info@krexon.com</a>
+      </div>
+      <a class="tb-cta" href="https://krexon.com/contacto#asesoria-contacto">Solicita una demo personalizada →</a>
     </div>
+  </div>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Krexon">
+      <img class="logo-light" src="https://krexon.com/wp-content/uploads/2025/11/krexon-logo-footer.png" alt="Krexon" onerror="this.parentNode.classList.add('noimg')">
+      <img class="logo-dark" src="https://krexon.com/wp-content/uploads/2025/09/krexon-logo.png" alt="" onerror="this.parentNode.classList.add('noimg')">
+      <span class="logo-txt">KREXON</span>
+    </a>
+    <nav class="menu" id="menu" aria-label="Navegación principal">
+      <ul class="menu-list">
+        <li class="has-sub">
+          <a href="#maquinaria">Maquinaria</a>
+          <div class="sub">
+            <a href="https://krexon.com/corte-plancha-laser-fibra/"><b>01</b>Corte con láser de fibra</a>
+            <a href="https://krexon.com/contacto/#asesoria-contacto"><b>02</b>Corte tubos láser de fibra</a>
+            <a href="https://krexon.com/corte-combinado-plancha-tubos-laser-fibra/"><b>03</b>Corte combinado de plancha y tubo con láser de fibra</a>
+            <a href="https://krexon.com/contacto/#asesoria-contacto"><b>04</b>Automatización</a>
+          </div>
+        </li>
+        <li><a href="https://krexon.com/servicios/">Servicios</a></li>
+        <li><a href="https://krexon.com/nosotros/">Nosotros</a></li>
+        <li><a href="https://krexon.com/contacto/">Contacto</a></li>
+      </ul>
+    </nav>
+    <a href="https://krexon.com/contacto/" class="btn">Contacto</a>
+    <button class="burger" id="burger" aria-label="Menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-    <!-- COLECCIÓN / CATEGORÍAS -->
-    <section id="coleccion" class="py-24 bg-brand-cream">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="font-serif text-4xl md:text-5xl text-brand-dark mb-4">Nuestra Colección</h2>
-                <div class="w-16 h-0.5 bg-brand-gold mx-auto mb-6"></div>
-                <p class="text-brand-gray max-w-2xl mx-auto font-light text-lg">Explora nuestras categorías principales y encuentra la pieza perfecta para ti o para esa persona especial.</p>
-            </div>
+<main id="content">
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Categoría 1 -->
-                <a href="https://wa.me/34687751926?text=Hola,%20quería%20preguntar%20por%20la%20sección%20de%20Bisutería." target="_blank" class="group block cursor-pointer">
-                    <div class="image-hover-zoom rounded-t-2xl shadow-lg relative h-[400px]">
-                        <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=800&auto=format&fit=crop" alt="Bisutería" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
-                    </div>
-                    <div class="bg-white p-8 text-center rounded-b-2xl shadow-lg border-t-4 border-brand-gold transform transition-transform group-hover:-translate-y-2 relative z-10 -mt-4 mx-4">
-                        <h3 class="font-serif text-2xl text-brand-dark mb-2">Bisutería Fina</h3>
-                        <p class="text-brand-gray text-sm mb-4">Collares, anillos y pulseras de diseño.</p>
-                        <span class="text-brand-gold text-sm uppercase tracking-widest font-bold group-hover:text-brand-dark transition-colors">Ver disponibilidad <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                    </div>
-                </a>
+<!-- HERO -->
+<section class="hero" id="top">
+  <canvas id="laserCanvas" aria-hidden="true"></canvas>
+  <video id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="https://krexon.com/wp-content/uploads/2025/12/VIDEOKREXON.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <h1 class="in-1">Soluciones industriales<br> de corte por <span class="grad">láser<br>de fibra</span></h1>
+    <h2 class="in-2">Transforma tu producción con tecnología de vanguardia</h2>
+    <a class="btn in-3" href="https://krexon.com/contacto#asesoria-contacto">Solicita una demo personalizada
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <div class="scroll-ind"></div>
+</section>
 
-                <!-- Categoría 2 -->
-                <a href="https://wa.me/34687751926?text=Hola,%20quería%20preguntar%20por%20los%20Regalos%20Originales." target="_blank" class="group block cursor-pointer">
-                    <div class="image-hover-zoom rounded-t-2xl shadow-lg relative h-[400px]">
-                        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop" alt="Regalos" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
-                    </div>
-                    <div class="bg-white p-8 text-center rounded-b-2xl shadow-lg border-t-4 border-brand-gold transform transition-transform group-hover:-translate-y-2 relative z-10 -mt-4 mx-4">
-                        <h3 class="font-serif text-2xl text-brand-dark mb-2">Regalos Originales</h3>
-                        <p class="text-brand-gray text-sm mb-4">Detalles que emocionan y sorprenden.</p>
-                        <span class="text-brand-gold text-sm uppercase tracking-widest font-bold group-hover:text-brand-dark transition-colors">Saber más <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                    </div>
-                </a>
+<div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
 
-                <!-- Categoría 3 -->
-                <a href="https://wa.me/34687751926?text=Hola,%20quería%20preguntar%20por%20los%20Complementos." target="_blank" class="group block cursor-pointer">
-                    <div class="image-hover-zoom rounded-t-2xl shadow-lg relative h-[400px]">
-                        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=800&auto=format&fit=crop" alt="Complementos" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
-                    </div>
-                    <div class="bg-white p-8 text-center rounded-b-2xl shadow-lg border-t-4 border-brand-gold transform transition-transform group-hover:-translate-y-2 relative z-10 -mt-4 mx-4">
-                        <h3 class="font-serif text-2xl text-brand-dark mb-2">Complementos</h3>
-                        <p class="text-brand-gray text-sm mb-4">Bolsos, pañuelos y accesorios con estilo.</p>
-                        <span class="text-brand-gold text-sm uppercase tracking-widest font-bold group-hover:text-brand-dark transition-colors">Descubrir <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                    </div>
-                </a>
-            </div>
+<!-- DATOS (extraídos de los textos de la web actual) -->
+<div class="facts">
+  <video class="facts-video" id="factsVideo" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://krexon.com/wp-content/uploads/2025/12/VIDEOKREXON.mp4" type="video/mp4"></video>
+  <div class="wrap">
+    <div class="fact"><b data-count="80" data-prefix="1,5 – " data-suffix=" kW">0</b><span>Potencias de corte</span></div>
+    <div class="fact"><b data-count="2" data-prefix="" data-suffix="">0</b><span>Mesas intercambiables</span></div>
+    <div class="fact"><b>UE</b><span>Normativa europea</span></div>
+    <div class="fact"><b style="font-size:clamp(22px,2.6vw,32px)">Europa · América</b><span>Presencia internacional</span></div>
+  </div>
+</div>
+
+<!-- MAQUINARIA -->
+<section id="maquinaria" class="machines">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Krexon</span><h2>Maquinaria</h2></div>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="pic"><span class="num">01</span><img loading="lazy" src="https://krexon.com/wp-content/uploads/2025/11/corte-chapa.png" alt="Corte con laser"></div>
+        <div class="body">
+          <h3><a href="https://krexon.com/corte-plancha-laser-fibra/">CORTE CON <br>LÁSER DE FIBRA</a></h3>
+          <p>Maquina cortadora por láser de fibra óptica en diferentes formatos y potencias desde 1,5KW a 80KW. Doble mesa intercambiable, alta capacidad de carga en bandejas, normativa europea. Corte plano de chapas y laminas metálicas.</p>
+          <a class="more" href="https://krexon.com/corte-plancha-laser-fibra/">Ver más</a>
         </div>
-    </section>
-
-    <!-- SOBRE NOSOTROS / LA BOUTIQUE -->
-    <section id="nosotros" class="py-24 bg-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
-            <div class="w-full md:w-1/2">
-                <div class="relative">
-                    <div class="absolute inset-0 border-2 border-brand-gold transform translate-x-4 translate-y-4 rounded-lg z-0"></div>
-                    <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?q=80&w=1000&auto=format&fit=crop" alt="Tienda Nine Collection" class="relative z-10 rounded-lg shadow-xl w-full h-[500px] object-cover">
-                </div>
-            </div>
-            
-            <div class="w-full md:w-1/2">
-                <span class="text-brand-gold uppercase tracking-[0.2em] text-sm font-bold mb-2 block">Carrer de Sant Joan, 72</span>
-                <h2 class="font-serif text-4xl md:text-5xl text-brand-dark mb-6 leading-tight">Tu boutique de confianza en el corazón del Maresme.</h2>
-                <p class="text-lg text-brand-gray font-light mb-6 leading-relaxed">
-                    En <strong class="font-bold text-brand-dark">Nine Collection</strong> creemos que un regalo no es solo un objeto, es una emoción. Por eso, asesoramos de forma personalizada a cada cliente que cruza nuestras puertas.
-                </p>
-                <p class="text-lg text-brand-gray font-light mb-8 leading-relaxed">
-                    Trato cercano, envoltorios que enamoran a primera vista y colecciones que se renuevan constantemente para ofrecerte siempre las últimas tendencias en moda y regalos.
-                </p>
-                
-                <div class="flex gap-4">
-                    <div class="text-center p-4 bg-brand-cream rounded-lg w-32 border border-gray-100">
-                        <i class="fa-brands fa-google text-2xl text-brand-gold mb-2"></i>
-                        <p class="font-bold text-xl text-brand-dark">5.0</p>
-                        <p class="text-xs text-brand-gray uppercase tracking-widest mt-1">Estrellas</p>
-                    </div>
-                    <div class="text-center p-4 bg-brand-cream rounded-lg w-32 border border-gray-100">
-                        <i class="fa-solid fa-heart text-2xl text-brand-gold mb-2"></i>
-                        <p class="font-bold text-xl text-brand-dark">+1000</p>
-                        <p class="text-xs text-brand-gray uppercase tracking-widest mt-1">Clientes</p>
-                    </div>
-                </div>
-            </div>
+      </article>
+      <article class="card">
+        <div class="pic"><span class="num">02</span><img loading="lazy" src="https://krexon.com/wp-content/uploads/2025/11/corte-tubos.png" alt="Corte tubos"></div>
+        <div class="body">
+          <h3><a href="https://krexon.com/contacto#asesoria-contacto">CORTE TUBOS CON<br>LÁSER DE FIBRA</a></h3>
+          <p>Maquina cortadora de tubos y perfiles por láser de fibra óptica en diferentes formatos, modalidades y potencias (1,5KW a 80KW). Modelos altamente dinámicos y acorde a especificaciones del cliente, normativa europea.</p>
+          <a class="more" href="https://krexon.com/contacto#asesoria-contacto">Solicitar información</a>
         </div>
-    </section>
-
-    <!-- MAPA Y CONTACTO FINAL -->
-    <section class="bg-brand-cream py-16 border-t border-gray-200">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="font-serif text-3xl text-brand-dark mb-8">¿Vienes a visitarnos?</h2>
-            
-            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8 border border-gray-100">
-                <div class="text-left">
-                    <h3 class="font-serif text-2xl text-brand-dark mb-4">Nine Collection</h3>
-                    <ul class="space-y-4 text-brand-gray">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-location-dot mt-1 text-brand-gold"></i>
-                            <span>Carrer de Sant Joan, 72<br>08340 Vilassar de Mar, BCN</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-phone text-brand-gold"></i>
-                            <span class="font-bold text-brand-dark">+34 687 75 19 26</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-regular fa-clock text-brand-gold"></i>
-                            <span>Abierto de Lunes a Sábado</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="flex flex-col gap-4 w-full md:w-auto">
-                    <a href="https://wa.me/34687751926?text=Hola,%20voy%20a%20ir%20a%20la%20tienda,%20¿estáis%20abiertos?" target="_blank" class="bg-[#25D366] text-white px-8 py-4 rounded-lg font-bold text-center hover:bg-[#20bd5a] transition-colors shadow-lg flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-xl"></i> Escribir WhatsApp
-                    </a>
-                    <a href="https://maps.google.com/?q=Carrer+de+Sant+Joan+72+Vilassar+de+Mar" target="_blank" class="bg-brand-dark text-white px-8 py-4 rounded-lg font-bold text-center hover:bg-black transition-colors shadow-lg flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-map-location-dot"></i> Cómo llegar
-                    </a>
-                </div>
-            </div>
+      </article>
+      <article class="card">
+        <div class="pic"><span class="num">03</span><img loading="lazy" src="https://krexon.com/wp-content/uploads/2025/11/corte-combinado.png" alt="Corte combinado"></div>
+        <div class="body">
+          <h3><a href="https://krexon.com/corte-combinado-plancha-tubos-laser-fibra/">CORTE COMBINADO DE PLANCHA Y TUBO CON LÁSER DE FIBRA</a></h3>
+          <p>Maquina cortadora de laser de fibra óptica dual, capacidad de corte plano y corte de tubo en una misma máquina. Diferentes modelos disponibles, alta capacidad de producción.</p>
+          <a class="more" href="https://krexon.com/corte-combinado-plancha-tubos-laser-fibra/">Ver más</a>
         </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-brand-dark text-white pt-16 pb-8 border-t-4 border-brand-gold">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <a href="#" class="font-serif font-bold text-3xl tracking-wide text-white uppercase block mb-6">
-                Nine <span class="text-brand-gold italic">Collection</span>
-            </a>
-            <p class="text-gray-400 font-light max-w-md mx-auto mb-8">El destino definitivo para encontrar ese detalle perfecto en Vilassar de Mar.</p>
-            
-            <div class="flex justify-center gap-6 mb-10">
-                <a href="https://instagram.com" class="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:text-white hover:border-brand-gold hover:bg-brand-gold transition-all">
-                    <i class="fa-brands fa-instagram text-xl"></i>
-                </a>
-                <a href="https://wa.me/34687751926" class="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:text-white hover:border-[#25D366] hover:bg-[#25D366] transition-all">
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
-                </a>
-                <a href="tel:+34687751926" class="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:text-white hover:border-brand-gold hover:bg-brand-gold transition-all">
-                    <i class="fa-solid fa-phone text-xl"></i>
-                </a>
-            </div>
-
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 uppercase tracking-widest">
-                <p>&copy; 2026 Nine Collection. Todos los derechos reservados.</p>
-                <div class="mt-4 md:mt-0 flex gap-4">
-                    <a href="#" class="hover:text-brand-gold transition-colors">Aviso Legal</a>
-                    <a href="#" class="hover:text-brand-gold transition-colors">Privacidad</a>
-                </div>
-            </div>
+      </article>
+      <article class="card">
+        <div class="pic"><span class="num">04</span><img loading="lazy" src="https://krexon.com/wp-content/uploads/2025/11/servicio-automatizacion.png" alt="Automatización"></div>
+        <div class="body">
+          <h3><a href="https://krexon.com/contacto#asesoria-contacto">AUTOMATIZACIÓN</a></h3>
+          <p>Soluciones de automatización industrial que combinan robots inteligentes, plataformas de carga automatizadas, almacenamiento inteligente, visión artificial y analítica basada en inteligencia artificial para maximizar eficiencia y productividad.</p>
+          <a class="more" href="https://krexon.com/contacto#asesoria-contacto">Solicitar información</a>
         </div>
-    </footer>
+      </article>
+    </div>
+  </div>
+</section>
 
+<!-- BANNER FINAL -->
+<section class="cta">
+  <canvas id="ctaCanvas" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <h2>Redefinimos la productividad<br>y <span class="grad">la eficiencia</span></h2>
+    <p>Consolidamos nuestro liderazgo en Europa y América en maquinaria láser industrial, combinando experiencia, innovación y tecnología de punta</p>
+    <a class="btn btn-light" href="https://krexon.com/contacto#asesoria-contacto">Optimiza tu producción hoy
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="https://krexon.com/wp-content/uploads/2025/11/krexon-logo-footer.png" alt="Krexon" onerror="this.outerHTML='<b style=&quot;font-size:28px;display:block;margin-bottom:22px&quot;>KREXON</b>'">
+        <a href="tel:+34623968619">+34623968619</a><br>
+        <a href="mailto:info@krexon.com">info@krexon.com</a>
+        <p>Copyright © 2026 Krexon</p>
+      </div>
+      <ul>
+        <li><a href="#maquinaria">Maquinaria</a></li>
+        <li><a href="https://krexon.com/servicios/">Servicios</a></li>
+        <li><a href="https://krexon.com/nosotros/">Nosotros</a></li>
+        <li><a href="https://krexon.com/contacto/">Contacto</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://krexon.com/corte-plancha-laser-fibra/">Corte con láser de fibra</a></li>
+        <li><a href="https://krexon.com/contacto/#asesoria-contacto">Corte tubos láser de fibra</a></li>
+        <li><a href="https://krexon.com/corte-combinado-plancha-tubos-laser-fibra/">Corte combinado de plancha y tubo con láser de fibra</a></li>
+        <li><a href="https://krexon.com/contacto/#asesoria-contacto">Automatización</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<aside class="dock" id="dock">
+  <button class="dock-tab" id="dockTab" aria-expanded="false" aria-controls="dockPanel">Contacto</button>
+  <div class="dock-panel" id="dockPanel" role="dialog" aria-label="Contacto">
+    <button class="dock-x" id="dockX" aria-label="Cerrar">×</button>
+    <h3>Contacto</h3>
+    <a class="dl" href="tel:+34623968619"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+34623968619</a>
+    <a class="dl" href="mailto:info@krexon.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>info@krexon.com</a>
+    <a class="btn" href="https://krexon.com/contacto#asesoria-contacto">Solicita una demo personalizada</a>
+  </div>
+</aside>
+
+<button class="to-top" id="toTop" aria-label="Subir">↑</button>
+
+<script>
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const CAN_HOVER = matchMedia('(hover:hover)').matches;
+
+/* Preloader */
+const pre=document.getElementById('preloader');
+function setReady(){document.body.classList.add('ready');pre.classList.remove('show');pre.classList.add('done')}
+if(document.readyState==='complete')setReady();
+else{
+  const t=setTimeout(()=>{if(!document.body.classList.contains('ready'))pre.classList.add('show')},400); // solo si tarda
+  addEventListener('load',()=>{clearTimeout(t);setReady()});
+  setTimeout(setReady,3500);
+}
+
+/* Cabecera: transparente sobre el hero, blanca al hacer scroll */
+const hdr=document.querySelector('header');
+function syncHeader(){
+  const sc=scrollY>40;
+  hdr.classList.toggle('scrolled',sc);
+  hdr.classList.toggle('light',sc&&!document.body.classList.contains('menu-open'));
+}
+/* Menú móvil a pantalla completa */
+const menuEl=document.getElementById('menu'),burger=document.getElementById('burger');
+function setMenu(open){
+  menuEl.classList.toggle('open',open);
+  document.body.classList.toggle('menu-open',open);
+  burger.setAttribute('aria-expanded',open);
+  syncHeader();
+}
+burger.addEventListener('click',()=>setMenu(!menuEl.classList.contains('open')));
+menuEl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape'){setMenu(false);setDock(false)}});
+addEventListener('resize',()=>{if(innerWidth>1000)setMenu(false)});
+
+/* Vídeo del hero: si carga, sustituye a la animación de respaldo */
+(function(){
+  const v=document.getElementById('heroVideo'),h=document.getElementById('top');
+  if(!v)return;
+  v.addEventListener('playing',()=>{v.classList.add('ready');h.classList.add('has-video')});
+  v.addEventListener('error',()=>{v.style.display='none'},true);
+  const s=v.querySelector('source');if(s)s.addEventListener('error',()=>{v.style.display='none'});
+})();
+
+/* Marquee */
+(function(){
+  const words=['Corte con láser de fibra','Corte de tubos','Corte combinado','Automatización'];
+  const html=words.map(w=>`<span>${w}</span><i></i>`).join('');
+  document.getElementById('marquee').innerHTML=html+html+html+html;
+})();
+
+/* Reveal al scroll */
+(function(){
+  const sel=['.machines .head','.card','.fact','.cta h2','.cta p','.cta .btn','.foot>div,.foot>ul'];
+  const els=[];
+  sel.forEach(s=>document.querySelectorAll(s).forEach((el,i)=>{el.classList.add('reveal');el.style.setProperty('--d',(i%4)*.09+'s');els.push(el)}));
+  if(RM||!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}
+  const io=new IntersectionObserver(es=>es.forEach(en=>{
+    if(!en.isIntersecting)return;
+    const el=en.target;el.classList.add('in');io.unobserve(el);
+    if(el.classList.contains('card'))setTimeout(()=>{el.classList.remove('reveal','in');el.style.removeProperty('--d')},1500);
+  }),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(e=>io.observe(e));
+})();
+
+/* Contadores */
+(function(){
+  const nums=document.querySelectorAll('[data-count]');
+  const fmt=(el,v)=>el.textContent=(el.dataset.prefix||'')+Math.round(v)+(el.dataset.suffix||'');
+  if(RM){nums.forEach(n=>fmt(n,+n.dataset.count));return;}
+  const io=new IntersectionObserver(es=>es.forEach(en=>{
+    if(!en.isIntersecting)return;io.unobserve(en.target);
+    const el=en.target,end=+el.dataset.count,t0=performance.now(),dur=1800;
+    (function tick(t){const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,4);fmt(el,end*e);if(k<1)requestAnimationFrame(tick)})(t0);
+  }),{threshold:.6});
+  nums.forEach(n=>io.observe(n));
+})();
+
+/* Header, progreso, scroll-spy */
+(function(){
+  const header=document.querySelector('header'),bar=document.getElementById('progress'),top=document.getElementById('toTop');
+  const links=[...document.querySelectorAll('.menu a[href^="#"]')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  let tick=false;
+  function onScroll(){
+    const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.transform='scaleX('+(h>0?y/h:0)+')';
+    syncHeader();
+    top.classList.toggle('show',y>800);
+    let cur=null;secs.forEach(s=>{const r=s.getBoundingClientRect();if(r.top<innerHeight*.4&&r.bottom>innerHeight*.4)cur=s.id});
+    links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+    tick=false;
+  }
+  addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
+  onScroll();
+  top.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+})();
+
+/* Tilt 3D + foco de luz en las tarjetas */
+(function(){
+  if(!CAN_HOVER||RM)return;
+  document.querySelectorAll('.card').forEach(c=>{
+    c.classList.add('tilt');
+    c.addEventListener('mousemove',e=>{
+      const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+      c.style.setProperty('--mx',x+'px');c.style.setProperty('--my',y+'px');
+      if(c.classList.contains('reveal'))return;
+      c.style.transform=`perspective(1100px) rotateX(${((y/r.height)-.5)*-2}deg) rotateY(${((x/r.width)-.5)*2}deg) translateY(-6px)`;
+    });
+    c.addEventListener('mouseleave',()=>{c.style.transform=''});
+  });
+  document.querySelectorAll('.btn').forEach(b=>{
+    b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.15}px,${(e.clientY-r.top-r.height/2)*.25}px)`});
+    b.addEventListener('mouseleave',()=>{b.style.transform=''});
+  });
+})();
+
+
+/* ---------- Pestaña lateral de contacto ---------- */
+const dock=document.getElementById('dock'),dockTab=document.getElementById('dockTab');
+function setDock(o){dock.classList.toggle('open',o);dockTab.setAttribute('aria-expanded',o)}
+dockTab.addEventListener('click',()=>setDock(!dock.classList.contains('open')));
+document.getElementById('dockX').addEventListener('click',()=>setDock(false));
+document.addEventListener('click',e=>{if(dock.classList.contains('open')&&!dock.contains(e.target))setDock(false)});
+
+/* ---------- Esqueleto de carga de imágenes ---------- */
+document.querySelectorAll('.card .pic img').forEach(img=>{
+  const pic=img.parentNode;
+  const ok=()=>pic.classList.add('loaded'),ko=()=>pic.classList.add('err');
+  if(img.complete&&img.naturalWidth)ok();else if(img.complete)ko();
+  img.addEventListener('load',ok);img.addEventListener('error',ko);
+});
+
+/* ---------- Titular del hero palabra a palabra ---------- */
+(function(){
+  const h=document.querySelector('.hero h1');if(!h||RM)return;
+  h.setAttribute('aria-label',h.textContent.replace(/\s+/g,' ').trim());
+  let i=0;
+  (function walk(node){
+    [...node.childNodes].forEach(n=>{
+      if(n.nodeType===3){
+        const frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(p=>{
+          if(!p)return;
+          if(/^\s+$/.test(p)){frag.appendChild(document.createTextNode(' '));return}
+          const w=document.createElement('span');w.className='w';w.setAttribute('aria-hidden','true');
+          const s=document.createElement('span');s.textContent=p;s.style.setProperty('--i',i++);
+          w.appendChild(s);frag.appendChild(w);
+        });
+        n.replaceWith(frag);
+      }else if(n.nodeType===1&&n.tagName!=='BR')walk(n);
+    });
+  })(h);
+  h.classList.add('split');
+})();
+
+/* ---------- Los vídeos se pausan cuando no se ven (ahorra batería y datos) ---------- */
+(function(){
+  const vids=[...document.querySelectorAll('video')];
+  const fv=document.getElementById('factsVideo');
+  if(fv){
+    fv.addEventListener('playing',()=>fv.classList.add('ready'));
+    fv.addEventListener('error',()=>{fv.style.display='none'},true);
+    const src=fv.querySelector('source');if(src)src.addEventListener('error',()=>{fv.style.display='none'});
+    if(RM)fv.removeAttribute('autoplay');
+  }
+  if(!('IntersectionObserver' in window))return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;e.isIntersecting?v.play().catch(()=>{}):v.pause()}),{threshold:.05});
+  vids.forEach(v=>io.observe(v));
+  // paralaje suave del vídeo de la franja de datos
+  if(fv&&!RM){
+    const box=fv.parentNode;let t=false;
+    addEventListener('scroll',()=>{if(t)return;t=true;requestAnimationFrame(()=>{
+      const r=box.getBoundingClientRect();
+      if(r.bottom>0&&r.top<innerHeight)fv.style.transform='translateY('+((r.top-innerHeight/2)*-.12)+'px)';
+      t=false})},{passive:true});
+  }
+})();
+
+/* ---------- Animación de corte láser (canvas) ---------- */
+function laserScene(cv,opts){
+  const ctx=cv.getContext('2d');let W,H,dpr,paths=[];
+  function size(){dpr=Math.min(devicePixelRatio||1,2);const r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function build(){
+    const wide=W>900;
+    const cx=W*(wide?opts.cx:.5),cy=H*(wide?opts.cy:.62),R=Math.min(W*(wide?.5:.9),H*.9)*opts.r;
+    const circ=[],gear=[];
+    for(let i=0;i<=160;i++){const a=i/160*Math.PI*2;circ.push([cx+Math.cos(a)*R*.32,cy+Math.sin(a)*R*.32])}
+    for(let i=0;i<=520;i++){const a=i/520*Math.PI*2;const r=R*(1+.1*Math.tanh(5*Math.sin(a*12)));gear.push([cx+Math.cos(a)*r,cy+Math.sin(a)*r])}
+    paths=[circ,gear];
+  }
+  size();build();addEventListener('resize',()=>{size();build()});
+  let pi=0,idx=0,hold=0,fade=0,parts=[];const SPEED=3.2;
+  function sheet(){
+    const g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,'#16223a');g.addColorStop(.5,'#22314d');g.addColorStop(1,'#101a2e');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    ctx.globalAlpha=.06;ctx.strokeStyle='#fff';ctx.lineWidth=1;
+    for(let y=0;y<H;y+=5){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+    ctx.globalAlpha=1;ctx.strokeStyle='rgba(255,255,255,.06)';
+    for(let x=0;x<W;x+=64){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+    for(let y=0;y<H;y+=64){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+  }
+  function stroke(pts,upTo,w,color){
+    if(upTo<2)return;ctx.beginPath();ctx.moveTo(pts[0][0],pts[0][1]);
+    for(let i=1;i<=upTo;i++)ctx.lineTo(pts[i][0],pts[i][1]);
+    ctx.lineWidth=w;ctx.strokeStyle=color;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();
+  }
+  function frame(){
+    sheet();
+    for(let k=0;k<pi;k++){stroke(paths[k],paths[k].length-1,5,'#050a14');stroke(paths[k],paths[k].length-1,1.2,'rgba(111,211,227,.35)')}
+    const cur=paths[pi],i=Math.floor(idx);let hx=W/2,hy=-20,hot=false;
+    if(cur&&hold<=0){
+      const up=Math.min(i,cur.length-1);stroke(cur,up,5,'#050a14');
+      const tail=Math.max(0,up-45);
+      for(let j=tail;j<up;j++){const a=(j-tail)/45;ctx.beginPath();ctx.moveTo(cur[j][0],cur[j][1]);ctx.lineTo(cur[j+1][0],cur[j+1][1]);
+        ctx.strokeStyle=`rgba(${60+a*70|0},${170+a*60|0},${200+a*40|0},${a*.9})`;ctx.lineWidth=2+a*3;ctx.stroke()}
+      hx=cur[up][0];hy=cur[up][1];hot=true;idx+=SPEED;
+      if(i>=cur.length-1){pi++;idx=0;if(pi>=paths.length)hold=90}
+    }else if(hold>0){hold--;if(hold===0)fade=1;hx=paths[0][0][0];hy=paths[0][0][1]}
+    if(hot)for(let n=0;n<4;n++){const a=Math.random()*Math.PI*2,sp=1+Math.random()*3.5;parts.push({x:hx,y:hy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-1.2,l:1,d:.025+Math.random()*.035})}
+    ctx.globalCompositeOperation='lighter';parts=parts.filter(p=>p.l>0);
+    for(const p of parts){p.x+=p.vx;p.y+=p.vy;p.vy+=.12;p.vx*=.985;p.l-=p.d;
+      ctx.strokeStyle=`rgba(255,${170+p.l*70|0},${90+p.l*60|0},${p.l})`;ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x-p.vx*2.2,p.y-p.vy*2.2);ctx.stroke()}
+    if(hot){const g=ctx.createRadialGradient(hx,hy,0,hx,hy,50);
+      g.addColorStop(0,'rgba(235,252,255,1)');g.addColorStop(.18,'rgba(111,211,227,.9)');g.addColorStop(.5,'rgba(41,151,170,.38)');g.addColorStop(1,'rgba(41,151,170,0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(hx,hy,50,0,7);ctx.fill()}
+    ctx.globalCompositeOperation='source-over';
+    if(hot||hold>0){const x=hx,y=hy;
+      if(hot){const bg=ctx.createLinearGradient(x,0,x,y);bg.addColorStop(0,'rgba(41,151,170,0)');bg.addColorStop(1,'rgba(150,230,245,.9)');ctx.fillStyle=bg;ctx.fillRect(x-1.2,0,2.4,y)}
+      ctx.fillStyle='#2b3a56';ctx.strokeStyle='#4a5d7f';ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(x-16,Math.max(0,y-60));ctx.lineTo(x+16,Math.max(0,y-60));ctx.lineTo(x+7,y-10);ctx.lineTo(x-7,y-10);ctx.closePath();ctx.fill();ctx.stroke();
+      ctx.fillStyle='#6fd3e3';ctx.fillRect(x-3,y-12,6,3)}
+    if(fade>0){ctx.fillStyle=`rgba(15,23,42,${1-fade})`;ctx.fillRect(0,0,W,H);fade-=.04;if(fade<=0){pi=0;idx=0;parts=[]}}
+    const v=ctx.createRadialGradient(W/2,H/2,Math.min(W,H)*.3,W/2,H/2,Math.max(W,H)*.75);
+    v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(0,0,0,.55)');ctx.fillStyle=v;ctx.fillRect(0,0,W,H);
+  }
+  let visible=true;new IntersectionObserver(e=>visible=e[0].isIntersecting).observe(cv);
+  function loop(){if(visible&&!document.hidden)frame();requestAnimationFrame(loop)}
+  if(RM){pi=paths.length;frame()}else loop();
+}
+laserScene(document.getElementById('laserCanvas'),{cx:.74,cy:.52,r:.3});
+laserScene(document.getElementById('ctaCanvas'),{cx:.8,cy:.5,r:.4});
+</script>
 </body>
 </html>
