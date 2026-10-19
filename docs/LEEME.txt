@@ -1,0 +1,36 @@
+Aquí van los PDF de las fichas técnicas. Los botones "Descargar ficha en PDF" de la web buscan estos nombres exactos:
+
+  ficha-hc.pdf             -> Corte plano · Cabina cerrada (Serie HC)
+  ficha-np-semicerrada.pdf -> Corte plano · Cabina semicerrada (Serie NP)
+  ficha-np-abierta.pdf     -> Corte plano · Cabina abierta (Serie NP)
+  ficha-t.pdf              -> Corte de tubos · Serie T (dos mandriles)
+  ficha-nt.pdf             -> Corte de tubos · Serie NT (tres mandriles)
+
+Mientras el archivo no exista, el botón muestra un aviso ("estará disponible próximamente") con el correo y el teléfono de contacto.
+Cuando subas el PDF con ese nombre a esta carpeta (docs/), el botón empezará a descargarlo solo.
+
+Corte combinado:
+  ficha-hm.pdf             -> Corte combinado · Cabina cerrada (Serie HM)
+  ficha-c.pdf              -> Corte combinado · Cabina abierta (Serie C)
+
+Soldadura / limpieza láser:
+  ficha-hwm.pdf                      -> Soldadora Serie HWM
+  ficha-hw.pdf                       -> Soldadora Serie HW
+  ficha-s.pdf                        -> Soldadora Serie S (portátil)
+  ficha-limpieza-pulsada-portatil.pdf  -> Limpiadora pulsada portátil
+  ficha-limpieza-pulsada-manual.pdf    -> Limpiadora pulsada manual
+  ficha-limpieza-continua-manual.pdf   -> Limpiadora continua manual
+
+Plegadoras:
+  ficha-plegadora-hibrida.pdf        -> Plegadora electrohidráulica híbrida
+  ficha-plegadora-barra-torsion.pdf  -> Plegadora de barra de torsión
+  ficha-plegadora-electrica.pdf      -> Plegadora totalmente eléctrica
+
+Automatización: no lleva PDF. Tiene un formulario de consulta que prepara un correo para info@krexon.com.
+
+Máquinas de corte CO2:
+  ficha-lc1610n.pdf  -> LC1610N
+  ficha-lc1390n.pdf  -> LC1390N
+  ficha-lc1325d.pdf  -> LC1325D
+
+Recambios y consumibles: es un asistente de solicitud (sin PDF); prepara un correo para info@krexon.com.
