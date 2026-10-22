@@ -513,7 +513,7 @@ body.ready .pick{animation-play-state:running}
 .af-field textarea{min-height:130px;resize:vertical}
 .af-field input::placeholder,.af-field textarea::placeholder{color:#6c7787}
 .af-field input:hover,.af-field textarea:hover{border-color:#6c7a8a}
-.af-field input:focus,.af-field textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(31,90,126,.18)}
+.af-field input:focus,.af-field textarea:focus{outline:2px solid transparent;border-color:var(--brand);box-shadow:0 0 0 4px rgba(31,90,126,.18)}
 .af-field.has-error input,.af-field.has-error textarea{border-color:#B42318;background:#FFF5F3}
 .af-err{display:none;font-size:15px;font-weight:600;color:#B42318}
 .af-field.has-error .af-err{display:block}
@@ -573,7 +573,7 @@ body.ready .pick{animation-play-state:running}
 .st-field input[type=text],.st-field input[type=email],.st-field input[type=tel],.st-field textarea{width:100%;min-height:54px;padding:13px 15px;border:2px solid #7d8fa3;background:#fff;color:var(--ink);font:inherit;font-size:17px;border-radius:0}
 .st-field textarea{min-height:130px;resize:vertical}
 .st-field input::placeholder,.st-field textarea::placeholder{color:#66748a}
-.st-field input:focus,.st-field textarea:focus{outline:none;border-color:#7fdcea;box-shadow:0 0 0 4px rgba(127,220,234,.35)}
+.st-field input:focus,.st-field textarea:focus{outline:2px solid transparent;border-color:#7fdcea;box-shadow:0 0 0 4px rgba(127,220,234,.35)}
 .st-field.has-error input,.st-field.has-error textarea{border-color:#ffb4a8;background:#FFF5F3}
 .st-err{display:none;font-size:15px;font-weight:700;color:#ffb4a8}
 .st-field.has-error .st-err,.st-step.has-error>.st-err{display:block}
@@ -668,7 +668,7 @@ body.ready .pick{animation-play-state:running}
 .ct-field input[type=text],.ct-field input[type=tel],.ct-field textarea{width:100%;min-height:54px;padding:13px 15px;border:2px solid #aab6c2;background:#fff;color:var(--ink);font:inherit;font-size:17px;border-radius:0}
 .ct-field textarea{min-height:100px;resize:vertical}
 .ct-field input::placeholder,.ct-field textarea::placeholder{color:#6c7787}
-.ct-field input:focus,.ct-field textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(31,90,126,.18)}
+.ct-field input:focus,.ct-field textarea:focus{outline:2px solid transparent;border-color:var(--brand);box-shadow:0 0 0 4px rgba(31,90,126,.18)}
 .ct-field.has-error input,.ct-field.has-error textarea{border-color:#B42318;background:#FFF5F3}
 .ct-err{display:none;font-size:15px;font-weight:700;color:#B42318}
 .ct-field.has-error .ct-err{display:block}
@@ -772,6 +772,70 @@ body.in-view .nos{padding-top:44px}
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
 
+/* Contacto: teléfono y correo con el mismo formato */
+.ct-phone,.ct-mail{display:flex;align-items:center;gap:16px;width:fit-content;max-width:100%;margin:0;padding:8px 0;font-family:var(--font-body);font-weight:700;font-size:clamp(22px,2.4vw,32px);line-height:1.2;letter-spacing:0;text-decoration:none;color:#fff;border-bottom:3px solid rgba(255,255,255,.35);transition:border-color .25s}
+.ct-phone svg,.ct-mail svg{width:1em;height:1em;flex:none;color:#bfeaf2}
+.ct-phone:hover,.ct-mail:hover{border-color:#fff}
+.ct-mail{margin:18px 0 26px;overflow-wrap:anywhere}
+@media (max-width:640px){.ct-phone,.ct-mail{font-size:clamp(20px,6vw,26px);gap:12px}}
+/* ¿Por qué láser de fibra? */
+.nos-why-lead{max-width:760px;margin:-8px 0 28px;font-size:19px;line-height:1.6;color:#d5e0ec}
+@media (max-width:640px){.wa-btn{font-size:14px;padding:0 16px;gap:10px;letter-spacing:.02em}}
+/* Datos del inicio: columnas iguales aunque un texto sea largo */
+.facts .wrap{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1000px){.facts .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Botones con acabado redondeado */
+:root{--r-btn:14px}
+.btn,.more,.mcard-btn,.mcard-link,.wa-btn,.vback,.vchips a,.call,.pick a,.st-card,.cmp-det>summary,.burger,.dock-panel a.dl{border-radius:var(--r-btn)}
+.to-top,.mclose,.dock-x{border-radius:50%}
+.dock-tab{border-radius:0 var(--r-btn) var(--r-btn) 0}
+.wa{border-radius:999px}
+.cmp-det{border-radius:var(--r-btn)}
+.cmp-det[open]>summary{border-radius:var(--r-btn) var(--r-btn) 0 0}
+
+/* Tablas comparativas más compactas */
+.cmp-det{max-width:1040px;margin-left:auto;margin-right:auto;margin-top:36px}
+.cmp-det>summary{min-height:54px;padding:10px 20px;font-size:clamp(15px,1.5vw,18px)}
+.cmp-det>summary::after{width:32px;height:32px;font-size:20px}
+.cmp-note{font-size:13.5px}
+.cmp-det .cmp-note{padding:0 20px 16px}
+@media (min-width:641px){
+  .cmp{min-width:0;font-size:14.5px;line-height:1.45}
+  .cmp th,.cmp td{padding:10px 16px}
+  .cmp thead th{font-size:16px}
+  .cmp thead th span{margin-bottom:4px;font-size:11.5px}
+  .cmp tbody th,.cmp tfoot th{width:22%;font-size:14px}
+  .cmp tfoot .btn{padding:11px 16px;font-size:12.5px}
+}
+@media (max-width:640px){
+  .cmp-det{margin-top:28px}
+  .cmp{font-size:14.5px}
+  .cmp td,.cmp tbody tr:nth-child(even) td{padding:10px 14px}
+  .cmp tbody th,.cmp tfoot th{padding:10px 14px;font-size:14px}
+  .cmp td::before{font-size:11.5px}
+}
+@media (min-width:641px) and (max-width:900px){.cmp tfoot .btn{padding:11px 10px;gap:8px;font-size:11.5px;letter-spacing:.02em}}
+
+/* Ajustes de interacción y tipografía (guías de interfaz) */
+html{-webkit-tap-highlight-color:rgba(31,90,126,.18);-moz-osx-font-smoothing:grayscale}
+a,button,input,textarea,summary,label{touch-action:manipulation}
+h1,h2,h3,h4{text-wrap:balance}
+p,li{text-wrap:pretty}
+.dock-panel,.menu,#menu{overscroll-behavior:contain}
+.btn:active,.more:active,.vchips a:active,.wa:active,.wa-btn:active,.pick a:active{transform:scale(.97)}
+.btn,.more,.vchips a,.wa,.wa-btn,.pick a{transition-property:background-color,color,box-shadow,border-color,transform,gap}
+.vid-toggle{position:absolute;z-index:3;left:28px;bottom:22px;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px 0 12px;border:1px solid rgba(255,255,255,.35);border-radius:9999px;background:rgba(15,23,42,.45);color:#fff;font:600 13px/1 var(--font-body);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background-color .2s ease}
+.vid-toggle:hover{background:rgba(15,23,42,.7)}
+.vid-toggle svg{width:16px;height:16px;flex:none}
+.vid-toggle .i-play{display:none}
+.vid-toggle.is-paused .i-pause{display:none}
+.vid-toggle.is-paused .i-play{display:inline}
+.vid-toggle:focus-visible{outline:3px solid #7fdcea;outline-offset:2px}
+@media (max-width:640px){.vid-toggle{left:20px;bottom:16px}}
+/* Los títulos reciben el foco al cambiar de apartado (para lectores de pantalla); no son interactivos, así que sin recuadro */
+h1[tabindex="-1"]:focus,h2[tabindex="-1"]:focus{outline:none}
+
 </style>
 </head>
 <body>
@@ -784,7 +848,7 @@ body.in-view .nos{padding-top:44px}
   <div class="topbar">
     <div class="wrap">
       <div class="tb-l">
-        <a href="tel:+34623968619"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+34623968619</a>
+        <a href="tel:+34623968619"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+34 623 968 619</a>
         <a href="mailto:info@krexon.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>info@krexon.com</a>
       </div>
       <a class="tb-cta" href="#contacto">Solicita una demo personalizada →</a>
@@ -801,14 +865,14 @@ body.in-view .nos{padding-top:44px}
         <li class="has-sub">
           <a href="#maquinaria">Maquinaria</a>
           <div class="sub">
-            <a href="#corte-plano"><b>01</b>Corte plano / chapa</a>
-            <a href="#corte-tubos"><b>02</b>Corte de tubos</a>
-            <a href="#corte-combinado"><b>03</b>Corte combinado</a>
-            <a href="#soldadura-limpieza"><b>04</b>Soldadura / limpieza láser</a>
-            <a href="#plegadoras"><b>05</b>Plegadoras</a>
-            <a href="#automatizacion"><b>06</b>Automatización</a>
-            <a href="#corte-co2"><b>07</b>Máquinas de corte CO2</a>
-            <a href="#servicio-tecnico"><b>08</b>Recambios y consumibles</a>
+            <a href="#corte-plano">Corte plano 2D</a>
+            <a href="#corte-tubos">Corte de tubos</a>
+            <a href="#corte-combinado">Corte combinado (plano y tubos)</a>
+            <a href="#soldadura-limpieza">Soldadura / limpieza láser</a>
+            <a href="#plegadoras">Plegadoras</a>
+            <a href="#automatizacion">Automatización</a>
+            <a href="#corte-co2">Máquinas de corte CO2</a>
+            <a href="#servicio-tecnico">Recambios y consumibles</a>
           </div>
         </li>
         <li><a href="#servicios">Servicios</a></li>
@@ -826,17 +890,17 @@ body.in-view .nos{padding-top:44px}
 <nav class="vbar" id="vbar" aria-label="Navegación entre apartados" hidden>
   <div class="wrap vbar-in">
     <a class="vback" href="#top"><span aria-hidden="true">←</span> Inicio</a>
-    <ul class="vchips" id="vchips"><li><a href="#corte-plano"><b>01</b>Corte plano / chapa</a></li><li><a href="#corte-tubos"><b>02</b>Corte de tubos</a></li><li><a href="#corte-combinado"><b>03</b>Corte combinado</a></li><li><a href="#soldadura-limpieza"><b>04</b>Soldadura / limpieza</a></li><li><a href="#plegadoras"><b>05</b>Plegadoras</a></li><li><a href="#automatizacion"><b>06</b>Automatización</a></li><li><a href="#corte-co2"><b>07</b>Máquinas CO2</a></li><li><a href="#servicio-tecnico"><b>08</b>Recambios y consumibles</a></li></ul>
+    <ul class="vchips" id="vchips"><li><a href="#corte-plano">Corte plano 2D</a></li><li><a href="#corte-tubos">Corte de tubos</a></li><li><a href="#corte-combinado">Corte combinado (plano y tubos)</a></li><li><a href="#soldadura-limpieza">Soldadura / limpieza</a></li><li><a href="#plegadoras">Plegadoras</a></li><li><a href="#automatizacion">Automatización</a></li><li><a href="#corte-co2">Máquinas CO2</a></li><li><a href="#servicio-tecnico">Recambios y consumibles</a></li></ul>
   </div>
 </nav>
 
 
 <!-- HERO -->
 <section class="hero view-home" id="top">
-  <canvas id="laserCanvas" aria-hidden="true"></canvas>
   <video id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true">
     <source src="https://krexon.com/wp-content/uploads/2025/12/VIDEOKREXON.mp4" type="video/mp4">
   </video>
+  <button type="button" class="vid-toggle" id="vidToggle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/><path class="i-play" d="M8 5v14l11-7z"/></svg><span>Pausar vídeo</span></button>
   <div class="wrap">
     <h1 class="in-1">Soluciones industriales de corte por <span class="grad">láser de fibra</span></h1>
     <h2 class="in-2">Transforma tu producción con tecnología de vanguardia</h2>
@@ -844,14 +908,14 @@ body.in-view .nos{padding-top:44px}
     <nav class="pick" id="maquinaria" aria-label="Elige tu máquina">
       <span class="pick-title">Elige tu máquina</span>
       <div class="pick-grid">
-        <a href="#corte-plano"><small>01</small><strong>Corte plano / chapa</strong><i aria-hidden="true">→</i></a>
-        <a href="#corte-tubos"><small>02</small><strong>Corte de tubos</strong><i aria-hidden="true">→</i></a>
-        <a href="#corte-combinado"><small>03</small><strong>Corte combinado</strong><i aria-hidden="true">→</i></a>
-        <a href="#soldadura-limpieza"><small>04</small><strong>Soldadura / limpieza láser</strong><i aria-hidden="true">→</i></a>
-        <a href="#plegadoras"><small>05</small><strong>Plegadoras</strong><i aria-hidden="true">→</i></a>
-        <a href="#automatizacion"><small>06</small><strong>Automatización</strong><i aria-hidden="true">→</i></a>
-        <a href="#corte-co2"><small>07</small><strong>Máquinas de corte CO2</strong><i aria-hidden="true">→</i></a>
-        <a href="#servicio-tecnico"><small>08</small><strong>Recambios y consumibles</strong><i aria-hidden="true">→</i></a>
+        <a href="#corte-plano"><strong>Corte plano 2D</strong><i aria-hidden="true">→</i></a>
+        <a href="#corte-tubos"><strong>Corte de tubos</strong><i aria-hidden="true">→</i></a>
+        <a href="#corte-combinado"><strong>Corte combinado (plano y tubos)</strong><i aria-hidden="true">→</i></a>
+        <a href="#soldadura-limpieza"><strong>Soldadura / limpieza láser</strong><i aria-hidden="true">→</i></a>
+        <a href="#plegadoras"><strong>Plegadoras</strong><i aria-hidden="true">→</i></a>
+        <a href="#automatizacion"><strong>Automatización</strong><i aria-hidden="true">→</i></a>
+        <a href="#corte-co2"><strong>Máquinas de corte CO2</strong><i aria-hidden="true">→</i></a>
+        <a href="#servicio-tecnico"><strong>Recambios y consumibles</strong><i aria-hidden="true">→</i></a>
       </div>
     </nav>
 
@@ -864,10 +928,10 @@ body.in-view .nos{padding-top:44px}
 <div class="facts view-home">
   <video class="facts-video" id="factsVideo" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://krexon.com/wp-content/uploads/2025/12/VIDEOKREXON.mp4" type="video/mp4"></video>
   <div class="wrap">
-    <div class="fact"><b data-count="80" data-prefix="1,5 – " data-suffix=" kW">0</b><span>Potencias de corte</span></div>
-    <div class="fact"><b data-count="2" data-prefix="" data-suffix="">0</b><span>Mesas intercambiables</span></div>
-    <div class="fact"><b>UE</b><span>Normativa europea</span></div>
-    <div class="fact"><b style="font-size:clamp(22px,2.6vw,32px)">Europa · América</b><span>Presencia internacional</span></div>
+    <div class="fact"><b data-count="80" data-prefix="1,5 – " data-suffix=" kW">0</b><span>Potencia de láser</span></div>
+    <div class="fact"><b data-count="8" data-prefix="hasta " data-suffix="">0</b><span>líneas de maquinaria y servicio</span></div>
+    <div class="fact"><b style="font-size:clamp(22px,2.6vw,32px)">CE · TÜV · ISO</b><span>Normativas</span></div>
+    <div class="fact"><b style="font-size:clamp(17px,1.85vw,28px);white-space:normal">Europa · América · Asia</b><span>Presencia internacional</span></div>
   </div>
 </div>
 
@@ -886,13 +950,13 @@ body.in-view .nos{padding-top:44px}
 </section>
 
 <!--GEN:INI-->
-<!-- 01 · CORTE PLANO / CHAPA -->
+<!-- CORTE PLANO 2D -->
 <section id="corte-plano" class="flat view" aria-labelledby="h-corte-plano">
   <div class="wrap">
     <div class="flat-head">
-      <span class="eyebrow">01 · Maquinaria</span>
-      <h2 id="h-corte-plano">Corte plano / chapa</h2>
-      <p class="flat-lead">Máquina cortadora por láser de fibra óptica en diferentes formatos y potencias desde 1,5KW a 80KW. Doble mesa intercambiable, alta capacidad de carga en bandejas, normativa europea. Corte plano de chapas y laminas metálicas.</p>
+      <span class="eyebrow">Maquinaria</span>
+      <h2 id="h-corte-plano">Corte plano 2D</h2>
+      <p class="flat-lead">Máquina cortadora por láser de fibra óptica en diferentes formatos y potencias desde 1,5KW a 80KW. Doble mesa intercambiable, alta capacidad de carga en bandejas, normativas CE, TÜV e ISO. Corte plano de chapas y laminas metálicas.</p>
     </div>
     <p class="flat-step"><b>Elige el tipo de cabina</b> y pulsa sobre la máquina para ver toda su información.</p>
     <div class="mgrid mgrid-3">
@@ -901,7 +965,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Cabina cerrada</span>
           <h3>Serie HC</h3>
-          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>20 mm</b> espesor máx. de acero al carbono</li><li><b>6050 × 2030 mm</b> formato máximo de chapa</li></ul>
+          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>20 mm</b> espesor máx. de acero al carbono</li><li><b>6050 × 2030 mm</b> formato máximo de chapa</li></ul>
           <p class="mcard-res">Cabina totalmente cerrada y doble mesa intercambiable, en un tamaño compacto.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-plano-hc" data-open="corte-plano-hc"><span>Ver información</span></button>
         </div>
@@ -911,7 +975,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Cabina semicerrada</span>
           <h3>Serie NP</h3>
-          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>30 mm</b> espesor máx. de acero al carbono</li><li><b>6050 × 2030 mm</b> formato máximo de chapa</li></ul>
+          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>30 mm</b> espesor máx. de acero al carbono</li><li><b>6050 × 2030 mm</b> formato máximo de chapa</li></ul>
           <p class="mcard-res">Estructura compacta con la viga protegida por una cámara que evita la dispersión de humos.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-plano-np-semicerrada" data-open="corte-plano-np-semicerrada"><span>Ver información</span></button>
         </div>
@@ -921,7 +985,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Cabina abierta</span>
           <h3>Serie NP</h3>
-          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>30 mm</b> espesor máx. de acero al carbono</li><li><b>6050 × 2030 mm</b> formato máximo de chapa</li></ul>
+          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>30 mm</b> espesor máx. de acero al carbono</li><li><b>6050 × 2030 mm</b> formato máximo de chapa</li></ul>
           <p class="mcard-res">Estructura abierta y compacta, con fácil acceso a la mesa para cargar y descargar.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-plano-np-abierta" data-open="corte-plano-np-abierta"><span>Ver información</span></button>
         </div>
@@ -935,8 +999,8 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Cabina cerrada</span>
         <h3>Serie HC</h3>
         <p>Máquina de corte de chapa de fibra óptica con cabina totalmente cerrada y doble mesa intercambiable. Pensada para cortar chapa fina y media a alta velocidad en un tamaño compacto, para talleres que quieren potencia y tienen poco espacio.</p>
-        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>20 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>6050 × 2030 mm</b><span>formato máximo de chapa</span></li><li><b>2.900 kg</b><span>carga máx. de mesa</span></li></ul>
-        <ul class="mfeats"><li><b>Cabina totalmente cerrada:</b> paneles de chapa por los cuatro lados, cubierta superior y puerta elevable sellada. Un entorno controlado y seguro para el operario y para la máquina.</li><li><b>Doble mesa intercambiable</b> para cargar la siguiente chapa mientras se corta la anterior.</li><li><b>Extracción de humos inteligente:</b> activa las zonas de aspiración según la posición del corte, con base sellada para un corte sin humo.</li><li><b>Monitorización visual panorámica</b> en alta definición integrada en la máquina.</li><li><b>Funciones de corte:</b> salto del cabezal sobre las piezas ya cortadas (reduce el tiempo en vacío al menos un 70 %), perforación rápida y progresiva, microuniones y detección automática del borde de la chapa.</li></ul>
+        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>20 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>6050 × 2030 mm</b><span>formato máximo de chapa</span></li><li><b>2.900 kg</b><span>carga máx. de mesa</span></li></ul>
+        <ul class="mfeats"><li><b>Cabina totalmente cerrada:</b> paneles de chapa por los cuatro lados, cubierta superior y puerta elevable sellada. Un entorno controlado y seguro para el operario y para la máquina.</li><li><b>Doble mesa intercambiable</b> para cargar la siguiente chapa mientras se corta la anterior.</li><li><b>Extracción de humos inteligente:</b> activa las zonas de aspiración según la posición del corte, con base sellada para un corte sin humo.</li><li><b>Monitorización visual panorámica</b> en alta definición integrada en la máquina.</li><li><b>Funciones de corte:</b> salto del cabezal sobre las piezas ya cortadas (reduce el tiempo en vacío al menos un 70 %), perforación rápida y progresiva, microuniones y detección automática del borde de la chapa.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> TÜV-CE · FDA · ETL · UDEM-CE · RoHS</p>
         <div class="mactions">
           <a class="btn pdf-btn" href="docs/ficha-hc.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar ficha en PDF</a>
@@ -950,8 +1014,8 @@ body.in-view .nos{padding-top:44px}
       <div class="mdetail-txt">
         <span class="mcard-tag">Cabina semicerrada</span>
         <h3>Serie NP</h3>
-        <p>Máquina de corte de chapa compacta, pensada para chapa fina y media (hasta 30 mm). En esta configuración incorpora una cámara protectora sobre la viga que se desplaza a la par que el corte.</p>
-        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>30 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>6050 × 2030 mm</b><span>formato máximo de chapa</span></li><li><b>120 m/min</b><span>velocidad máx. en vacío</span></li></ul>
+        <p>Máquina de corte de chapa compacta, pensada para chapa fina y media (hasta 30 mm). En esta configuración incorpora una cámara protectora sobre la viga que se desplaza a la par que el corte.</p>
+        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>30 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>6050 × 2030 mm</b><span>formato máximo de chapa</span></li><li><b>120 m/min</b><span>velocidad máx. en vacío</span></li></ul>
         <ul class="mfeats"><li><b>Cámara protectora sobre la viga:</b> se mueve sincronizada con el corte y se sella con una puerta corredera para evitar que se dispersen los humos. Viga cerrada conforme a las certificaciones europeas y americanas.</li><li><b>Mesa con bolas de transferencia</b> que reducen el rozamiento y el riesgo de rayar la chapa; muy adecuada para la carga manual o semiautomática.</li><li><b>Gran dinámica de corte:</b> mesa hueca que bloquea la transferencia de calor y viga de aleación de aluminio de alta resistencia, ligera y estable.</li><li><b>Ampliable:</b> carga y descarga automáticas opcionales con ventosas y manipulador de cercha, y corte inteligente con aire opcional.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
@@ -966,8 +1030,8 @@ body.in-view .nos{padding-top:44px}
       <div class="mdetail-txt">
         <span class="mcard-tag">Cabina abierta</span>
         <h3>Serie NP</h3>
-        <p>La misma máquina compacta en su configuración de estructura abierta, pensada para cortar chapa fina y media (hasta 30 mm) en talleres con espacio limitado.</p>
-        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>30 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>6050 × 2030 mm</b><span>formato máximo de chapa</span></li><li><b>120 m/min</b><span>velocidad máx. en vacío</span></li></ul>
+        <p>La misma máquina compacta en su configuración de estructura abierta, pensada para cortar chapa fina y media (hasta 30 mm) en talleres con espacio limitado.</p>
+        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>30 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>6050 × 2030 mm</b><span>formato máximo de chapa</span></li><li><b>120 m/min</b><span>velocidad máx. en vacío</span></li></ul>
         <ul class="mfeats"><li><b>Estructura abierta y compacta</b>, con acceso directo a la mesa de corte.</li><li><b>Mesa con bolas de transferencia</b> que reducen el rozamiento y el riesgo de rayar la chapa; muy adecuada para la carga manual o semiautomática.</li><li><b>Gran dinámica de corte:</b> mesa hueca que bloquea la transferencia de calor y viga de aleación de aluminio de alta resistencia, ligera y estable.</li><li><b>Ampliable:</b> carga y descarga automáticas opcionales con ventosas y manipulador de cercha, y corte inteligente con aire opcional.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
@@ -985,19 +1049,19 @@ body.in-view .nos{padding-top:44px}
         <tbody>
           <tr><th scope="row">Tipo de cabina</th><td data-label="Serie HC">Cerrada</td><td data-label="Serie NP">Semicerrada (viga cubierta)</td><td data-label="Serie NP">Abierta</td></tr>
           <tr><th scope="row">Serie</th><td data-label="Serie HC">HC</td><td data-label="Serie NP">NP</td><td data-label="Serie NP">NP</td></tr>
-          <tr><th scope="row">Potencia láser</th><td data-label="Serie HC">1,5 – 12 kW</td><td data-label="Serie NP">1,5 – 12 kW</td><td data-label="Serie NP">1,5 – 12 kW</td></tr>
-          <tr><th scope="row">Espesor máx. de acero al carbono</th><td data-label="Serie HC">20 mm</td><td data-label="Serie NP">30 mm</td><td data-label="Serie NP">30 mm</td></tr>
-          <tr><th scope="row">Formato de chapa</th><td data-label="Serie HC">de 3050 × 1530 a 6050 × 2030 mm</td><td data-label="Serie NP">de 3050 × 1530 a 6050 × 2030 mm</td><td data-label="Serie NP">de 3050 × 1530 a 6050 × 2030 mm</td></tr>
+          <tr><th scope="row">Potencia láser</th><td data-label="Serie HC">1,5 – 12 kW</td><td data-label="Serie NP">1,5 – 12 kW</td><td data-label="Serie NP">1,5 – 12 kW</td></tr>
+          <tr><th scope="row">Espesor máx. de acero al carbono</th><td data-label="Serie HC">20 mm</td><td data-label="Serie NP">30 mm</td><td data-label="Serie NP">30 mm</td></tr>
+          <tr><th scope="row">Formato de chapa</th><td data-label="Serie HC">de 3050 × 1530 a 6050 × 2030 mm</td><td data-label="Serie NP">de 3050 × 1530 a 6050 × 2030 mm</td><td data-label="Serie NP">de 3050 × 1530 a 6050 × 2030 mm</td></tr>
           <tr><th scope="row">Modelos</th><td data-label="Serie HC">3015H · 4015H · 4020H · 6015H · 6020H</td><td data-label="Serie NP">3015NP · 4020NP · 6015NP · 6020NP</td><td data-label="Serie NP">3015NP · 4020NP · 6015NP · 6020NP</td></tr>
-          <tr><th scope="row">Velocidad máx. en vacío</th><td data-label="Serie HC">130 m/min</td><td data-label="Serie NP">120 m/min</td><td data-label="Serie NP">120 m/min</td></tr>
-          <tr><th scope="row">Aceleración máx.</th><td data-label="Serie HC">1,2 G</td><td data-label="Serie NP">1,2 G</td><td data-label="Serie NP">1,2 G</td></tr>
-          <tr><th scope="row">Precisión de posicionamiento / repetibilidad</th><td data-label="Serie HC">±0,05 mm / ±0,02 mm</td><td data-label="Serie NP">±0,05 mm / ±0,02 mm</td><td data-label="Serie NP">±0,05 mm / ±0,02 mm</td></tr>
-          <tr><th scope="row">Carga máx. de mesa</th><td data-label="Serie HC">hasta 2.900 kg</td><td data-label="Serie NP">hasta 2.800 kg</td><td data-label="Serie NP">hasta 2.800 kg</td></tr>
+          <tr><th scope="row">Velocidad máx. en vacío</th><td data-label="Serie HC">130 m/min</td><td data-label="Serie NP">120 m/min</td><td data-label="Serie NP">120 m/min</td></tr>
+          <tr><th scope="row">Aceleración máx.</th><td data-label="Serie HC">1,2 G</td><td data-label="Serie NP">1,2 G</td><td data-label="Serie NP">1,2 G</td></tr>
+          <tr><th scope="row">Precisión de posicionamiento / repetibilidad</th><td data-label="Serie HC">±0,05 mm / ±0,02 mm</td><td data-label="Serie NP">±0,05 mm / ±0,02 mm</td><td data-label="Serie NP">±0,05 mm / ±0,02 mm</td></tr>
+          <tr><th scope="row">Carga máx. de mesa</th><td data-label="Serie HC">hasta 2.900 kg</td><td data-label="Serie NP">hasta 2.800 kg</td><td data-label="Serie NP">hasta 2.800 kg</td></tr>
           <tr><th scope="row">Mesa</th><td data-label="Serie HC">Doble mesa intercambiable</td><td data-label="Serie NP">Mesa con bolas de transferencia</td><td data-label="Serie NP">Mesa con bolas de transferencia</td></tr>
           <tr><th scope="row">Protección y humos</th><td data-label="Serie HC">Cabina cerrada y extracción inteligente por zonas</td><td data-label="Serie NP">Cámara protectora sobre la viga</td><td data-label="Serie NP">Estructura abierta</td></tr>
           <tr><th scope="row">Carga y descarga automáticas</th><td data-label="Serie HC">Opcional</td><td data-label="Serie NP">Opcional</td><td data-label="Serie NP">Opcional</td></tr>
-          <tr><th scope="row">Alimentación eléctrica</th><td data-label="Serie HC">Trifásica 380 V, 50/60 Hz</td><td data-label="Serie NP">Trifásica 380 V, 50/60 Hz</td><td data-label="Serie NP">Trifásica 380 V, 50/60 Hz</td></tr>
-          <tr><th scope="row">Dimensiones totales</th><td data-label="Serie HC">de 8.520 × 2.270 × 2.180 a 14.900 × 3.243 × 2.260 mm</td><td data-label="Serie NP">de 4.482 × 2.760 × 1.960 a 8.100 × 3.260 × 1.800 mm</td><td data-label="Serie NP">de 4.482 × 2.760 × 1.960 a 8.100 × 3.260 × 1.800 mm</td></tr>
+          <tr><th scope="row">Alimentación eléctrica</th><td data-label="Serie HC">Trifásica 380 V, 50/60 Hz</td><td data-label="Serie NP">Trifásica 380 V, 50/60 Hz</td><td data-label="Serie NP">Trifásica 380 V, 50/60 Hz</td></tr>
+          <tr><th scope="row">Dimensiones totales</th><td data-label="Serie HC">de 8.520 × 2.270 × 2.180 a 14.900 × 3.243 × 2.260 mm</td><td data-label="Serie NP">de 4.482 × 2.760 × 1.960 a 8.100 × 3.260 × 1.800 mm</td><td data-label="Serie NP">de 4.482 × 2.760 × 1.960 a 8.100 × 3.260 × 1.800 mm</td></tr>
           <tr><th scope="row">Certificaciones</th><td data-label="Serie HC">TÜV-CE, FDA, ETL, UDEM-CE, RoHS</td><td data-label="Serie NP">FDA, UDEM-CE</td><td data-label="Serie NP">FDA, UDEM-CE</td></tr>
         </tbody>
         <tfoot><tr><th scope="row">Ficha completa</th><td data-label="Serie HC"><a class="btn pdf-btn" href="docs/ficha-hc.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></td><td data-label="Serie NP"><a class="btn pdf-btn" href="docs/ficha-np-semicerrada.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></td><td data-label="Serie NP"><a class="btn pdf-btn" href="docs/ficha-np-abierta.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></td></tr></tfoot>
@@ -1009,13 +1073,13 @@ body.in-view .nos{padding-top:44px}
   </div>
 </section>
 
-<!-- 02 · CORTE DE TUBOS -->
+<!-- CORTE DE TUBOS -->
 <section id="corte-tubos" class="flat view" aria-labelledby="h-corte-tubos">
   <div class="wrap">
     <div class="flat-head">
-      <span class="eyebrow">02 · Maquinaria</span>
+      <span class="eyebrow">Maquinaria</span>
       <h2 id="h-corte-tubos">Corte de tubos</h2>
-      <p class="flat-lead">Maquina cortadora de tubos y perfiles por láser de fibra óptica en diferentes formatos, modalidades y potencias (1,5KW a 80KW). Modelos altamente dinámicos y acorde a especificaciones del cliente, normativa europea.</p>
+      <p class="flat-lead">Maquina cortadora de tubos y perfiles por láser de fibra óptica en diferentes formatos, modalidades y potencias (1,5KW a 80KW). Modelos altamente dinámicos y acorde a especificaciones del cliente, normativas CE, TÜV e ISO.</p>
     </div>
     <p class="flat-step"><b>Elige la máquina</b> y pulsa sobre ella para ver toda su información.</p>
     <div class="mgrid mgrid-2">
@@ -1024,7 +1088,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Dos mandriles</span>
           <h3>Serie T</h3>
-          <ul class="mcard-kpi"><li><b>1,5 – 6 kW</b> potencia láser</li><li><b>hasta 12.000 mm</b> longitud de tubo</li><li><b>Ø 15 – 360 mm</b> tamaño de tubo</li></ul>
+          <ul class="mcard-kpi"><li><b>1,5 – 6 kW</b> potencia láser</li><li><b>hasta 12.000 mm</b> longitud de tubo</li><li><b>Ø 15 – 360 mm</b> tamaño de tubo</li></ul>
           <p class="mcard-res">Cortadora láser de tubo de dos mandriles: rentable, precisa y muy utilizada en talleres.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-tubos-serie-t" data-open="corte-tubos-serie-t"><span>Ver información</span></button>
         </div>
@@ -1034,7 +1098,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Tres mandriles</span>
           <h3>Serie NT</h3>
-          <ul class="mcard-kpi"><li><b>3 – 12 kW</b> potencia láser</li><li><b>hasta 12.000 mm</b> longitud de tubo</li><li><b>Ø 20 – 360 mm</b> tamaño de tubo</li></ul>
+          <ul class="mcard-kpi"><li><b>3 – 12 kW</b> potencia láser</li><li><b>hasta 12.000 mm</b> longitud de tubo</li><li><b>Ø 20 – 360 mm</b> tamaño de tubo</li></ul>
           <p class="mcard-res">Para tubo largo y de gran tamaño: tres mandriles y corte con aprovechamiento máximo del material.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-tubos-serie-nt" data-open="corte-tubos-serie-nt"><span>Ver información</span></button>
         </div>
@@ -1048,7 +1112,7 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Dos mandriles</span>
         <h3>Serie T</h3>
         <p>Máquina de corte de tubo de dos mandriles, de nivel de entrada y muy rentable, ideal para series pequeñas. Corta tubo con colas ultracortas: en tubo pequeño, sin sobrecalentamiento ni escoria adherida; en tubo grande, a gran velocidad. Admite distintos materiales y se utiliza en transporte ferroviario, automoción, maquinaria de construcción y maquinaria agrícola y forestal.</p>
-        <ul class="mdetail-kpis"><li><b>1,5 – 6 kW</b><span>potencia láser</span></li><li><b>hasta 12.000 mm</b><span>longitud de tubo</span></li><li><b>Ø 15 – 360 mm</b><span>tamaño de tubo</span></li><li><b>120 – 500 kg</b><span>peso de tubo</span></li></ul>
+        <ul class="mdetail-kpis"><li><b>1,5 – 6 kW</b><span>potencia láser</span></li><li><b>hasta 12.000 mm</b><span>longitud de tubo</span></li><li><b>Ø 15 – 360 mm</b><span>tamaño de tubo</span></li><li><b>120 – 500 kg</b><span>peso de tubo</span></li></ul>
         <ul class="mfeats"><li><b>Dos mandriles de alta precisión</b> con diseño antipolvo que alarga su vida útil; el aluminio ligero ofrece gran capacidad de carga y estabilidad.</li><li><b>Tubo redondo, cuadrado y rectangular</b>, y perfiles: centrado automático de vigas H, U y L.</li><li><b>Apoyo de seguimiento o de paso variable (opcional):</b> evita que el tubo se curve y se adapta a distintos diámetros.</li><li><b>Software de corte:</b> anidado de una o varias piezas para aprovechar al máximo el material, importación rápida de archivos IGS, ordenación automática de trayectorias y diseño 3D de piezas integrado.</li><li><b>Carga y descarga automáticas (opcional):</b> desde carga semiautomática hasta carga totalmente automática de tubos de hasta 12 m, con descarga automática que separa recortes y piezas terminadas.</li><li><b>Opcionales:</b> detección del cordón de soldadura y escaneado visual para corregir la posición del tubo.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> TÜV-CE · FDA · ETL · UDEM-CE · RoHS</p>
         <div class="mactions">
@@ -1063,8 +1127,8 @@ body.in-view .nos{padding-top:44px}
       <div class="mdetail-txt">
         <span class="mcard-tag">Tres mandriles</span>
         <h3>Serie NT</h3>
-        <p>Máquina polivalente para cortar tubo largo (de 6.000 a 12.000 mm) y de gran tamaño (hasta 360 mm). Aunque tiene tres mandriles, permite el corte sin cola si el proceso está bien planificado, lo que aprovecha al máximo el material y reduce el coste de compra.</p>
-        <ul class="mdetail-kpis"><li><b>3 – 12 kW</b><span>potencia láser</span></li><li><b>hasta 12.000 mm</b><span>longitud de tubo</span></li><li><b>Ø 20 – 360 mm</b><span>tamaño de tubo</span></li><li><b>260 – 700 kg</b><span>peso de tubo</span></li></ul>
+        <p>Máquina polivalente para cortar tubo largo (de 6.000 a 12.000 mm) y de gran tamaño (hasta 360 mm). Aunque tiene tres mandriles, permite el corte sin cola si el proceso está bien planificado, lo que aprovecha al máximo el material y reduce el coste de compra.</p>
+        <ul class="mdetail-kpis"><li><b>3 – 12 kW</b><span>potencia láser</span></li><li><b>hasta 12.000 mm</b><span>longitud de tubo</span></li><li><b>Ø 20 – 360 mm</b><span>tamaño de tubo</span></li><li><b>260 – 700 kg</b><span>peso de tubo</span></li></ul>
         <ul class="mfeats"><li><b>Estructura de tres mandriles</b> para un amarre preciso y un mecanizado estable de piezas largas. Mandril delantero extendido, tipo “cañón”, para una cola más corta.</li><li><b>Corte sin cola:</b> el mandril móvil permite cargar y descargar el tubo completo y minimiza el material sobrante.</li><li><b>Sistema de apoyo de seguimiento:</b> sigue el giro y el movimiento vertical del tubo durante el corte para evitar que se curve.</li><li><b>Descarga automática</b> que separa recortes y piezas terminadas, con volteo inteligente.</li><li><b>Corte con bisel (opcional):</b> con el software de anidado genera los planos de bisel de varios tipos, para facilitar la soldadura posterior.</li><li><b>Software de corte:</b> anidado de una o varias piezas, importación rápida de archivos IGS y ordenación automática de trayectorias.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> TÜV-CE · FDA · ETL · UDEM-CE · RoHS</p>
         <div class="mactions">
@@ -1081,16 +1145,16 @@ body.in-view .nos{padding-top:44px}
         <thead><tr><td></td><th scope="col"><span>Dos mandriles</span>Serie T</th><th scope="col"><span>Tres mandriles</span>Serie NT</th></tr></thead>
         <tbody>
           <tr><th scope="row">Número de mandriles</th><td data-label="Serie T">2</td><td data-label="Serie NT">3</td></tr>
-          <tr><th scope="row">Potencia láser</th><td data-label="Serie T">1,5 – 6 kW (según modelo)</td><td data-label="Serie NT">3 – 12 kW (según modelo)</td></tr>
-          <tr><th scope="row">Longitud de tubo</th><td data-label="Serie T">de 1.000 a 12.000 mm</td><td data-label="Serie NT">de 3.000 a 12.000 mm</td></tr>
-          <tr><th scope="row">Tubo redondo</th><td data-label="Serie T">Ø 15 a 360 mm</td><td data-label="Serie NT">Ø 20 a 360 mm</td></tr>
-          <tr><th scope="row">Tubo cuadrado</th><td data-label="Serie T">de 15 × 15 a 360 × 360 mm</td><td data-label="Serie NT">de 20 × 20 a 360 × 360 mm</td></tr>
-          <tr><th scope="row">Peso máx. de tubo</th><td data-label="Serie T">120 – 500 kg (según modelo)</td><td data-label="Serie NT">260 – 700 kg (según modelo)</td></tr>
+          <tr><th scope="row">Potencia láser</th><td data-label="Serie T">1,5 – 6 kW (según modelo)</td><td data-label="Serie NT">3 – 12 kW (según modelo)</td></tr>
+          <tr><th scope="row">Longitud de tubo</th><td data-label="Serie T">de 1.000 a 12.000 mm</td><td data-label="Serie NT">de 3.000 a 12.000 mm</td></tr>
+          <tr><th scope="row">Tubo redondo</th><td data-label="Serie T">Ø 15 a 360 mm</td><td data-label="Serie NT">Ø 20 a 360 mm</td></tr>
+          <tr><th scope="row">Tubo cuadrado</th><td data-label="Serie T">de 15 × 15 a 360 × 360 mm</td><td data-label="Serie NT">de 20 × 20 a 360 × 360 mm</td></tr>
+          <tr><th scope="row">Peso máx. de tubo</th><td data-label="Serie T">120 – 500 kg (según modelo)</td><td data-label="Serie NT">260 – 700 kg (según modelo)</td></tr>
           <tr><th scope="row">Modelos</th><td data-label="Serie T">6012T · 6016T · 6024T · 6035T · 9024T · 9035T · 12035T</td><td data-label="Serie NT">6024NT · 6035NT · 9024NT · 9035NT · 12035NT</td></tr>
-          <tr><th scope="row">Precisión de posicionamiento / repetibilidad</th><td data-label="Serie T">±0,05 mm / ±0,03 mm</td><td data-label="Serie NT">±0,05 mm / ±0,03 mm</td></tr>
-          <tr><th scope="row">Velocidad máx. en vacío</th><td data-label="Serie T">60 – 150 m/min (según modelo)</td><td data-label="Serie NT">60 – 75 m/min (según modelo)</td></tr>
+          <tr><th scope="row">Precisión de posicionamiento / repetibilidad</th><td data-label="Serie T">±0,05 mm / ±0,03 mm</td><td data-label="Serie NT">±0,05 mm / ±0,03 mm</td></tr>
+          <tr><th scope="row">Velocidad máx. en vacío</th><td data-label="Serie T">60 – 150 m/min (según modelo)</td><td data-label="Serie NT">60 – 75 m/min (según modelo)</td></tr>
           <tr><th scope="row">Corte con bisel</th><td data-label="Serie T">Consultar</td><td data-label="Serie NT">Opcional</td></tr>
-          <tr><th scope="row">Alimentación eléctrica</th><td data-label="Serie T">Trifásica 380 V, 50/60 Hz</td><td data-label="Serie NT">Trifásica 380 V, 50/60 Hz (a medida)</td></tr>
+          <tr><th scope="row">Alimentación eléctrica</th><td data-label="Serie T">Trifásica 380 V, 50/60 Hz</td><td data-label="Serie NT">Trifásica 380 V, 50/60 Hz (a medida)</td></tr>
           <tr><th scope="row">Certificaciones</th><td data-label="Serie T">TÜV-CE, FDA, ETL, UDEM-CE, RoHS</td><td data-label="Serie NT">TÜV-CE, FDA, ETL, UDEM-CE, RoHS</td></tr>
         </tbody>
         <tfoot><tr><th scope="row">Ficha completa</th><td data-label="Serie T"><a class="btn pdf-btn" href="docs/ficha-t.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></td><td data-label="Serie NT"><a class="btn pdf-btn" href="docs/ficha-nt.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></td></tr></tfoot>
@@ -1102,12 +1166,12 @@ body.in-view .nos{padding-top:44px}
   </div>
 </section>
 
-<!-- 03 · CORTE COMBINADO -->
+<!-- CORTE COMBINADO (PLANO Y TUBOS) -->
 <section id="corte-combinado" class="flat view" aria-labelledby="h-corte-combinado">
   <div class="wrap">
     <div class="flat-head">
-      <span class="eyebrow">03 · Maquinaria</span>
-      <h2 id="h-corte-combinado">Corte combinado</h2>
+      <span class="eyebrow">Maquinaria</span>
+      <h2 id="h-corte-combinado">Corte combinado (plano y tubos)</h2>
       <p class="flat-lead">Maquina cortadora de laser de fibra óptica dual, capacidad de corte plano y corte de tubo en una misma máquina. Diferentes modelos disponibles, alta capacidad de producción.</p>
     </div>
     <ul class="flat-gen"><li><b>Chapa y tubo en una sola máquina</b><span>Corte plano y corte de tubo con el mismo equipo.</span></li><li><b>Menos inversión</b><span>Una máquina en lugar de dos reduce el coste de compra.</span></li><li><b>Menos espacio en el taller</b><span>Ocupa menos superficie que dos máquinas por separado.</span></li></ul>
@@ -1118,7 +1182,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Cabina cerrada</span>
           <h3>Serie HM</h3>
-          <ul class="mcard-kpi"><li><b>6 – 30 kW</b> potencia láser</li><li><b>hasta 60 mm</b> acero al carbono (chapa)</li><li><b>Ø 20 – 220 mm</b> tubo redondo</li></ul>
+          <ul class="mcard-kpi"><li><b>6 – 30 kW</b> potencia láser</li><li><b>hasta 60 mm</b> acero al carbono (chapa)</li><li><b>Ø 20 – 220 mm</b> tubo redondo</li></ul>
           <p class="mcard-res">Chapa y tubo en una sola máquina, con cabina totalmente cerrada y doble mesa.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-combinado-hm" data-open="corte-combinado-hm"><span>Ver información</span></button>
         </div>
@@ -1128,7 +1192,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Cabina abierta</span>
           <h3>Serie C</h3>
-          <ul class="mcard-kpi"><li><b>1,5 – 6 kW</b> potencia láser</li><li><b>hasta 20 mm</b> acero al carbono (chapa)</li><li><b>Ø 20 – 220 mm</b> tubo redondo</li></ul>
+          <ul class="mcard-kpi"><li><b>1,5 – 6 kW</b> potencia láser</li><li><b>hasta 20 mm</b> acero al carbono (chapa)</li><li><b>Ø 20 – 220 mm</b> tubo redondo</li></ul>
           <p class="mcard-res">Chapa y tubo con una sola mesa y estructura abierta y compacta: la opción más asequible.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-combinado-c" data-open="corte-combinado-c"><span>Ver información</span></button>
         </div>
@@ -1142,8 +1206,8 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Cabina cerrada</span>
         <h3>Serie HM</h3>
         <p>Máquina de doble función con estructura totalmente cerrada que corta chapa y tubo. Frente a tener dos máquinas, ahorra coste de compra y superficie en el taller, y facilita cumplir los requisitos medioambientales.</p>
-        <ul class="mdetail-kpis"><li><b>6 – 30 kW</b><span>potencia láser</span></li><li><b>hasta 60 mm</b><span>acero al carbono (chapa)</span></li><li><b>Ø 20 – 220 mm</b><span>tubo redondo</span></li><li><b>200 m/min</b><span>velocidad máx. en vacío</span></li></ul>
-        <ul class="mfeats"><li><b>Dos máquinas en una:</b> ahorra más de un 50 % en coste de compra y en superficie ocupada frente a máquinas separadas.</li><li><b>Doble mesa intercambiable:</b> se corta, se carga y se descarga a la vez, sin tiempos de espera.</li><li><b>Mesa robusta de corte estable:</b> chapa de acero al carbono de hasta 60 mm y tubo de 500 a 6.000 mm de largo, redondo (Ø 20–220 mm) y cuadrado.</li><li><b>Extracción de humos inteligente</b> y monitorización visual de todo el entorno de trabajo.</li></ul>
+        <ul class="mdetail-kpis"><li><b>6 – 30 kW</b><span>potencia láser</span></li><li><b>hasta 60 mm</b><span>acero al carbono (chapa)</span></li><li><b>Ø 20 – 220 mm</b><span>tubo redondo</span></li><li><b>200 m/min</b><span>velocidad máx. en vacío</span></li></ul>
+        <ul class="mfeats"><li><b>Dos máquinas en una:</b> ahorra más de un 50 % en coste de compra y en superficie ocupada frente a máquinas separadas.</li><li><b>Doble mesa intercambiable:</b> se corta, se carga y se descarga a la vez, sin tiempos de espera.</li><li><b>Mesa robusta de corte estable:</b> chapa de acero al carbono de hasta 60 mm y tubo de 500 a 6.000 mm de largo, redondo (Ø 20–220 mm) y cuadrado.</li><li><b>Extracción de humos inteligente</b> y monitorización visual de todo el entorno de trabajo.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> TÜV-CE · FDA · ETL · UDEM-CE · RoHS</p>
         <div class="mactions">
           <a class="btn pdf-btn" href="docs/ficha-hm.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar ficha en PDF</a>
@@ -1158,8 +1222,8 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Cabina abierta</span>
         <h3>Serie C</h3>
         <p>Modelo asequible de doble función: corta chapa y tubo con una sola mesa y una estructura compacta y abierta. Necesita mucha menos inversión inicial, por lo que es una buena opción para quien empieza.</p>
-        <ul class="mdetail-kpis"><li><b>1,5 – 6 kW</b><span>potencia láser</span></li><li><b>hasta 20 mm</b><span>acero al carbono (chapa)</span></li><li><b>Ø 20 – 220 mm</b><span>tubo redondo</span></li><li><b>100 m/min</b><span>velocidad máx. en vacío</span></li></ul>
-        <ul class="mfeats"><li><b>Dos funciones con un presupuesto limitado:</b> corta chapa y tubos pequeños y medianos, con mesa única y poca superficie ocupada.</li><li><b>Estructura abierta:</b> la chapa se carga y descarga por delante, por detrás o por los lados.</li><li><b>Cabezal de enfoque automático:</b> corta rápido acero inoxidable de hasta 16 mm, acero al carbono de hasta 20 mm y latón o aluminio de hasta 8 mm.</li><li><b>Mandril neumático autocentrante:</b> sujeta con firmeza tubo de 500 a 6.000 mm de largo, redondo (Ø 20–220 mm) y cuadrado, y centra perfiles H, U y L.</li></ul>
+        <ul class="mdetail-kpis"><li><b>1,5 – 6 kW</b><span>potencia láser</span></li><li><b>hasta 20 mm</b><span>acero al carbono (chapa)</span></li><li><b>Ø 20 – 220 mm</b><span>tubo redondo</span></li><li><b>100 m/min</b><span>velocidad máx. en vacío</span></li></ul>
+        <ul class="mfeats"><li><b>Dos funciones con un presupuesto limitado:</b> corta chapa y tubos pequeños y medianos, con mesa única y poca superficie ocupada.</li><li><b>Estructura abierta:</b> la chapa se carga y descarga por delante, por detrás o por los lados.</li><li><b>Cabezal de enfoque automático:</b> corta rápido acero inoxidable de hasta 16 mm, acero al carbono de hasta 20 mm y latón o aluminio de hasta 8 mm.</li><li><b>Mandril neumático autocentrante:</b> sujeta con firmeza tubo de 500 a 6.000 mm de largo, redondo (Ø 20–220 mm) y cuadrado, y centra perfiles H, U y L.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE · RoHS</p>
         <div class="mactions">
           <a class="btn pdf-btn" href="docs/ficha-c.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar ficha en PDF</a>
@@ -1176,14 +1240,14 @@ body.in-view .nos{padding-top:44px}
         <tbody>
           <tr><th scope="row">Tipo de cabina</th><td data-label="Serie HM">Cerrada</td><td data-label="Serie C">Abierta</td></tr>
           <tr><th scope="row">Serie</th><td data-label="Serie HM">HM</td><td data-label="Serie C">C</td></tr>
-          <tr><th scope="row">Potencia láser</th><td data-label="Serie HM">6 – 30 kW</td><td data-label="Serie C">1,5 – 6 kW</td></tr>
-          <tr><th scope="row">Formato de chapa</th><td data-label="Serie HM">de 3050 × 1530 a 6050 × 2530 mm</td><td data-label="Serie C">de 3050 × 1530 a 6050 × 2030 mm</td></tr>
-          <tr><th scope="row">Espesor máx. de acero al carbono</th><td data-label="Serie HM">60 mm</td><td data-label="Serie C">20 mm</td></tr>
-          <tr><th scope="row">Tubo redondo</th><td data-label="Serie HM">Ø 20 a 220 mm</td><td data-label="Serie C">Ø 20 a 220 mm</td></tr>
-          <tr><th scope="row">Longitud de tubo</th><td data-label="Serie HM">hasta 6.000 mm</td><td data-label="Serie C">de 500 a 6.000 mm</td></tr>
-          <tr><th scope="row">Velocidad máx. en vacío</th><td data-label="Serie HM">200 m/min</td><td data-label="Serie C">100 m/min</td></tr>
+          <tr><th scope="row">Potencia láser</th><td data-label="Serie HM">6 – 30 kW</td><td data-label="Serie C">1,5 – 6 kW</td></tr>
+          <tr><th scope="row">Formato de chapa</th><td data-label="Serie HM">de 3050 × 1530 a 6050 × 2530 mm</td><td data-label="Serie C">de 3050 × 1530 a 6050 × 2030 mm</td></tr>
+          <tr><th scope="row">Espesor máx. de acero al carbono</th><td data-label="Serie HM">60 mm</td><td data-label="Serie C">20 mm</td></tr>
+          <tr><th scope="row">Tubo redondo</th><td data-label="Serie HM">Ø 20 a 220 mm</td><td data-label="Serie C">Ø 20 a 220 mm</td></tr>
+          <tr><th scope="row">Longitud de tubo</th><td data-label="Serie HM">hasta 6.000 mm</td><td data-label="Serie C">de 500 a 6.000 mm</td></tr>
+          <tr><th scope="row">Velocidad máx. en vacío</th><td data-label="Serie HM">200 m/min</td><td data-label="Serie C">100 m/min</td></tr>
           <tr><th scope="row">Mesa</th><td data-label="Serie HM">Doble mesa intercambiable</td><td data-label="Serie C">Mesa única</td></tr>
-          <tr><th scope="row">Carga máx. de mesa</th><td data-label="Serie HM">de 3.000 a 9.000 kg (según modelo)</td><td data-label="Serie C">de 1.100 a 2.800 kg (según modelo)</td></tr>
+          <tr><th scope="row">Carga máx. de mesa</th><td data-label="Serie HM">de 3.000 a 9.000 kg (según modelo)</td><td data-label="Serie C">de 1.100 a 2.800 kg (según modelo)</td></tr>
           <tr><th scope="row">Modelos</th><td data-label="Serie HM">3015HM · 4020HM · 6020HM · 6025HM</td><td data-label="Serie C">3015C · 4015C · 4020C · 6015C · 6020C</td></tr>
           <tr><th scope="row">Certificaciones</th><td data-label="Serie HM">TÜV-CE, FDA, ETL, UDEM-CE, RoHS</td><td data-label="Serie C">FDA, UDEM-CE, RoHS</td></tr>
         </tbody>
@@ -1196,11 +1260,11 @@ body.in-view .nos{padding-top:44px}
   </div>
 </section>
 
-<!-- 04 · SOLDADURA / LIMPIEZA LÁSER -->
+<!-- SOLDADURA / LIMPIEZA LÁSER -->
 <section id="soldadura-limpieza" class="flat view" aria-labelledby="h-soldadura-limpieza">
   <div class="wrap">
     <div class="flat-head">
-      <span class="eyebrow">04 · Maquinaria</span>
+      <span class="eyebrow">Maquinaria</span>
       <h2 id="h-soldadura-limpieza">Soldadura / limpieza láser</h2>
       <p class="flat-lead">Equipos láser manuales y portátiles para soldar y limpiar metal: soldadura de calidad con poca deformación y limpieza de óxido, pintura y grasa sin productos químicos.</p>
     </div>
@@ -1212,7 +1276,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Soldadura · gama alta</span>
           <h3>Serie HWM</h3>
-          <ul class="mcard-kpi"><li><b>1,5 – 3 kW</b> potencia láser</li><li><b>hasta 7 mm</b> espesor de chapa</li><li><b>≤ 0,75 kg</b> peso de la pistola</li></ul>
+          <ul class="mcard-kpi"><li><b>1,5 – 3 kW</b> potencia láser</li><li><b>hasta 7 mm</b> espesor de chapa</li><li><b>≤ 0,75 kg</b> peso de la pistola</li></ul>
           <p class="mcard-res">Soldadora láser manual de alto rendimiento, 4 en 1, para obtener una calidad muy uniforme.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-soldadura-hwm" data-open="soldadura-hwm"><span>Ver información</span></button>
         </div>
@@ -1222,7 +1286,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Soldadura · gama de entrada</span>
           <h3>Serie HW</h3>
-          <ul class="mcard-kpi"><li><b>1,5 – 3 kW</b> potencia láser</li><li><b>hasta 7 mm</b> espesor de chapa</li><li><b>≤ 0,7 kg</b> peso de la pistola</li></ul>
+          <ul class="mcard-kpi"><li><b>1,5 – 3 kW</b> potencia láser</li><li><b>hasta 7 mm</b> espesor de chapa</li><li><b>≤ 0,7 kg</b> peso de la pistola</li></ul>
           <p class="mcard-res">Soldadora láser manual muy rentable: suelda, corta y limpia con una inversión inicial contenida.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-soldadura-hw" data-open="soldadura-hw"><span>Ver información</span></button>
         </div>
@@ -1232,7 +1296,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Soldadura · portátil</span>
           <h3>Serie S</h3>
-          <ul class="mcard-kpi"><li><b>0,8 – 1,5 kW</b> potencia láser</li><li><b>hasta 5 mm</b> espesor de chapa</li><li><b>45 – 55 kg</b> peso de la máquina</li></ul>
+          <ul class="mcard-kpi"><li><b>0,8 – 1,5 kW</b> potencia láser</li><li><b>hasta 5 mm</b> espesor de chapa</li><li><b>45 – 55 kg</b> peso de la máquina</li></ul>
           <p class="mcard-res">Soldadora láser portátil, refrigerada por aire y de poco peso, para soldar en cualquier sitio.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-soldadura-s" data-open="soldadura-s"><span>Ver información</span></button>
         </div>
@@ -1246,8 +1310,8 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Soldadura · gama alta</span>
         <h3>Serie HWM</h3>
         <p>Soldadora láser de fibra manual con refrigeración por agua, fácil de manejar y capaz de trabajar con estabilidad y alta calidad en entornos complejos. Es un sistema 4 en 1 pensado para fabricantes que necesitan una calidad de soldadura superior y gran uniformidad entre piezas.</p>
-        <ul class="mdetail-kpis"><li><b>1,5 – 3 kW</b><span>potencia láser</span></li><li><b>hasta 7 mm</b><span>espesor de chapa</span></li><li><b>≤ 0,75 kg</b><span>peso de la pistola</span></li><li><b>hasta 10 m</b><span>cable de la pistola</span></li></ul>
-        <ul class="mfeats"><li><b>4 en 1:</b> soldadura, corte, limpieza y limpieza del cordón de soldadura con el mismo equipo.</li><li><b>Pistola ligera y fiable</b> (≤ 0,75 kg), cómoda para trabajar durante horas.</li><li><b>Todo tipo de uniones:</b> a tope, a solape, en cordón discontinuo, de espárrago, en T, en esquinas interiores y exteriores y de sellado, con gran profundidad, cordón estrecho, poca deformación y alta velocidad.</li><li><b>Conexión inteligente</b> para acelerar la producción.</li><li><b>Opcional:</b> célula de seguridad de soldadura totalmente cerrada.</li></ul>
+        <ul class="mdetail-kpis"><li><b>1,5 – 3 kW</b><span>potencia láser</span></li><li><b>hasta 7 mm</b><span>espesor de chapa</span></li><li><b>≤ 0,75 kg</b><span>peso de la pistola</span></li><li><b>hasta 10 m</b><span>cable de la pistola</span></li></ul>
+        <ul class="mfeats"><li><b>4 en 1:</b> soldadura, corte, limpieza y limpieza del cordón de soldadura con el mismo equipo.</li><li><b>Pistola ligera y fiable</b> (≤ 0,75 kg), cómoda para trabajar durante horas.</li><li><b>Todo tipo de uniones:</b> a tope, a solape, en cordón discontinuo, de espárrago, en T, en esquinas interiores y exteriores y de sellado, con gran profundidad, cordón estrecho, poca deformación y alta velocidad.</li><li><b>Conexión inteligente</b> para acelerar la producción.</li><li><b>Opcional:</b> célula de seguridad de soldadura totalmente cerrada.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · SGS · UDEM-CE · RoHS</p>
         <div class="mactions">
           <a class="btn pdf-btn" href="docs/ficha-hwm.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar ficha en PDF</a>
@@ -1262,7 +1326,7 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Soldadura · gama de entrada</span>
         <h3>Serie HW</h3>
         <p>Nueva generación de soldadora láser manual, muy rentable porque reúne soldadura, corte y limpieza a un precio menor. Pensada para pequeños y medianos fabricantes que dan prioridad a la inversión inicial y a la estabilidad de la soldadura.</p>
-        <ul class="mdetail-kpis"><li><b>1,5 – 3 kW</b><span>potencia láser</span></li><li><b>hasta 7 mm</b><span>espesor de chapa</span></li><li><b>≤ 0,7 kg</b><span>peso de la pistola</span></li><li><b>10 m</b><span>cable de la pistola</span></li></ul>
+        <ul class="mdetail-kpis"><li><b>1,5 – 3 kW</b><span>potencia láser</span></li><li><b>hasta 7 mm</b><span>espesor de chapa</span></li><li><b>≤ 0,7 kg</b><span>peso de la pistola</span></li><li><b>10 m</b><span>cable de la pistola</span></li></ul>
         <ul class="mfeats"><li><b>4 funciones:</b> soldadura, limpieza, corte y limpieza del cordón de soldadura.</li><li><b>Gran relación calidad-precio y durabilidad</b>, para pequeños y medianos talleres.</li><li><b>Todo tipo de uniones:</b> a tope, a solape, en T, en esquinas y de sellado, con cordón estrecho y poca deformación.</li><li><b>Más de 20 idiomas</b> disponibles en el equipo.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
@@ -1278,7 +1342,7 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Soldadura · portátil</span>
         <h3>Serie S</h3>
         <p>Soldadora láser de fibra portátil, conocida por su refrigeración por aire y su estructura reducida. Se adapta con rapidez a distintos lugares de trabajo, reduce los costes de transporte y almacenamiento y permite soldar incluso en exteriores.</p>
-        <ul class="mdetail-kpis"><li><b>0,8 – 1,5 kW</b><span>potencia láser</span></li><li><b>hasta 5 mm</b><span>espesor de chapa</span></li><li><b>45 – 55 kg</b><span>peso de la máquina</span></li><li><b>≤ 0,7 kg</b><span>peso de la pistola</span></li></ul>
+        <ul class="mdetail-kpis"><li><b>0,8 – 1,5 kW</b><span>potencia láser</span></li><li><b>hasta 5 mm</b><span>espesor de chapa</span></li><li><b>45 – 55 kg</b><span>peso de la máquina</span></li><li><b>≤ 0,7 kg</b><span>peso de la pistola</span></li></ul>
         <ul class="mfeats"><li><b>4 en 1</b> y refrigeración por aire.</li><li><b>Muy portátil:</b> ocupa menos de 0,23 m² y lleva ruedas giratorias, para moverla y levantarla entre dos personas adultas.</li><li><b>Soldadura in situ:</b> compacta y ligera, apta para trabajar en exteriores.</li><li><b>24 idiomas</b> disponibles en el equipo.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · SGS · UDEM-CE</p>
         <div class="mactions">
@@ -1295,15 +1359,15 @@ body.in-view .nos{padding-top:44px}
         <thead><tr><td></td><th scope="col"><span>Soldadura · gama alta</span>Serie HWM</th><th scope="col"><span>Soldadura · gama de entrada</span>Serie HW</th><th scope="col"><span>Soldadura · portátil</span>Serie S</th></tr></thead>
         <tbody>
           <tr><th scope="row">Tipo</th><td data-label="Serie HWM">Manual · gama alta</td><td data-label="Serie HW">Manual · gama de entrada</td><td data-label="Serie S">Portátil · refrigerada por aire</td></tr>
-          <tr><th scope="row">Potencia láser</th><td data-label="Serie HWM">1,5 – 3 kW</td><td data-label="Serie HW">1,5 – 3 kW</td><td data-label="Serie S">0,8 – 1,5 kW</td></tr>
-          <tr><th scope="row">Espesor máx. de chapa</th><td data-label="Serie HWM">de 4 a 7 mm (según potencia)</td><td data-label="Serie HW">de 4 a 7 mm (según potencia)</td><td data-label="Serie S">de 3 a 5 mm (según potencia)</td></tr>
-          <tr><th scope="row">Diámetro del hilo de aportación</th><td data-label="Serie HWM">0,8 – 1,6 mm (0,8 – 2 mm en 3 kW)</td><td data-label="Serie HW">0,8 – 1,6 mm (0,8 – 2 mm en 3 kW)</td><td data-label="Serie S">0,8 – 1,6 mm</td></tr>
+          <tr><th scope="row">Potencia láser</th><td data-label="Serie HWM">1,5 – 3 kW</td><td data-label="Serie HW">1,5 – 3 kW</td><td data-label="Serie S">0,8 – 1,5 kW</td></tr>
+          <tr><th scope="row">Espesor máx. de chapa</th><td data-label="Serie HWM">de 4 a 7 mm (según potencia)</td><td data-label="Serie HW">de 4 a 7 mm (según potencia)</td><td data-label="Serie S">de 3 a 5 mm (según potencia)</td></tr>
+          <tr><th scope="row">Diámetro del hilo de aportación</th><td data-label="Serie HWM">0,8 – 1,6 mm (0,8 – 2 mm en 3 kW)</td><td data-label="Serie HW">0,8 – 1,6 mm (0,8 – 2 mm en 3 kW)</td><td data-label="Serie S">0,8 – 1,6 mm</td></tr>
           <tr><th scope="row">Funciones</th><td data-label="Serie HWM">Soldadura, corte, limpieza y limpieza del cordón</td><td data-label="Serie HW">Soldadura, corte, limpieza y limpieza del cordón</td><td data-label="Serie S">Soldadura, corte, limpieza y limpieza del cordón</td></tr>
-          <tr><th scope="row">Peso de la pistola</th><td data-label="Serie HWM">≤ 0,75 kg</td><td data-label="Serie HW">≤ 0,7 kg</td><td data-label="Serie S">≤ 0,7 kg</td></tr>
+          <tr><th scope="row">Peso de la pistola</th><td data-label="Serie HWM">≤ 0,75 kg</td><td data-label="Serie HW">≤ 0,7 kg</td><td data-label="Serie S">≤ 0,7 kg</td></tr>
           <tr><th scope="row">Longitud del cable de la pistola</th><td data-label="Serie HWM">10 m</td><td data-label="Serie HW">10 m</td><td data-label="Serie S">5 – 7 m</td></tr>
           <tr><th scope="row">Refrigeración</th><td data-label="Serie HWM">Agua</td><td data-label="Serie HW">Agua</td><td data-label="Serie S">Aire</td></tr>
-          <tr><th scope="row">Peso de la máquina</th><td data-label="Serie HWM">220 – 265 kg</td><td data-label="Serie HW">Consultar</td><td data-label="Serie S">45 – 55 kg</td></tr>
-          <tr><th scope="row">Alimentación eléctrica</th><td data-label="Serie HWM">Trifásica 380 V, 50/60 Hz (a medida)</td><td data-label="Serie HW">Monofásica 220 V o trifásica 380 V, 50/60 Hz (según modelo)</td><td data-label="Serie S">Monofásica 220 V, 50/60 Hz</td></tr>
+          <tr><th scope="row">Peso de la máquina</th><td data-label="Serie HWM">220 – 265 kg</td><td data-label="Serie HW">Consultar</td><td data-label="Serie S">45 – 55 kg</td></tr>
+          <tr><th scope="row">Alimentación eléctrica</th><td data-label="Serie HWM">Trifásica 380 V, 50/60 Hz (a medida)</td><td data-label="Serie HW">Monofásica 220 V o trifásica 380 V, 50/60 Hz (según modelo)</td><td data-label="Serie S">Monofásica 220 V, 50/60 Hz</td></tr>
           <tr><th scope="row">Modelos</th><td data-label="Serie HWM">1500HWM · 2000HWM · 3000HWM</td><td data-label="Serie HW">1500HW · 2000HW · 3000HW</td><td data-label="Serie S">3S · 4S · 5S</td></tr>
           <tr><th scope="row">Certificaciones</th><td data-label="Serie HWM">FDA, SGS, UDEM-CE, RoHS</td><td data-label="Serie HW">FDA, UDEM-CE</td><td data-label="Serie S">FDA, SGS, UDEM-CE</td></tr>
         </tbody>
@@ -1320,7 +1384,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Limpieza · pulsada</span>
           <h3>Pulsada portátil</h3>
-          <ul class="mcard-kpi"><li><b>0,2 – 0,3 kW</b> potencia láser</li><li><b>22 m²/h</b> velocidad máx. de limpieza</li><li><b>40 kg</b> peso de la máquina</li></ul>
+          <ul class="mcard-kpi"><li><b>0,2 – 0,3 kW</b> potencia láser</li><li><b>22 m²/h</b> velocidad máx. de limpieza</li><li><b>40 kg</b> peso de la máquina</li></ul>
           <p class="mcard-res">Limpiadora láser manual compacta y ligera, para limpiar sin químicos y en cualquier sitio.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-limpieza-pulsada-portatil" data-open="limpieza-pulsada-portatil"><span>Ver información</span></button>
         </div>
@@ -1330,7 +1394,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Limpieza · pulsada</span>
           <h3>Pulsada manual</h3>
-          <ul class="mcard-kpi"><li><b>0,5 – 1 kW</b> potencia láser</li><li><b>22 m²/h</b> velocidad máx. de limpieza</li><li><b>130 mm</b> ancho máx. de limpieza</li></ul>
+          <ul class="mcard-kpi"><li><b>0,5 – 1 kW</b> potencia láser</li><li><b>22 m²/h</b> velocidad máx. de limpieza</li><li><b>130 mm</b> ancho máx. de limpieza</li></ul>
           <p class="mcard-res">Limpieza precisa y sin daños para piezas delicadas o de alto valor.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-limpieza-pulsada-manual" data-open="limpieza-pulsada-manual"><span>Ver información</span></button>
         </div>
@@ -1340,7 +1404,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Limpieza · continua</span>
           <h3>Continua manual</h3>
-          <ul class="mcard-kpi"><li><b>1,5 – 3 kW</b> potencia láser</li><li><b>50 m²/h</b> velocidad máx. de limpieza</li><li><b>300 mm</b> ancho máx. de limpieza</li></ul>
+          <ul class="mcard-kpi"><li><b>1,5 – 3 kW</b> potencia láser</li><li><b>50 m²/h</b> velocidad máx. de limpieza</li><li><b>300 mm</b> ancho máx. de limpieza</li></ul>
           <p class="mcard-res">Limpieza rápida de grandes superficies: estructuras de acero, cascos de barco y recipientes a presión.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-limpieza-continua-manual" data-open="limpieza-continua-manual"><span>Ver información</span></button>
         </div>
@@ -1354,8 +1418,8 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Limpieza · pulsada</span>
         <h3>Pulsada portátil</h3>
         <p>Limpiadora láser manual que combina limpieza y portabilidad. Elimina con rapidez suciedad, aceite, óxido y recubrimientos de distintos materiales, sin disolventes químicos y sin dañar el material base. Una buena opción para quien valora el coste de uso a largo plazo.</p>
-        <ul class="mdetail-kpis"><li><b>0,2 – 0,3 kW</b><span>potencia láser</span></li><li><b>22 m²/h</b><span>velocidad máx. de limpieza</span></li><li><b>40 kg</b><span>peso de la máquina</span></li><li><b>0,85 – 1,3 kg</b><span>peso de la pistola</span></li></ul>
-        <ul class="mfeats"><li><b>8 modos de limpieza</b> para piezas de precisión, materiales sensibles al calor o piezas que hay que proteger.</li><li><b>Fácil de mover:</b> unos 40 kg sobre cuatro ruedas silenciosas, para limpiar en cualquier sitio, incluso en exteriores.</li><li><b>Pistola refrigerada por aire</b> ligera, con agarre ergonómico y doble luz roja para enfocar con rapidez.</li><li><b>Conexión a robot</b> mediante interfaz I/O, para limpieza automática y producción en serie.</li></ul>
+        <ul class="mdetail-kpis"><li><b>0,2 – 0,3 kW</b><span>potencia láser</span></li><li><b>22 m²/h</b><span>velocidad máx. de limpieza</span></li><li><b>40 kg</b><span>peso de la máquina</span></li><li><b>0,85 – 1,3 kg</b><span>peso de la pistola</span></li></ul>
+        <ul class="mfeats"><li><b>8 modos de limpieza</b> para piezas de precisión, materiales sensibles al calor o piezas que hay que proteger.</li><li><b>Fácil de mover:</b> unos 40 kg sobre cuatro ruedas silenciosas, para limpiar en cualquier sitio, incluso en exteriores.</li><li><b>Pistola refrigerada por aire</b> ligera, con agarre ergonómico y doble luz roja para enfocar con rapidez.</li><li><b>Conexión a robot</b> mediante interfaz I/O, para limpieza automática y producción en serie.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
           <a class="btn pdf-btn" href="docs/ficha-limpieza-pulsada-portatil.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar ficha en PDF</a>
@@ -1370,8 +1434,8 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Limpieza · pulsada</span>
         <h3>Pulsada manual</h3>
         <p>Limpiadora láser pulsada manual que controla con precisión un haz de alta densidad: limpia sin productos químicos ni fricción mecánica, evitando daños. Apta para usos exigentes, como piezas de automoción, componentes aeroespaciales, moldes y restauración de patrimonio.</p>
-        <ul class="mdetail-kpis"><li><b>0,5 – 1 kW</b><span>potencia láser</span></li><li><b>22 m²/h</b><span>velocidad máx. de limpieza</span></li><li><b>130 mm</b><span>ancho máx. de limpieza</span></li><li><b>1,5 kg</b><span>peso de la pistola</span></li></ul>
-        <ul class="mfeats"><li><b>Limpieza precisa sin dañar el material base:</b> el láser actúa sin contacto y se puede limpiar solo una zona concreta.</li><li><b>8 modos de limpieza</b> para distintas necesidades.</li><li><b>Fácil de manejar:</b> pistola de 1,5 kg y cable de 10 m, para limpiar de lejos a cerca sin mover la máquina.</li><li><b>Parámetros guardados:</b> se almacenan y recuperan sin volver a configurar. Protecciones de temperatura, presión de aire y secuencia de fases.</li><li><b>Conexión a robot</b> mediante interfaz I/O, para limpieza automática y producción en serie.</li></ul>
+        <ul class="mdetail-kpis"><li><b>0,5 – 1 kW</b><span>potencia láser</span></li><li><b>22 m²/h</b><span>velocidad máx. de limpieza</span></li><li><b>130 mm</b><span>ancho máx. de limpieza</span></li><li><b>1,5 kg</b><span>peso de la pistola</span></li></ul>
+        <ul class="mfeats"><li><b>Limpieza precisa sin dañar el material base:</b> el láser actúa sin contacto y se puede limpiar solo una zona concreta.</li><li><b>8 modos de limpieza</b> para distintas necesidades.</li><li><b>Fácil de manejar:</b> pistola de 1,5 kg y cable de 10 m, para limpiar de lejos a cerca sin mover la máquina.</li><li><b>Parámetros guardados:</b> se almacenan y recuperan sin volver a configurar. Protecciones de temperatura, presión de aire y secuencia de fases.</li><li><b>Conexión a robot</b> mediante interfaz I/O, para limpieza automática y producción en serie.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
           <a class="btn pdf-btn" href="docs/ficha-limpieza-pulsada-manual.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar ficha en PDF</a>
@@ -1386,8 +1450,8 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Limpieza · continua</span>
         <h3>Continua manual</h3>
         <p>Limpiadora láser continua manual que vaporiza o desprende rápidamente suciedad, recubrimientos y óxido. Su emisión continua y estable la hace ideal para limpiar superficies grandes y planas.</p>
-        <ul class="mdetail-kpis"><li><b>1,5 – 3 kW</b><span>potencia láser</span></li><li><b>50 m²/h</b><span>velocidad máx. de limpieza</span></li><li><b>300 mm</b><span>ancho máx. de limpieza</span></li><li><b>≤ 0,7 kg</b><span>peso de la pistola</span></li></ul>
-        <ul class="mfeats"><li><b>Limpia grandes superficies a gran velocidad:</b> spot lineal de 300 mm y refrigeración integrada para más de 8 horas de limpieza continua.</li><li><b>Para piezas grandes:</b> pistola de 0,7 kg con cable de 10 o 15 m (20 m opcional en el modelo de 3 kW), ideal para estructuras de acero, cascos de barco y recipientes a presión.</li><li><b>Poco mantenimiento:</b> estructura integrada, basta abrir el panel lateral para quitar el polvo.</li><li><b>Distintos modos de soplado</b> (coaxial, fuera de eje y combinado) que alargan la vida de las lentes.</li><li><b>Conexión a robot</b> mediante interfaz I/O, para limpieza automática y producción en serie.</li></ul>
+        <ul class="mdetail-kpis"><li><b>1,5 – 3 kW</b><span>potencia láser</span></li><li><b>50 m²/h</b><span>velocidad máx. de limpieza</span></li><li><b>300 mm</b><span>ancho máx. de limpieza</span></li><li><b>≤ 0,7 kg</b><span>peso de la pistola</span></li></ul>
+        <ul class="mfeats"><li><b>Limpia grandes superficies a gran velocidad:</b> spot lineal de 300 mm y refrigeración integrada para más de 8 horas de limpieza continua.</li><li><b>Para piezas grandes:</b> pistola de 0,7 kg con cable de 10 o 15 m (20 m opcional en el modelo de 3 kW), ideal para estructuras de acero, cascos de barco y recipientes a presión.</li><li><b>Poco mantenimiento:</b> estructura integrada, basta abrir el panel lateral para quitar el polvo.</li><li><b>Distintos modos de soplado</b> (coaxial, fuera de eje y combinado) que alargan la vida de las lentes.</li><li><b>Conexión a robot</b> mediante interfaz I/O, para limpieza automática y producción en serie.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
           <a class="btn pdf-btn" href="docs/ficha-limpieza-continua-manual.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar ficha en PDF</a>
@@ -1403,14 +1467,14 @@ body.in-view .nos{padding-top:44px}
         <thead><tr><td></td><th scope="col"><span>Limpieza · pulsada</span>Pulsada portátil</th><th scope="col"><span>Limpieza · pulsada</span>Pulsada manual</th><th scope="col"><span>Limpieza · continua</span>Continua manual</th></tr></thead>
         <tbody>
           <tr><th scope="row">Tipo de láser</th><td data-label="Pulsada portátil">Pulsado</td><td data-label="Pulsada manual">Pulsado</td><td data-label="Continua manual">Continuo</td></tr>
-          <tr><th scope="row">Potencia láser</th><td data-label="Pulsada portátil">0,2 – 0,3 kW</td><td data-label="Pulsada manual">0,5 – 1 kW</td><td data-label="Continua manual">1,5 – 3 kW</td></tr>
+          <tr><th scope="row">Potencia láser</th><td data-label="Pulsada portátil">0,2 – 0,3 kW</td><td data-label="Pulsada manual">0,5 – 1 kW</td><td data-label="Continua manual">1,5 – 3 kW</td></tr>
           <tr><th scope="row">Velocidad máx. de limpieza</th><td data-label="Pulsada portátil">22 m²/h</td><td data-label="Pulsada manual">22 m²/h</td><td data-label="Continua manual">50 m²/h</td></tr>
-          <tr><th scope="row">Ancho máx. de limpieza</th><td data-label="Pulsada portátil">Consultar</td><td data-label="Pulsada manual">130 mm</td><td data-label="Continua manual">300 mm</td></tr>
-          <tr><th scope="row">Peso de la pistola</th><td data-label="Pulsada portátil">0,85 – 1,3 kg</td><td data-label="Pulsada manual">1,5 kg</td><td data-label="Continua manual">≤ 0,7 kg</td></tr>
-          <tr><th scope="row">Longitud del cable de la pistola</th><td data-label="Pulsada portátil">5 m</td><td data-label="Pulsada manual">10 m</td><td data-label="Continua manual">10 m (15 m en el modelo de 3 kW)</td></tr>
+          <tr><th scope="row">Ancho máx. de limpieza</th><td data-label="Pulsada portátil">Consultar</td><td data-label="Pulsada manual">130 mm</td><td data-label="Continua manual">300 mm</td></tr>
+          <tr><th scope="row">Peso de la pistola</th><td data-label="Pulsada portátil">0,85 – 1,3 kg</td><td data-label="Pulsada manual">1,5 kg</td><td data-label="Continua manual">≤ 0,7 kg</td></tr>
+          <tr><th scope="row">Longitud del cable de la pistola</th><td data-label="Pulsada portátil">5 m</td><td data-label="Pulsada manual">10 m</td><td data-label="Continua manual">10 m (15 m en el modelo de 3 kW)</td></tr>
           <tr><th scope="row">Refrigeración</th><td data-label="Pulsada portátil">Aire</td><td data-label="Pulsada manual">Agua</td><td data-label="Continua manual">Agua</td></tr>
-          <tr><th scope="row">Peso de la máquina</th><td data-label="Pulsada portátil">40 kg</td><td data-label="Pulsada manual">215 – 220 kg</td><td data-label="Continua manual">190 – 235 kg</td></tr>
-          <tr><th scope="row">Alimentación eléctrica</th><td data-label="Pulsada portátil">Monofásica 220 V, 50/60 Hz</td><td data-label="Pulsada manual">Trifásica 380 V, 50/60 Hz</td><td data-label="Continua manual">Trifásica 380 V, 50/60 Hz</td></tr>
+          <tr><th scope="row">Peso de la máquina</th><td data-label="Pulsada portátil">40 kg</td><td data-label="Pulsada manual">215 – 220 kg</td><td data-label="Continua manual">190 – 235 kg</td></tr>
+          <tr><th scope="row">Alimentación eléctrica</th><td data-label="Pulsada portátil">Monofásica 220 V, 50/60 Hz</td><td data-label="Pulsada manual">Trifásica 380 V, 50/60 Hz</td><td data-label="Continua manual">Trifásica 380 V, 50/60 Hz</td></tr>
           <tr><th scope="row">Modelos</th><td data-label="Pulsada portátil">200HC · 300HC</td><td data-label="Pulsada manual">500HC · 1000HC</td><td data-label="Continua manual">1500HC · 2000HC · 3000HC</td></tr>
           <tr><th scope="row">Certificaciones</th><td data-label="Pulsada portátil">FDA, UDEM-CE</td><td data-label="Pulsada manual">FDA, UDEM-CE</td><td data-label="Continua manual">FDA, UDEM-CE</td></tr>
         </tbody>
@@ -1423,11 +1487,11 @@ body.in-view .nos{padding-top:44px}
   </div>
 </section>
 
-<!-- 05 · PLEGADORAS -->
+<!-- PLEGADORAS -->
 <section id="plegadoras" class="flat view" aria-labelledby="h-plegadoras">
   <div class="wrap">
     <div class="flat-head">
-      <span class="eyebrow">05 · Maquinaria</span>
+      <span class="eyebrow">Maquinaria</span>
       <h2 id="h-plegadoras">Plegadoras</h2>
       <p class="flat-lead">Plegadoras CNC para doblar chapa con precisión, en tres tecnologías: electrohidráulica híbrida, de barra de torsión y totalmente eléctrica.</p>
     </div>
@@ -1438,7 +1502,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Híbrida · gran tonelaje</span>
           <h3>Electrohidráulica</h3>
-          <ul class="mcard-kpi"><li><b>500 – 20.000 kN</b> fuerza de plegado</li><li><b>1.500 – 15.000 mm</b> longitud de plegado</li><li><b>Delem · ESA · Cybelec</b> control CNC a elegir</li></ul>
+          <ul class="mcard-kpi"><li><b>500 – 20.000 kN</b> fuerza de plegado</li><li><b>1.500 – 15.000 mm</b> longitud de plegado</li><li><b>Delem · ESA · Cybelec</b> control CNC a elegir</li></ul>
           <p class="mcard-res">Combina la fuerza de la hidráulica con la precisión del control eléctrico: estable, exacta y eficiente.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-plegadora-hibrida" data-open="plegadora-hibrida"><span>Ver información</span></button>
         </div>
@@ -1448,7 +1512,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Mecánica · robusta</span>
           <h3>Barra de torsión</h3>
-          <ul class="mcard-kpi"><li><b>400 – 4.000 kN</b> fuerza de plegado</li><li><b>1.600 – 4.100 mm</b> longitud de plegado</li><li><b>10 mm/s</b> velocidad máx. de plegado</li></ul>
+          <ul class="mcard-kpi"><li><b>400 – 4.000 kN</b> fuerza de plegado</li><li><b>1.600 – 4.100 mm</b> longitud de plegado</li><li><b>10 mm/s</b> velocidad máx. de plegado</li></ul>
           <p class="mcard-res">Sincronización mecánica sencilla y fiable, con bajo coste de compra y de uso.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-plegadora-barra-torsion" data-open="plegadora-barra-torsion"><span>Ver información</span></button>
         </div>
@@ -1458,7 +1522,7 @@ body.in-view .nos{padding-top:44px}
         <div class="mcard-body">
           <span class="mcard-tag">Eléctrica · rápida</span>
           <h3>Totalmente eléctrica</h3>
-          <ul class="mcard-kpi"><li><b>60 – 1.300 kN</b> fuerza de plegado</li><li><b>400 – 3.200 mm</b> longitud de plegado</li><li><b>30 mm/s</b> velocidad máx. de plegado</li></ul>
+          <ul class="mcard-kpi"><li><b>60 – 1.300 kN</b> fuerza de plegado</li><li><b>400 – 3.200 mm</b> longitud de plegado</li><li><b>30 mm/s</b> velocidad máx. de plegado</li></ul>
           <p class="mcard-res">Compacta, rápida y precisa para piezas pequeñas, con desviación angular inferior a ±0,5°.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-plegadora-electrica" data-open="plegadora-electrica"><span>Ver información</span></button>
         </div>
@@ -1472,7 +1536,7 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Híbrida · gran tonelaje</span>
         <h3>Electrohidráulica</h3>
         <p>Plegadora CNC que combina la gran capacidad de la hidráulica con la precisión del control eléctrico. Ofrece estabilidad, exactitud y eficiencia energética, con una buena relación calidad-precio, y es adecuada para chapa mediana y grande, estructuras de acero y equipos de potencia.</p>
-        <ul class="mdetail-kpis"><li><b>500 – 20.000 kN</b><span>fuerza de plegado</span></li><li><b>1.500 – 15.000 mm</b><span>longitud de plegado</span></li><li><b>Delem · ESA · Cybelec</b><span>control CNC a elegir</span></li><li><b>Servo</b><span>sistema electrohidráulico de sincronización</span></li></ul>
+        <ul class="mdetail-kpis"><li><b>500 – 20.000 kN</b><span>fuerza de plegado</span></li><li><b>1.500 – 15.000 mm</b><span>longitud de plegado</span></li><li><b>Delem · ESA · Cybelec</b><span>control CNC a elegir</span></li><li><b>Servo</b><span>sistema electrohidráulico de sincronización</span></li></ul>
         <ul class="mfeats"><li><b>Sistema servo electrohidráulico</b> con cilindros muy próximos entre sí: alta precisión de sincronización y potencia eficiente.</li><li><b>Mesa con compensación de flexión:</b> cuñas tratadas térmicamente; el CNC calcula la compensación según la fuerza de plegado y contrarresta la deformación de las vigas.</li><li><b>Control CNC de marcas reconocidas</b> (Delem, ESA o Cybelec), con interfaz intuitiva y manejo en varios idiomas.</li><li><b>Tope trasero preciso</b> con husillos a bolas y guías lineales importados, y amarre rápido del útil superior para cambiar de herramienta en poco tiempo.</li><li><b>Bastidor duradero</b> de acero de alta resistencia Q235B, y cortinas de seguridad láser opcionales.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> ETL · SGS · UDEM-CE</p>
         <div class="mactions">
@@ -1488,7 +1552,7 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Mecánica · robusta</span>
         <h3>Barra de torsión</h3>
         <p>Plegadora de sincronización mecánica por barra de torsión. Funciona bien en condiciones duras (por ejemplo, con carga descentrada), es fácil de mantener y tiene un coste de compra y de funcionamiento relativamente bajo. Ideal para plegar lotes de chapa media y gruesa cuando no se necesita una precisión extrema.</p>
-        <ul class="mdetail-kpis"><li><b>400 – 4.000 kN</b><span>fuerza de plegado</span></li><li><b>1.600 – 4.100 mm</b><span>longitud de plegado</span></li><li><b>10 mm/s</b><span>velocidad máx. de plegado</span></li><li><b>430 – 485 mm</b><span>altura de apertura</span></li></ul>
+        <ul class="mdetail-kpis"><li><b>400 – 4.000 kN</b><span>fuerza de plegado</span></li><li><b>1.600 – 4.100 mm</b><span>longitud de plegado</span></li><li><b>10 mm/s</b><span>velocidad máx. de plegado</span></li><li><b>430 – 485 mm</b><span>altura de apertura</span></li></ul>
         <ul class="mfeats"><li><b>Estructura mecánica muy rígida:</b> un eje de torsión de alta resistencia recorre todo el carro y lo sincroniza por ambos lados.</li><li><b>Sistema hidráulico sencillo y fiable:</b> la sincronización no depende de servoválvulas ni de realimentación; menos exigencia de limpieza del aceite y mantenimiento más fácil.</li><li><b>Bastidor monobloque</b> de gran resistencia, con alivio de tensiones por recocido y mecanizado de precisión en una sola pasada.</li><li><b>Apoyo frontal manual</b> con rodillos sobre guías lineales y altura regulable con volante.</li><li><b>Tope trasero de alta precisión</b> con transmisión de tornillo sin fin y dedos antichoque de cambio rápido.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> ETL · SGS · UDEM-CE</p>
         <div class="mactions">
@@ -1504,7 +1568,7 @@ body.in-view .nos{padding-top:44px}
         <span class="mcard-tag">Eléctrica · rápida</span>
         <h3>Totalmente eléctrica</h3>
         <p>Plegadora que mueve el carro con motor eléctrico: estructura compacta, manejo sencillo, alta precisión y alta eficiencia. Procesa con rapidez piezas pequeñas, con gran velocidad y precisión, en sectores como armarios de precisión, componentes de automoción y piezas de fabricación automatizada.</p>
-        <ul class="mdetail-kpis"><li><b>60 – 1.300 kN</b><span>fuerza de plegado</span></li><li><b>400 – 3.200 mm</b><span>longitud de plegado</span></li><li><b>30 mm/s</b><span>velocidad máx. de plegado</span></li><li><b>< ±0,5°</b><span>desviación angular</span></li></ul>
+        <ul class="mdetail-kpis"><li><b>60 – 1.300 kN</b><span>fuerza de plegado</span></li><li><b>400 – 3.200 mm</b><span>longitud de plegado</span></li><li><b>30 mm/s</b><span>velocidad máx. de plegado</span></li><li><b>< ±0,5°</b><span>desviación angular</span></li></ul>
         <ul class="mfeats"><li><b>Control de sincronización en lazo cerrado</b> con doble regla lineal: vigila la posición del carro y mantiene una precisión constante aunque se desgasten las guías.</li><li><b>Mesa con compensación de flexión</b> mediante cuñas tratadas térmicamente, controladas por el CNC.</li><li><b>Plegado de alta precisión:</b> compensación inteligente y accionamiento por servomotor, con desviación angular inferior a ±0,5°.</li><li><b>Estructura muy rígida</b> de acero de alta resistencia Q235B con soldadura en cola de milano.</li><li><b>Control CNC</b> Delem, ESA o Cybelec y tope trasero con husillos a bolas y guías lineales.</li></ul>
         
         <div class="mactions">
@@ -1521,15 +1585,15 @@ body.in-view .nos{padding-top:44px}
         <thead><tr><td></td><th scope="col"><span>Híbrida · gran tonelaje</span>Electrohidráulica</th><th scope="col"><span>Mecánica · robusta</span>Barra de torsión</th><th scope="col"><span>Eléctrica · rápida</span>Totalmente eléctrica</th></tr></thead>
         <tbody>
           <tr><th scope="row">Accionamiento</th><td data-label="Electrohidráulica">Electrohidráulico híbrido (servo)</td><td data-label="Barra de torsión">Hidráulico con sincronización mecánica</td><td data-label="Totalmente eléctrica">Totalmente eléctrico (servomotor)</td></tr>
-          <tr><th scope="row">Fuerza de plegado</th><td data-label="Electrohidráulica">500 – 20.000 kN</td><td data-label="Barra de torsión">400 – 4.000 kN</td><td data-label="Totalmente eléctrica">60 – 1.300 kN</td></tr>
-          <tr><th scope="row">Longitud de plegado</th><td data-label="Electrohidráulica">1.500 – 15.000 mm</td><td data-label="Barra de torsión">1.600 – 4.100 mm</td><td data-label="Totalmente eléctrica">400 – 3.200 mm</td></tr>
-          <tr><th scope="row">Profundidad de garganta</th><td data-label="Electrohidráulica">205 – 600 mm (modelos de la ficha)</td><td data-label="Barra de torsión">250 – 400 mm (modelos de la ficha)</td><td data-label="Totalmente eléctrica">160 – 400 mm (según modelo)</td></tr>
-          <tr><th scope="row">Altura de apertura</th><td data-label="Electrohidráulica">460 – 670 mm (modelos de la ficha)</td><td data-label="Barra de torsión">430 – 485 mm</td><td data-label="Totalmente eléctrica">430 – 490 mm</td></tr>
+          <tr><th scope="row">Fuerza de plegado</th><td data-label="Electrohidráulica">500 – 20.000 kN</td><td data-label="Barra de torsión">400 – 4.000 kN</td><td data-label="Totalmente eléctrica">60 – 1.300 kN</td></tr>
+          <tr><th scope="row">Longitud de plegado</th><td data-label="Electrohidráulica">1.500 – 15.000 mm</td><td data-label="Barra de torsión">1.600 – 4.100 mm</td><td data-label="Totalmente eléctrica">400 – 3.200 mm</td></tr>
+          <tr><th scope="row">Profundidad de garganta</th><td data-label="Electrohidráulica">205 – 600 mm (modelos de la ficha)</td><td data-label="Barra de torsión">250 – 400 mm (modelos de la ficha)</td><td data-label="Totalmente eléctrica">160 – 400 mm (según modelo)</td></tr>
+          <tr><th scope="row">Altura de apertura</th><td data-label="Electrohidráulica">460 – 670 mm (modelos de la ficha)</td><td data-label="Barra de torsión">430 – 485 mm</td><td data-label="Totalmente eléctrica">430 – 490 mm</td></tr>
           <tr><th scope="row">Sincronización</th><td data-label="Electrohidráulica">Servo electrohidráulica</td><td data-label="Barra de torsión">Mecánica por barra de torsión</td><td data-label="Totalmente eléctrica">Doble regla lineal en lazo cerrado</td></tr>
           <tr><th scope="row">Compensación de flexión de la mesa</th><td data-label="Electrohidráulica">Automática por CNC (cuñas)</td><td data-label="Barra de torsión">Consultar</td><td data-label="Totalmente eléctrica">Automática por CNC (cuñas)</td></tr>
           <tr><th scope="row">Control CNC</th><td data-label="Electrohidráulica">Delem, ESA o Cybelec</td><td data-label="Barra de torsión">Consultar</td><td data-label="Totalmente eléctrica">Delem, ESA o Cybelec</td></tr>
           <tr><th scope="row">Tope trasero</th><td data-label="Electrohidráulica">Husillos a bolas y guías lineales</td><td data-label="Barra de torsión">Tornillo sin fin con dedos antichoque</td><td data-label="Totalmente eléctrica">Husillos a bolas y guías lineales</td></tr>
-          <tr><th scope="row">Peso de la máquina</th><td data-label="Electrohidráulica">de 3.400 a 52.000 kg (modelos de la ficha)</td><td data-label="Barra de torsión">de 3.000 a 9.800 kg (modelos de la ficha)</td><td data-label="Totalmente eléctrica">de 630 a 8.600 kg (según modelo)</td></tr>
+          <tr><th scope="row">Peso de la máquina</th><td data-label="Electrohidráulica">de 3.400 a 52.000 kg (modelos de la ficha)</td><td data-label="Barra de torsión">de 3.000 a 9.800 kg (modelos de la ficha)</td><td data-label="Totalmente eléctrica">de 630 a 8.600 kg (según modelo)</td></tr>
           <tr><th scope="row">Modelos</th><td data-label="Electrohidráulica">5016 · 10032 · 10042 · 20060 · 25032 · 60060</td><td data-label="Barra de torsión">4016 · 7025 · 10041 · 13032 · 17041 · 20032 · 25041</td><td data-label="Totalmente eléctrica">0604 · 2010 · 4016 · 6020 · 10025 · 13032</td></tr>
           <tr><th scope="row">Ideal para</th><td data-label="Electrohidráulica">Chapa mediana y grande, estructuras de acero y equipos de potencia</td><td data-label="Barra de torsión">Plegado en serie de chapa media y gruesa sin precisión extrema</td><td data-label="Totalmente eléctrica">Piezas pequeñas: armarios de precisión, componentes de automoción y piezas automatizadas</td></tr>
           <tr><th scope="row">Certificaciones</th><td data-label="Electrohidráulica">ETL, SGS, UDEM-CE</td><td data-label="Barra de torsión">ETL, SGS, UDEM-CE</td><td data-label="Totalmente eléctrica">Consultar</td></tr>
@@ -1548,7 +1612,7 @@ body.in-view .nos{padding-top:44px}
 <section id="automatizacion" class="auto view" aria-labelledby="h-automatizacion">
   <div class="wrap">
     <div class="flat-head">
-      <span class="eyebrow">06 · Maquinaria</span>
+      <span class="eyebrow">Maquinaria</span>
       <h2 id="h-automatizacion">Automatización</h2>
       <p class="flat-lead">Soluciones de automatización industrial que combinan robots inteligentes, plataformas de carga automatizadas, almacenamiento inteligente, visión artificial y analítica basada en inteligencia artificial para maximizar eficiencia y productividad.</p>
     </div>
@@ -1567,21 +1631,21 @@ body.in-view .nos{padding-top:44px}
         <div class="af-grid">
           <div class="af-field">
             <label for="af-nombre">Nombre <i aria-hidden="true">*</i></label>
-            <input id="af-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="af-e-nombre" placeholder="Tu nombre">
+            <input id="af-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="af-e-nombre" placeholder="Por ejemplo: María García…">
             <p class="af-err" id="af-e-nombre" role="alert"></p>
           </div>
           <div class="af-field">
             <label for="af-empresa">Empresa</label>
-            <input id="af-empresa" name="empresa" type="text" autocomplete="organization" placeholder="Tu empresa">
+            <input id="af-empresa" name="empresa" type="text" autocomplete="organization" placeholder="Nombre de tu empresa…">
           </div>
           <div class="af-field">
             <label for="af-email">Email <i aria-hidden="true">*</i></label>
-            <input id="af-email" name="email" type="email" autocomplete="email" required aria-describedby="af-e-email" placeholder="tu@empresa.com">
+            <input id="af-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" required aria-describedby="af-e-email" placeholder="nombre@empresa.com">
             <p class="af-err" id="af-e-email" role="alert"></p>
           </div>
           <div class="af-field">
             <label for="af-tel">Teléfono</label>
-            <input id="af-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="af-e-tel" placeholder="+34 600 000 000">
+            <input id="af-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="af-e-tel" placeholder="Por ejemplo: +34 600 000 000…">
             <p class="af-err" id="af-e-tel" role="alert"></p>
           </div>
           <div class="af-field af-full">
@@ -1607,11 +1671,11 @@ body.in-view .nos{padding-top:44px}
 </section>
 
 <!--GEN2:INI-->
-<!-- 07 · MÁQUINAS DE CORTE CO2 -->
+<!-- MÁQUINAS DE CORTE CO2 -->
 <section id="corte-co2" class="flat view" aria-labelledby="h-corte-co2">
   <div class="wrap">
     <div class="flat-head">
-      <span class="eyebrow">07 · Maquinaria</span>
+      <span class="eyebrow">Maquinaria</span>
       <h2 id="h-corte-co2">Máquinas de corte CO2</h2>
       <p class="flat-lead">Máquinas de corte y grabado láser CO2 para materiales no metálicos como madera, acrílico, plástico, tejidos, cuero o papel, en tres formatos de mesa.</p>
     </div>
@@ -1620,9 +1684,9 @@ body.in-view .nos{padding-top:44px}
       <article class="mcard" data-m="co2-lc1610n">
         <div class="mcard-pic"><img loading="lazy" src="img/co2-lc1610n.webp" alt="Máquina de corte láser CO2 LC1610N" width="600" height="390"></div>
         <div class="mcard-body">
-          <span class="mcard-tag">Mesa 1600 × 1000 mm</span>
+          <span class="mcard-tag">Mesa 1600 × 1000 mm</span>
           <h3>LC1610N</h3>
-          <ul class="mcard-kpi"><li><b>130 W</b> potencia láser</li><li><b>1.600 × 1.000 mm</b> área de trabajo</li><li><b>hasta 36.000 mm/min</b> velocidad de corte</li></ul>
+          <ul class="mcard-kpi"><li><b>130 W</b> potencia láser</li><li><b>1.600 × 1.000 mm</b> área de trabajo</li><li><b>hasta 36.000 mm/min</b> velocidad de corte</li></ul>
           <p class="mcard-res">Corte y grabado láser CO2 con mesa doble y enfoque automático, para materiales no metálicos.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-co2-lc1610n" data-open="co2-lc1610n"><span>Ver información</span></button>
         </div>
@@ -1630,9 +1694,9 @@ body.in-view .nos{padding-top:44px}
       <article class="mcard" data-m="co2-lc1390n">
         <div class="mcard-pic"><img loading="lazy" src="img/co2-lc1390n.webp" alt="Máquina de corte láser CO2 LC1390N" width="600" height="390"></div>
         <div class="mcard-body">
-          <span class="mcard-tag">Mesa 1300 × 900 mm</span>
+          <span class="mcard-tag">Mesa 1300 × 900 mm</span>
           <h3>LC1390N</h3>
-          <ul class="mcard-kpi"><li><b>80 – 200 W</b> potencia láser (según opción)</li><li><b>1.300 × 900 mm</b> área de trabajo</li><li><b>hasta 24.000 mm/min</b> velocidad de corte</li></ul>
+          <ul class="mcard-kpi"><li><b>80 – 200 W</b> potencia láser (según opción)</li><li><b>1.300 × 900 mm</b> área de trabajo</li><li><b>hasta 24.000 mm/min</b> velocidad de corte</li></ul>
           <p class="mcard-res">Formato compacto de uso general, con mesa elevable y acceso por los cuatro lados.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-co2-lc1390n" data-open="co2-lc1390n"><span>Ver información</span></button>
         </div>
@@ -1640,23 +1704,23 @@ body.in-view .nos{padding-top:44px}
       <article class="mcard" data-m="co2-lc1325d">
         <div class="mcard-pic"><img loading="lazy" src="img/co2-lc1325d.webp" alt="Máquina de corte láser CO2 LC1325D de gran formato" width="600" height="390"></div>
         <div class="mcard-body">
-          <span class="mcard-tag">Mesa 1300 × 2500 mm</span>
+          <span class="mcard-tag">Mesa 1300 × 2500 mm</span>
           <h3>LC1325D</h3>
-          <ul class="mcard-kpi"><li><b>60 – 150 W</b> potencia láser (según opción)</li><li><b>1.300 × 2.500 mm</b> área de trabajo</li><li><b>hasta 24.000 mm/min</b> velocidad de corte</li></ul>
+          <ul class="mcard-kpi"><li><b>60 – 150 W</b> potencia láser (según opción)</li><li><b>1.300 × 2.500 mm</b> área de trabajo</li><li><b>hasta 24.000 mm/min</b> velocidad de corte</li></ul>
           <p class="mcard-res">Gran formato para cortar y grabar planchas y rollos grandes de forma continua.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-co2-lc1325d" data-open="co2-lc1325d"><span>Ver información</span></button>
         </div>
       </article>
     </div>
 
-    <div class="mdetail" id="md-co2-lc1610n" role="region" aria-label="Información: LC1610N, mesa 1600 × 1000 mm" hidden>
+    <div class="mdetail" id="md-co2-lc1610n" role="region" aria-label="Información: LC1610N, mesa 1600 × 1000 mm" hidden>
       <button type="button" class="mclose" data-close aria-label="Cerrar información">×</button>
       <div class="mdetail-pic"><img loading="lazy" src="img/co2-lc1610n.webp" alt="" width="600" height="390"></div>
       <div class="mdetail-txt">
-        <span class="mcard-tag">Mesa 1600 × 1000 mm</span>
+        <span class="mcard-tag">Mesa 1600 × 1000 mm</span>
         <h3>LC1610N</h3>
         <p>Máquina de corte y grabado láser CO2 con mesa de trabajo doble (de cuchilla y de panal de abeja), pensada para cortar y grabar materiales no metálicos como madera, metacrilato, plástico, tejidos, papel, cuero y caucho.</p>
-        <ul class="mdetail-kpis"><li><b>130 W</b><span>potencia láser</span></li><li><b>1.600 × 1.000 mm</b><span>área de trabajo</span></li><li><b>hasta 36.000 mm/min</b><span>velocidad de corte</span></li><li><b>±0,1 mm</b><span>precisión de posicionamiento</span></li></ul>
+        <ul class="mdetail-kpis"><li><b>130 W</b><span>potencia láser</span></li><li><b>1.600 × 1.000 mm</b><span>área de trabajo</span></li><li><b>hasta 36.000 mm/min</b><span>velocidad de corte</span></li><li><b>±0,1 mm</b><span>precisión de posicionamiento</span></li></ul>
         <ul class="mfeats"><li><b>Mesa doble:</b> se puede instalar mesa de cuchilla y mesa de panal de abeja, para cortar y también grabar.</li><li><b>Enfoque automático:</b> no hace falta ajustar la distancia focal a mano; más eficiencia y precisión.</li><li><b>Mesa elevable automática:</b> pensada para material grueso, permite grabar sobre piezas de distinto espesor.</li><li><b>Guías lineales Hiwin</b> de alta precisión de posicionamiento y gran capacidad de carga.</li><li><b>Filtración de aire en tres etapas</b> (bolsa, filtro HEPA y carbón activo) para trabajar sin contaminar.</li><li><b>Control por WiFi:</b> un mismo ordenador puede gestionar varias máquinas y el técnico puede conectarse en remoto.</li></ul>
         
         <div class="mactions">
@@ -1665,14 +1729,14 @@ body.in-view .nos{padding-top:44px}
         </div>
       </div>
     </div>
-    <div class="mdetail" id="md-co2-lc1390n" role="region" aria-label="Información: LC1390N, mesa 1300 × 900 mm" hidden>
+    <div class="mdetail" id="md-co2-lc1390n" role="region" aria-label="Información: LC1390N, mesa 1300 × 900 mm" hidden>
       <button type="button" class="mclose" data-close aria-label="Cerrar información">×</button>
       <div class="mdetail-pic"><img loading="lazy" src="img/co2-lc1390n.webp" alt="" width="600" height="390"></div>
       <div class="mdetail-txt">
-        <span class="mcard-tag">Mesa 1300 × 900 mm</span>
+        <span class="mcard-tag">Mesa 1300 × 900 mm</span>
         <h3>LC1390N</h3>
         <p>Máquina de corte y grabado láser CO2 de formato compacto, versátil y muy utilizada. Su cubierta desmontable por los cuatro lados permite trabajar con material largo, y su mesa elevable se adapta a piezas de distinto espesor.</p>
-        <ul class="mdetail-kpis"><li><b>80 – 200 W</b><span>potencia láser (según opción)</span></li><li><b>1.300 × 900 mm</b><span>área de trabajo</span></li><li><b>hasta 24.000 mm/min</b><span>velocidad de corte</span></li><li><b>±0,05 mm</b><span>precisión de posicionamiento</span></li></ul>
+        <ul class="mdetail-kpis"><li><b>80 – 200 W</b><span>potencia láser (según opción)</span></li><li><b>1.300 × 900 mm</b><span>área de trabajo</span></li><li><b>hasta 24.000 mm/min</b><span>velocidad de corte</span></li><li><b>±0,05 mm</b><span>precisión de posicionamiento</span></li></ul>
         <ul class="mfeats"><li><b>Mesa doble</b> de cuchilla y panal de abeja, para cortar y grabar.</li><li><b>Cubierta desmontable en cuatro direcciones:</b> permite cargar y procesar material largo.</li><li><b>Enfoque automático</b> y <b>mesa elevable eléctrica</b> para cortar materiales de distinto espesor.</li><li><b>Filtración de aire en tres etapas:</b> filtro de bolsa, filtro HEPA para partículas mayores de 0,03 µm y carbón activo.</li><li><b>Componentes de calidad:</b> electrónica Omron (Japón) y lentes ópticas II-VI (EE. UU.).</li><li><b>Control por WiFi</b> y tubo láser Reci de alta densidad de potencia.</li></ul>
         
         <div class="mactions">
@@ -1681,15 +1745,15 @@ body.in-view .nos{padding-top:44px}
         </div>
       </div>
     </div>
-    <div class="mdetail" id="md-co2-lc1325d" role="region" aria-label="Información: LC1325D, mesa 1300 × 2500 mm" hidden>
+    <div class="mdetail" id="md-co2-lc1325d" role="region" aria-label="Información: LC1325D, mesa 1300 × 2500 mm" hidden>
       <button type="button" class="mclose" data-close aria-label="Cerrar información">×</button>
       <div class="mdetail-pic"><img loading="lazy" src="img/co2-lc1325d.webp" alt="" width="600" height="390"></div>
       <div class="mdetail-txt">
-        <span class="mcard-tag">Mesa 1300 × 2500 mm</span>
+        <span class="mcard-tag">Mesa 1300 × 2500 mm</span>
         <h3>LC1325D</h3>
         <p>Máquina de corte y grabado láser CO2 de gran formato, pensada para procesar grandes cantidades de tejidos, cuero, madera, acrílico y papel.</p>
-        <ul class="mdetail-kpis"><li><b>60 – 150 W</b><span>potencia láser (según opción)</span></li><li><b>1.300 × 2.500 mm</b><span>área de trabajo</span></li><li><b>hasta 24.000 mm/min</b><span>velocidad de corte</span></li><li><b>±0,1 mm</b><span>precisión de posicionamiento</span></li></ul>
-        <ul class="mfeats"><li><b>Gran formato:</b> 1.300 × 2.500 mm de área de trabajo para piezas y planchas grandes.</li><li><b>Mesa doble</b> de cuchilla y panal de abeja, para cortar y también grabar.</li><li><b>Guías lineales Hiwin</b> de Taiwán: alta precisión de posicionamiento y menos desgaste, para mantener la exactitud más tiempo.</li><li><b>Filtración de aire en tres etapas</b> (bolsa, HEPA y carbón activo).</li><li><b>Electrónica Omron</b> (Japón), tubo láser Yongli y control por WiFi.</li></ul>
+        <ul class="mdetail-kpis"><li><b>60 – 150 W</b><span>potencia láser (según opción)</span></li><li><b>1.300 × 2.500 mm</b><span>área de trabajo</span></li><li><b>hasta 24.000 mm/min</b><span>velocidad de corte</span></li><li><b>±0,1 mm</b><span>precisión de posicionamiento</span></li></ul>
+        <ul class="mfeats"><li><b>Gran formato:</b> 1.300 × 2.500 mm de área de trabajo para piezas y planchas grandes.</li><li><b>Mesa doble</b> de cuchilla y panal de abeja, para cortar y también grabar.</li><li><b>Guías lineales Hiwin</b> de Taiwán: alta precisión de posicionamiento y menos desgaste, para mantener la exactitud más tiempo.</li><li><b>Filtración de aire en tres etapas</b> (bolsa, HEPA y carbón activo).</li><li><b>Electrónica Omron</b> (Japón), tubo láser Yongli y control por WiFi.</li></ul>
         
         <div class="mactions">
           <a class="btn pdf-btn" href="docs/ficha-lc1325d.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar ficha en PDF</a>
@@ -1702,19 +1766,19 @@ body.in-view .nos{padding-top:44px}
       <summary id="cmp-corte-co2"><span>Comparativa de las tres máquinas CO2</span></summary>
     <div class="cmp-wrap" role="region" aria-labelledby="cmp-corte-co2" tabindex="0">
       <table class="cmp">
-        <thead><tr><td></td><th scope="col"><span>Mesa 1600 × 1000 mm</span>LC1610N</th><th scope="col"><span>Mesa 1300 × 900 mm</span>LC1390N</th><th scope="col"><span>Mesa 1300 × 2500 mm</span>LC1325D</th></tr></thead>
+        <thead><tr><td></td><th scope="col"><span>Mesa 1600 × 1000 mm</span>LC1610N</th><th scope="col"><span>Mesa 1300 × 900 mm</span>LC1390N</th><th scope="col"><span>Mesa 1300 × 2500 mm</span>LC1325D</th></tr></thead>
         <tbody>
           <tr><th scope="row">Tipo de láser</th><td data-label="LC1610N">Tubo láser CO2 sellado</td><td data-label="LC1390N">Tubo láser CO2 sellado</td><td data-label="LC1325D">Tubo láser CO2 sellado</td></tr>
-          <tr><th scope="row">Potencia láser</th><td data-label="LC1610N">130 W</td><td data-label="LC1390N">80 W · 100 W · 130 W · 150 W · 200 W (opcional)</td><td data-label="LC1325D">60 W · 80 W · 100 W · 130 W · 150 W (opcional)</td></tr>
-          <tr><th scope="row">Área de trabajo</th><td data-label="LC1610N">1.600 × 1.000 mm</td><td data-label="LC1390N">1.300 × 900 mm</td><td data-label="LC1325D">1.300 × 2.500 mm</td></tr>
-          <tr><th scope="row">Velocidad de corte</th><td data-label="LC1610N">0 – 36.000 mm/min</td><td data-label="LC1390N">0 – 24.000 mm/min</td><td data-label="LC1325D">0 – 24.000 mm/min</td></tr>
-          <tr><th scope="row">Precisión de posicionamiento</th><td data-label="LC1610N">±0,1 mm</td><td data-label="LC1390N">±0,05 mm</td><td data-label="LC1325D">±0,1 mm</td></tr>
+          <tr><th scope="row">Potencia láser</th><td data-label="LC1610N">130 W</td><td data-label="LC1390N">80 W · 100 W · 130 W · 150 W · 200 W (opcional)</td><td data-label="LC1325D">60 W · 80 W · 100 W · 130 W · 150 W (opcional)</td></tr>
+          <tr><th scope="row">Área de trabajo</th><td data-label="LC1610N">1.600 × 1.000 mm</td><td data-label="LC1390N">1.300 × 900 mm</td><td data-label="LC1325D">1.300 × 2.500 mm</td></tr>
+          <tr><th scope="row">Velocidad de corte</th><td data-label="LC1610N">0 – 36.000 mm/min</td><td data-label="LC1390N">0 – 24.000 mm/min</td><td data-label="LC1325D">0 – 24.000 mm/min</td></tr>
+          <tr><th scope="row">Precisión de posicionamiento</th><td data-label="LC1610N">±0,1 mm</td><td data-label="LC1390N">±0,05 mm</td><td data-label="LC1325D">±0,1 mm</td></tr>
           <tr><th scope="row">Mesa</th><td data-label="LC1610N">Doble (cuchilla y panal), elevable</td><td data-label="LC1390N">Doble (cuchilla y panal), elevable</td><td data-label="LC1325D">Doble (cuchilla y panal)</td></tr>
           <tr><th scope="row">Refrigeración</th><td data-label="LC1610N">Agua a temperatura constante</td><td data-label="LC1390N">Agua, con sistema de protección</td><td data-label="LC1325D">Agua, con sistema de protección</td></tr>
           <tr><th scope="row">Control</th><td data-label="LC1610N">Sistema DSP</td><td data-label="LC1390N">Sistema DSP</td><td data-label="LC1325D">Sistema DSP</td></tr>
           <tr><th scope="row">Filtración de humos</th><td data-label="LC1610N">Tres etapas (bolsa, HEPA y carbón activo)</td><td data-label="LC1390N">Tres etapas (bolsa, HEPA y carbón activo)</td><td data-label="LC1325D">Tres etapas (bolsa, HEPA y carbón activo)</td></tr>
-          <tr><th scope="row">Alimentación eléctrica</th><td data-label="LC1610N">220 V ±5 %, 50 Hz</td><td data-label="LC1390N">110 – 220 V ±10 %, 50 – 60 Hz</td><td data-label="LC1325D">110 – 220 V ±10 %, 50 – 60 Hz</td></tr>
-          <tr><th scope="row">Consumo máximo</th><td data-label="LC1610N">≤ 2.000 W</td><td data-label="LC1390N">< 1.500 W</td><td data-label="LC1325D">< 1.500 W</td></tr>
+          <tr><th scope="row">Alimentación eléctrica</th><td data-label="LC1610N">220 V ±5 %, 50 Hz</td><td data-label="LC1390N">110 – 220 V ±10 %, 50 – 60 Hz</td><td data-label="LC1325D">110 – 220 V ±10 %, 50 – 60 Hz</td></tr>
+          <tr><th scope="row">Consumo máximo</th><td data-label="LC1610N">≤ 2.000 W</td><td data-label="LC1390N">< 1.500 W</td><td data-label="LC1325D">< 1.500 W</td></tr>
           <tr><th scope="row">Formatos de archivo</th><td data-label="LC1610N">AI, BMP, PLT, DXF, DST</td><td data-label="LC1390N">Consultar</td><td data-label="LC1325D">BMP, PLT, DST, DXF y AI</td></tr>
           <tr><th scope="row">Materiales</th><td data-label="LC1610N">Madera, metacrilato, plástico, tejidos, papel, cuero, caucho y otros no metálicos</td><td data-label="LC1390N">Madera, acrílico, plástico, caucho y otros no metálicos</td><td data-label="LC1325D">Tejidos, cuero, madera, acrílico y papel</td></tr>
         </tbody>
@@ -1732,7 +1796,7 @@ body.in-view .nos{padding-top:44px}
 <section id="servicio-tecnico" class="st view" aria-labelledby="h-st">
   <div class="wrap">
     <div class="st-head">
-      <span class="eyebrow">08 · Servicio técnico</span>
+      <span class="eyebrow">Servicio técnico</span>
       <h2 id="h-st">Recambios y consumibles</h2>
       <p class="st-lead">¿Necesitas un recambio, consumibles o que revisemos tu máquina? Cuéntanos qué necesitas en tres pasos y nuestro equipo se pondrá en contacto contigo.</p>
     </div>
@@ -1754,9 +1818,9 @@ body.in-view .nos{padding-top:44px}
         <fieldset class="st-step">
           <legend><span class="st-n" aria-hidden="true">2</span>¿Para qué tipo de máquina?</legend>
           <div class="st-opts st-opts-8">
-          <label class="st-opt"><input type="radio" name="st-maq" value="Corte plano / chapa" required><span class="st-card"><b>Corte plano / chapa</b></span></label>
+          <label class="st-opt"><input type="radio" name="st-maq" value="Corte plano 2D" required><span class="st-card"><b>Corte plano 2D</b></span></label>
           <label class="st-opt"><input type="radio" name="st-maq" value="Corte de tubos" required><span class="st-card"><b>Corte de tubos</b></span></label>
-          <label class="st-opt"><input type="radio" name="st-maq" value="Corte combinado" required><span class="st-card"><b>Corte combinado</b></span></label>
+          <label class="st-opt"><input type="radio" name="st-maq" value="Corte combinado (plano y tubos)" required><span class="st-card"><b>Corte combinado (plano y tubos)</b></span></label>
           <label class="st-opt"><input type="radio" name="st-maq" value="Soldadura / limpieza láser" required><span class="st-card"><b>Soldadura / limpieza láser</b></span></label>
           <label class="st-opt"><input type="radio" name="st-maq" value="Plegadora" required><span class="st-card"><b>Plegadora</b></span></label>
           <label class="st-opt"><input type="radio" name="st-maq" value="Automatización" required><span class="st-card"><b>Automatización</b></span></label>
@@ -1772,36 +1836,36 @@ body.in-view .nos{padding-top:44px}
           <div class="st-fields">
             <div class="st-field">
               <label for="st-nombre">Nombre <i aria-hidden="true">*</i></label>
-              <input id="st-nombre" type="text" autocomplete="name" required aria-describedby="st-e-nombre" placeholder="Tu nombre">
+              <input id="st-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="st-e-nombre" placeholder="Por ejemplo: María García…">
               <p class="st-err" id="st-e-nombre" role="alert"></p>
             </div>
             <div class="st-field">
               <label for="st-empresa">Empresa</label>
-              <input id="st-empresa" type="text" autocomplete="organization" placeholder="Tu empresa">
+              <input id="st-empresa" name="empresa" type="text" autocomplete="organization" placeholder="Nombre de tu empresa…">
             </div>
             <div class="st-field">
               <label for="st-tel">Teléfono <i aria-hidden="true">*</i></label>
-              <input id="st-tel" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="st-e-tel" placeholder="+34 600 000 000">
+              <input id="st-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="st-e-tel" placeholder="Por ejemplo: +34 600 000 000…">
               <p class="st-err" id="st-e-tel" role="alert"></p>
             </div>
             <div class="st-field">
               <label for="st-email">Email</label>
-              <input id="st-email" type="email" autocomplete="email" aria-describedby="st-e-email" placeholder="tu@empresa.com">
+              <input id="st-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" aria-describedby="st-e-email" placeholder="nombre@empresa.com">
               <p class="st-err" id="st-e-email" role="alert"></p>
             </div>
             <div class="st-field st-full">
               <label for="st-modelo">Modelo y número de serie de la máquina</label>
-              <input id="st-modelo" type="text" placeholder="Si lo tienes a mano, nos ayuda a responderte antes">
+              <input id="st-modelo" name="modelo" type="text" autocomplete="off" spellcheck="false" placeholder="Si lo tienes a mano, nos ayuda a responder antes…">
             </div>
             <div class="st-field st-full">
               <label for="st-msg">Cuéntanos qué te pasa o qué necesitas <i aria-hidden="true">*</i></label>
-              <textarea id="st-msg" rows="4" required aria-describedby="st-e-msg" placeholder="Por ejemplo: qué pieza necesitas, qué avería ves o qué consumible se te ha acabado"></textarea>
+              <textarea id="st-msg" name="mensaje" rows="4" required aria-describedby="st-e-msg" placeholder="Por ejemplo: qué pieza necesitas, qué avería ves o qué consumible se te ha acabado"></textarea>
               <p class="st-err" id="st-e-msg" role="alert"></p>
             </div>
           </div>
           <div class="st-field">
             <label class="st-check">
-              <input type="checkbox" id="st-ok" required aria-describedby="st-e-ok">
+              <input type="checkbox" id="st-ok" name="acepto" required aria-describedby="st-e-ok">
               <span>Acepto que Krexon utilice estos datos para responder a mi solicitud.</span>
             </label>
             <p class="st-err" id="st-e-ok" role="alert"></p>
@@ -1815,7 +1879,7 @@ body.in-view .nos{padding-top:44px}
 
       <aside class="st-side" aria-label="Contacto directo">
         <p class="st-side-k">¿Prefieres hablar con una persona?</p>
-        <a class="st-phone" href="tel:+34623968619"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+34623968619</a>
+        <a class="st-phone" href="tel:+34623968619"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+34 623 968 619</a>
         <a class="st-mail" href="mailto:info@krexon.com">info@krexon.com</a>
         <a class="wa-btn wa-btn-dark" href="https://wa.me/34623968619" data-wa target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Escríbenos por WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a>
         <div class="st-tip">
@@ -1886,19 +1950,20 @@ body.in-view .nos{padding-top:44px}
 
     <h3 class="nos-vtitle nos-acomp-t">Te acompañamos en todo el proceso</h3>
     <ul class="nos-valores nos-acomp">
-      <li><span class="nos-step" aria-hidden="true">Antes</span><b>Te asesoramos</b><span>Conocemos todas las técnicas de corte, así que te guiamos hacia la solución que mejor encaja con tu producción.</span></li>
-      <li><span class="nos-step" aria-hidden="true">Durante</span><b>Lo vemos funcionando</b><span>Solicita una demo personalizada y comprueba cómo trabajaría la máquina en tu taller.</span></li>
-      <li><span class="nos-step" aria-hidden="true">Después</span><b>Seguimos a tu lado</b><span>Soporte técnico y repuestos pensados para la durabilidad y la mínima interrupción.</span></li>
+      <li><span class="nos-step" aria-hidden="true">Preventa</span><b>Te asesoramos</b><span>Conocemos todas las técnicas de corte, así que te guiamos hacia la solución que mejor encaja con tu producción. Y si quieres, te hacemos una demo personalizada.</span></li>
+      <li><span class="nos-step" aria-hidden="true">Durante</span><b>Instalación y formación</b><span>Instalamos y ponemos a punto la máquina en tu taller, y formamos a tu equipo para que empiece a producir con seguridad desde el primer día.</span></li>
+      <li><span class="nos-step" aria-hidden="true">Postventa</span><b>Seguimos a tu lado</b><span>Soporte técnico, recambios y consumibles pensados para la durabilidad y la mínima interrupción de tu producción.</span></li>
     </ul>
   </div>
 
   <div class="nos-why">
     <div class="wrap">
       <h3>¿Por qué láser de fibra?</h3>
+      <p class="nos-why-lead">El plasma, el oxicorte y el láser CO2 siguen siendo útiles en algunos trabajos, pero para cortar metal hoy el láser de fibra ofrece más ventajas:</p>
       <ul class="nos-why-grid">
-        <li><b>Velocidad de corte</b><span>Aumenta drásticamente la productividad.</span></li>
-        <li><b>Calidad del borde</b><span>Acabados perfectos que minimizan el posprocesado.</span></li>
-        <li><b>Eficiencia energética</b><span>Reduce los costes de funcionamiento.</span></li>
+        <li><b>Velocidad de corte</b><span>Corta mucho más rápido que el CO2 y aumenta la productividad.</span></li>
+        <li><b>Calidad del borde</b><span>Más limpio que el plasma y el oxicorte: menos posprocesado.</span></li>
+        <li><b>Eficiencia energética</b><span>Consume menos energía y reduce los costes de funcionamiento.</span></li>
       </ul>
     </div>
   </div>
@@ -1918,10 +1983,10 @@ body.in-view .nos{padding-top:44px}
     </ul>
 
     <ul class="nos-facts" aria-label="Datos clave">
-      <li><b>1,5 – 80 kW</b><span>de potencia de corte</span></li>
-      <li><b>Europa y América</b><span>presencia internacional</span></li>
-      <li><b>Normativa europea</b><span>en nuestra maquinaria</span></li>
-      <li><b>8 líneas</b><span>de maquinaria y servicio</span></li>
+      <li><b>1,5 – 80 kW</b><span>de potencia de láser</span></li>
+      <li><b>Europa, América y Asia</b><span>presencia internacional</span></li>
+      <li><b>CE · TÜV · ISO</b><span>normativas en nuestra maquinaria</span></li>
+      <li><b>Hasta 8 líneas</b><span>de maquinaria y servicio</span></li>
     </ul>
     <p class="nos-cta"><a class="btn" href="#contacto">Habla con un especialista
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
@@ -1944,10 +2009,10 @@ body.in-view .nos{padding-top:44px}
   <div class="wrap ct-grid">
     <div class="ct-main">
       <h2 id="h-ct">¿Dudas?<br>Contáctanos.</h2>
-      <a class="ct-phone" href="tel:+34623968619"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+34623968619</a>
-      <a class="ct-mail" href="mailto:info@krexon.com">info@krexon.com</a>
+      <a class="ct-phone" href="tel:+34623968619"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+34 623 968 619</a>
+      <a class="ct-mail" href="mailto:info@krexon.com"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>info@krexon.com</a>
       <a class="wa-btn" href="https://wa.me/34623968619" data-wa target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Escríbenos por WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a>
-      <p class="ct-hours"><b>Horario de atención:</b> 8:30 h a 17:30 h</p>
+      <p class="ct-hours"><b>Horario de atención:</b> 8:00 h a 17:30 h</p>
     </div>
 
     <form class="ct-form" id="ctForm" novalidate aria-labelledby="ct-ft">
@@ -1956,22 +2021,22 @@ body.in-view .nos{padding-top:44px}
       <p class="ct-fl">Uno de nuestros especialistas se pondrá en contacto contigo lo antes posible.</p>
       <div class="ct-field">
         <label for="ct-nombre">Nombre <i aria-hidden="true">*</i></label>
-        <input id="ct-nombre" type="text" autocomplete="name" required aria-describedby="ct-e-nombre" placeholder="Tu nombre">
+        <input id="ct-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="ct-e-nombre" placeholder="Por ejemplo: María García…">
         <p class="ct-err" id="ct-e-nombre" role="alert"></p>
       </div>
       <div class="ct-field">
         <label for="ct-tel">Teléfono <i aria-hidden="true">*</i></label>
-        <input id="ct-tel" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="ct-e-tel" placeholder="+34 600 000 000">
+        <input id="ct-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="ct-e-tel" placeholder="Por ejemplo: +34 600 000 000…">
         <p class="ct-err" id="ct-e-tel" role="alert"></p>
       </div>
       <div class="ct-field">
         <label for="ct-msg">Breve mensaje <i aria-hidden="true">*</i></label>
-        <textarea id="ct-msg" rows="3" required aria-describedby="ct-e-msg" placeholder="¿En qué podemos ayudarte?"></textarea>
+        <textarea id="ct-msg" name="mensaje" rows="3" required aria-describedby="ct-e-msg" placeholder="¿En qué podemos ayudarte?…"></textarea>
         <p class="ct-err" id="ct-e-msg" role="alert"></p>
       </div>
       <div class="ct-field">
         <label class="ct-check">
-          <input type="checkbox" id="ct-ok" required aria-describedby="ct-e-ok">
+          <input type="checkbox" id="ct-ok" name="acepto" required aria-describedby="ct-e-ok">
           <span>Acepto que Krexon utilice estos datos para responder a mi consulta.</span>
         </label>
         <p class="ct-err" id="ct-e-ok" role="alert"></p>
@@ -1991,7 +2056,7 @@ body.in-view .nos{padding-top:44px}
     <div class="foot">
       <div>
         <img src="https://krexon.com/wp-content/uploads/2025/11/krexon-logo-footer.png" alt="Krexon" onerror="this.outerHTML='<b style=&quot;font-size:28px;display:block;margin-bottom:22px&quot;>KREXON</b>'">
-        <a href="tel:+34623968619">+34623968619</a><br>
+        <a href="tel:+34623968619">+34 623 968 619</a><br>
         <a href="mailto:info@krexon.com">info@krexon.com</a>
         <p>Copyright © 2026 Krexon</p>
       </div>
@@ -2002,9 +2067,9 @@ body.in-view .nos{padding-top:44px}
         <li><a href="#contacto">Contacto</a></li>
       </ul>
       <ul>
-        <li><a href="#corte-plano">Corte plano / chapa</a></li>
+        <li><a href="#corte-plano">Corte plano 2D</a></li>
         <li><a href="#corte-tubos">Corte de tubos</a></li>
-        <li><a href="#corte-combinado">Corte combinado</a></li>
+        <li><a href="#corte-combinado">Corte combinado (plano y tubos)</a></li>
         <li><a href="#soldadura-limpieza">Soldadura / limpieza láser</a></li>
         <li><a href="#plegadoras">Plegadoras</a></li>
         <li><a href="#automatizacion">Automatización</a></li>
@@ -2020,7 +2085,7 @@ body.in-view .nos{padding-top:44px}
   <div class="dock-panel" id="dockPanel" role="dialog" aria-label="Contacto">
     <button class="dock-x" id="dockX" aria-label="Cerrar">×</button>
     <h3>Contacto</h3>
-    <a class="dl" href="tel:+34623968619"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+34623968619</a>
+    <a class="dl" href="tel:+34623968619"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+34 623 968 619</a>
     <a class="dl" href="mailto:info@krexon.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>info@krexon.com</a>
     <a class="btn" href="#contacto">Solicita una demo personalizada</a>
   </div>
@@ -2068,6 +2133,16 @@ addEventListener('resize',()=>{if(innerWidth>1000)setMenu(false)});
   const v=document.getElementById('heroVideo'),h=document.getElementById('top');
   if(!v)return;
   v.addEventListener('playing',()=>{v.classList.add('ready');h.classList.add('has-video')});
+  /* Vídeo de fondo: botón para pausarlo y respeto de «reducir movimiento» */
+  const fv=document.getElementById('factsVideo'),tg=document.getElementById('vidToggle');
+  const vids=[v,fv].filter(Boolean);
+  function setVid(play){
+    vids.forEach(x=>{play?x.play().catch(()=>{}):x.pause()});
+    if(tg){tg.setAttribute('aria-pressed',String(!play));tg.classList.toggle('is-paused',!play);tg.querySelector('span').textContent=play?'Pausar vídeo':'Reproducir vídeo'}
+    vids.paused=!play;
+  }
+  if(tg)tg.addEventListener('click',()=>setVid(!!vids.paused));
+  if(RM){vids.forEach(x=>{x.removeAttribute('autoplay');x.pause()});if(tg){tg.setAttribute('aria-pressed','true');tg.classList.add('is-paused');tg.querySelector('span').textContent='Reproducir vídeo';vids.paused=true}}
   v.addEventListener('error',()=>{v.style.display='none'},true);
   const s=v.querySelector('source');if(s)s.addEventListener('error',()=>{v.style.display='none'});
 })();
@@ -2258,7 +2333,6 @@ function laserScene(cv,opts){
   if(RM){pi=paths.length;frame()}else loop();
 }
 
-laserScene(document.getElementById('laserCanvas'),{cx:.74,cy:.52,r:.3});
 laserScene(document.getElementById('ctaCanvas'),{cx:.8,cy:.5,r:.4});
 </script>
 <script>
@@ -2274,7 +2348,7 @@ laserScene(document.getElementById('ctaCanvas'),{cx:.8,cy:.5,r:.4});
   const ENVIO = {
     url: '',                         // p. ej. 'https://api.krexon.com/contacto' o la URL de un servicio de formularios
     email: 'info@krexon.com',        // se usa solo mientras url esté vacío
-    telefono: '+34623968619'
+    telefono: '+34 623 968 619'
   };
   /* origen: 'contacto' | 'servicio-tecnico' | 'automatizacion' · asunto: texto corto · datos: { etiqueta: valor } · estado: callback(texto, tipo) */
   function enviarSolicitud(origen, asunto, datos, hp, estado) {
@@ -2345,7 +2419,7 @@ laserScene(document.getElementById('ctaCanvas'),{cx:.8,cy:.5,r:.4});
     if (ok) { const d = document.createElement('a'); d.href = href; d.download = ''; document.body.appendChild(d); d.click(); d.remove(); return; }
     const box = (a.closest('section') || document).querySelector('.pdf-msg');
     if (!box) return;
-    box.textContent = 'La ficha en PDF de esta máquina estará disponible próximamente. Mientras tanto, solicítala a nuestro equipo en info@krexon.com o en el teléfono +34623968619.';
+    box.textContent = 'La ficha en PDF de esta máquina estará disponible próximamente. Mientras tanto, solicítala a nuestro equipo en info@krexon.com o en el teléfono +34 623 968 619.';
     box.hidden = false; clearTimeout(timer); timer = setTimeout(() => { box.hidden = true; }, 9000);
     box.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'nearest' });
   }));
