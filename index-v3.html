@@ -834,6 +834,43 @@ h1[tabindex="-1"]:focus,h2[tabindex="-1"]:focus{outline:none}
 .hero h1,.hero h2{text-shadow:0 1px 2px rgba(0,0,0,.4),0 4px 28px rgba(0,0,0,.45)}
 @media (max-width:1000px){.hero::before{background:linear-gradient(180deg,rgba(12,14,18,.3) 0%,rgba(12,14,18,.5) 40%,rgba(12,14,18,.42) 100%)}}
 
+/* Página «Maquinaria»: lista de las 8 líneas a la izquierda y vista previa a la derecha */
+.mq{background:#fff}
+.mq-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start;margin-top:44px}
+.mq-list{list-style:none;border-top:1px solid var(--line)}
+.mq-list a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px;padding:14px 18px;border-bottom:1px solid var(--line);font-family:var(--font);font-weight:600;font-size:clamp(18px,1.45vw,21px);line-height:1.25;color:var(--ink);transition:background-color .2s ease,color .2s ease,padding-left .2s ease,box-shadow .2s ease}
+.mq-list a i{flex:none;font-style:normal;font-size:20px;opacity:.3;transition:opacity .2s ease,transform .2s ease}
+.mq-list a:hover,.mq-list a:focus-visible,.mq-list a.is-on{background:var(--soft);color:var(--brand);padding-left:26px}
+.mq-list a.is-on{box-shadow:inset 3px 0 0 var(--brand-2)}
+.mq-list a.is-on i,.mq-list a:hover i{opacity:1;transform:translateX(3px)}
+.mq-panels{position:sticky;top:150px}
+.mq-panel{display:none}
+.mq-panel.is-on{display:block;animation:mqin .25s ease-out}
+@keyframes mqin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.mq-pic{aspect-ratio:1280/832;background:var(--soft);border-radius:12px;overflow:hidden}
+.mq-pic img{width:100%;height:100%;object-fit:cover}
+.mq-txt{padding:26px 2px 0}
+.mq-txt h3{font-size:clamp(24px,2.1vw,32px);margin-bottom:10px}
+.mq-txt p{font-size:18px;line-height:1.6;max-width:60ch;color:var(--text)}
+.mq-facts{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px;list-style:none}
+.mq-facts li{padding:6px 14px;border-radius:999px;background:var(--soft);font-size:14.5px;font-weight:600;color:var(--ink)}
+@media (max-width:900px){
+  .mq-grid{grid-template-columns:minmax(0,1fr);margin-top:28px}
+  .mq-list{display:none}
+  .mq-panels{position:static;display:grid;gap:40px}
+  .mq-panel{display:block;animation:none}
+}
+@media (prefers-reduced-motion:reduce){.mq-panel.is-on{animation:none}}
+@media (min-width:901px){
+  .mq-grid{margin-top:32px}
+  .mq-panels{top:140px}
+  .mq-pic{aspect-ratio:2/1}
+  .mq-pic img{object-position:center 45%}
+  .mq-txt{padding-top:20px}
+  .mq-txt h3{margin-bottom:6px}
+  .mq-facts{margin:14px 0 20px}
+}
+
 /* ==========================================================
    VERSIÓN 3 · Sistema de DESIGN-krexon.md
    Referencia medida: tcicutting.com (estructura y calidad),
@@ -1008,6 +1045,11 @@ footer{background:#141414}
 @media (max-width:1000px){.pick-sec .pick a{min-height:190px}}
 @media (max-width:640px){.pick-sec{padding:0 0 80px}.pick-head{padding-left:18px}.pick-sec .pick a{min-height:150px}.pick-sec .pick strong{font-size:19px}}
 
+/* Página «Maquinaria» en la versión 3 */
+.mq-list a{font-weight:600;letter-spacing:-.01em}
+.mq-pic{border-radius:10px}
+.mq-facts li{background:var(--soft);color:var(--ink)}
+
 </style>
 </head>
 <body>
@@ -1034,19 +1076,7 @@ footer{background:#141414}
     </a>
     <nav class="menu" id="menu" aria-label="Navegación principal">
       <ul class="menu-list">
-        <li class="has-sub">
-          <a href="#maquinaria">Maquinaria</a>
-          <div class="sub">
-            <a href="#corte-plano">Corte plano 2D</a>
-            <a href="#corte-tubos">Corte de tubos</a>
-            <a href="#corte-combinado">Corte combinado (plano y tubos)</a>
-            <a href="#soldadura-limpieza">Soldadura / limpieza láser</a>
-            <a href="#plegadoras">Plegadoras</a>
-            <a href="#automatizacion">Automatización</a>
-            <a href="#corte-co2">Máquinas de corte CO2</a>
-            <a href="#servicio-tecnico">Recambios y consumibles</a>
-          </div>
-        </li>
+        <li><a href="#maquinaria">Maquinaria</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#contacto">Contacto</a></li>
@@ -1103,6 +1133,103 @@ footer{background:#141414}
       <li><a href="#servicios"><small>Servicios</small><strong>Asistencia técnica, recambios, formación y más</strong><i aria-hidden="true">→</i></a></li>
       <li><a href="#contacto"><small>Contacto</small><strong>¿Dudas? Te asesoramos</strong><i aria-hidden="true">→</i></a></li>
     </ul>
+  </div>
+</section>
+
+<!-- MAQUINARIA · índice de las 8 líneas (se abre desde el menú) -->
+<section id="maquinaria" class="mq view" aria-labelledby="h-mq">
+  <div class="wrap">
+    <div class="flat-head">
+      <span class="eyebrow">Maquinaria</span>
+      <h2 id="h-mq">Maquinaria y servicio</h2>
+      <p class="flat-lead">Elige una línea para ver sus máquinas, fichas y comparativas.</p>
+    </div>
+    <div class="mq-grid">
+      <ul class="mq-list" aria-label="Líneas de maquinaria y servicio">
+        <li><a href="#corte-plano" data-mq="corte-plano" class="is-on"><span>Corte plano 2D</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#corte-tubos" data-mq="corte-tubos"><span>Corte de tubos</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#corte-combinado" data-mq="corte-combinado"><span>Corte combinado (plano y tubos)</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#soldadura-limpieza" data-mq="soldadura-limpieza"><span>Soldadura / limpieza láser</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#plegadoras" data-mq="plegadoras"><span>Plegadoras</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#automatizacion" data-mq="automatizacion"><span>Automatización</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#corte-co2" data-mq="corte-co2"><span>Máquinas de corte CO2</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="#servicio-tecnico" data-mq="servicio-tecnico"><span>Recambios y consumibles</span><i aria-hidden="true">→</i></a></li>
+      </ul>
+      <div class="mq-panels">
+        <article class="mq-panel is-on" data-mq="corte-plano">
+          <div class="mq-pic"><img loading="lazy" src="img/hc.webp" alt="Máquina de corte láser de fibra con cabina cerrada" width="1280" height="832"></div>
+          <div class="mq-txt">
+            <h3>Corte plano 2D</h3>
+            <p>Corte de chapa por láser de fibra, con cabina cerrada, semicerrada o abierta según el espacio y la producción de tu taller.</p>
+            <ul class="mq-facts"><li>3 máquinas</li><li>1,5 – 12 kW</li><li>Hasta 30 mm de acero al carbono</li></ul>
+            <a class="btn" href="#corte-plano">Ver corte plano 2D</a>
+          </div>
+        </article>
+        <article class="mq-panel" data-mq="corte-tubos">
+          <div class="mq-pic"><img loading="lazy" src="img/t.webp" alt="Máquina de corte láser de tubos de dos mandriles" width="1280" height="832"></div>
+          <div class="mq-txt">
+            <h3>Corte de tubos</h3>
+            <p>Corte de tubos y perfiles por láser de fibra, en modelos de dos o tres mandriles para trabajar tubo ligero o pesado.</p>
+            <ul class="mq-facts"><li>2 máquinas</li><li>1,5 – 12 kW</li><li>Tubo redondo, cuadrado y perfiles</li></ul>
+            <a class="btn" href="#corte-tubos">Ver corte de tubos</a>
+          </div>
+        </article>
+        <article class="mq-panel" data-mq="corte-combinado">
+          <div class="mq-pic"><img loading="lazy" src="img/hm.webp" alt="Máquina láser combinada de chapa y tubo con cabina cerrada" width="1280" height="832"></div>
+          <div class="mq-txt">
+            <h3>Corte combinado (plano y tubos)</h3>
+            <p>Chapa y tubo en una sola máquina: menos inversión y menos espacio en el taller que con dos equipos por separado.</p>
+            <ul class="mq-facts"><li>2 máquinas</li><li>1,5 – 30 kW</li><li>Cabina cerrada o abierta</li></ul>
+            <a class="btn" href="#corte-combinado">Ver corte combinado (plano y tubos)</a>
+          </div>
+        </article>
+        <article class="mq-panel" data-mq="soldadura-limpieza">
+          <div class="mq-pic"><img loading="lazy" src="img/wh.webp" alt="Equipo de soldadura láser manual" width="1280" height="832"></div>
+          <div class="mq-txt">
+            <h3>Soldadura / limpieza láser</h3>
+            <p>Equipos manuales y portátiles para soldar con poca deformación y limpiar óxido, pintura o grasa sin productos químicos.</p>
+            <ul class="mq-facts"><li>6 equipos</li><li>3 de soldadura y 3 de limpieza</li><li>Manuales y portátiles</li></ul>
+            <a class="btn" href="#soldadura-limpieza">Ver soldadura / limpieza láser</a>
+          </div>
+        </article>
+        <article class="mq-panel" data-mq="plegadoras">
+          <div class="mq-pic"><img loading="lazy" src="img/ph.webp" alt="Plegadora CNC electrohidráulica" width="1280" height="832"></div>
+          <div class="mq-txt">
+            <h3>Plegadoras</h3>
+            <p>Plegadoras CNC para doblar chapa con precisión, en tres tecnologías: electrohidráulica, de barra de torsión y totalmente eléctrica.</p>
+            <ul class="mq-facts"><li>3 máquinas</li><li>60 – 20.000 kN</li><li>Control CNC</li></ul>
+            <a class="btn" href="#plegadoras">Ver plegadoras</a>
+          </div>
+        </article>
+        <article class="mq-panel" data-mq="automatizacion">
+          <div class="mq-pic"><img loading="lazy" src="img/automatizacion.webp" alt="Célula de corte láser automatizada con almacén de chapa" width="1280" height="832"></div>
+          <div class="mq-txt">
+            <h3>Automatización</h3>
+            <p>Robots, carga y descarga automáticas y almacenes inteligentes. Desarrollamos procesos a medida según lo que fabricas y cómo.</p>
+            <ul class="mq-facts"><li>Proyectos a medida</li><li>Carga y descarga</li><li>Almacén de chapa</li></ul>
+            <a class="btn" href="#automatizacion">Ver automatización</a>
+          </div>
+        </article>
+        <article class="mq-panel" data-mq="corte-co2">
+          <div class="mq-pic"><img loading="lazy" src="img/co2-lc1390n.webp" alt="Máquina de corte y grabado láser CO2" width="1280" height="832"></div>
+          <div class="mq-txt">
+            <h3>Máquinas de corte CO2</h3>
+            <p>Corte y grabado láser de materiales no metálicos: madera, acrílico, plástico, tejidos, cuero o papel.</p>
+            <ul class="mq-facts"><li>3 máquinas</li><li>60 – 200 W</li><li>Tres formatos de mesa</li></ul>
+            <a class="btn" href="#corte-co2">Ver máquinas de corte CO2</a>
+          </div>
+        </article>
+        <article class="mq-panel" data-mq="servicio-tecnico">
+          <div class="mq-pic"><img loading="lazy" src="img/np.webp" alt="Máquina de corte láser de estructura abierta" width="1280" height="832"></div>
+          <div class="mq-txt">
+            <h3>Recambios y consumibles</h3>
+            <p>Recambios, consumibles y servicio técnico para tu máquina. Cuéntanos qué necesitas en tres pasos y te contactamos.</p>
+            <ul class="mq-facts"><li>Recambios</li><li>Consumibles</li><li>Servicio técnico</li></ul>
+            <a class="btn" href="#servicio-tecnico">Ver recambios y consumibles</a>
+          </div>
+        </article>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2157,7 +2284,7 @@ footer{background:#141414}
       <span class="eyebrow">Maquinaria</span>
       <h2 id="h-pick">Elige tu máquina</h2>
     </div>
-    <nav class="pick" id="maquinaria" aria-label="Elige tu máquina">
+    <nav class="pick" id="elige-maquina" aria-label="Elige tu máquina">
       <div class="pick-grid">
         <a href="#corte-plano"><strong>Corte plano 2D</strong><i aria-hidden="true">→</i></a>
         <a href="#corte-tubos"><strong>Corte de tubos</strong><i aria-hidden="true">→</i></a>
@@ -2731,6 +2858,21 @@ laserScene(document.getElementById('ctaCanvas'),{cx:.8,cy:.5,r:.4});
       }, v('ct-web'), (t, tipo) => { status.className = 'ct-status' + (tipo === 'err' ? ' is-err' : ''); status.hidden = false; status.textContent = t; });
     });
   }
+
+  /* Página «Maquinaria»: al pasar el ratón (o llegar con el teclado) por una línea, se muestra su vista previa */
+  (function indiceMaquinaria() {
+    const sec = document.getElementById('maquinaria');
+    if (!sec || !sec.classList.contains('mq')) return;
+    const links = [...sec.querySelectorAll('.mq-list a')], panels = [...sec.querySelectorAll('.mq-panel')];
+    function activar(id) {
+      links.forEach(a => a.classList.toggle('is-on', a.dataset.mq === id));
+      panels.forEach(p => p.classList.toggle('is-on', p.dataset.mq === id));
+    }
+    links.forEach(a => {
+      a.addEventListener('mouseenter', () => activar(a.dataset.mq));
+      a.addEventListener('focus', () => activar(a.dataset.mq));
+    });
+  })();
 
   /* Vistas: solo se ve una sección a la vez; la dirección (#plegadoras…) y el botón atrás funcionan */
   (function vistas() {
