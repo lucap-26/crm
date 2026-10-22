@@ -825,16 +825,14 @@ p,li{text-wrap:pretty}
 .dock-panel,.menu,#menu{overscroll-behavior:contain}
 .btn:active,.more:active,.vchips a:active,.wa:active,.wa-btn:active,.pick a:active{transform:scale(.97)}
 .btn,.more,.vchips a,.wa,.wa-btn,.pick a{transition-property:background-color,color,box-shadow,border-color,transform,gap}
-.vid-toggle{position:absolute;z-index:3;left:28px;bottom:22px;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px 0 12px;border:1px solid rgba(255,255,255,.35);border-radius:9999px;background:rgba(15,23,42,.45);color:#fff;font:600 13px/1 var(--font-body);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background-color .2s ease}
-.vid-toggle:hover{background:rgba(15,23,42,.7)}
-.vid-toggle svg{width:16px;height:16px;flex:none}
-.vid-toggle .i-play{display:none}
-.vid-toggle.is-paused .i-pause{display:none}
-.vid-toggle.is-paused .i-play{display:inline}
-.vid-toggle:focus-visible{outline:3px solid #7fdcea;outline-offset:2px}
-@media (max-width:640px){.vid-toggle{left:20px;bottom:16px}}
 /* Los títulos reciben el foco al cambiar de apartado (para lectores de pantalla); no son interactivos, así que sin recuadro */
 h1[tabindex="-1"]:focus,h2[tabindex="-1"]:focus{outline:none}
+
+/* Capa sobre el vídeo de portada: más oscura solo detrás del texto, casi transparente en el resto */
+.hero::before{background:linear-gradient(90deg,rgba(12,14,18,.64) 0%,rgba(12,14,18,.46) 36%,rgba(12,14,18,.12) 62%,rgba(12,14,18,0) 85%)}
+.hero::after{display:none}
+.hero h1,.hero h2{text-shadow:0 1px 2px rgba(0,0,0,.4),0 4px 28px rgba(0,0,0,.45)}
+@media (max-width:1000px){.hero::before{background:linear-gradient(180deg,rgba(12,14,18,.3) 0%,rgba(12,14,18,.5) 40%,rgba(12,14,18,.42) 100%)}}
 
 /* ==========================================================
    VERSIÓN 3 · Sistema de DESIGN-krexon.md
@@ -894,7 +892,7 @@ header.light .burger span{background:#fff}
 .btn:not(.pdf-btn)::after{content:"›";position:static;width:auto;height:auto;background:none;transform:none;font-size:22px;line-height:1;margin:-2px 0 0 2px;transition:transform .2s ease}
 .btn:not(.pdf-btn):hover::after{transform:translateX(3px)}
 .pdf-btn::after{display:none}
-.hero .btn{background:rgba(0,0,0,.18);box-shadow:inset 0 0 0 2px #f1f1f1;color:#f1f1f1}
+.hero .btn{background:rgba(0,0,0,.38);box-shadow:inset 0 0 0 2px #f1f1f1;color:#f1f1f1}
 .hero .btn:hover{background:#f1f1f1;color:var(--ink)}
 .btn-light{background:#fff;color:var(--ink)}
 .btn-light:hover{background:var(--soft-2);color:var(--ink)}
@@ -1074,7 +1072,6 @@ footer{background:#141414}
   <video id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true">
     <source src="https://krexon.com/wp-content/uploads/2025/12/VIDEOKREXON.mp4" type="video/mp4">
   </video>
-  <button type="button" class="vid-toggle" id="vidToggle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/><path class="i-play" d="M8 5v14l11-7z"/></svg><span>Pausar vídeo</span></button>
   <div class="wrap">
     <h1 class="in-1">Soluciones industriales de corte por <span class="grad">láser de fibra</span></h1>
     <h2 class="in-2">Transforma tu producción con tecnología de vanguardia</h2>
@@ -2180,7 +2177,7 @@ footer{background:#141414}
   <canvas id="ctaCanvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <h2>Redefinimos la productividad<br>y <span class="grad">la eficiencia</span></h2>
-    <p>Consolidamos nuestro liderazgo en Europa y América en maquinaria láser industrial, combinando experiencia, innovación y tecnología de punta</p>
+    <p>Consolidamos nuestro liderazgo en Europa, América y Asia en maquinaria láser industrial, combinando experiencia, innovación y tecnología de punta</p>
     <a class="btn btn-light" href="#contacto">Optimiza tu producción hoy
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
@@ -2315,16 +2312,8 @@ addEventListener('resize',()=>{if(innerWidth>1000)setMenu(false)});
   const v=document.getElementById('heroVideo'),h=document.getElementById('top');
   if(!v)return;
   v.addEventListener('playing',()=>{v.classList.add('ready');h.classList.add('has-video')});
-  /* Vídeo de fondo: botón para pausarlo y respeto de «reducir movimiento» */
-  const fv=document.getElementById('factsVideo'),tg=document.getElementById('vidToggle');
-  const vids=[v,fv].filter(Boolean);
-  function setVid(play){
-    vids.forEach(x=>{play?x.play().catch(()=>{}):x.pause()});
-    if(tg){tg.setAttribute('aria-pressed',String(!play));tg.classList.toggle('is-paused',!play);tg.querySelector('span').textContent=play?'Pausar vídeo':'Reproducir vídeo'}
-    vids.paused=!play;
-  }
-  if(tg)tg.addEventListener('click',()=>setVid(!!vids.paused));
-  if(RM){vids.forEach(x=>{x.removeAttribute('autoplay');x.pause()});if(tg){tg.setAttribute('aria-pressed','true');tg.classList.add('is-paused');tg.querySelector('span').textContent='Reproducir vídeo';vids.paused=true}}
+  /* Vídeos de fondo: se detienen si el sistema pide «reducir movimiento» */
+  if(RM)[v,document.getElementById('factsVideo')].forEach(x=>{if(x){x.removeAttribute('autoplay');x.pause()}});
   v.addEventListener('error',()=>{v.style.display='none'},true);
   const s=v.querySelector('source');if(s)s.addEventListener('error',()=>{v.style.display='none'});
 })();
