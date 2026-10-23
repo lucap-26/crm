@@ -6,7 +6,7 @@
 <title>Krexon</title>
 <meta name="description" content="Soluciones industriales de corte por láser de fibra. Transforma tu producción con tecnología de vanguardia.">
 <link rel="canonical" href="https://krexon.com/">
-<meta name="theme-color" content="#1c1c1c">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Krexon">
@@ -1084,6 +1084,161 @@ footer{background:#141414}
 /* Portada: el bloque de texto un poco más arriba */
 .hero{padding-bottom:clamp(110px,22vh,230px)}
 @media (max-width:640px){.hero{padding-bottom:clamp(90px,16vh,150px)}}
+
+
+/* ==========================================================
+   VERSIÓN 4 · Sistema inspirado en DJI (awesome-design-md / getdesign.md)
+   «Un escaparate de producto bien iluminado»: renders de estudio en baldosas
+   grises sin redondear, texto centrado ENCIMA de la máquina, un solo azul de
+   acción siempre en píldora, cifras grandes en peso normal y casi sin sombras.
+   Se aplica encima de estilos.css + tema-v3.css (portada y contenidos de v3).
+   ========================================================== */
+:root{
+  --ink:#262626; --ink-2:#595959; --ink-3:#8c8c8c; --steel:#9fa3a6;
+  --text:#3b3e40; --muted:#8c8c8c;
+  --soft:#f5f5f5; --soft-2:#f7f9fa; --line:#e8e8e8;
+  --action:#1f5a7e; --action-hover:#174663; --rule:#2997AA;
+  --fog:#eef0f2;
+}
+body{color:var(--text);letter-spacing:-.01em}
+h1,h2,h3,h4{letter-spacing:-.03em}
+
+/* Cabecera: transparente sobre el vídeo y blanca al bajar o dentro de un apartado */
+header::before{opacity:0;background:rgba(255,255,255,.97)}
+header.light::before{opacity:1;background:rgba(255,255,255,.97)}
+header.light{box-shadow:0 1px 0 var(--line)}
+header.light .logo .logo-light{opacity:0}
+header.light .logo .logo-dark{opacity:1}
+header.light .logo-txt{color:var(--ink)}
+.menu>.menu-list>li>a{font-size:14px;font-weight:500;letter-spacing:-.01em;text-transform:none}
+header.light .menu>.menu-list>li>a{color:#303233}
+header.light .menu>.menu-list>li>a:hover,header.light .menu>.menu-list>li>a.active{color:var(--action)}
+header.light .burger{border-color:#c8ccce}
+header.light .burger span{background:var(--ink)}
+.topbar{background:rgba(0,0,0,.28);font-size:13px}
+.tb-cta{letter-spacing:.02em;text-transform:none;font-size:13px}
+
+/* Botones: un solo azul, siempre en píldora; secundario con contorno fino */
+.btn{border-radius:9999px;background:var(--action);padding:0 26px;min-height:46px;font-size:15px;font-weight:500;letter-spacing:-.01em;text-transform:none;box-shadow:none}
+.btn:hover{background:var(--action-hover);box-shadow:none}
+.btn:not(.pdf-btn)::after{content:"›";font-size:20px}
+.btn-line,.hero .btn{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff;box-shadow:inset 0 0 0 1px var(--ink)}
+.hero .btn{color:#fff;box-shadow:inset 0 0 0 1px #fff;background:rgba(0,0,0,.12)}
+.hero .btn:hover{background:#fff;color:var(--ink)}
+.more{border-radius:9999px;border:1px solid var(--ink);font-size:15px;font-weight:500;letter-spacing:-.01em;text-transform:none}
+.vchips a,.vback,.wa-btn,.call{border-radius:9999px}
+.vchips a[aria-current]{background:var(--action);border-color:var(--action);color:#fff}
+
+/* Cabeceras de sección centradas, sin raya lateral */
+.flat-head,.pick-head{border-left:0;padding-left:0;text-align:center;margin-left:auto;margin-right:auto;max-width:860px}
+.flat-head .flat-lead{margin-left:auto;margin-right:auto}
+.flat-head h2,.pick-head h2{font-size:clamp(32px,3.4vw,48px);font-weight:600;line-height:1.08}
+.eyebrow{font-size:13px;letter-spacing:-.01em;text-transform:none;font-weight:500;color:var(--ink-3)}
+.flat-step{text-align:center}
+
+/* «Tecnologías disponibles»: baldosas de producto sin redondear, nombre centrado encima de la máquina */
+.pick-sec{background:#fff;padding-top:40px}
+.pick-sec .pick-grid{gap:12px}
+.pick-sec .pick a{min-height:0;aspect-ratio:1/1;border-radius:0;background:var(--fog);color:var(--ink);flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;padding:34px 18px 0;text-align:center;box-shadow:none}
+.pick-sec .pick a::before{display:none}
+.pick-sec .pick a::after{inset:auto 0 0 0;height:72%;background-size:cover;background-position:center 62%;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.pick-sec .pick strong{position:relative;z-index:1;color:var(--ink);font-size:clamp(19px,1.6vw,23px);font-weight:600;letter-spacing:-.03em;text-shadow:none;flex:none}
+.pick-sec .pick em{position:relative;z-index:1;font-style:normal;font-size:14.5px;color:var(--action)}
+.pick-sec .pick i{display:none}
+.pick-sec .pick a:hover,.pick-sec .pick a:focus-visible{transform:none;box-shadow:none;background:var(--fog);color:var(--ink)}
+.pick-sec .pick a:hover::after{transform:scale(1.04)}
+.pick-sec .pick a:hover strong{color:var(--ink)}
+.pick-sec .pick a[href="#servicio-tecnico"]{background:var(--ink)}
+.pick-sec .pick a[href="#servicio-tecnico"] strong{color:#fff}
+.pick-sec .pick a[href="#servicio-tecnico"] em{color:#9fd6e6}
+.pick-sec .pick a[href="#servicio-tecnico"]::after{background:var(--ink)}
+
+/* Accesos del inicio como banda de enlaces (sin cajas) */
+.home-links{background:var(--soft-2);padding:64px 0}
+.hl-grid{gap:0}
+.hl-grid li+li a{border-left:1px solid var(--line)}
+.hl-grid a{background:transparent;border-radius:0;align-items:center;text-align:center;padding:10px 34px;min-height:0;gap:8px}
+.hl-grid a:hover,.hl-grid a:focus-visible{background:transparent;color:var(--ink)}
+.hl-grid small{font-size:13px;letter-spacing:-.01em;text-transform:none;color:var(--ink-3);font-weight:500}
+.hl-grid strong{font-size:clamp(19px,1.5vw,21px);font-weight:500;flex:none}
+.hl-grid i{align-self:center;font-size:15px;color:var(--action)}
+.hl-grid i::before{content:"Saber más ";font-size:15px}
+.hl-grid a:hover i{text-decoration:underline}
+
+/* Panel de datos: cifras grandes en peso normal, como las fichas técnicas de DJI */
+.facts .wrap{background:transparent;padding:0}
+.facts .fact b,.facts .fact b[style]{font-weight:400!important;letter-spacing:-.035em}
+.facts .fact span{color:var(--steel)}
+.facts{padding:96px 0 72px}
+
+/* Fichas de máquina: baldosa gris, texto centrado arriba, render abajo */
+.flat{background:#fff}
+.mgrid{gap:12px}
+.mcard{background:var(--fog);border:0;border-radius:0;box-shadow:none;text-align:center}
+.mcard:hover{box-shadow:none;border:0}
+.mcard-body{order:1;background:transparent;align-items:center;padding:34px 26px 10px;gap:8px}
+.mcard-pic{order:2;background:transparent}
+.mcard-pic img{outline:0;mix-blend-mode:multiply}
+.mcard-tag{color:var(--rule);letter-spacing:-.01em;text-transform:none;font-size:14px;font-weight:600}
+.mcard h3{font-size:clamp(26px,2.3vw,34px);font-weight:500;letter-spacing:-.035em}
+.mcard-kpi{justify-items:center;font-size:15px;color:var(--ink-2)}
+.mcard-kpi b{color:var(--ink);font-weight:600}
+.mcard-res{font-size:15.5px;color:var(--ink-2);max-width:38ch}
+.mcard .mcard-btn{align-self:center;justify-content:center;gap:10px;margin-top:10px;padding:10px 22px;background:var(--action);border-color:var(--action);color:#fff}
+.mcard .mcard-btn::after{content:"+";font-size:18px}
+.mcard .mcard-btn:hover{background:var(--action-hover);border-color:var(--action-hover)}
+.mcard .mcard-btn[aria-expanded="true"]{background:var(--ink);border-color:var(--ink)}
+
+/* Detalle de máquina: plano, cifras grandes con pie gris */
+.mdetail{border:0;border-radius:0;box-shadow:none;background:#fff;outline:1px solid var(--line)}
+.mdetail-pic{background:var(--fog)}
+.mdetail-pic img{mix-blend-mode:multiply;outline:0}
+.mdetail-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px;margin:8px 0 10px}
+.mdetail-kpis li{background:none;border-left:0;padding:0}
+.mdetail-kpis b{font-size:clamp(24px,2.2vw,32px);font-weight:400;letter-spacing:-.035em}
+.mdetail-kpis span{color:var(--steel);font-size:14px}
+.mcard-tag{background:none}
+.mfeats li::before{background:var(--rule);width:6px;height:6px;border-radius:50%;transform:none;top:.75em}
+
+/* Comparativa: pestaña plana con regla fina */
+.cmp-det{border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;box-shadow:none}
+.cmp-det>summary{border-radius:0;font-weight:600}
+.cmp-det[open]>summary{background:#fff;color:var(--ink);border-bottom:2px solid var(--ink)}
+.cmp-det[open]>summary::after{border-color:var(--ink)}
+.cmp-det>summary:hover{background:var(--soft-2)}
+.cmp thead th,.cmp thead td{background:#fff;color:var(--ink);border-bottom:1px solid var(--line)}
+.cmp thead th span{color:var(--rule)}
+.cmp tbody th,.cmp tfoot th{background:var(--soft-2);font-weight:600}
+.cmp tbody tr:nth-child(even) td{background:#fff}
+
+/* Página «Maquinaria»: imagen plana sobre gris */
+.mq-pic{border-radius:0;background:var(--fog)}
+.mq-pic img{mix-blend-mode:multiply}
+.mq-facts li{border-radius:9999px;background:var(--soft);font-weight:500}
+
+/* Superficies oscuras y pie: grafito DJI */
+.st,.cta,.nos-why,.ct{background:#1f2122}
+footer{background:#272727}
+.st-card,.st-side,.ct-form,.auto-form{border-radius:8px}
+
+@media (max-width:1000px){.pick-sec .pick a{aspect-ratio:4/3}}
+@media (max-width:900px){.hl-grid li+li a{border-left:0;border-top:1px solid var(--line)}.hl-grid a{padding:22px 10px}}
+@media (max-width:640px){.pick-sec .pick a{aspect-ratio:5/4;padding-top:24px}.mcard-body{padding:26px 18px 6px}}
+
+/* Ajustes tras revisar las capturas */
+/* Menú legible sobre el vídeo: sombreado suave solo en la franja superior */
+.hero::before{background:linear-gradient(180deg,rgba(12,14,18,.5) 0%,rgba(12,14,18,.18) 16%,rgba(12,14,18,0) 30%),linear-gradient(90deg,rgba(12,14,18,.5) 0%,rgba(12,14,18,.3) 32%,rgba(12,14,18,.06) 55%,rgba(12,14,18,0) 75%),linear-gradient(0deg,rgba(12,14,18,.35) 0%,rgba(12,14,18,0) 45%)!important}
+.topbar{background:transparent;border-bottom-color:rgba(255,255,255,.14)}
+.menu>.menu-list>li>a,header.light .menu>.menu-list>li>a{font-size:14.5px;font-weight:500;letter-spacing:-.01em;text-transform:none}
+header:not(.light) .menu>.menu-list>li>a{text-shadow:0 1px 8px rgba(0,0,0,.35)}
+/* Las fotos se funden con la baldosa gris: degradado en el borde superior */
+.pick-sec .pick a::after{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26%);mask-image:linear-gradient(180deg,transparent 0,#000 26%)}
+.pick-sec .pick a{background:#e9ecef}
+.pick-sec .pick a:hover,.pick-sec .pick a:focus-visible{background:#e9ecef}
+.mcard{background:#e9ecef}
+.mcard-pic{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%);mask-image:linear-gradient(180deg,transparent 0,#000 22%)}
+.mcard-tag{align-self:center}
 
 </style>
 </head>
@@ -2321,14 +2476,14 @@ footer{background:#141414}
     </div>
     <nav class="pick" id="elige-maquina" aria-label="Elige tu máquina">
       <div class="pick-grid">
-        <a href="#corte-plano"><strong>Corte plano 2D</strong><i aria-hidden="true">→</i></a>
-        <a href="#corte-tubos"><strong>Corte de tubos</strong><i aria-hidden="true">→</i></a>
-        <a href="#corte-combinado"><strong>Corte combinado (plano y tubos)</strong><i aria-hidden="true">→</i></a>
-        <a href="#soldadura-limpieza"><strong>Soldadura / limpieza láser</strong><i aria-hidden="true">→</i></a>
-        <a href="#plegadoras"><strong>Plegadoras</strong><i aria-hidden="true">→</i></a>
-        <a href="#automatizacion"><strong>Automatización</strong><i aria-hidden="true">→</i></a>
-        <a href="#corte-co2"><strong>Máquinas de corte CO2</strong><i aria-hidden="true">→</i></a>
-        <a href="#servicio-tecnico"><strong>Recambios y consumibles</strong><i aria-hidden="true">→</i></a>
+        <a href="#corte-plano"><strong>Corte plano 2D</strong><em>Ver máquinas ›</em></a>
+        <a href="#corte-tubos"><strong>Corte de tubos</strong><em>Ver máquinas ›</em></a>
+        <a href="#corte-combinado"><strong>Corte combinado (plano y tubos)</strong><em>Ver máquinas ›</em></a>
+        <a href="#soldadura-limpieza"><strong>Soldadura / limpieza láser</strong><em>Ver máquinas ›</em></a>
+        <a href="#plegadoras"><strong>Plegadoras</strong><em>Ver máquinas ›</em></a>
+        <a href="#automatizacion"><strong>Automatización</strong><em>Ver máquinas ›</em></a>
+        <a href="#corte-co2"><strong>Máquinas de corte CO2</strong><em>Ver máquinas ›</em></a>
+        <a href="#servicio-tecnico"><strong>Recambios y consumibles</strong><em>Solicitar ›</em></a>
       </div>
     </nav>
   </div>
