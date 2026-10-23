@@ -1,0 +1,179 @@
+/* ==========================================================
+   VERSIÓN 2 · "Contención arquitectónica"
+   Se aplica encima de estilos.css (la versión 1 no se toca).
+   Principios del DESIGN_2.md: una sola tipografía en peso ligero,
+   neutros cálidos, mucho aire, botones en píldora, tarjetas con
+   borde fino y sombras suaves. El azul Krexon sustituye al
+   color primario del sistema original.
+   ========================================================== */
+:root{
+  --brand:#1f5a7e;
+  --brand-hover:#4a7a98;
+  --brand-2:#2997AA;
+  --brand-2-d:#1f5a7e;          /* los textos de acento pasan a azul Krexon */
+  --ink:#21211e;                /* carbón cálido */
+  --ink-2:#2b2b27;
+  --ink-3:#3a3835;
+  --text:#504d48;
+  --soft:#f7f3ef;               /* crema */
+  --soft-2:#e6e5e2;
+  --line:rgba(33,33,30,.2);
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --r-btn:9999px;
+  --sh-sm:0 1px 2px rgba(0,0,0,.06);
+  --sh-md:0 3px 8px rgba(0,0,0,.15);
+  --sh-lg:0 10px 30px rgba(0,0,0,.16);
+}
+body{background:#fefdfb;color:var(--text);font-weight:400;line-height:1.65}
+
+/* Titulares: peso ligero, sin mayúsculas, aire */
+h1,h2,h3,h4{font-weight:400;text-transform:none;letter-spacing:-.02em;line-height:1.12}
+.hero h1{font-size:clamp(38px,5.4vw,72px);line-height:1.08;letter-spacing:-.025em;max-width:960px}
+.flat-head h2,.nos-head h2,.st h2,.ct h2,.machines h2,.sv-head h2,.cta h2{font-size:clamp(34px,4.2vw,52px);line-height:1.1;letter-spacing:-.02em}
+.hero h2{font-weight:400}
+h3{letter-spacing:-.01em}
+.menu a,.sub a,.tb-cta,.nos-why-grid b,.nos-valores b,.flat-gen b,.hl-grid strong,.pick strong,.st-card b,.st-step legend,.cmp thead th,.cmp-det>summary,.vback,.wa-btn,.dock-tab,.call,.more,.btn{text-transform:none}
+.menu a{font-size:15px;font-weight:500;letter-spacing:0}
+.sub a{font-size:15px;font-weight:500;letter-spacing:0}
+.nos-why-grid b,.nos-valores b,.flat-gen b,.hl-grid strong{font-weight:600;letter-spacing:-.01em;font-size:19px}
+.fact span{font-size:13px;letter-spacing:.08em}
+.pick strong{font-size:15.5px;font-weight:600;letter-spacing:0}
+.eyebrow{font-weight:600;letter-spacing:.14em}
+
+/* Botones: píldora, sombra suave, texto en frase */
+.btn{border-radius:9999px;padding:14px 32px;min-height:48px;font-weight:600;font-size:15px;letter-spacing:.01em;box-shadow:var(--sh-md);transition:background-color .2s ease,box-shadow .2s ease,color .2s ease}
+.btn::after{display:none}
+.btn:hover{background:var(--brand-hover);box-shadow:var(--sh-md)}
+.btn:hover svg{transform:translateX(3px)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{background:var(--soft-2);color:var(--ink)}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn-line:hover{background:#ddd9d4;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.more{font-weight:600;font-size:14.5px;letter-spacing:.01em;border:2px solid var(--ink);color:var(--ink)}
+.more:hover{background:var(--ink);color:#fff}
+.mcard-btn,.mcard-link,.wa-btn,.vback,.vchips a,.call,.burger{border-radius:9999px}
+.vchips a{font-weight:500;border:1px solid var(--line)}
+.vchips a.is-on,.vchips a[aria-current]{background:var(--brand);color:#fff;border-color:var(--brand)}
+.vback{font-weight:600;letter-spacing:.01em;font-size:14px}
+.wa-btn{font-weight:600;letter-spacing:.01em;font-size:15px}
+.pick a,.st-card,.cmp-det{border-radius:8px}
+.pick a{border-bottom:1px solid var(--line);box-shadow:var(--sh-sm)}
+.pick a:hover{box-shadow:var(--sh-md)}
+.dock-tab{font-weight:600;letter-spacing:.1em}
+.call{font-weight:600}
+
+/* Superficies cálidas y tarjetas con borde fino */
+.flat{background:var(--soft)}
+.mcard{background:#fff;border:1px solid var(--line);border-radius:4px;box-shadow:var(--sh-sm);overflow:hidden}
+.mcard:hover{box-shadow:var(--sh-md);background:#fff}
+.mcard-body{background:#fff}
+.mcard-tag{border-radius:9999px;font-weight:600;letter-spacing:.08em;padding:5px 12px}
+.mdetail{border:1px solid var(--line);border-radius:4px;box-shadow:var(--sh-lg);overflow:hidden}
+.mdetail-pic{background:var(--soft)}
+.flat-gen li{background:#fff;border:1px solid var(--line);border-left:1px solid var(--line);border-radius:4px;box-shadow:var(--sh-sm)}
+.flat-lead,.flat-step{color:var(--text)}
+.mcard h3,.mdetail h3{font-weight:500}
+.mfeats li::before{background:var(--brand)}
+
+/* Tablas */
+.cmp-det{border:1px solid var(--line);background:#fff;box-shadow:var(--sh-sm)}
+.cmp-det>summary{font-weight:600;letter-spacing:-.01em}
+.cmp-det[open]>summary{background:var(--ink)}
+.cmp thead th{font-weight:600;letter-spacing:-.01em}
+.cmp tbody th,.cmp tfoot th{background:var(--soft)}
+.cmp tbody tr:nth-child(even) td{background:#fbf9f6}
+.cmp th,.cmp td{border-bottom:1px solid var(--line)}
+.cmp-det .cmp-wrap{border-top:1px solid var(--line)}
+.cmp thead td,.cmp thead th{background:var(--ink)}
+
+/* Formularios: esquinas de 4px, borde fino visible */
+.af-field input[type=text],.af-field input[type=email],.af-field input[type=tel],.af-field textarea,
+.st-field input[type=text],.st-field input[type=email],.st-field input[type=tel],.st-field textarea,
+.ct-field input[type=text],.ct-field input[type=tel],.ct-field textarea{border-radius:4px;border-width:1px;border-color:#a09a94}
+.af-field input:focus,.af-field textarea:focus,.st-field input:focus,.st-field textarea:focus,.ct-field input:focus,.ct-field textarea:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(31,90,126,.18);outline:0}
+
+/* Nosotros / servicios */
+.nos-why{background:var(--ink)}
+.nos-why-grid li{background:rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.25);border-radius:4px}
+.nos-valores li,.hl-grid li,.sv-card,.home-links a{border-radius:4px}
+.nos-step{border-radius:9999px;font-weight:600;letter-spacing:.08em}
+.nos-key{border-radius:4px}
+.nos-n,.st-n{font-weight:500}
+.nos-quote{font-weight:400;letter-spacing:-.02em}
+
+/* Datos del inicio y cierre */
+.facts b{font-weight:500;letter-spacing:-.02em}
+.cta{background:var(--ink)}
+.to-top{background:var(--ink)}
+.wa{box-shadow:var(--sh-md)}
+
+/* Más aire entre bloques */
+section{padding:120px 0}
+@media (max-width:640px){section{padding:84px 0}}
+
+/* Ajustes tras revisar las capturas */
+.dock-tab{border-radius:0 18px 18px 0;font-weight:600;letter-spacing:.08em}
+.st-side h3,.st-side b{text-transform:none}
+.st-side,.ct-form,.auto-form,.st-step{border-radius:4px}
+.st-side{border-top-width:1px}
+.nos-valores li{border:1px solid var(--line);border-left:1px solid var(--line);border-radius:4px;box-shadow:var(--sh-sm)}
+.st-side-k,.st-tip>b{text-transform:uppercase}
+.cmp-det>summary{border-radius:8px}
+.cmp-det[open]>summary{border-radius:7px 7px 0 0}
+.home-links a{background:#fff;border:1px solid var(--line);border-left:1px solid var(--line);box-shadow:var(--sh-sm)}
+.home-links a:hover{box-shadow:var(--sh-md)}
+
+/* ==========================================================
+   Revisión con las guías de diseño (segunda pasada)
+   ========================================================== */
+/* Menos adornos tipográficos: sin etiquetas en mayúsculas sobre los títulos
+   (la barra de apartados ya dice dónde estás) */
+.flat-head .eyebrow,.nos-head .eyebrow,.st .eyebrow,.sv-head .eyebrow,.nos-mision .eyebrow{display:none}
+.mcard-tag,.fact span,.nos-step,.pick-title,.st-side-k,.st-tip>b,.nos-sub,.home-links small,.hl-grid small,
+.cmp thead th span,.cmp td::before,.mcerts span,.dock-panel h3,.eyebrow{text-transform:none;letter-spacing:.01em}
+.mcard-tag{font-size:12.5px;font-weight:500;background:var(--soft-2);color:var(--ink);padding:4px 12px}
+.pick-title{font-size:16px;font-weight:500;color:#d5dbe3}
+.fact span{font-size:14.5px;font-weight:400}
+.nos-step{font-size:13px;font-weight:500;background:var(--soft-2);color:var(--ink)}
+.home-links small{font-size:14px;font-weight:600;color:var(--brand)}
+.cmp thead th span{font-size:12.5px;font-weight:500}
+.cmp td::before{font-size:12.5px;font-weight:600}
+
+/* Un único titular: sin palabra destacada en otro color */
+.hero h1 .grad,.hero h1.split .grad .w>span{background:none;-webkit-text-fill-color:#fff;color:#fff}
+.hero h1{font-weight:300}
+.hero h2{color:#d5dbe3}
+
+/* Botones sin flecha añadida (las flechas de navegación quedan en las tarjetas) */
+.btn:not(.pdf-btn)>svg{display:none}
+.tb-cta{letter-spacing:.01em}
+
+/* Bordes finos con sombra en capas: se adaptan al fondo (cream / blanco) */
+.mcard,.flat-gen li,.nos-valores li,.home-links a,.cmp-det,.mdetail{
+  border:0;
+  box-shadow:0 0 0 1px rgba(33,33,30,.14),0 1px 2px -1px rgba(33,33,30,.08),0 3px 8px rgba(33,33,30,.06)}
+.mcard:hover,.home-links a:hover{box-shadow:0 0 0 1px rgba(33,33,30,.2),0 2px 4px -1px rgba(33,33,30,.1),0 8px 18px rgba(33,33,30,.1)}
+.mdetail{box-shadow:0 0 0 1px rgba(33,33,30,.16),0 10px 30px rgba(33,33,30,.16)}
+.mcard,.home-links a{transition-property:box-shadow;transition-duration:.2s;transition-timing-function:ease}
+/* Fotos de máquina con contorno sutil (profundidad uniforme) */
+.mcard-pic img,.mdetail-pic img,.auto-pic img{outline:1px solid rgba(33,33,30,.1);outline-offset:-1px}
+
+/* Foco visible coherente */
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:4px}
+.hero :focus-visible,.facts :focus-visible,.st :focus-visible,.ct :focus-visible,.nos-why :focus-visible,.cta :focus-visible{outline-color:#9fe3ef}
+.btn:focus-visible,.more:focus-visible,.vchips a:focus-visible,.vback:focus-visible,.wa:focus-visible,.wa-btn:focus-visible{border-radius:9999px}
+
+/* Ritmo de lectura: líneas de <80 caracteres */
+.flat-lead,.nos-head p,.nos-key,.nos-mision p,.cmp-note{max-width:68ch}
+.mcard-res,.mdetail-txt>p{max-width:62ch}
+
+/* Hover solo en dispositivos que lo soportan (en táctil se queda quieto) */
+@media (hover:none){
+  .mcard:hover,.home-links a:hover{box-shadow:0 0 0 1px rgba(33,33,30,.14),0 1px 2px -1px rgba(33,33,30,.08),0 3px 8px rgba(33,33,30,.06)}
+  .pick a:hover{transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .btn,.more,.mcard,.pick a,.vchips a{transition:none}
+  .btn:active,.more:active,.pick a:active{transform:none}
+}
