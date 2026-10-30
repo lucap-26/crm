@@ -1361,6 +1361,14 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
 .pick-sec .pick a[href="#servicio-tecnico"]::after{background:url(img/recambios.webp) center 70%/contain no-repeat;mix-blend-mode:multiply;-webkit-mask-image:none;mask-image:none;inset:auto 8% 4% 8%;height:66%}
 .mq-pic.mq-pic-contain{background:var(--fog)}
 
+/* Corte combinado: la portada es la Serie C */
+.pick a[href="#corte-combinado"]::after{background-image:url(img/c.webp)}
+/* Banner final: botón blanco bien visible sobre el fondo oscuro */
+.cta .btn.btn-light{background:#fff;color:#1f2122;box-shadow:0 6px 22px rgba(0,0,0,.28)}
+.cta .btn.btn-light:hover{background:#7fdcea;color:#1f2122}
+/* Sin el botón «Inicio» dentro de los apartados (se vuelve con el logo o el menú) */
+.vbar{display:none!important}
+
 </style>
 </head>
 <body>
@@ -1451,9 +1459,8 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
 <section id="maquinaria" class="mq view" aria-labelledby="h-mq">
   <div class="wrap">
     <div class="flat-head">
-      <span class="eyebrow">Maquinaria</span>
-      <h2 id="h-mq">Maquinaria y servicio</h2>
-      <p class="flat-lead">Elige una línea para ver sus máquinas, fichas y comparativas.</p>
+      <h2 id="h-mq">Maquinaria</h2>
+      <p class="flat-lead">Múltiples aplicaciones para cortar, plegar, soldar y automatizar tu producción.</p>
     </div>
     <div class="mq-grid">
       <ul class="mq-list" aria-label="Líneas de maquinaria y servicio">
@@ -1486,7 +1493,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
           </div>
         </article>
         <article class="mq-panel" data-mq="corte-combinado">
-          <div class="mq-pic"><img loading="lazy" src="img/hm.webp" alt="Máquina láser combinada de chapa y tubo con cabina cerrada" width="1280" height="832"></div>
+          <div class="mq-pic"><img loading="lazy" src="img/c.webp" alt="Máquina láser combinada de chapa y tubo de estructura abierta, serie C" width="1280" height="832"></div>
           <div class="mq-txt">
             <h3>Corte combinado (plano y tubos)</h3>
             <p>Chapa y tubo en una sola máquina: menos inversión y menos espacio en el taller que con dos equipos por separado.</p>
@@ -2609,7 +2616,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <p>Hoy somos especialistas en sistemas CNC láser de fibra, la tecnología líder para el corte de metales, y trabajamos para que tu producción rinda más.</p>
       </li>
     </ol>
-    <p class="nos-key"><b>No solo vendemos una máquina:</b> vendemos la experiencia de haber trabajado con todas las tecnologías de corte de materiales. Por eso entendemos tus necesidades desde una perspectiva de 360°.</p>
+    <p class="nos-key"><b>Más que una máquina, te ofrecemos experiencia:</b> hemos trabajado con todas las tecnologías de corte de materiales. Por eso entendemos tus necesidades desde una perspectiva de 360° y te ayudamos a encontrar la solución que mejor encaja con tu producción.</p>
 
     <h3 class="nos-vtitle nos-acomp-t">Te acompañamos en todo el proceso</h3>
     <ul class="nos-valores nos-acomp">
