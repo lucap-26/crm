@@ -632,6 +632,8 @@ body.ready .pick{animation-play-state:running}
 .nos-valores span{font-size:17.5px;line-height:1.6}
 .nos-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:72px 0 0;border-top:3px solid var(--ink)}
 .nos-facts li{padding:24px 22px 0 0}
+/* en escritorio, la misma separación entre las cuatro cifras: la primera pegada a la izquierda y la última a la derecha */
+@media (min-width:1001px){.nos-facts{display:flex;justify-content:space-between;gap:32px}.nos-facts li{padding:24px 0 0}}
 .nos-facts b{display:block;font-family:var(--font);font-weight:800;font-size:clamp(18px,1.55vw,22px);letter-spacing:-.6px;color:var(--brand);line-height:1.1}
 .nos-facts span{display:block;margin-top:6px;font-size:16px}
 .nos-cta{margin:56px 0 0;padding-bottom:110px}
