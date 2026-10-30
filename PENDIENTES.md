@@ -10,7 +10,6 @@
 ## Para confirmar con la empresa
 - **Sociedad titular de Krexon**: la política de privacidad usa ILUTRARE SL (CIF B67259804),
   tomada de lanmoon.org. Confirmar que Krexon pertenece a esa sociedad.
-- **Instagram de Krexon**: falta el enlace (hueco preparado en el pie, debajo de LinkedIn).
 - **Teléfono de WhatsApp**: confirmar que +34 623 968 619 tiene WhatsApp (en textos antiguos salía también +34 611 523 034).
 - **Destino de los formularios**: dónde deben llegar (servicio de formularios o servidor propio). La web ya tiene la función preparada (`ENVIO.url`).
 - **Revisión legal**: que un asesor o gestoría revise la política de privacidad (y el aviso legal cuando esté).
