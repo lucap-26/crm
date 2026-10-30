@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prueba de animación · Krexon</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#262626;--text:#3b3e40;--muted:#8c8c8c;--brand:#1f5a7e;--rule:#2997AA;--soft:#f5f5f5;--line:#e8e8e8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1280px;margin:0 auto;padding:22px 28px;border-bottom:1px solid var(--line)}
+.bar b{font-size:24px;letter-spacing:.02em;color:var(--brand)}
+.bar span{font-size:13px;color:var(--muted)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+
+/* Sección de la animación */
+.flow{padding:80px 0 96px;background:#fff}
+.flow-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);gap:48px;align-items:center}
+.flow h2{font-size:clamp(30px,3.2vw,44px);font-weight:600;line-height:1.08;letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
+.flow-lead{margin-top:16px;font-size:17.5px;line-height:1.6;max-width:44ch}
+.steps{list-style:none;margin-top:30px;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 12px;padding:14px 0 14px 14px;border-bottom:1px solid var(--line);border-left:3px solid transparent;transition:border-color .3s ease,background-color .3s ease}
+.steps li span{grid-row:span 2;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--muted);font-weight:600;font-size:14px;transition:background-color .3s ease,color .3s ease}
+.steps li b{font-weight:600;color:var(--ink);font-size:16.5px}
+.steps li small{font-size:14.5px;color:var(--muted);line-height:1.45}
+.steps li.on{border-left-color:var(--rule);background:#f7fafb}
+.steps li.on span{background:var(--brand);color:#fff}
+.stage{position:relative;background:linear-gradient(180deg,#f7f9fa 0%,#eef1f3 100%);aspect-ratio:1.18/1;max-height:640px;width:100%}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.note{margin-top:14px;font-size:13px;color:var(--muted)}
+@media (max-width:900px){.flow{padding:56px 0 64px}.flow-grid{grid-template-columns:minmax(0,1fr);gap:28px}.stage{order:-1}}
+</style>
+</head>
+<body>
+<div class="bar"><b>KREXON</b><span>Prueba de animación · no publicada en la web principal</span></div>
+
+<section class="flow" aria-labelledby="h-flow">
+  <div class="wrap flow-grid">
+    <div>
+      <h2 id="h-flow">Del almacén a la máquina, sin manipular la chapa</h2>
+      <p class="flow-lead">Automatizamos la carga para que tu láser no se detenga: el almacén entrega la chapa y el pórtico la coloca en la mesa de corte.</p>
+      <ol class="steps" id="steps">
+        <li data-step="0"><span>1</span><b>Almacén de chapa</b><small>El cajón sale con la chapa lista.</small></li>
+        <li data-step="1"><span>2</span><b>Carga por ventosas</b><small>El pórtico la recoge por vacío.</small></li>
+        <li data-step="2"><span>3</span><b>Traslado a la mesa</b><small>La deposita en la mesa de corte.</small></li>
+        <li data-step="3"><span>4</span><b>Entrada a corte</b><small>La mesa entra y empieza el corte.</small></li>
+      </ol>
+      <p class="note">Ilustración animada. El diseño de las máquinas es orientativo.</p>
+    </div>
+    <div class="stage"><canvas id="anim" role="img" aria-label="Animación: un almacén automático entrega una chapa, un pórtico con ventosas la traslada a la mesa y la mesa entra en la máquina de corte láser."></canvas></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  const cv=document.getElementById('anim'), ctx=cv.getContext('2d');
+  const stepsEl=[...document.querySelectorAll('#steps li')];
+  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const COS=Math.cos(Math.PI/6), SIN=Math.sin(Math.PI/6);
+  let W=0,H=0,k=1,ox=0,oy=0,dpr=1;
+
+  // Colores Krexon
+  const COL={blue:'#1f5a7e',blueD:'#174663',white:'#f2f4f6',grey:'#cdd4da',steel:'#a9b3bb',rail:'#3d4a54',floor:'#e6eaed',accent:'#2997AA',glass:'#1e2a33',metal:'#c3ccd3',post:'#8796a2'};
+
+  function resize(){
+    const r=cv.getBoundingClientRect(); dpr=Math.min(window.devicePixelRatio||1,2);
+    W=r.width; H=r.height; cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    // límites de la escena en coordenadas de pantalla (unidades): x [-12.5, 38.5], y [-17, 30]
+    k=Math.min(W/53, H/49); ox=W/2-13*k; oy=H/2-6.5*k;
+  }
+  const P=(x,y,z)=>[ox+(x-y)*COS*k, oy+((x+y)*SIN-z)*k];
+  function shade(hex,f){const n=parseInt(hex.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;r=Math.min(255,Math.round(r*f));g=Math.min(255,Math.round(g*f));b=Math.min(255,Math.round(b*f));return 'rgb('+r+','+g+','+b+')'}
+  function poly(pts,fill,stroke){ctx.beginPath();ctx.moveTo(pts[0][0],pts[0][1]);for(let i=1;i<pts.length;i++)ctx.lineTo(pts[i][0],pts[i][1]);ctx.closePath();ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=.6;ctx.stroke()}}
+  // caja isométrica: cara superior, cara +y (izquierda) y cara +x (derecha)
+  function box(x,y,z,w,d,h,c,opt){
+    opt=opt||{}; const e=opt.edge||'rgba(20,30,40,.18)';
+    poly([P(x,y+d,z),P(x+w,y+d,z),P(x+w,y+d,z+h),P(x,y+d,z+h)],opt.left||shade(c,.92),e);
+    poly([P(x+w,y,z),P(x+w,y+d,z),P(x+w,y+d,z+h),P(x+w,y,z+h)],opt.right||shade(c,.76),e);
+    poly([P(x,y,z+h),P(x+w,y,z+h),P(x+w,y+d,z+h),P(x,y+d,z+h)],opt.top||shade(c,1.06),e);
+  }
+  const clamp=v=>v<0?0:v>1?1:v;
+  const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  const seg=(t,a,b)=>ease(clamp((t-a)/(b-a)));
+  const lerp=(a,b,f)=>a+(b-a)*f;
+
+  // ---------- Escena ----------
+  const T=12, TH=.22;
+  const SHEET={w:8,d:4};
+  const DRAWER_IN=2.5, DRAWER_OUT=11.5;             // x del cajón (dentro / fuera del almacén)
+  const TABLE_X=21, TABLE_IN=10.5, TABLE_TOP=2.4;   // mesa de corte y su recorrido hacia la máquina
+  const BX_TABLE=25, BX_DRAWER=15.5;                // posición del puente sobre la mesa / el cajón
+  const ARM_UP=13, CARRY=9;
+  const STACK_BASE=.9, STACK_N=6;
+
+  function state(t){
+    const s={};
+    const out=seg(t,0,1.4)-seg(t,7.4,8.8);
+    s.drawerX=lerp(DRAWER_IN,DRAWER_OUT,out);
+    s.bx=lerp(BX_TABLE,BX_DRAWER,seg(t,.6,2.0)); if(t>=4.0) s.bx=lerp(BX_DRAWER,BX_TABLE,seg(t,4.0,5.8));
+    const stackTop=STACK_BASE+STACK_N*TH, place=TABLE_TOP+TH;
+    let cz=ARM_UP;
+    if(t<2.8) cz=lerp(ARM_UP,stackTop,seg(t,2.0,2.8));
+    else if(t<3.2) cz=stackTop;
+    else if(t<5.8) cz=lerp(stackTop,CARRY,seg(t,3.2,4.0));
+    else if(t<7.0) cz=lerp(CARRY,place,seg(t,5.8,6.6));
+    else cz=lerp(place,ARM_UP,seg(t,7.0,7.8));
+    s.cz=cz; s.vac=t>=2.8&&t<6.6;
+    s.sheet=t<3.2?'stack':t<6.6?'carried':t<9.8?'table':'gone';
+    s.table=lerp(0,TABLE_IN,seg(t,8.0,9.8))-lerp(0,TABLE_IN,seg(t,10.8,11.9));
+    s.cut=t>=9.8&&t<10.8; s.cutT=t;
+    s.run=t>=8.0&&t<11.0;
+    s.step=t<2.0?0:t<4.0?1:t<7.4?2:3;
+    return s;
+  }
+
+  function floor(){
+    poly([P(0,0,0),P(44,0,0),P(44,14,0),P(0,14,0)],COL.floor);
+    poly([P(0,14,0),P(44,14,0),P(44,14,-.6),P(0,14,-.6)],shade('#e6eaed',.9));
+    poly([P(44,0,0),P(44,14,0),P(44,14,-.6),P(44,0,-.6)],shade('#e6eaed',.8));
+    ctx.strokeStyle='rgba(31,90,126,.07)'; ctx.lineWidth=1;
+    for(let x=2;x<44;x+=2){const a=P(x,0,0),b=P(x,14,0);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke()}
+    for(let y=2;y<14;y+=2){const a=P(0,y,0),b=P(44,y,0);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke()}
+  }
+  function sheet(x,y,z,c){box(x,y,z,SHEET.w,SHEET.d,TH,c||COL.metal,{top:'#d7dee3',left:'#b6c0c8',right:'#9eaab3',edge:'rgba(40,60,75,.25)'})}
+  function shadow(x,y,alpha){ctx.globalAlpha=alpha;poly([P(x,y,0),P(x+SHEET.w,y,0),P(x+SHEET.w,y+SHEET.d,0),P(x,y+SHEET.d,0)],'#5b6a75');ctx.globalAlpha=1}
+
+  function towerBack(){
+    const post=(x,y)=>box(x,y,0,.5,.5,16,COL.blue);
+    post(2,3); post(10.5,3); post(2,10.5);
+    for(let i=0;i<5;i++){const z=4+i*2.4; box(2.3,3.3,z,8.4,7.4,.25,COL.grey); for(let j=0;j<3;j++) sheet(2.5,5,z+.25+j*TH)}
+  }
+  function drawer(s,picked){
+    const x=s.drawerX;
+    box(x-.3,4.6,.3,SHEET.w+.6,SHEET.d+.8,.6,COL.steel);
+    const n=picked?STACK_N-1:STACK_N;
+    for(let j=0;j<n;j++) sheet(x,5,STACK_BASE+j*TH);
+  }
+  function towerFront(){
+    box(10.5,10.5,0,.5,.5,16,COL.blue);
+    box(1.8,2.8,16,9.4,8.4,1,COL.blueD);
+  }
+  function tableBase(){
+    box(20.1,4.1,0,10,5.8,1.5,COL.blue);
+    box(20.1,4.1,1.5,10,.35,.4,COL.rail); box(20.1,9.55,1.5,10,.35,.4,COL.rail);
+  }
+  function table(s,withSheet){
+    const x=TABLE_X+s.table;
+    box(x-.5,4.4,1.9,SHEET.w+1,SHEET.d+1.2,.5,COL.white);
+    for(let i=0;i<5;i++) poly([P(x-.3+i*2.2,4.6,2.41),P(x-.3+i*2.2+.15,4.6,2.41),P(x-.3+i*2.2+.15,9.4,2.41),P(x-.3+i*2.2,9.4,2.41)],'rgba(31,90,126,.18)');
+    if(withSheet) sheet(x,5,TABLE_TOP);
+  }
+  function machine(s){
+    box(30,2.5,0,12,9,2.4,COL.blue);
+    box(30,2.5,2.4,12,9,4.6,COL.white);
+    box(29.8,2.3,7,12.4,9.4,.5,COL.blue);
+    // ventana en la cara frontal izquierda (y = 11.5)
+    const wz0=3.3,wz1=6.1,wx0=33,wx1=39.5;
+    poly([P(wx0,11.5,wz0),P(wx1,11.5,wz0),P(wx1,11.5,wz1),P(wx0,11.5,wz1)],COL.glass);
+    if(s.cut){const f=.55+.45*Math.abs(Math.sin(s.cutT*22));const c=P((wx0+wx1)/2,11.5,(wz0+wz1)/2);
+      const g=ctx.createRadialGradient(c[0],c[1],0,c[0],c[1],3.4*k);g.addColorStop(0,'rgba(190,240,250,'+(.95*f)+')');g.addColorStop(.35,'rgba(41,151,170,'+(.6*f)+')');g.addColorStop(1,'rgba(41,151,170,0)');
+      ctx.save();ctx.beginPath();const q=[P(wx0,11.5,wz0),P(wx1,11.5,wz0),P(wx1,11.5,wz1),P(wx0,11.5,wz1)];ctx.moveTo(q[0][0],q[0][1]);q.slice(1).forEach(p=>ctx.lineTo(p[0],p[1]));ctx.closePath();ctx.clip();ctx.fillStyle=g;ctx.fillRect(c[0]-4*k,c[1]-4*k,8*k,8*k);ctx.restore()}
+    // franja de acento y baliza
+    poly([P(30,11.5,2.4),P(42,11.5,2.4),P(42,11.5,2.7),P(30,11.5,2.7)],COL.accent);
+    box(40.6,3.2,7.5,.4,.4,2.2,COL.rail);
+    box(40.5,3.1,9.7,.6,.6,.6,s.run?'#3fbf7f':'#e0a33a',{top:s.run?'#6fe0a5':'#f2c46a'});
+  }
+  function gantryBack(){
+    box(10.2,1.2,0,.7,.7,18,COL.post); box(28.9,1.2,0,.7,.7,18,COL.post);
+    box(10.2,1.2,18,19.4,.7,1,COL.blueD);
+  }
+  function gantryFrontPosts(){ box(10.2,12.4,0,.7,.7,18,COL.post); box(28.9,12.4,0,.7,.7,18,COL.post) }
+  function gantryTop(s,carry){
+    const bx=s.bx;
+    box(bx-.6,1.3,18.9,1.2,11.7,.9,COL.blue);                    // puente
+    box(bx-1,5.9,17.6,2,2.2,1.3,COL.white);                       // carro
+    const cz=s.cz;
+    box(bx-.25,6.75,cz+.6,.5,.5,17.6-(cz+.6),COL.steel);         // columna
+    if(carry) sheet(bx-SHEET.w/2,5,cz-TH);
+    box(bx-3.6,6.6,cz+.35,7.2,.8,.25,COL.rail);                   // bastidor de ventosas
+    for(const dx of [-3.2,-1.1,1.1,3.2]) for(const dy of [5.4,7.6]){
+      box(bx+dx-.25,dy+.05,cz,.5,.5,.35,s.vac?COL.accent:'#59646d',{top:s.vac?'#7fdcea':'#7b858d'});
+      box(bx+dx-.08,dy+.22,cz+.35,.16,.16,.0001+(dy<7?1.1:.2),COL.rail);
+    }
+    box(10.2,12.4,18,19.4,.7,1,COL.blueD);                        // carril delantero
+  }
+  function label(text,x,y,z){
+    const p=P(x,y,z); ctx.font='600 '+Math.max(11,Math.round(k*.95))+'px Figtree, system-ui, sans-serif';
+    const w=ctx.measureText(text).width+16, h=Math.max(22,k*1.6), lx=p[0]-w/2, ly=p[1]-h-10;
+    ctx.strokeStyle='rgba(31,90,126,.45)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(p[0],p[1]); ctx.lineTo(p[0],ly+h); ctx.stroke();
+    ctx.fillStyle='#fff'; ctx.shadowColor='rgba(0,0,0,.12)'; ctx.shadowBlur=8; ctx.shadowOffsetY=2;
+    ctx.beginPath(); if(ctx.roundRect) ctx.roundRect(lx,ly,w,h,h/2); else ctx.rect(lx,ly,w,h); ctx.fill();
+    ctx.shadowColor='transparent'; ctx.fillStyle='#1f5a7e'; ctx.textBaseline='middle'; ctx.textAlign='center'; ctx.fillText(text,p[0],ly+h/2+.5);
+  }
+
+  function draw(t){
+    const s=state(t);
+    ctx.clearRect(0,0,W,H);
+    floor();
+    if(s.sheet==='carried') shadow(s.bx-SHEET.w/2,5,.08+.06*(1-(s.cz-2)/10));
+    gantryBack();
+    towerBack();
+    drawer(s,s.sheet!=='stack');
+    if(s.sheet==='stack') {/* la chapa superior forma parte de la pila */}
+    towerFront();
+    tableBase();
+    table(s,s.sheet==='table');
+    gantryFrontPosts();
+    machine(s);
+    gantryTop(s,s.sheet==='carried');
+    label('Almacén de chapa',6.5,7,17.2);
+    label('Corte láser',36,7,7.6);
+    return s.step;
+  }
+
+  let last=-1, start=performance.now(), raf=0, visible=true;
+  function setStep(i){ if(i===last) return; last=i; stepsEl.forEach((li,j)=>li.classList.toggle('on',j===i)); }
+  function frame(now){
+    const t=((now-start)/1000)%T;
+    setStep(draw(t));
+    raf=requestAnimationFrame(frame);
+  }
+  function play(){ if(!raf&&visible&&!document.hidden&&!RM){ raf=requestAnimationFrame(frame);} }
+  function stop(){ cancelAnimationFrame(raf); raf=0; }
+
+  resize();
+  const fijo=new URLSearchParams(location.search).get('t');
+  if(fijo!==null){ const tf=+fijo; const redraw=()=>setStep(draw(tf)); redraw(); addEventListener('resize',()=>{resize();redraw()}); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(redraw); return; }
+  if(RM){ setStep(draw(5)); }
+  addEventListener('resize',()=>{ resize(); if(RM) draw(5); });
+  if('IntersectionObserver' in window) new IntersectionObserver(e=>{ visible=e[0].isIntersecting; visible?play():stop(); }).observe(cv);
+  document.addEventListener('visibilitychange',()=>{ document.hidden?stop():play(); });
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if(RM) draw(5); });
+  play();
+})();
+</script>
+</body>
+</html>
