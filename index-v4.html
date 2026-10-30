@@ -3052,9 +3052,11 @@ document.querySelectorAll('.card .pic img').forEach(img=>{
 
   /* ENVÍO DE FORMULARIOS — un único punto para los tres formularios (contacto, servicio técnico, automatización).
      Las solicitudes llegan por correo a info@krexon.com a través de FormSubmit (formsubmit.co), sin servidor propio.
+     Mientras ENVIO.activo sea false no se envía nada: se abre el programa de correo del usuario con el mensaje escrito.
      La primera vez, FormSubmit envía a info@krexon.com un correo de activación: hasta que se pulsa «Activate Form»
      no reenvía nada. Si el envío falla, se abre el programa de correo del usuario con el mensaje ya escrito. */
   const ENVIO = {
+    activo: false,                   // pendiente de permiso: con false no se envía nada a FormSubmit
     url: 'https://formsubmit.co/ajax/info@krexon.com',
     email: 'info@krexon.com',
     telefono: '+34 623 968 619'
@@ -3064,6 +3066,11 @@ document.querySelectorAll('.card .pic img').forEach(img=>{
     if (hp) return;                  // campo trampa para spam: una persona no lo rellena
     const cuerpo = Object.keys(datos).map(k => k + ': ' + (datos[k] || '—')).join('\n');
     const porCorreo = () => { location.href = 'mailto:' + ENVIO.email + '?subject=' + encodeURIComponent(asunto) + '&body=' + encodeURIComponent(cuerpo); };
+    if (!ENVIO.activo) {
+      estado('Hemos preparado el correo en tu programa de correo. Revísalo y pulsa enviar. Si no se abre, escríbenos a ' + ENVIO.email + ' o llámanos al ' + ENVIO.telefono + '.', '');
+      porCorreo();
+      return;
+    }
     estado('Enviando…', '');
     const envio = Object.assign({ _subject: asunto, _template: 'table', _captcha: 'false', 'Formulario': origen }, datos);
     if (datos.Email) envio._replyto = datos.Email;
