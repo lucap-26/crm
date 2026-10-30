@@ -921,6 +921,9 @@ footer .foot-bar{justify-content:flex-start;gap:8px 28px}
 footer .foot-col{line-height:1.5}
 footer .foot-col h4{margin-top:0;line-height:1.4}
 footer .foot-col ul{margin:0;padding:0}
+/* Ficha: tamaños de mesa disponibles */
+.mtam{margin:2px 0;padding:12px 16px;border-left:3px solid var(--brand-2);background:var(--soft);font-size:15px;line-height:1.5;color:var(--ink)}
+.mtam b{font-weight:600}
 
 /* ==========================================================
    VERSIÓN 3 · Sistema de DESIGN-krexon.md
@@ -1347,6 +1350,8 @@ header:not(.light) .menu>.menu-list>li>a{text-shadow:0 1px 8px rgba(0,0,0,.35)}
 .lg-sum-grid dt{color:var(--rule)}
 /* Pie (v4): grafito con una línea fina de color Krexon arriba */
 footer{background:#1f2122;border-top:3px solid var(--rule)}
+.mtam{background:var(--soft-2);border-left-color:var(--rule)}
+@media (min-width:901px){.mtam{font-size:14px;padding:9px 14px}}
 
 </style>
 </head>
@@ -1546,8 +1551,8 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <div class="mcard-pic"><img loading="lazy" src="img/hc.webp" alt="Máquina de corte láser de fibra con cabina cerrada, serie HC" width="600" height="390"></div>
         <div class="mcard-body">
           <span class="mcard-tag">Cabina cerrada</span>
-          <h3>K3015HC</h3>
-          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>20 mm</b> espesor máx. de acero al carbono</li><li><b>6050 × 2030 mm</b> formato máximo de chapa</li></ul>
+          <h3>Serie HC</h3>
+          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>20 mm</b> espesor máx. de acero al carbono</li><li><b>3000 × 1500 mm</b> formato de chapa · modelo 3015</li></ul>
           <p class="mcard-res">Cabina totalmente cerrada y doble mesa intercambiable, en un tamaño compacto.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-plano-hc" data-open="corte-plano-hc"><span>Ver información</span></button>
         </div>
@@ -1556,8 +1561,8 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <div class="mcard-pic"><img loading="lazy" src="img/np-semi.webp" alt="Máquina de corte láser serie NP con cámara protectora sobre la viga" width="600" height="390"></div>
         <div class="mcard-body">
           <span class="mcard-tag">Cabina semicerrada</span>
-          <h3>K3015NP</h3>
-          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>30 mm</b> espesor máx. de acero al carbono</li><li><b>6050 × 2030 mm</b> formato máximo de chapa</li></ul>
+          <h3>Serie NP</h3>
+          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>30 mm</b> espesor máx. de acero al carbono</li><li><b>3000 × 1500 mm</b> formato de chapa · modelo 3015</li></ul>
           <p class="mcard-res">Estructura compacta con la viga protegida por una cámara que evita la dispersión de humos.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-plano-np-semicerrada" data-open="corte-plano-np-semicerrada"><span>Ver información</span></button>
         </div>
@@ -1567,21 +1572,22 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <div class="mcard-body">
           <span class="mcard-tag">Cabina abierta</span>
           <h3>Serie NP</h3>
-          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>30 mm</b> espesor máx. de acero al carbono</li><li><b>6050 × 2030 mm</b> formato máximo de chapa</li></ul>
+          <ul class="mcard-kpi"><li><b>1,5 – 12 kW</b> potencia láser</li><li><b>30 mm</b> espesor máx. de acero al carbono</li><li><b>3000 × 1500 mm</b> formato de chapa · modelo 3015</li></ul>
           <p class="mcard-res">Estructura abierta y compacta, con fácil acceso a la mesa para cargar y descargar.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-plano-np-abierta" data-open="corte-plano-np-abierta"><span>Ver información</span></button>
         </div>
       </article>
     </div>
 
-    <div class="mdetail" id="md-corte-plano-hc" role="region" aria-label="Información: K3015HC, cabina cerrada" hidden>
+    <div class="mdetail" id="md-corte-plano-hc" role="region" aria-label="Información: Serie HC, cabina cerrada" hidden>
       <button type="button" class="mclose" data-close aria-label="Cerrar información">×</button>
       <div class="mdetail-pic"><img loading="lazy" src="img/hc.webp" alt="" width="600" height="390"></div>
       <div class="mdetail-txt">
         <span class="mcard-tag">Cabina cerrada</span>
-        <h3>K3015HC</h3>
+        <h3>Serie HC</h3>
         <p>Máquina de corte de chapa de fibra óptica con cabina totalmente cerrada y doble mesa intercambiable. Pensada para cortar chapa fina y media a alta velocidad en un tamaño compacto, para talleres que quieren potencia y tienen poco espacio.</p>
-        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>20 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>6050 × 2030 mm</b><span>formato máximo de chapa</span></li><li><b>2.900 kg</b><span>carga máx. de mesa</span></li></ul>
+        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>20 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>3000 × 1500 mm</b><span>formato de chapa · modelo 3015</span></li><li><b>2.900 kg</b><span>carga máx. de mesa</span></li></ul>
+        <p class="mtam">Disponible en tres tamaños de mesa: <b>3015</b> (3000 × 1500 mm), <b>4020</b> (4000 × 2000 mm) y <b>6025</b> (6000 × 2500 mm).</p>
         <ul class="mfeats"><li><b>Cabina totalmente cerrada:</b> paneles de chapa por los cuatro lados, cubierta superior y puerta elevable sellada. Un entorno controlado y seguro para el operario y para la máquina.</li><li><b>Doble mesa intercambiable</b> para cargar la siguiente chapa mientras se corta la anterior.</li><li><b>Extracción de humos inteligente:</b> activa las zonas de aspiración según la posición del corte, con base sellada para un corte sin humo.</li><li><b>Monitorización visual panorámica</b> en alta definición integrada en la máquina.</li><li><b>Funciones de corte:</b> salto del cabezal sobre las piezas ya cortadas (reduce el tiempo en vacío al menos un 70 %), perforación rápida y progresiva, microuniones y detección automática del borde de la chapa.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> TÜV-CE · FDA · ETL · UDEM-CE · RoHS</p>
         <div class="mactions">
@@ -1590,14 +1596,15 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         </div>
       </div>
     </div>
-    <div class="mdetail" id="md-corte-plano-np-semicerrada" role="region" aria-label="Información: K3015NP, cabina semicerrada" hidden>
+    <div class="mdetail" id="md-corte-plano-np-semicerrada" role="region" aria-label="Información: Serie NP, cabina semicerrada" hidden>
       <button type="button" class="mclose" data-close aria-label="Cerrar información">×</button>
       <div class="mdetail-pic"><img loading="lazy" src="img/np-semi.webp" alt="" width="600" height="390"></div>
       <div class="mdetail-txt">
         <span class="mcard-tag">Cabina semicerrada</span>
-        <h3>K3015NP</h3>
+        <h3>Serie NP</h3>
         <p>Máquina de corte de chapa compacta, pensada para chapa fina y media (hasta 30 mm). En esta configuración incorpora una cámara protectora sobre la viga que se desplaza a la par que el corte.</p>
-        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>30 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>6050 × 2030 mm</b><span>formato máximo de chapa</span></li><li><b>120 m/min</b><span>velocidad máx. en vacío</span></li></ul>
+        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>30 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>3000 × 1500 mm</b><span>formato de chapa · modelo 3015</span></li><li><b>120 m/min</b><span>velocidad máx. en vacío</span></li></ul>
+        <p class="mtam">Disponible en tres tamaños de mesa: <b>3015</b> (3000 × 1500 mm), <b>4020</b> (4000 × 2000 mm) y <b>6025</b> (6000 × 2500 mm).</p>
         <ul class="mfeats"><li><b>Cámara protectora sobre la viga:</b> se mueve sincronizada con el corte y se sella con una puerta corredera para evitar que se dispersen los humos. Viga cerrada conforme a las certificaciones europeas y americanas.</li><li><b>Mesa con bolas de transferencia</b> que reducen el rozamiento y el riesgo de rayar la chapa; muy adecuada para la carga manual o semiautomática.</li><li><b>Gran dinámica de corte:</b> mesa hueca que bloquea la transferencia de calor y viga de aleación de aluminio de alta resistencia, ligera y estable.</li><li><b>Ampliable:</b> carga y descarga automáticas opcionales con ventosas y manipulador de cercha, y corte inteligente con aire opcional.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
@@ -1613,7 +1620,8 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <span class="mcard-tag">Cabina abierta</span>
         <h3>Serie NP</h3>
         <p>La misma máquina compacta en su configuración de estructura abierta, pensada para cortar chapa fina y media (hasta 30 mm) en talleres con espacio limitado.</p>
-        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>30 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>6050 × 2030 mm</b><span>formato máximo de chapa</span></li><li><b>120 m/min</b><span>velocidad máx. en vacío</span></li></ul>
+        <ul class="mdetail-kpis"><li><b>1,5 – 12 kW</b><span>potencia láser</span></li><li><b>30 mm</b><span>espesor máx. de acero al carbono</span></li><li><b>3000 × 1500 mm</b><span>formato de chapa · modelo 3015</span></li><li><b>120 m/min</b><span>velocidad máx. en vacío</span></li></ul>
+        <p class="mtam">Disponible en tres tamaños de mesa: <b>3015</b> (3000 × 1500 mm), <b>4020</b> (4000 × 2000 mm) y <b>6025</b> (6000 × 2500 mm).</p>
         <ul class="mfeats"><li><b>Estructura abierta y compacta</b>, con acceso directo a la mesa de corte.</li><li><b>Mesa con bolas de transferencia</b> que reducen el rozamiento y el riesgo de rayar la chapa; muy adecuada para la carga manual o semiautomática.</li><li><b>Gran dinámica de corte:</b> mesa hueca que bloquea la transferencia de calor y viga de aleación de aluminio de alta resistencia, ligera y estable.</li><li><b>Ampliable:</b> carga y descarga automáticas opcionales con ventosas y manipulador de cercha, y corte inteligente con aire opcional.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
@@ -1627,24 +1635,24 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
       <summary id="cmp-corte-plano"><span>Comparativa de las tres máquinas</span></summary>
     <div class="cmp-wrap" role="region" aria-labelledby="cmp-corte-plano" tabindex="0">
       <table class="cmp">
-        <thead><tr><td></td><th scope="col"><span>Cabina cerrada</span>K3015HC</th><th scope="col"><span>Cabina semicerrada</span>K3015NP</th><th scope="col"><span>Cabina abierta</span>Serie NP</th></tr></thead>
+        <thead><tr><td></td><th scope="col"><span>Cabina cerrada</span>Serie HC</th><th scope="col"><span>Cabina semicerrada</span>Serie NP</th><th scope="col"><span>Cabina abierta</span>Serie NP</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Tipo de cabina</th><td data-label="K3015HC">Cerrada</td><td data-label="K3015NP">Semicerrada (viga cubierta)</td><td data-label="Serie NP">Abierta</td></tr>
-          <tr><th scope="row">Serie</th><td data-label="K3015HC">HC</td><td data-label="K3015NP">NP</td><td data-label="Serie NP">NP</td></tr>
-          <tr><th scope="row">Potencia láser</th><td data-label="K3015HC">1,5 – 12 kW</td><td data-label="K3015NP">1,5 – 12 kW</td><td data-label="Serie NP">1,5 – 12 kW</td></tr>
-          <tr><th scope="row">Espesor máx. de acero al carbono</th><td data-label="K3015HC">20 mm</td><td data-label="K3015NP">30 mm</td><td data-label="Serie NP">30 mm</td></tr>
-          <tr><th scope="row">Formato de chapa</th><td data-label="K3015HC">de 3050 × 1530 a 6050 × 2030 mm</td><td data-label="K3015NP">de 3050 × 1530 a 6050 × 2030 mm</td><td data-label="Serie NP">de 3050 × 1530 a 6050 × 2030 mm</td></tr>
-          <tr><th scope="row">Modelos</th><td data-label="K3015HC">3015H · 4015H · 4020H · 6015H · 6020H</td><td data-label="K3015NP">3015NP · 4020NP · 6015NP · 6020NP</td><td data-label="Serie NP">3015NP · 4020NP · 6015NP · 6020NP</td></tr>
-          <tr><th scope="row">Velocidad máx. en vacío</th><td data-label="K3015HC">130 m/min</td><td data-label="K3015NP">120 m/min</td><td data-label="Serie NP">120 m/min</td></tr>
-          <tr><th scope="row">Aceleración máx.</th><td data-label="K3015HC">1,2 G</td><td data-label="K3015NP">1,2 G</td><td data-label="Serie NP">1,2 G</td></tr>
-          <tr><th scope="row">Precisión de posicionamiento / repetibilidad</th><td data-label="K3015HC">±0,05 mm / ±0,02 mm</td><td data-label="K3015NP">±0,05 mm / ±0,02 mm</td><td data-label="Serie NP">±0,05 mm / ±0,02 mm</td></tr>
-          <tr><th scope="row">Carga máx. de mesa</th><td data-label="K3015HC">hasta 2.900 kg</td><td data-label="K3015NP">hasta 2.800 kg</td><td data-label="Serie NP">hasta 2.800 kg</td></tr>
-          <tr><th scope="row">Mesa</th><td data-label="K3015HC">Doble mesa intercambiable</td><td data-label="K3015NP">Mesa con bolas de transferencia</td><td data-label="Serie NP">Mesa con bolas de transferencia</td></tr>
-          <tr><th scope="row">Protección y humos</th><td data-label="K3015HC">Cabina cerrada y extracción inteligente por zonas</td><td data-label="K3015NP">Cámara protectora sobre la viga</td><td data-label="Serie NP">Estructura abierta</td></tr>
-          <tr><th scope="row">Carga y descarga automáticas</th><td data-label="K3015HC">Opcional</td><td data-label="K3015NP">Opcional</td><td data-label="Serie NP">Opcional</td></tr>
-          <tr><th scope="row">Alimentación eléctrica</th><td data-label="K3015HC">Trifásica 380 V, 50/60 Hz</td><td data-label="K3015NP">Trifásica 380 V, 50/60 Hz</td><td data-label="Serie NP">Trifásica 380 V, 50/60 Hz</td></tr>
-          <tr><th scope="row">Dimensiones totales</th><td data-label="K3015HC">de 8.520 × 2.270 × 2.180 a 14.900 × 3.243 × 2.260 mm</td><td data-label="K3015NP">de 4.482 × 2.760 × 1.960 a 8.100 × 3.260 × 1.800 mm</td><td data-label="Serie NP">de 4.482 × 2.760 × 1.960 a 8.100 × 3.260 × 1.800 mm</td></tr>
-          <tr><th scope="row">Certificaciones</th><td data-label="K3015HC">TÜV-CE, FDA, ETL, UDEM-CE, RoHS</td><td data-label="K3015NP">FDA, UDEM-CE</td><td data-label="Serie NP">FDA, UDEM-CE</td></tr>
+          <tr><th scope="row">Tipo de cabina</th><td data-label="Serie HC">Cerrada</td><td data-label="Serie NP">Semicerrada (viga cubierta)</td><td data-label="Serie NP">Abierta</td></tr>
+          <tr><th scope="row">Serie</th><td data-label="Serie HC">HC</td><td data-label="Serie NP">NP</td><td data-label="Serie NP">NP</td></tr>
+          <tr><th scope="row">Potencia láser</th><td data-label="Serie HC">1,5 – 12 kW</td><td data-label="Serie NP">1,5 – 12 kW</td><td data-label="Serie NP">1,5 – 12 kW</td></tr>
+          <tr><th scope="row">Espesor máx. de acero al carbono</th><td data-label="Serie HC">20 mm</td><td data-label="Serie NP">30 mm</td><td data-label="Serie NP">30 mm</td></tr>
+          <tr><th scope="row">Formato de chapa</th><td data-label="Serie HC">3000 × 1500 mm (3015) · 4000 × 2000 mm (4020) · 6000 × 2500 mm (6025)</td><td data-label="Serie NP">3000 × 1500 mm (3015) · 4000 × 2000 mm (4020) · 6000 × 2500 mm (6025)</td><td data-label="Serie NP">3000 × 1500 mm (3015) · 4000 × 2000 mm (4020) · 6000 × 2500 mm (6025)</td></tr>
+          <tr><th scope="row">Modelos</th><td data-label="Serie HC">3015 · 4020 · 6025</td><td data-label="Serie NP">3015 · 4020 · 6025</td><td data-label="Serie NP">3015 · 4020 · 6025</td></tr>
+          <tr><th scope="row">Velocidad máx. en vacío</th><td data-label="Serie HC">130 m/min</td><td data-label="Serie NP">120 m/min</td><td data-label="Serie NP">120 m/min</td></tr>
+          <tr><th scope="row">Aceleración máx.</th><td data-label="Serie HC">1,2 G</td><td data-label="Serie NP">1,2 G</td><td data-label="Serie NP">1,2 G</td></tr>
+          <tr><th scope="row">Precisión de posicionamiento / repetibilidad</th><td data-label="Serie HC">±0,05 mm / ±0,02 mm</td><td data-label="Serie NP">±0,05 mm / ±0,02 mm</td><td data-label="Serie NP">±0,05 mm / ±0,02 mm</td></tr>
+          <tr><th scope="row">Carga máx. de mesa</th><td data-label="Serie HC">hasta 2.900 kg</td><td data-label="Serie NP">hasta 2.800 kg</td><td data-label="Serie NP">hasta 2.800 kg</td></tr>
+          <tr><th scope="row">Mesa</th><td data-label="Serie HC">Doble mesa intercambiable</td><td data-label="Serie NP">Mesa con bolas de transferencia</td><td data-label="Serie NP">Mesa con bolas de transferencia</td></tr>
+          <tr><th scope="row">Protección y humos</th><td data-label="Serie HC">Cabina cerrada y extracción inteligente por zonas</td><td data-label="Serie NP">Cámara protectora sobre la viga</td><td data-label="Serie NP">Estructura abierta</td></tr>
+          <tr><th scope="row">Carga y descarga automáticas</th><td data-label="Serie HC">Opcional</td><td data-label="Serie NP">Opcional</td><td data-label="Serie NP">Opcional</td></tr>
+          <tr><th scope="row">Alimentación eléctrica</th><td data-label="Serie HC">Trifásica 380 V, 50/60 Hz</td><td data-label="Serie NP">Trifásica 380 V, 50/60 Hz</td><td data-label="Serie NP">Trifásica 380 V, 50/60 Hz</td></tr>
+          <tr><th scope="row">Dimensiones totales</th><td data-label="Serie HC">de 8.520 × 2.270 × 2.180 a 14.900 × 3.243 × 2.260 mm</td><td data-label="Serie NP">de 4.482 × 2.760 × 1.960 a 8.100 × 3.260 × 1.800 mm</td><td data-label="Serie NP">de 4.482 × 2.760 × 1.960 a 8.100 × 3.260 × 1.800 mm</td></tr>
+          <tr><th scope="row">Certificaciones</th><td data-label="Serie HC">TÜV-CE, FDA, ETL, UDEM-CE, RoHS</td><td data-label="Serie NP">FDA, UDEM-CE</td><td data-label="Serie NP">FDA, UDEM-CE</td></tr>
         </tbody>
       </table>
     </div>
@@ -1653,8 +1661,8 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
     <details class="cmp-det pdf-det">
       <summary id="pdf-corte-plano"><span>Descargar fichas en PDF</span></summary>
       <ul class="pdf-list" aria-labelledby="pdf-corte-plano">
-        <li><span class="pdf-name"><b>K3015HC</b> Cabina cerrada</span><a class="btn pdf-btn" href="docs/K3015HC-1.5-6kW.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></li>
-        <li><span class="pdf-name"><b>K3015NP</b> Cabina semicerrada</span><a class="btn pdf-btn" href="docs/K3015NP_1.5-6kW.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></li>
+        <li><span class="pdf-name"><b>Serie HC</b> Cabina cerrada</span><a class="btn pdf-btn" href="docs/K3015HC-1.5-6kW.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></li>
+        <li><span class="pdf-name"><b>Serie NP</b> Cabina semicerrada</span><a class="btn pdf-btn" href="docs/K3015NP_1.5-6kW.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></li>
         <li><span class="pdf-name"><b>Serie NP</b> Cabina abierta</span><a class="btn pdf-btn" href="docs/ficha-np-abierta.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></li>
       </ul>
     </details>
@@ -1702,6 +1710,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>Serie T</h3>
         <p>Máquina de corte de tubo de dos mandriles, de nivel de entrada y muy rentable, ideal para series pequeñas. Corta tubo con colas ultracortas: en tubo pequeño, sin sobrecalentamiento ni escoria adherida; en tubo grande, a gran velocidad. Admite distintos materiales y se utiliza en transporte ferroviario, automoción, maquinaria de construcción y maquinaria agrícola y forestal.</p>
         <ul class="mdetail-kpis"><li><b>1,5 – 6 kW</b><span>potencia láser</span></li><li><b>hasta 12.000 mm</b><span>longitud de tubo</span></li><li><b>Ø 15 – 360 mm</b><span>tamaño de tubo</span></li><li><b>120 – 500 kg</b><span>peso de tubo</span></li></ul>
+        
         <ul class="mfeats"><li><b>Dos mandriles de alta precisión</b> con diseño antipolvo que alarga su vida útil; el aluminio ligero ofrece gran capacidad de carga y estabilidad.</li><li><b>Tubo redondo, cuadrado y rectangular</b>, y perfiles: centrado automático de vigas H, U y L.</li><li><b>Apoyo de seguimiento o de paso variable (opcional):</b> evita que el tubo se curve y se adapta a distintos diámetros.</li><li><b>Software de corte:</b> anidado de una o varias piezas para aprovechar al máximo el material, importación rápida de archivos IGS, ordenación automática de trayectorias y diseño 3D de piezas integrado.</li><li><b>Carga y descarga automáticas (opcional):</b> desde carga semiautomática hasta carga totalmente automática de tubos de hasta 12 m, con descarga automática que separa recortes y piezas terminadas.</li><li><b>Opcionales:</b> detección del cordón de soldadura y escaneado visual para corregir la posición del tubo.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> TÜV-CE · FDA · ETL · UDEM-CE · RoHS</p>
         <div class="mactions">
@@ -1718,6 +1727,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>Serie NT</h3>
         <p>Máquina polivalente para cortar tubo largo (de 6.000 a 12.000 mm) y de gran tamaño (hasta 360 mm). Aunque tiene tres mandriles, permite el corte sin cola si el proceso está bien planificado, lo que aprovecha al máximo el material y reduce el coste de compra.</p>
         <ul class="mdetail-kpis"><li><b>3 – 12 kW</b><span>potencia láser</span></li><li><b>hasta 12.000 mm</b><span>longitud de tubo</span></li><li><b>Ø 20 – 360 mm</b><span>tamaño de tubo</span></li><li><b>260 – 700 kg</b><span>peso de tubo</span></li></ul>
+        
         <ul class="mfeats"><li><b>Estructura de tres mandriles</b> para un amarre preciso y un mecanizado estable de piezas largas. Mandril delantero extendido, tipo “cañón”, para una cola más corta.</li><li><b>Corte sin cola:</b> el mandril móvil permite cargar y descargar el tubo completo y minimiza el material sobrante.</li><li><b>Sistema de apoyo de seguimiento:</b> sigue el giro y el movimiento vertical del tubo durante el corte para evitar que se curve.</li><li><b>Descarga automática</b> que separa recortes y piezas terminadas, con volteo inteligente.</li><li><b>Corte con bisel (opcional):</b> con el software de anidado genera los planos de bisel de varios tipos, para facilitar la soldadura posterior.</li><li><b>Software de corte:</b> anidado de una o varias piezas, importación rápida de archivos IGS y ordenación automática de trayectorias.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> TÜV-CE · FDA · ETL · UDEM-CE · RoHS</p>
         <div class="mactions">
@@ -1776,7 +1786,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <div class="mcard-pic"><img loading="lazy" src="img/hm.webp" alt="Máquina de corte láser combinada de chapa y tubo con cabina cerrada, serie HM" width="600" height="390"></div>
         <div class="mcard-body">
           <span class="mcard-tag">Cabina cerrada</span>
-          <h3>K3015HM</h3>
+          <h3>Serie HM</h3>
           <ul class="mcard-kpi"><li><b>6 – 30 kW</b> potencia láser</li><li><b>hasta 60 mm</b> acero al carbono (chapa)</li><li><b>Ø 20 – 220 mm</b> tubo redondo</li></ul>
           <p class="mcard-res">Chapa y tubo en una sola máquina, con cabina totalmente cerrada y doble mesa.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-combinado-hm" data-open="corte-combinado-hm"><span>Ver información</span></button>
@@ -1786,7 +1796,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <div class="mcard-pic"><img loading="lazy" src="img/c.webp" alt="Máquina de corte láser combinada de chapa y tubo de estructura abierta, serie C" width="600" height="390"></div>
         <div class="mcard-body">
           <span class="mcard-tag">Cabina abierta</span>
-          <h3>K3015C</h3>
+          <h3>Serie C</h3>
           <ul class="mcard-kpi"><li><b>1,5 – 6 kW</b> potencia láser</li><li><b>hasta 20 mm</b> acero al carbono (chapa)</li><li><b>Ø 20 – 220 mm</b> tubo redondo</li></ul>
           <p class="mcard-res">Chapa y tubo con una sola mesa y estructura abierta y compacta: la opción más asequible.</p>
           <button type="button" class="more mcard-btn" aria-expanded="false" aria-controls="md-corte-combinado-c" data-open="corte-combinado-c"><span>Ver información</span></button>
@@ -1794,14 +1804,15 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
       </article>
     </div>
 
-    <div class="mdetail" id="md-corte-combinado-hm" role="region" aria-label="Información: K3015HM, cabina cerrada" hidden>
+    <div class="mdetail" id="md-corte-combinado-hm" role="region" aria-label="Información: Serie HM, cabina cerrada" hidden>
       <button type="button" class="mclose" data-close aria-label="Cerrar información">×</button>
       <div class="mdetail-pic"><img loading="lazy" src="img/hm.webp" alt="" width="600" height="390"></div>
       <div class="mdetail-txt">
         <span class="mcard-tag">Cabina cerrada</span>
-        <h3>K3015HM</h3>
+        <h3>Serie HM</h3>
         <p>Máquina de doble función con estructura totalmente cerrada que corta chapa y tubo. Frente a tener dos máquinas, ahorra coste de compra y superficie en el taller, y facilita cumplir los requisitos medioambientales.</p>
         <ul class="mdetail-kpis"><li><b>6 – 30 kW</b><span>potencia láser</span></li><li><b>hasta 60 mm</b><span>acero al carbono (chapa)</span></li><li><b>Ø 20 – 220 mm</b><span>tubo redondo</span></li><li><b>200 m/min</b><span>velocidad máx. en vacío</span></li></ul>
+        
         <ul class="mfeats"><li><b>Dos máquinas en una:</b> ahorra más de un 50 % en coste de compra y en superficie ocupada frente a máquinas separadas.</li><li><b>Doble mesa intercambiable:</b> se corta, se carga y se descarga a la vez, sin tiempos de espera.</li><li><b>Mesa robusta de corte estable:</b> chapa de acero al carbono de hasta 60 mm y tubo de 500 a 6.000 mm de largo, redondo (Ø 20–220 mm) y cuadrado.</li><li><b>Extracción de humos inteligente</b> y monitorización visual de todo el entorno de trabajo.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> TÜV-CE · FDA · ETL · UDEM-CE · RoHS</p>
         <div class="mactions">
@@ -1810,14 +1821,15 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         </div>
       </div>
     </div>
-    <div class="mdetail" id="md-corte-combinado-c" role="region" aria-label="Información: K3015C, cabina abierta" hidden>
+    <div class="mdetail" id="md-corte-combinado-c" role="region" aria-label="Información: Serie C, cabina abierta" hidden>
       <button type="button" class="mclose" data-close aria-label="Cerrar información">×</button>
       <div class="mdetail-pic"><img loading="lazy" src="img/c.webp" alt="" width="600" height="390"></div>
       <div class="mdetail-txt">
         <span class="mcard-tag">Cabina abierta</span>
-        <h3>K3015C</h3>
+        <h3>Serie C</h3>
         <p>Modelo asequible de doble función: corta chapa y tubo con una sola mesa y una estructura compacta y abierta. Necesita mucha menos inversión inicial, por lo que es una buena opción para quien empieza.</p>
         <ul class="mdetail-kpis"><li><b>1,5 – 6 kW</b><span>potencia láser</span></li><li><b>hasta 20 mm</b><span>acero al carbono (chapa)</span></li><li><b>Ø 20 – 220 mm</b><span>tubo redondo</span></li><li><b>100 m/min</b><span>velocidad máx. en vacío</span></li></ul>
+        
         <ul class="mfeats"><li><b>Dos funciones con un presupuesto limitado:</b> corta chapa y tubos pequeños y medianos, con mesa única y poca superficie ocupada.</li><li><b>Estructura abierta:</b> la chapa se carga y descarga por delante, por detrás o por los lados.</li><li><b>Cabezal de enfoque automático:</b> corta rápido acero inoxidable de hasta 16 mm, acero al carbono de hasta 20 mm y latón o aluminio de hasta 8 mm.</li><li><b>Mandril neumático autocentrante:</b> sujeta con firmeza tubo de 500 a 6.000 mm de largo, redondo (Ø 20–220 mm) y cuadrado, y centra perfiles H, U y L.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE · RoHS</p>
         <div class="mactions">
@@ -1831,20 +1843,20 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
       <summary id="cmp-corte-combinado"><span>Comparativa de las dos máquinas</span></summary>
     <div class="cmp-wrap" role="region" aria-labelledby="cmp-corte-combinado" tabindex="0">
       <table class="cmp">
-        <thead><tr><td></td><th scope="col"><span>Cabina cerrada</span>K3015HM</th><th scope="col"><span>Cabina abierta</span>K3015C</th></tr></thead>
+        <thead><tr><td></td><th scope="col"><span>Cabina cerrada</span>Serie HM</th><th scope="col"><span>Cabina abierta</span>Serie C</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Tipo de cabina</th><td data-label="K3015HM">Cerrada</td><td data-label="K3015C">Abierta</td></tr>
-          <tr><th scope="row">Serie</th><td data-label="K3015HM">HM</td><td data-label="K3015C">C</td></tr>
-          <tr><th scope="row">Potencia láser</th><td data-label="K3015HM">6 – 30 kW</td><td data-label="K3015C">1,5 – 6 kW</td></tr>
-          <tr><th scope="row">Formato de chapa</th><td data-label="K3015HM">de 3050 × 1530 a 6050 × 2530 mm</td><td data-label="K3015C">de 3050 × 1530 a 6050 × 2030 mm</td></tr>
-          <tr><th scope="row">Espesor máx. de acero al carbono</th><td data-label="K3015HM">60 mm</td><td data-label="K3015C">20 mm</td></tr>
-          <tr><th scope="row">Tubo redondo</th><td data-label="K3015HM">Ø 20 a 220 mm</td><td data-label="K3015C">Ø 20 a 220 mm</td></tr>
-          <tr><th scope="row">Longitud de tubo</th><td data-label="K3015HM">hasta 6.000 mm</td><td data-label="K3015C">de 500 a 6.000 mm</td></tr>
-          <tr><th scope="row">Velocidad máx. en vacío</th><td data-label="K3015HM">200 m/min</td><td data-label="K3015C">100 m/min</td></tr>
-          <tr><th scope="row">Mesa</th><td data-label="K3015HM">Doble mesa intercambiable</td><td data-label="K3015C">Mesa única</td></tr>
-          <tr><th scope="row">Carga máx. de mesa</th><td data-label="K3015HM">de 3.000 a 9.000 kg (según modelo)</td><td data-label="K3015C">de 1.100 a 2.800 kg (según modelo)</td></tr>
-          <tr><th scope="row">Modelos</th><td data-label="K3015HM">3015HM · 4020HM · 6020HM · 6025HM</td><td data-label="K3015C">3015C · 4015C · 4020C · 6015C · 6020C</td></tr>
-          <tr><th scope="row">Certificaciones</th><td data-label="K3015HM">TÜV-CE, FDA, ETL, UDEM-CE, RoHS</td><td data-label="K3015C">FDA, UDEM-CE, RoHS</td></tr>
+          <tr><th scope="row">Tipo de cabina</th><td data-label="Serie HM">Cerrada</td><td data-label="Serie C">Abierta</td></tr>
+          <tr><th scope="row">Serie</th><td data-label="Serie HM">HM</td><td data-label="Serie C">C</td></tr>
+          <tr><th scope="row">Potencia láser</th><td data-label="Serie HM">6 – 30 kW</td><td data-label="Serie C">1,5 – 6 kW</td></tr>
+          <tr><th scope="row">Formato de chapa</th><td data-label="Serie HM">de 3050 × 1530 a 6050 × 2530 mm</td><td data-label="Serie C">de 3050 × 1530 a 6050 × 2030 mm</td></tr>
+          <tr><th scope="row">Espesor máx. de acero al carbono</th><td data-label="Serie HM">60 mm</td><td data-label="Serie C">20 mm</td></tr>
+          <tr><th scope="row">Tubo redondo</th><td data-label="Serie HM">Ø 20 a 220 mm</td><td data-label="Serie C">Ø 20 a 220 mm</td></tr>
+          <tr><th scope="row">Longitud de tubo</th><td data-label="Serie HM">hasta 6.000 mm</td><td data-label="Serie C">de 500 a 6.000 mm</td></tr>
+          <tr><th scope="row">Velocidad máx. en vacío</th><td data-label="Serie HM">200 m/min</td><td data-label="Serie C">100 m/min</td></tr>
+          <tr><th scope="row">Mesa</th><td data-label="Serie HM">Doble mesa intercambiable</td><td data-label="Serie C">Mesa única</td></tr>
+          <tr><th scope="row">Carga máx. de mesa</th><td data-label="Serie HM">de 3.000 a 9.000 kg (según modelo)</td><td data-label="Serie C">de 1.100 a 2.800 kg (según modelo)</td></tr>
+          <tr><th scope="row">Modelos</th><td data-label="Serie HM">3015HM · 4020HM · 6020HM · 6025HM</td><td data-label="Serie C">3015C · 4015C · 4020C · 6015C · 6020C</td></tr>
+          <tr><th scope="row">Certificaciones</th><td data-label="Serie HM">TÜV-CE, FDA, ETL, UDEM-CE, RoHS</td><td data-label="Serie C">FDA, UDEM-CE, RoHS</td></tr>
         </tbody>
       </table>
     </div>
@@ -1853,8 +1865,8 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
     <details class="cmp-det pdf-det">
       <summary id="pdf-corte-combinado"><span>Descargar fichas en PDF</span></summary>
       <ul class="pdf-list" aria-labelledby="pdf-corte-combinado">
-        <li><span class="pdf-name"><b>K3015HM</b> Cabina cerrada</span><a class="btn pdf-btn" href="docs/K3015HM-12-30kW.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></li>
-        <li><span class="pdf-name"><b>K3015C</b> Cabina abierta</span><a class="btn pdf-btn" href="docs/K3015C.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></li>
+        <li><span class="pdf-name"><b>Serie HM</b> Cabina cerrada</span><a class="btn pdf-btn" href="docs/K3015HM-12-30kW.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></li>
+        <li><span class="pdf-name"><b>Serie C</b> Cabina abierta</span><a class="btn pdf-btn" href="docs/K3015C.pdf" download data-pdf><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>Descargar PDF</a></li>
       </ul>
     </details>
     <p class="pdf-msg" role="status" aria-live="polite" hidden></p>
@@ -1912,6 +1924,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>Serie HWM</h3>
         <p>Soldadora láser de fibra manual con refrigeración por agua, fácil de manejar y capaz de trabajar con estabilidad y alta calidad en entornos complejos. Es un sistema 4 en 1 pensado para fabricantes que necesitan una calidad de soldadura superior y gran uniformidad entre piezas.</p>
         <ul class="mdetail-kpis"><li><b>1,5 – 3 kW</b><span>potencia láser</span></li><li><b>hasta 7 mm</b><span>espesor de chapa</span></li><li><b>≤ 0,75 kg</b><span>peso de la pistola</span></li><li><b>hasta 10 m</b><span>cable de la pistola</span></li></ul>
+        
         <ul class="mfeats"><li><b>4 en 1:</b> soldadura, corte, limpieza y limpieza del cordón de soldadura con el mismo equipo.</li><li><b>Pistola ligera y fiable</b> (≤ 0,75 kg), cómoda para trabajar durante horas.</li><li><b>Todo tipo de uniones:</b> a tope, a solape, en cordón discontinuo, de espárrago, en T, en esquinas interiores y exteriores y de sellado, con gran profundidad, cordón estrecho, poca deformación y alta velocidad.</li><li><b>Conexión inteligente</b> para acelerar la producción.</li><li><b>Opcional:</b> célula de seguridad de soldadura totalmente cerrada.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · SGS · UDEM-CE · RoHS</p>
         <div class="mactions">
@@ -1928,6 +1941,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>Serie HW</h3>
         <p>Nueva generación de soldadora láser manual, muy rentable porque reúne soldadura, corte y limpieza a un precio menor. Pensada para pequeños y medianos fabricantes que dan prioridad a la inversión inicial y a la estabilidad de la soldadura.</p>
         <ul class="mdetail-kpis"><li><b>1,5 – 3 kW</b><span>potencia láser</span></li><li><b>hasta 7 mm</b><span>espesor de chapa</span></li><li><b>≤ 0,7 kg</b><span>peso de la pistola</span></li><li><b>10 m</b><span>cable de la pistola</span></li></ul>
+        
         <ul class="mfeats"><li><b>4 funciones:</b> soldadura, limpieza, corte y limpieza del cordón de soldadura.</li><li><b>Gran relación calidad-precio y durabilidad</b>, para pequeños y medianos talleres.</li><li><b>Todo tipo de uniones:</b> a tope, a solape, en T, en esquinas y de sellado, con cordón estrecho y poca deformación.</li><li><b>Más de 20 idiomas</b> disponibles en el equipo.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
@@ -1944,6 +1958,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>Serie S</h3>
         <p>Soldadora láser de fibra portátil, conocida por su refrigeración por aire y su estructura reducida. Se adapta con rapidez a distintos lugares de trabajo, reduce los costes de transporte y almacenamiento y permite soldar incluso en exteriores.</p>
         <ul class="mdetail-kpis"><li><b>0,8 – 1,5 kW</b><span>potencia láser</span></li><li><b>hasta 5 mm</b><span>espesor de chapa</span></li><li><b>45 – 55 kg</b><span>peso de la máquina</span></li><li><b>≤ 0,7 kg</b><span>peso de la pistola</span></li></ul>
+        
         <ul class="mfeats"><li><b>4 en 1</b> y refrigeración por aire.</li><li><b>Muy portátil:</b> ocupa menos de 0,23 m² y lleva ruedas giratorias, para moverla y levantarla entre dos personas adultas.</li><li><b>Soldadura in situ:</b> compacta y ligera, apta para trabajar en exteriores.</li><li><b>24 idiomas</b> disponibles en el equipo.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · SGS · UDEM-CE</p>
         <div class="mactions">
@@ -2027,6 +2042,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>Pulsada portátil</h3>
         <p>Limpiadora láser manual que combina limpieza y portabilidad. Elimina con rapidez suciedad, aceite, óxido y recubrimientos de distintos materiales, sin disolventes químicos y sin dañar el material base. Una buena opción para quien valora el coste de uso a largo plazo.</p>
         <ul class="mdetail-kpis"><li><b>0,2 – 0,3 kW</b><span>potencia láser</span></li><li><b>22 m²/h</b><span>velocidad máx. de limpieza</span></li><li><b>40 kg</b><span>peso de la máquina</span></li><li><b>0,85 – 1,3 kg</b><span>peso de la pistola</span></li></ul>
+        
         <ul class="mfeats"><li><b>8 modos de limpieza</b> para piezas de precisión, materiales sensibles al calor o piezas que hay que proteger.</li><li><b>Fácil de mover:</b> unos 40 kg sobre cuatro ruedas silenciosas, para limpiar en cualquier sitio, incluso en exteriores.</li><li><b>Pistola refrigerada por aire</b> ligera, con agarre ergonómico y doble luz roja para enfocar con rapidez.</li><li><b>Conexión a robot</b> mediante interfaz I/O, para limpieza automática y producción en serie.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
@@ -2043,6 +2059,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>Pulsada manual</h3>
         <p>Limpiadora láser pulsada manual que controla con precisión un haz de alta densidad: limpia sin productos químicos ni fricción mecánica, evitando daños. Apta para usos exigentes, como piezas de automoción, componentes aeroespaciales, moldes y restauración de patrimonio.</p>
         <ul class="mdetail-kpis"><li><b>0,5 – 1 kW</b><span>potencia láser</span></li><li><b>22 m²/h</b><span>velocidad máx. de limpieza</span></li><li><b>130 mm</b><span>ancho máx. de limpieza</span></li><li><b>1,5 kg</b><span>peso de la pistola</span></li></ul>
+        
         <ul class="mfeats"><li><b>Limpieza precisa sin dañar el material base:</b> el láser actúa sin contacto y se puede limpiar solo una zona concreta.</li><li><b>8 modos de limpieza</b> para distintas necesidades.</li><li><b>Fácil de manejar:</b> pistola de 1,5 kg y cable de 10 m, para limpiar de lejos a cerca sin mover la máquina.</li><li><b>Parámetros guardados:</b> se almacenan y recuperan sin volver a configurar. Protecciones de temperatura, presión de aire y secuencia de fases.</li><li><b>Conexión a robot</b> mediante interfaz I/O, para limpieza automática y producción en serie.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
@@ -2059,6 +2076,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>Continua manual</h3>
         <p>Limpiadora láser continua manual que vaporiza o desprende rápidamente suciedad, recubrimientos y óxido. Su emisión continua y estable la hace ideal para limpiar superficies grandes y planas.</p>
         <ul class="mdetail-kpis"><li><b>1,5 – 3 kW</b><span>potencia láser</span></li><li><b>50 m²/h</b><span>velocidad máx. de limpieza</span></li><li><b>300 mm</b><span>ancho máx. de limpieza</span></li><li><b>≤ 0,7 kg</b><span>peso de la pistola</span></li></ul>
+        
         <ul class="mfeats"><li><b>Limpia grandes superficies a gran velocidad:</b> spot lineal de 300 mm y refrigeración integrada para más de 8 horas de limpieza continua.</li><li><b>Para piezas grandes:</b> pistola de 0,7 kg con cable de 10 o 15 m (20 m opcional en el modelo de 3 kW), ideal para estructuras de acero, cascos de barco y recipientes a presión.</li><li><b>Poco mantenimiento:</b> estructura integrada, basta abrir el panel lateral para quitar el polvo.</li><li><b>Distintos modos de soplado</b> (coaxial, fuera de eje y combinado) que alargan la vida de las lentes.</li><li><b>Conexión a robot</b> mediante interfaz I/O, para limpieza automática y producción en serie.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> FDA · UDEM-CE</p>
         <div class="mactions">
@@ -2152,6 +2170,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>Electrohidráulica</h3>
         <p>Plegadora CNC que combina la gran capacidad de la hidráulica con la precisión del control eléctrico. Ofrece estabilidad, exactitud y eficiencia energética, con una buena relación calidad-precio, y es adecuada para chapa mediana y grande, estructuras de acero y equipos de potencia.</p>
         <ul class="mdetail-kpis"><li><b>500 – 20.000 kN</b><span>fuerza de plegado</span></li><li><b>1.500 – 15.000 mm</b><span>longitud de plegado</span></li><li><b>Delem · ESA · Cybelec</b><span>control CNC a elegir</span></li><li><b>Servo</b><span>sistema electrohidráulico de sincronización</span></li></ul>
+        
         <ul class="mfeats"><li><b>Sistema servo electrohidráulico</b> con cilindros muy próximos entre sí: alta precisión de sincronización y potencia eficiente.</li><li><b>Mesa con compensación de flexión:</b> cuñas tratadas térmicamente; el CNC calcula la compensación según la fuerza de plegado y contrarresta la deformación de las vigas.</li><li><b>Control CNC de marcas reconocidas</b> (Delem, ESA o Cybelec), con interfaz intuitiva y manejo en varios idiomas.</li><li><b>Tope trasero preciso</b> con husillos a bolas y guías lineales importados, y amarre rápido del útil superior para cambiar de herramienta en poco tiempo.</li><li><b>Bastidor duradero</b> de acero de alta resistencia Q235B, y cortinas de seguridad láser opcionales.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> ETL · SGS · UDEM-CE</p>
         <div class="mactions">
@@ -2168,6 +2187,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>Barra de torsión</h3>
         <p>Plegadora de sincronización mecánica por barra de torsión. Funciona bien en condiciones duras (por ejemplo, con carga descentrada), es fácil de mantener y tiene un coste de compra y de funcionamiento relativamente bajo. Ideal para plegar lotes de chapa media y gruesa cuando no se necesita una precisión extrema.</p>
         <ul class="mdetail-kpis"><li><b>400 – 4.000 kN</b><span>fuerza de plegado</span></li><li><b>1.600 – 4.100 mm</b><span>longitud de plegado</span></li><li><b>10 mm/s</b><span>velocidad máx. de plegado</span></li><li><b>430 – 485 mm</b><span>altura de apertura</span></li></ul>
+        
         <ul class="mfeats"><li><b>Estructura mecánica muy rígida:</b> un eje de torsión de alta resistencia recorre todo el carro y lo sincroniza por ambos lados.</li><li><b>Sistema hidráulico sencillo y fiable:</b> la sincronización no depende de servoválvulas ni de realimentación; menos exigencia de limpieza del aceite y mantenimiento más fácil.</li><li><b>Bastidor monobloque</b> de gran resistencia, con alivio de tensiones por recocido y mecanizado de precisión en una sola pasada.</li><li><b>Apoyo frontal manual</b> con rodillos sobre guías lineales y altura regulable con volante.</li><li><b>Tope trasero de alta precisión</b> con transmisión de tornillo sin fin y dedos antichoque de cambio rápido.</li></ul>
         <p class="mcerts"><span>Certificaciones:</span> ETL · SGS · UDEM-CE</p>
         <div class="mactions">
@@ -2184,6 +2204,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>Totalmente eléctrica</h3>
         <p>Plegadora que mueve el carro con motor eléctrico: estructura compacta, manejo sencillo, alta precisión y alta eficiencia. Procesa con rapidez piezas pequeñas, con gran velocidad y precisión, en sectores como armarios de precisión, componentes de automoción y piezas de fabricación automatizada.</p>
         <ul class="mdetail-kpis"><li><b>60 – 1.300 kN</b><span>fuerza de plegado</span></li><li><b>400 – 3.200 mm</b><span>longitud de plegado</span></li><li><b>30 mm/s</b><span>velocidad máx. de plegado</span></li><li><b>< ±0,5°</b><span>desviación angular</span></li></ul>
+        
         <ul class="mfeats"><li><b>Control de sincronización en lazo cerrado</b> con doble regla lineal: vigila la posición del carro y mantiene una precisión constante aunque se desgasten las guías.</li><li><b>Mesa con compensación de flexión</b> mediante cuñas tratadas térmicamente, controladas por el CNC.</li><li><b>Plegado de alta precisión:</b> compensación inteligente y accionamiento por servomotor, con desviación angular inferior a ±0,5°.</li><li><b>Estructura muy rígida</b> de acero de alta resistencia Q235B con soldadura en cola de milano.</li><li><b>Control CNC</b> Delem, ESA o Cybelec y tope trasero con husillos a bolas y guías lineales.</li></ul>
         
         <div class="mactions">
@@ -2344,6 +2365,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>LC1610N</h3>
         <p>Máquina de corte y grabado láser CO2 con mesa de trabajo doble (de cuchilla y de panal de abeja), pensada para cortar y grabar materiales no metálicos como madera, metacrilato, plástico, tejidos, papel, cuero y caucho.</p>
         <ul class="mdetail-kpis"><li><b>130 W</b><span>potencia láser</span></li><li><b>1.600 × 1.000 mm</b><span>área de trabajo</span></li><li><b>hasta 36.000 mm/min</b><span>velocidad de corte</span></li><li><b>±0,1 mm</b><span>precisión de posicionamiento</span></li></ul>
+        
         <ul class="mfeats"><li><b>Mesa doble:</b> se puede instalar mesa de cuchilla y mesa de panal de abeja, para cortar y también grabar.</li><li><b>Enfoque automático:</b> no hace falta ajustar la distancia focal a mano; más eficiencia y precisión.</li><li><b>Mesa elevable automática:</b> pensada para material grueso, permite grabar sobre piezas de distinto espesor.</li><li><b>Guías lineales Hiwin</b> de alta precisión de posicionamiento y gran capacidad de carga.</li><li><b>Filtración de aire en tres etapas</b> (bolsa, filtro HEPA y carbón activo) para trabajar sin contaminar.</li><li><b>Control por WiFi:</b> un mismo ordenador puede gestionar varias máquinas y el técnico puede conectarse en remoto.</li></ul>
         
         <div class="mactions">
@@ -2360,6 +2382,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>LC1390N</h3>
         <p>Máquina de corte y grabado láser CO2 de formato compacto, versátil y muy utilizada. Su cubierta desmontable por los cuatro lados permite trabajar con material largo, y su mesa elevable se adapta a piezas de distinto espesor.</p>
         <ul class="mdetail-kpis"><li><b>80 – 200 W</b><span>potencia láser (según opción)</span></li><li><b>1.300 × 900 mm</b><span>área de trabajo</span></li><li><b>hasta 24.000 mm/min</b><span>velocidad de corte</span></li><li><b>±0,05 mm</b><span>precisión de posicionamiento</span></li></ul>
+        
         <ul class="mfeats"><li><b>Mesa doble</b> de cuchilla y panal de abeja, para cortar y grabar.</li><li><b>Cubierta desmontable en cuatro direcciones:</b> permite cargar y procesar material largo.</li><li><b>Enfoque automático</b> y <b>mesa elevable eléctrica</b> para cortar materiales de distinto espesor.</li><li><b>Filtración de aire en tres etapas:</b> filtro de bolsa, filtro HEPA para partículas mayores de 0,03 µm y carbón activo.</li><li><b>Componentes de calidad:</b> electrónica Omron (Japón) y lentes ópticas II-VI (EE. UU.).</li><li><b>Control por WiFi</b> y tubo láser Reci de alta densidad de potencia.</li></ul>
         
         <div class="mactions">
@@ -2376,6 +2399,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         <h3>LC1325D</h3>
         <p>Máquina de corte y grabado láser CO2 de gran formato, pensada para procesar grandes cantidades de tejidos, cuero, madera, acrílico y papel.</p>
         <ul class="mdetail-kpis"><li><b>60 – 150 W</b><span>potencia láser (según opción)</span></li><li><b>1.300 × 2.500 mm</b><span>área de trabajo</span></li><li><b>hasta 24.000 mm/min</b><span>velocidad de corte</span></li><li><b>±0,1 mm</b><span>precisión de posicionamiento</span></li></ul>
+        
         <ul class="mfeats"><li><b>Gran formato:</b> 1.300 × 2.500 mm de área de trabajo para piezas y planchas grandes.</li><li><b>Mesa doble</b> de cuchilla y panal de abeja, para cortar y también grabar.</li><li><b>Guías lineales Hiwin</b> de Taiwán: alta precisión de posicionamiento y menos desgaste, para mantener la exactitud más tiempo.</li><li><b>Filtración de aire en tres etapas</b> (bolsa, HEPA y carbón activo).</li><li><b>Electrónica Omron</b> (Japón), tubo láser Yongli y control por WiFi.</li></ul>
         
         <div class="mactions">
