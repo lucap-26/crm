@@ -524,7 +524,6 @@ body.ready .pick{animation-play-state:running}
 .af-check input:focus-visible{outline:3px dashed var(--brand-2);outline-offset:3px}
 .af-field.has-error .af-check input{border-color:#B42318}
 .auto-form .btn{width:100%;justify-content:center}
-.af-note{font-size:14.5px;line-height:1.55;color:#4d5868}
 .af-status{padding:14px 18px;font-size:16.5px;line-height:1.55;border-left:5px solid var(--brand);background:var(--soft);color:var(--ink)}
 .af-status.is-err{border-color:#B42318;background:#FFF1EF;color:#7A1A12}
 .af-status[hidden]{display:none}
@@ -584,7 +583,6 @@ body.ready .pick{animation-play-state:running}
 .st-check input:focus-visible{outline:3px dashed #fff;outline-offset:3px}
 .st-form .btn{width:100%;justify-content:center;margin-top:18px;background:#7fdcea;color:var(--ink)}
 .st-form .btn:hover{background:#fff;color:var(--ink)}
-.st-note{margin-top:14px;font-size:14.5px;line-height:1.55;color:#aebdce}
 .st-status{margin-top:14px;padding:14px 18px;font-size:16.5px;line-height:1.55;border-left:5px solid #7fdcea;background:rgba(127,220,234,.14);color:#fff}
 .st-status.is-err{border-color:#ffb4a8;background:rgba(255,180,168,.14)}
 .st-status[hidden]{display:none}
@@ -674,7 +672,6 @@ body.ready .pick{animation-play-state:running}
 .ct-check input:focus-visible{outline:3px dashed var(--brand-2);outline-offset:3px}
 .ct-field.has-error .ct-check input{border-color:#B42318}
 .ct-form .btn{width:100%;justify-content:center}
-.ct-note{font-size:14.5px;line-height:1.55;color:#4d5868}
 .ct-status{padding:14px 18px;font-size:16.5px;line-height:1.55;border-left:5px solid var(--brand);background:var(--soft);color:var(--ink)}
 .ct-status.is-err{border-color:#B42318;background:#FFF1EF;color:#7A1A12}
 .ct-status[hidden]{display:none}
@@ -2328,7 +2325,6 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
         </div>
         <button type="submit" class="btn">Enviar consulta
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        <p class="af-note">Este formulario no tiene un servidor conectado: al pulsar, prepara un correo para info@krexon.com en tu programa de correo. Para recibir las consultas directamente desde la web hay que conectar un servicio de formularios.</p>
         <p class="af-status" id="afStatus" role="status" aria-live="polite" hidden></p>
       </form>
     </div>
@@ -2548,7 +2544,6 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
           </div>
           <button type="submit" class="btn">Enviar solicitud
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          <p class="st-note">Este formulario no tiene un servidor conectado: al pulsar, prepara un correo para info@krexon.com en tu programa de correo. Para recibir las solicitudes directamente desde la web hay que conectar un servicio de formularios.</p>
           <p class="st-status" id="stStatus" role="status" aria-live="polite" hidden></p>
         </fieldset>
       </form>
@@ -2750,7 +2745,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
       <article class="lg-row">
         <h3>Quién puede acceder a ellos</h3>
         <div>
-          <p>No cedemos tus datos a terceros, salvo obligación legal. Sí pueden acceder a ellos, solo para prestarnos su servicio y como encargados del tratamiento, nuestro proveedor de correo electrónico, el de alojamiento de esta web y, si eliges ese canal, WhatsApp.</p>
+          <p>No cedemos tus datos a terceros, salvo obligación legal. Sí pueden acceder a ellos, solo para prestarnos su servicio y como encargados del tratamiento, nuestro proveedor de correo electrónico, el servicio que nos reenvía por correo los formularios de esta web (FormSubmit), el de alojamiento de esta web y, si eliges ese canal, WhatsApp.</p>
           <p>Algunos de estos proveedores pueden tratar datos fuera del Espacio Económico Europeo; en ese caso lo hacen con las garantías que prevé el Reglamento General de Protección de Datos.</p>
         </div>
       </article>
@@ -2820,7 +2815,6 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
       </div>
       <button type="submit" class="btn">Contactar
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-      <p class="ct-note">Este formulario no tiene un servidor conectado: al pulsar, prepara un correo para info@krexon.com en tu programa de correo. Para recibir los mensajes directamente desde la web hay que conectar un servicio de formularios.</p>
       <p class="ct-status" id="ctStatus" role="status" aria-live="polite" hidden></p>
     </form>
   </div>
@@ -3057,33 +3051,32 @@ document.querySelectorAll('.card .pic img').forEach(img=>{
   const secciones = [...document.querySelectorAll('.flat')];
 
   /* ENVÍO DE FORMULARIOS — un único punto para los tres formularios (contacto, servicio técnico, automatización).
-     Mientras ENVIO.url esté vacío, se abre el programa de correo del usuario (no hay servidor conectado).
-     Cuando haya destino (servicio de formularios o servidor de Krexon), basta con rellenar ENVIO.url. */
+     Las solicitudes llegan por correo a info@krexon.com a través de FormSubmit (formsubmit.co), sin servidor propio.
+     La primera vez, FormSubmit envía a info@krexon.com un correo de activación: hasta que se pulsa «Activate Form»
+     no reenvía nada. Si el envío falla, se abre el programa de correo del usuario con el mensaje ya escrito. */
   const ENVIO = {
-    url: '',                         // p. ej. 'https://api.krexon.com/contacto' o la URL de un servicio de formularios
-    email: 'info@krexon.com',        // se usa solo mientras url esté vacío
+    url: 'https://formsubmit.co/ajax/info@krexon.com',
+    email: 'info@krexon.com',
     telefono: '+34 623 968 619'
   };
   /* origen: 'contacto' | 'servicio-tecnico' | 'automatizacion' · asunto: texto corto · datos: { etiqueta: valor } · estado: callback(texto, tipo) */
   function enviarSolicitud(origen, asunto, datos, hp, estado) {
     if (hp) return;                  // campo trampa para spam: una persona no lo rellena
     const cuerpo = Object.keys(datos).map(k => k + ': ' + (datos[k] || '—')).join('\n');
-    const respaldo = 'Si lo prefieres, escríbenos a ' + ENVIO.email + ' o llámanos al ' + ENVIO.telefono + '.';
-    if (!ENVIO.url) {
-      estado('Hemos preparado el correo en tu programa de correo. Revísalo y pulsa enviar. Si no se abre, escríbenos a ' + ENVIO.email + ' o llámanos al ' + ENVIO.telefono + '.', '');
-      location.href = 'mailto:' + ENVIO.email + '?subject=' + encodeURIComponent(asunto) + '&body=' + encodeURIComponent(cuerpo);
-      return;
-    }
+    const porCorreo = () => { location.href = 'mailto:' + ENVIO.email + '?subject=' + encodeURIComponent(asunto) + '&body=' + encodeURIComponent(cuerpo); };
     estado('Enviando…', '');
+    const envio = Object.assign({ _subject: asunto, _template: 'table', _captcha: 'false', 'Formulario': origen }, datos);
+    if (datos.Email) envio._replyto = datos.Email;
     fetch(ENVIO.url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ origen: origen, asunto: asunto, datos: datos, pagina: location.href })
-    }).then(r => {
-      if (!r.ok) throw new Error(r.status);
+      body: JSON.stringify(envio)
+    }).then(r => r.ok ? r.json() : Promise.reject(r.status)).then(j => {
+      if (String(j.success) !== 'true') throw new Error(j.message || 'sin activar');
       estado('¡Gracias! Hemos recibido tu solicitud y te contactaremos lo antes posible.', 'ok');
     }).catch(() => {
-      estado('No hemos podido enviar tu solicitud. ' + respaldo, 'err');
+      estado('No hemos podido enviar tu solicitud desde la web. Te hemos preparado el correo en tu programa de correo: revísalo y pulsa enviar. También puedes llamarnos al ' + ENVIO.telefono + '.', 'err');
+      porCorreo();
     });
   }
 
@@ -3138,7 +3131,7 @@ document.querySelectorAll('.card .pic img').forEach(img=>{
     box.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'nearest' });
   }));
 
-  /* Formulario de automatización: validación real; el envío prepara un correo (no hay servidor conectado) */
+  /* Formulario de automatización: validación real; el envío llega por correo a info@krexon.com */
   const form = document.getElementById('autoForm');
   if (form) {
     const $ = id => document.getElementById(id);
@@ -3170,7 +3163,7 @@ document.querySelectorAll('.card .pic img').forEach(img=>{
       const fallos = reglas.filter(r => !comprobar(r, true));
       if (fallos.length) {
         status.className = 'af-status is-err'; status.hidden = false;
-        status.textContent = 'Revisa los campos marcados para poder preparar tu consulta.';
+        status.textContent = 'Revisa los campos marcados para poder enviar tu consulta.';
         $(fallos[0][0]).focus();
         return;
       }
@@ -3182,7 +3175,7 @@ document.querySelectorAll('.card .pic img').forEach(img=>{
     });
   }
 
-  /* Recambios / servicio técnico: asistente en 3 pasos; el envío prepara un correo (no hay servidor conectado) */
+  /* Recambios / servicio técnico: asistente en 3 pasos; el envío llega por correo a info@krexon.com */
   const sf = document.getElementById('stForm');
   if (sf) {
     const g = id => document.getElementById(id);
@@ -3227,7 +3220,7 @@ document.querySelectorAll('.card .pic img').forEach(img=>{
       campos.forEach(c => { if (!check(c, true)) fallos.push(g(c[0])); });
       if (fallos.length) {
         status.className = 'st-status is-err'; status.hidden = false;
-        status.textContent = 'Revisa los pasos marcados para poder preparar tu solicitud.';
+        status.textContent = 'Revisa los pasos marcados para poder enviar tu solicitud.';
         fallos[0].focus(); return;
       }
       const v = id => g(id).value.trim();
@@ -3239,7 +3232,7 @@ document.querySelectorAll('.card .pic img').forEach(img=>{
     });
   }
 
-  /* Contacto: formulario corto con validación; el envío prepara un correo (no hay servidor conectado) */
+  /* Contacto: formulario corto con validación; el envío llega por correo a info@krexon.com */
   const cf = document.getElementById('ctForm');
   if (cf) {
     const g = id => document.getElementById(id), status = g('ctStatus');
@@ -3265,7 +3258,7 @@ document.querySelectorAll('.card .pic img').forEach(img=>{
       const fallos = reglas.filter(r => !comprobar(r, true));
       if (fallos.length) {
         status.className = 'ct-status is-err'; status.hidden = false;
-        status.textContent = 'Revisa los campos marcados para poder preparar tu mensaje.';
+        status.textContent = 'Revisa los campos marcados para poder enviar tu mensaje.';
         g(fallos[0][0]).focus(); return;
       }
       const v = id => g(id).value.trim();
