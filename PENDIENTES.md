@@ -15,7 +15,7 @@
 - **Revisión legal**: que un asesor o gestoría revise la política de privacidad (y el aviso legal cuando esté).
 
 ## Contenido
-- **Fichas en PDF** de las 19 máquinas (nombres esperados en `docs/LEEME.txt`).
+- **Fichas en PDF**: faltan las de 16 máquinas (nombres esperados en `docs/LEEME.txt`). Plegadoras ya hecho: las tres usan `docs/krexon-catalogo-plegadoras-2026.pdf` (catálogo en inglés).
 - **Foto `ws`** (soldadora portátil): se ve "SENFENG" en la bobina.
 - **Códigos de modelo** en algunas fotos (p. ej. "SF-3015NP") que no coinciden con las series de la web.
 - **Foto para "Recambios y consumibles"** (ahora sin foto propia).
