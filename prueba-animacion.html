@@ -11,231 +11,591 @@
 <style>
 :root{--ink:#262626;--text:#3b3e40;--muted:#8c8c8c;--brand:#1f5a7e;--rule:#2997AA;--soft:#f5f5f5;--line:#e8e8e8}
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{font-family:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1280px;margin:0 auto;padding:22px 28px;border-bottom:1px solid var(--line)}
-.bar b{font-size:24px;letter-spacing:.02em;color:var(--brand)}
-.bar span{font-size:13px;color:var(--muted)}
+.bar{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1280px;margin:0 auto;padding:14px 28px;flex-wrap:wrap}
+.bar b{font-size:22px;letter-spacing:.02em;color:var(--brand)}
+.idx{display:flex;gap:6px;flex-wrap:wrap;list-style:none}
+.idx a{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:99px;background:var(--soft);color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:500;transition:background-color .2s ease,color .2s ease}
+.idx a i{font-style:normal;font-weight:700;color:var(--brand)}
+.idx a:hover{background:var(--brand);color:#fff}.idx a:hover i{color:#fff}
 .wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+.intro{padding:40px 0 0}
+.intro p{font-size:14px;color:var(--muted)}
 
-/* Sección de la animación */
-.flow{padding:80px 0 96px;background:#fff}
+.flow{padding:72px 0 80px;border-bottom:1px solid var(--line)}
+.flow:nth-child(even){background:#fafbfc}
 .flow-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);gap:48px;align-items:center}
-.flow h2{font-size:clamp(30px,3.2vw,44px);font-weight:600;line-height:1.08;letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
-.flow-lead{margin-top:16px;font-size:17.5px;line-height:1.6;max-width:44ch}
-.steps{list-style:none;margin-top:30px;border-top:1px solid var(--line)}
-.steps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 12px;padding:14px 0 14px 14px;border-bottom:1px solid var(--line);border-left:3px solid transparent;transition:border-color .3s ease,background-color .3s ease}
+.flow.rev .flow-grid{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)}
+.flow.rev .stage{order:-1}
+.eyebrow{display:block;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--rule);margin-bottom:12px}
+.flow h2{font-size:clamp(28px,3vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
+.flow-lead{margin-top:14px;font-size:17px;line-height:1.6;max-width:46ch}
+.steps{list-style:none;margin-top:26px;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:3px 12px;padding:12px 0 12px 14px;border-bottom:1px solid var(--line);border-left:3px solid transparent;transition:border-color .3s ease,background-color .3s ease}
 .steps li span{grid-row:span 2;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--muted);font-weight:600;font-size:14px;transition:background-color .3s ease,color .3s ease}
-.steps li b{font-weight:600;color:var(--ink);font-size:16.5px}
-.steps li small{font-size:14.5px;color:var(--muted);line-height:1.45}
-.steps li.on{border-left-color:var(--rule);background:#f7fafb}
+.steps li b{font-weight:600;color:var(--ink);font-size:16px}
+.steps li small{font-size:14px;color:var(--muted);line-height:1.45}
+.steps li.on{border-left-color:var(--rule);background:#f2f7f9}
 .steps li.on span{background:var(--brand);color:#fff}
-.stage{position:relative;background:linear-gradient(180deg,#f7f9fa 0%,#eef1f3 100%);aspect-ratio:1.18/1;max-height:640px;width:100%}
+.stage{position:relative;background:linear-gradient(180deg,#f7f9fa 0%,#eef1f3 100%);aspect-ratio:1.3/1;max-height:600px;width:100%}
 .stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.note{margin-top:14px;font-size:13px;color:var(--muted)}
-@media (max-width:900px){.flow{padding:56px 0 64px}.flow-grid{grid-template-columns:minmax(0,1fr);gap:28px}.stage{order:-1}}
+.foot-note{padding:28px 0 48px;font-size:13px;color:var(--muted)}
+@media (max-width:900px){
+  .flow{padding:48px 0 56px}
+  .flow-grid,.flow.rev .flow-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  .stage,.flow.rev .stage{order:-1}
+  .bar-in{padding:12px 16px}.wrap{padding:0 16px}
+  .idx a{padding:6px 10px;font-size:12.5px}
+}
 </style>
 </head>
 <body>
-<div class="bar"><b>KREXON</b><span>Prueba de animación · no publicada en la web principal</span></div>
-
-<section class="flow" aria-labelledby="h-flow">
-  <div class="wrap flow-grid">
-    <div>
-      <h2 id="h-flow">Del almacén a la máquina, sin manipular la chapa</h2>
-      <p class="flow-lead">Automatizamos la carga para que tu láser no se detenga: el almacén entrega la chapa y el pórtico la coloca en la mesa de corte.</p>
-      <ol class="steps" id="steps">
-        <li data-step="0"><span>1</span><b>Almacén de chapa</b><small>El cajón sale con la chapa lista.</small></li>
-        <li data-step="1"><span>2</span><b>Carga por ventosas</b><small>El pórtico la recoge por vacío.</small></li>
-        <li data-step="2"><span>3</span><b>Traslado a la mesa</b><small>La deposita en la mesa de corte.</small></li>
-        <li data-step="3"><span>4</span><b>Entrada a corte</b><small>La mesa entra y empieza el corte.</small></li>
-      </ol>
-      <p class="note">Ilustración animada. El diseño de las máquinas es orientativo.</p>
-    </div>
-    <div class="stage"><canvas id="anim" role="img" aria-label="Animación: un almacén automático entrega una chapa, un pórtico con ventosas la traslada a la mesa y la mesa entra en la máquina de corte láser."></canvas></div>
-  </div>
-</section>
+<header class="bar"><div class="bar-in"><b>KREXON</b><ul class="idx" id="idx"></ul></div></header>
+<div class="wrap intro"><p>Prueba de animación · no publicada en la web principal. Seis escenas del recorrido de la chapa para comparar.</p></div>
+<main id="scenes"></main>
+<div class="wrap foot-note">Ilustraciones animadas. El diseño de las máquinas es orientativo.</div>
 
 <script>
 (function(){
   'use strict';
-  const cv=document.getElementById('anim'), ctx=cv.getContext('2d');
-  const stepsEl=[...document.querySelectorAll('#steps li')];
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const COS=Math.cos(Math.PI/6), SIN=Math.sin(Math.PI/6);
-  let W=0,H=0,k=1,ox=0,oy=0,dpr=1;
-
-  // Colores Krexon
-  const COL={blue:'#1f5a7e',blueD:'#174663',white:'#f2f4f6',grey:'#cdd4da',steel:'#a9b3bb',rail:'#3d4a54',floor:'#e6eaed',accent:'#2997AA',glass:'#1e2a33',metal:'#c3ccd3',post:'#8796a2'};
-
-  function resize(){
-    const r=cv.getBoundingClientRect(); dpr=Math.min(window.devicePixelRatio||1,2);
-    W=r.width; H=r.height; cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    // límites de la escena en coordenadas de pantalla (unidades): x [-12.5, 38.5], y [-17, 30]
-    k=Math.min(W/53, H/49); ox=W/2-13*k; oy=H/2-6.5*k;
-  }
-  const P=(x,y,z)=>[ox+(x-y)*COS*k, oy+((x+y)*SIN-z)*k];
-  function shade(hex,f){const n=parseInt(hex.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;r=Math.min(255,Math.round(r*f));g=Math.min(255,Math.round(g*f));b=Math.min(255,Math.round(b*f));return 'rgb('+r+','+g+','+b+')'}
-  function poly(pts,fill,stroke){ctx.beginPath();ctx.moveTo(pts[0][0],pts[0][1]);for(let i=1;i<pts.length;i++)ctx.lineTo(pts[i][0],pts[i][1]);ctx.closePath();ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=.6;ctx.stroke()}}
-  // caja isométrica: cara superior, cara +y (izquierda) y cara +x (derecha)
-  function box(x,y,z,w,d,h,c,opt){
-    opt=opt||{}; const e=opt.edge||'rgba(20,30,40,.18)';
-    poly([P(x,y+d,z),P(x+w,y+d,z),P(x+w,y+d,z+h),P(x,y+d,z+h)],opt.left||shade(c,.92),e);
-    poly([P(x+w,y,z),P(x+w,y+d,z),P(x+w,y+d,z+h),P(x+w,y,z+h)],opt.right||shade(c,.76),e);
-    poly([P(x,y,z+h),P(x+w,y,z+h),P(x+w,y+d,z+h),P(x,y+d,z+h)],opt.top||shade(c,1.06),e);
-  }
+  const COL={blue:'#1f5a7e',blueD:'#174663',white:'#f2f4f6',grey:'#cdd4da',steel:'#a9b3bb',rail:'#3d4a54',floor:'#e6eaed',accent:'#2997AA',glass:'#1e2a33',metal:'#c3ccd3',post:'#8796a2',wood:'#b8916a'};
+  const METAL={top:'#d7dee3',left:'#b6c0c8',right:'#9eaab3',edge:'rgba(40,60,75,.25)'};
   const clamp=v=>v<0?0:v>1?1:v;
   const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
   const seg=(t,a,b)=>ease(clamp((t-a)/(b-a)));
+  const lin=(t,a,b)=>clamp((t-a)/(b-a));
   const lerp=(a,b,f)=>a+(b-a)*f;
+  function shade(hex,f){const n=parseInt(hex.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;r=Math.min(255,Math.round(r*f));g=Math.min(255,Math.round(g*f));b=Math.min(255,Math.round(b*f));return 'rgb('+r+','+g+','+b+')'}
 
-  // ---------- Escena ----------
-  const T=12, TH=.22;
-  const SHEET={w:8,d:4};
-  const DRAWER_IN=2.5, DRAWER_OUT=11.5;             // x del cajón (dentro / fuera del almacén)
-  const TABLE_X=21, TABLE_IN=10.5, TABLE_TOP=2.4;   // mesa de corte y su recorrido hacia la máquina
-  const BX_TABLE=25, BX_DRAWER=15.5;                // posición del puente sobre la mesa / el cajón
-  const ARM_UP=13, CARRY=9;
-  const STACK_BASE=.9, STACK_N=6;
-
-  function state(t){
-    const s={};
-    const out=seg(t,0,1.4)-seg(t,7.4,8.8);
-    s.drawerX=lerp(DRAWER_IN,DRAWER_OUT,out);
-    s.bx=lerp(BX_TABLE,BX_DRAWER,seg(t,.6,2.0)); if(t>=4.0) s.bx=lerp(BX_DRAWER,BX_TABLE,seg(t,4.0,5.8));
-    const stackTop=STACK_BASE+STACK_N*TH, place=TABLE_TOP+TH;
-    let cz=ARM_UP;
-    if(t<2.8) cz=lerp(ARM_UP,stackTop,seg(t,2.0,2.8));
-    else if(t<3.2) cz=stackTop;
-    else if(t<5.8) cz=lerp(stackTop,CARRY,seg(t,3.2,4.0));
-    else if(t<7.0) cz=lerp(CARRY,place,seg(t,5.8,6.6));
-    else cz=lerp(place,ARM_UP,seg(t,7.0,7.8));
-    s.cz=cz; s.vac=t>=2.8&&t<6.6;
-    s.sheet=t<3.2?'stack':t<6.6?'carried':t<9.8?'table':'gone';
-    s.table=lerp(0,TABLE_IN,seg(t,8.0,9.8))-lerp(0,TABLE_IN,seg(t,10.8,11.9));
-    s.cut=t>=9.8&&t<10.8; s.cutT=t;
-    s.run=t>=8.0&&t<11.0;
-    s.step=t<2.0?0:t<4.0?1:t<7.4?2:3;
-    return s;
+  // ---------- Motor isométrico (uno por lienzo) ----------
+  function Iso(cv){
+    const ctx=cv.getContext('2d');
+    const g={ctx,k:1,ox:0,oy:0,W:0,H:0,dpr:1,m:null};
+    const grow=(x,y)=>{const m=g.m;if(x<m[0])m[0]=x;if(y<m[1])m[1]=y;if(x>m[2])m[2]=x;if(y>m[3])m[3]=y};
+    g.P=(x,y,z)=>[g.ox+(x-y)*COS*g.k, g.oy+((x+y)*SIN-z)*g.k];
+    g.poly=(pts,fill,stroke)=>{
+      if(g.m){pts.forEach(p=>grow(p[0],p[1]));return}
+      ctx.beginPath();ctx.moveTo(pts[0][0],pts[0][1]);for(let i=1;i<pts.length;i++)ctx.lineTo(pts[i][0],pts[i][1]);ctx.closePath();
+      ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=.6;ctx.stroke()}
+    };
+    // caja: cara +y (izquierda), cara +x (derecha) y cara superior
+    g.box=(x,y,z,w,d,h,c,opt)=>{
+      opt=opt||{};const e=opt.edge||'rgba(20,30,40,.18)',P=g.P;
+      g.poly([P(x,y+d,z),P(x+w,y+d,z),P(x+w,y+d,z+h),P(x,y+d,z+h)],opt.left||shade(c,.92),e);
+      g.poly([P(x+w,y,z),P(x+w,y+d,z),P(x+w,y+d,z+h),P(x+w,y,z+h)],opt.right||shade(c,.76),e);
+      g.poly([P(x,y,z+h),P(x+w,y,z+h),P(x+w,y+d,z+h),P(x,y+d,z+h)],opt.top||shade(c,1.06),e);
+    };
+    g.metal=(x,y,z,w,d,h)=>g.box(x,y,z,w,d,h,COL.metal,METAL);
+    g.line=(pts3,color,width,cap)=>{
+      const pts=pts3.map(p=>g.P(p[0],p[1],p[2]));
+      if(g.m){pts.forEach(p=>grow(p[0],p[1]));return}
+      ctx.beginPath();ctx.moveTo(pts[0][0],pts[0][1]);for(let i=1;i<pts.length;i++)ctx.lineTo(pts[i][0],pts[i][1]);
+      ctx.strokeStyle=color;ctx.lineWidth=Math.max(1,width*g.k);ctx.lineCap=cap||'round';ctx.lineJoin='round';ctx.stroke();
+    };
+    g.dot=(p3,r,color)=>{const p=g.P(p3[0],p3[1],p3[2]);if(g.m){grow(p[0],p[1]);return}ctx.beginPath();ctx.arc(p[0],p[1],r*g.k,0,Math.PI*2);ctx.fillStyle=color;ctx.fill()};
+    g.glow=(x,y,z,r,f)=>{
+      if(g.m||f<=0)return;const c=g.P(x,y,z),R=r*g.k;
+      const gr=ctx.createRadialGradient(c[0],c[1],0,c[0],c[1],R);
+      gr.addColorStop(0,'rgba(255,252,240,'+(.98*f)+')');gr.addColorStop(.22,'rgba(160,232,242,'+(.8*f)+')');gr.addColorStop(.55,'rgba(41,151,170,'+(.3*f)+')');gr.addColorStop(1,'rgba(41,151,170,0)');
+      ctx.fillStyle=gr;ctx.fillRect(c[0]-R,c[1]-R,2*R,2*R);
+    };
+    g.alpha=a=>{if(!g.m)ctx.globalAlpha=clamp(a)};
+    g.floor=(x0,y0,x1,y1)=>{
+      const P=g.P;
+      g.poly([P(x0,y0,0),P(x1,y0,0),P(x1,y1,0),P(x0,y1,0)],COL.floor);
+      g.poly([P(x0,y1,0),P(x1,y1,0),P(x1,y1,-.6),P(x0,y1,-.6)],shade('#e6eaed',.9));
+      g.poly([P(x1,y0,0),P(x1,y1,0),P(x1,y1,-.6),P(x1,y0,-.6)],shade('#e6eaed',.8));
+      if(g.m)return;
+      ctx.strokeStyle='rgba(31,90,126,.07)';ctx.lineWidth=1;ctx.beginPath();
+      for(let x=x0+2;x<x1;x+=2){const a=P(x,y0,0),b=P(x,y1,0);ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1])}
+      for(let y=y0+2;y<y1;y+=2){const a=P(x0,y,0),b=P(x1,y,0);ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1])}
+      ctx.stroke();
+    };
+    g.label=(text,x,y,z)=>{
+      const p=g.P(x,y,z);
+      if(g.m){const hw=text.length*.3+1;grow(p[0]-hw,p[1]-3.4);grow(p[0]+hw,p[1]);return}
+      ctx.font='600 '+Math.max(11,Math.round(g.k*.95))+'px Figtree, system-ui, sans-serif';
+      const w=ctx.measureText(text).width+16,h=Math.max(22,g.k*1.6),lx=p[0]-w/2,ly=p[1]-h-10;
+      ctx.strokeStyle='rgba(31,90,126,.45)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(p[0],ly+h);ctx.stroke();
+      ctx.fillStyle='#fff';ctx.shadowColor='rgba(0,0,0,.12)';ctx.shadowBlur=8;ctx.shadowOffsetY=2;
+      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(lx,ly,w,h,h/2);else ctx.rect(lx,ly,w,h);ctx.fill();
+      ctx.shadowColor='transparent';ctx.fillStyle='#1f5a7e';ctx.textBaseline='middle';ctx.textAlign='center';ctx.fillText(text,p[0],ly+h/2+.5);
+    };
+    // texto pintado sobre una cara de y constante (p. ej. el lateral del camión)
+    g.textY=(str,x,y,z,size,color)=>{
+      if(g.m)return;const o=g.P(x,y,z);ctx.save();
+      ctx.setTransform(g.dpr*COS,g.dpr*SIN,0,g.dpr,g.dpr*o[0],g.dpr*o[1]);
+      ctx.font='700 '+(size*g.k)+'px Figtree, system-ui, sans-serif';ctx.fillStyle=color;ctx.textAlign='left';ctx.textBaseline='alphabetic';
+      ctx.fillText(str,0,0);ctx.restore();
+    };
+    g.clear=()=>{ctx.setTransform(g.dpr,0,0,g.dpr,0,0);ctx.globalAlpha=1;ctx.clearRect(0,0,g.W,g.H)};
+    // ajusta escala y centro midiendo la escena en varios instantes
+    g.fit=sc=>{
+      const r=cv.getBoundingClientRect();g.dpr=Math.min(window.devicePixelRatio||1,2);
+      g.W=r.width;g.H=r.height;cv.width=Math.round(g.W*g.dpr);cv.height=Math.round(g.H*g.dpr);
+      g.k=1;g.ox=0;g.oy=0;g.m=[1e9,1e9,-1e9,-1e9];
+      for(let i=0;i<8;i++)sc.draw(sc.T*i/8);
+      const m=g.m;g.m=null;const pad=Math.max(10,Math.min(g.W,g.H)*.035);
+      g.k=Math.min((g.W-2*pad)/(m[2]-m[0]),(g.H-2*pad)/(m[3]-m[1]));
+      g.ox=g.W/2-(m[0]+m[2])/2*g.k;g.oy=g.H/2-(m[1]+m[3])/2*g.k;
+    };
+    return g;
   }
 
-  function floor(){
-    poly([P(0,0,0),P(44,0,0),P(44,14,0),P(0,14,0)],COL.floor);
-    poly([P(0,14,0),P(44,14,0),P(44,14,-.6),P(0,14,-.6)],shade('#e6eaed',.9));
-    poly([P(44,0,0),P(44,14,0),P(44,14,-.6),P(44,0,-.6)],shade('#e6eaed',.8));
-    ctx.strokeStyle='rgba(31,90,126,.07)'; ctx.lineWidth=1;
-    for(let x=2;x<44;x+=2){const a=P(x,0,0),b=P(x,14,0);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke()}
-    for(let y=2;y<14;y+=2){const a=P(0,y,0),b=P(44,y,0);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke()}
-  }
-  function sheet(x,y,z,c){box(x,y,z,SHEET.w,SHEET.d,TH,c||COL.metal,{top:'#d7dee3',left:'#b6c0c8',right:'#9eaab3',edge:'rgba(40,60,75,.25)'})}
-  function shadow(x,y,alpha){ctx.globalAlpha=alpha;poly([P(x,y,0),P(x+SHEET.w,y,0),P(x+SHEET.w,y+SHEET.d,0),P(x,y+SHEET.d,0)],'#5b6a75');ctx.globalAlpha=1}
-
-  function towerBack(){
-    const post=(x,y)=>box(x,y,0,.5,.5,16,COL.blue);
-    post(2,3); post(10.5,3); post(2,10.5);
-    for(let i=0;i<5;i++){const z=4+i*2.4; box(2.3,3.3,z,8.4,7.4,.25,COL.grey); for(let j=0;j<3;j++) sheet(2.5,5,z+.25+j*TH)}
-  }
-  function drawer(s,picked){
-    const x=s.drawerX;
-    box(x-.3,4.6,.3,SHEET.w+.6,SHEET.d+.8,.6,COL.steel);
-    const n=picked?STACK_N-1:STACK_N;
-    for(let j=0;j<n;j++) sheet(x,5,STACK_BASE+j*TH);
-  }
-  function towerFront(){
-    box(10.5,10.5,0,.5,.5,16,COL.blue);
-    box(1.8,2.8,16,9.4,8.4,1,COL.blueD);
-  }
-  function tableBase(){
-    box(20.1,4.1,0,10,5.8,1.5,COL.blue);
-    box(20.1,4.1,1.5,10,.35,.4,COL.rail); box(20.1,9.55,1.5,10,.35,.4,COL.rail);
-  }
-  function table(s,withSheet){
-    const x=TABLE_X+s.table;
-    box(x-.5,4.4,1.9,SHEET.w+1,SHEET.d+1.2,.5,COL.white);
-    for(let i=0;i<5;i++) poly([P(x-.3+i*2.2,4.6,2.41),P(x-.3+i*2.2+.15,4.6,2.41),P(x-.3+i*2.2+.15,9.4,2.41),P(x-.3+i*2.2,9.4,2.41)],'rgba(31,90,126,.18)');
-    if(withSheet) sheet(x,5,TABLE_TOP);
-  }
-  function machine(s){
-    box(30,2.5,0,12,9,2.4,COL.blue);
-    box(30,2.5,2.4,12,9,4.6,COL.white);
-    box(29.8,2.3,7,12.4,9.4,.5,COL.blue);
-    // ventana en la cara frontal izquierda (y = 11.5)
-    const wz0=3.3,wz1=6.1,wx0=33,wx1=39.5;
-    poly([P(wx0,11.5,wz0),P(wx1,11.5,wz0),P(wx1,11.5,wz1),P(wx0,11.5,wz1)],COL.glass);
-    if(s.cut){const f=.55+.45*Math.abs(Math.sin(s.cutT*22));const c=P((wx0+wx1)/2,11.5,(wz0+wz1)/2);
-      const g=ctx.createRadialGradient(c[0],c[1],0,c[0],c[1],3.4*k);g.addColorStop(0,'rgba(190,240,250,'+(.95*f)+')');g.addColorStop(.35,'rgba(41,151,170,'+(.6*f)+')');g.addColorStop(1,'rgba(41,151,170,0)');
-      ctx.save();ctx.beginPath();const q=[P(wx0,11.5,wz0),P(wx1,11.5,wz0),P(wx1,11.5,wz1),P(wx0,11.5,wz1)];ctx.moveTo(q[0][0],q[0][1]);q.slice(1).forEach(p=>ctx.lineTo(p[0],p[1]));ctx.closePath();ctx.clip();ctx.fillStyle=g;ctx.fillRect(c[0]-4*k,c[1]-4*k,8*k,8*k);ctx.restore()}
-    // franja de acento y baliza
-    poly([P(30,11.5,2.4),P(42,11.5,2.4),P(42,11.5,2.7),P(30,11.5,2.7)],COL.accent);
-    box(40.6,3.2,7.5,.4,.4,2.2,COL.rail);
-    box(40.5,3.1,9.7,.6,.6,.6,s.run?'#3fbf7f':'#e0a33a',{top:s.run?'#6fe0a5':'#f2c46a'});
-  }
-  function gantryBack(){
-    box(10.2,1.2,0,.7,.7,18,COL.post); box(28.9,1.2,0,.7,.7,18,COL.post);
-    box(10.2,1.2,18,19.4,.7,1,COL.blueD);
-  }
-  function gantryFrontPosts(){ box(10.2,12.4,0,.7,.7,18,COL.post); box(28.9,12.4,0,.7,.7,18,COL.post) }
-  function gantryTop(s,carry){
-    const bx=s.bx;
-    box(bx-.6,1.3,18.9,1.2,11.7,.9,COL.blue);                    // puente
-    box(bx-1,5.9,17.6,2,2.2,1.3,COL.white);                       // carro
-    const cz=s.cz;
-    box(bx-.25,6.75,cz+.6,.5,.5,17.6-(cz+.6),COL.steel);         // columna
-    if(carry) sheet(bx-SHEET.w/2,5,cz-TH);
-    box(bx-3.6,6.6,cz+.35,7.2,.8,.25,COL.rail);                   // bastidor de ventosas
-    for(const dx of [-3.2,-1.1,1.1,3.2]) for(const dy of [5.4,7.6]){
-      box(bx+dx-.25,dy+.05,cz,.5,.5,.35,s.vac?COL.accent:'#59646d',{top:s.vac?'#7fdcea':'#7b858d'});
-      box(bx+dx-.08,dy+.22,cz+.35,.16,.16,.0001+(dy<7?1.1:.2),COL.rail);
+  // ---------- Escena 1 · Almacén de chapa ----------
+  function S1(g){
+    const {P,box,poly,label}=g;
+    const T=12,TH=.22,SHEET={w:8,d:4};
+    const DRAWER_IN=2.5,DRAWER_OUT=11.5,TABLE_X=21,TABLE_IN=10.5,TABLE_TOP=2.4,BX_TABLE=25,BX_DRAWER=15.5,ARM_UP=13,CARRY=9,STACK_BASE=.9,STACK_N=6;
+    function state(t){
+      const s={};const out=seg(t,0,1.4)-seg(t,7.4,8.8);
+      s.drawerX=lerp(DRAWER_IN,DRAWER_OUT,out);
+      s.bx=lerp(BX_TABLE,BX_DRAWER,seg(t,.6,2.0));if(t>=4.0)s.bx=lerp(BX_DRAWER,BX_TABLE,seg(t,4.0,5.8));
+      const stackTop=STACK_BASE+STACK_N*TH,place=TABLE_TOP+TH;let cz=ARM_UP;
+      if(t<2.8)cz=lerp(ARM_UP,stackTop,seg(t,2.0,2.8));else if(t<3.2)cz=stackTop;
+      else if(t<5.8)cz=lerp(stackTop,CARRY,seg(t,3.2,4.0));else if(t<7.0)cz=lerp(CARRY,place,seg(t,5.8,6.6));
+      else cz=lerp(place,ARM_UP,seg(t,7.0,7.8));
+      s.cz=cz;s.vac=t>=2.8&&t<6.6;s.sheet=t<3.2?'stack':t<6.6?'carried':t<9.8?'table':'gone';
+      s.table=lerp(0,TABLE_IN,seg(t,8.0,9.8))-lerp(0,TABLE_IN,seg(t,10.8,11.9));
+      s.cut=t>=9.8&&t<10.8;s.t=t;s.run=t>=8.0&&t<11.0;s.step=t<2.0?0:t<4.0?1:t<7.4?2:3;return s;
     }
-    box(10.2,12.4,18,19.4,.7,1,COL.blueD);                        // carril delantero
-  }
-  function label(text,x,y,z){
-    const p=P(x,y,z); ctx.font='600 '+Math.max(11,Math.round(k*.95))+'px Figtree, system-ui, sans-serif';
-    const w=ctx.measureText(text).width+16, h=Math.max(22,k*1.6), lx=p[0]-w/2, ly=p[1]-h-10;
-    ctx.strokeStyle='rgba(31,90,126,.45)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(p[0],p[1]); ctx.lineTo(p[0],ly+h); ctx.stroke();
-    ctx.fillStyle='#fff'; ctx.shadowColor='rgba(0,0,0,.12)'; ctx.shadowBlur=8; ctx.shadowOffsetY=2;
-    ctx.beginPath(); if(ctx.roundRect) ctx.roundRect(lx,ly,w,h,h/2); else ctx.rect(lx,ly,w,h); ctx.fill();
-    ctx.shadowColor='transparent'; ctx.fillStyle='#1f5a7e'; ctx.textBaseline='middle'; ctx.textAlign='center'; ctx.fillText(text,p[0],ly+h/2+.5);
+    const sheet=(x,y,z)=>g.metal(x,y,z,SHEET.w,SHEET.d,TH);
+    function draw(t){
+      const s=state(t);
+      g.floor(0,0,44,14);
+      if(s.sheet==='carried'){g.alpha(.08+.06*(1-(s.cz-2)/10));poly([P(s.bx-4,5,0),P(s.bx+4,5,0),P(s.bx+4,9,0),P(s.bx-4,9,0)],'#5b6a75');g.alpha(1)}
+      // pórtico (detrás)
+      box(10.2,1.2,0,.7,.7,18,COL.post);box(28.9,1.2,0,.7,.7,18,COL.post);box(10.2,1.2,18,19.4,.7,1,COL.blueD);
+      // torre
+      for(const [x,y] of [[2,3],[10.5,3],[2,10.5]])box(x,y,0,.5,.5,16,COL.blue);
+      for(let i=0;i<5;i++){const z=4+i*2.4;box(2.3,3.3,z,8.4,7.4,.25,COL.grey);for(let j=0;j<3;j++)sheet(2.5,5,z+.25+j*TH)}
+      box(s.drawerX-.3,4.6,.3,SHEET.w+.6,SHEET.d+.8,.6,COL.steel);
+      const n=s.sheet!=='stack'?STACK_N-1:STACK_N;for(let j=0;j<n;j++)sheet(s.drawerX,5,STACK_BASE+j*TH);
+      box(10.5,10.5,0,.5,.5,16,COL.blue);box(1.8,2.8,16,9.4,8.4,1,COL.blueD);
+      // mesa
+      box(20.1,4.1,0,10,5.8,1.5,COL.blue);box(20.1,4.1,1.5,10,.35,.4,COL.rail);box(20.1,9.55,1.5,10,.35,.4,COL.rail);
+      const tx=TABLE_X+s.table;box(tx-.5,4.4,1.9,SHEET.w+1,SHEET.d+1.2,.5,COL.white);
+      for(let i=0;i<5;i++)poly([P(tx-.3+i*2.2,4.6,2.41),P(tx-.15+i*2.2,4.6,2.41),P(tx-.15+i*2.2,9.4,2.41),P(tx-.3+i*2.2,9.4,2.41)],'rgba(31,90,126,.18)');
+      if(s.sheet==='table')sheet(tx,5,TABLE_TOP);
+      box(10.2,12.4,0,.7,.7,18,COL.post);box(28.9,12.4,0,.7,.7,18,COL.post);
+      // máquina
+      box(30,2.5,0,12,9,2.4,COL.blue);box(30,2.5,2.4,12,9,4.6,COL.white);box(29.8,2.3,7,12.4,9.4,.5,COL.blue);
+      const q=[P(33,11.5,3.3),P(39.5,11.5,3.3),P(39.5,11.5,6.1),P(33,11.5,6.1)];poly(q,COL.glass);
+      if(s.cut&&!g.m){const ctx=g.ctx;ctx.save();ctx.beginPath();ctx.moveTo(q[0][0],q[0][1]);q.slice(1).forEach(p=>ctx.lineTo(p[0],p[1]));ctx.closePath();ctx.clip();g.glow(36.25,11.5,4.7,3.4,.55+.45*Math.abs(Math.sin(s.t*22)));ctx.restore()}
+      poly([P(30,11.5,2.4),P(42,11.5,2.4),P(42,11.5,2.7),P(30,11.5,2.7)],COL.accent);
+      box(40.6,3.2,7.5,.4,.4,2.2,COL.rail);box(40.5,3.1,9.7,.6,.6,.6,s.run?'#3fbf7f':'#e0a33a',{top:s.run?'#6fe0a5':'#f2c46a'});
+      // pórtico: puente, carro y ventosas
+      const bx=s.bx,cz=s.cz;
+      box(bx-.6,1.3,18.9,1.2,11.7,.9,COL.blue);box(bx-1,5.9,17.6,2,2.2,1.3,COL.white);
+      box(bx-.25,6.75,cz+.6,.5,.5,17.6-(cz+.6),COL.steel);
+      if(s.sheet==='carried')sheet(bx-SHEET.w/2,5,cz-TH);
+      box(bx-3.6,6.6,cz+.35,7.2,.8,.25,COL.rail);
+      for(const dx of [-3.2,-1.1,1.1,3.2])for(const dy of [5.4,7.6]){
+        box(bx+dx-.25,dy+.05,cz,.5,.5,.35,s.vac?COL.accent:'#59646d',{top:s.vac?'#7fdcea':'#7b858d'});
+        box(bx+dx-.08,dy+.22,cz+.35,.16,.16,.0001+(dy<7?1.1:.2),COL.rail);
+      }
+      box(10.2,12.4,18,19.4,.7,1,COL.blueD);
+      label('Almacén de chapa',6.5,7,17.2);label('Corte láser',36,7,7.6);
+      return s.step;
+    }
+    return {T,still:5,draw};
   }
 
-  function draw(t){
-    const s=state(t);
-    ctx.clearRect(0,0,W,H);
-    floor();
-    if(s.sheet==='carried') shadow(s.bx-SHEET.w/2,5,.08+.06*(1-(s.cz-2)/10));
-    gantryBack();
-    towerBack();
-    drawer(s,s.sheet!=='stack');
-    if(s.sheet==='stack') {/* la chapa superior forma parte de la pila */}
-    towerFront();
-    tableBase();
-    table(s,s.sheet==='table');
-    gantryFrontPosts();
-    machine(s);
-    gantryTop(s,s.sheet==='carried');
-    label('Almacén de chapa',6.5,7,17.2);
-    label('Corte láser',36,7,7.6);
-    return s.step;
+  // ---------- Escena 2 · Corte láser 2D ----------
+  function S2(g){
+    const {P,box,poly,label}=g;
+    const T=12,TH=.22,OUTX=1.5,INX=16.5,PY=3.5,PZ=2.4,ZT=PZ+.5+TH+.005;
+    const parts=[];for(let r=0;r<2;r++)for(let c=0;c<3;c++)parts.push({x:.8+c*3.5,y:.7+r*3.3,w:2.8,d:2.6});
+    const outline=p=>{const c=.45,x0=p.x,y0=p.y,x1=p.x+p.w,y1=p.y+p.d;return [[x0+c,y0],[x1,y0],[x1,y1-c],[x1-c,y1],[x0,y1],[x0,y0+c],[x0+c,y0]]};
+    const hole=p=>{const cx=p.x+p.w/2,cy=p.y+p.d/2,a=[];for(let i=0;i<=16;i++){const q=i/16*Math.PI*2;a.push([cx+.55*Math.cos(q),cy+.55*Math.sin(q)])}return a};
+    const HOME=[11.4,3.5],path=[];let cur=HOME;
+    const add=(pts,cut)=>{for(const p of pts){path.push({a:cur,b:p,cut});cur=p}};
+    parts.forEach(p=>{const h=hole(p);add([h[0]],false);add(h.slice(1),true);const o=outline(p);add([o[0]],false);add(o.slice(1),true)});
+    add([HOME],false);
+    let tot=0;path.forEach(s=>{s.len=Math.hypot(s.b[0]-s.a[0],s.b[1]-s.a[1])*(s.cut?1:.3);s.s0=tot;tot+=s.len});
+    const CUT0=2.2,CUT1=8.2;
+    function headAt(u){
+      for(const s of path){if(u<s.s0+s.len){const f=(u-s.s0)/s.len;return {x:lerp(s.a[0],s.b[0],f),y:lerp(s.a[1],s.b[1],f),cut:s.cut}}}
+      return {x:HOME[0],y:HOME[1],cut:false};
+    }
+    function trail(ox,oy,u,alpha){
+      if(g.m||alpha<=0||u<=0)return;const c=g.ctx;c.save();c.globalAlpha=alpha;c.strokeStyle='rgba(28,40,50,.85)';c.lineWidth=Math.max(1,g.k*.08);c.lineJoin='round';c.beginPath();
+      for(const s of path){if(s.s0>=u)break;if(!s.cut)continue;const f=Math.min(1,(u-s.s0)/s.len);
+        const a=P(ox+s.a[0],oy+s.a[1],ZT),b=P(ox+lerp(s.a[0],s.b[0],f),oy+lerp(s.a[1],s.b[1],f),ZT);c.moveTo(a[0],a[1]);c.lineTo(b[0],b[1])}
+      c.stroke();c.restore();
+    }
+    function partAt(p,wx,wy,wz){
+      const o=outline(p).slice(0,-1),h=hole(p);
+      poly(o.map(q=>P(wx+q[0]-p.x,wy+q[1]-p.y,wz)),'#9eaab3');
+      poly(o.map(q=>P(wx+q[0]-p.x,wy+q[1]-p.y,wz+TH)),'#dfe5e9','rgba(40,60,75,.35)');
+      poly(h.map(q=>P(wx+q[0]-p.x,wy+q[1]-p.y,wz+TH)),'#7b8892');
+    }
+    const BIN={x:2.5,y:12.4};
+    const binTarget=i=>[BIN.x+.3+(i%3)*2.85,BIN.y+.2,.35+Math.floor(i/3)*.24];
+    function draw(t){
+      g.floor(0,0,37,16.5);
+      const px=lerp(OUTX,INX,seg(t,0,1.8))-(INX-OUTX)*seg(t,8.5,10);
+      const u=clamp((t-CUT0)/(CUT1-CUT0))*tot;
+      const fresh=1-seg(t,11.4,12);
+      // mesa de carga y bancada
+      box(1,3.2,0,13,8.6,PZ,COL.blue);box(14,2.8,0,17.5,9.4,PZ,COL.blueD);
+      // cabina: lo de detrás
+      box(14,2.8,2.4,.4,.4,6.2,COL.blueD);box(14,2.8,8.6,17.5,.4,.4,COL.blueD);box(14,2.8,8.6,.4,9.4,.4,COL.blueD);
+      box(14.3,3.0,6.2,17,.5,.5,COL.rail);
+      // contenedor de piezas (fondo)
+      box(BIN.x,BIN.y,0,9,3,.3,COL.steel);box(BIN.x,BIN.y,.3,9,.2,1.6,COL.steel);box(BIN.x,BIN.y,.3,.2,3,1.6,COL.steel);
+      // palé de la mesa con la chapa
+      box(px,PY,PZ,12,8,.5,COL.white);
+      for(let i=0;i<6;i++)poly([P(px+.6+i*2.1,PY+.3,PZ+.51),P(px+.75+i*2.1,PY+.3,PZ+.51),P(px+.75+i*2.1,PY+7.7,PZ+.51),P(px+.6+i*2.1,PY+7.7,PZ+.51)],'rgba(31,90,126,.18)');
+      const sx=px+.5,sy=PY+.5;
+      g.metal(sx,sy,PZ+.5,11,7,TH);
+      trail(sx,sy,t<CUT0?0:u,t<CUT0?0:fresh);
+      // piezas que se recogen
+      parts.forEach((p,i)=>{
+        const st=10+i*.18;if(t<st)return;
+        g.alpha(fresh);poly(outline(p).slice(0,-1).map(q=>P(sx+q[0],sy+q[1],ZT)),'rgba(52,64,74,.85)');g.alpha(1);
+      });
+      parts.forEach((p,i)=>{
+        const st=10+i*.18;if(t<st)return;const f=seg(t,st,st+.9),tg=binTarget(i);
+        const wx=lerp(sx+p.x,tg[0],f),wy=lerp(sy+p.y,tg[1],f),wz=lerp(ZT-TH,tg[2],f)+3*Math.sin(Math.PI*f);
+        partAt(p,wx,wy,wz);
+      });
+      box(BIN.x,BIN.y+2.8,.3,9,.2,1.6,COL.steel);box(BIN.x+8.8,BIN.y,.3,.2,3,1.6,COL.steel);
+      // puente y cabezal
+      const cutting=t>=CUT0&&t<CUT1,h=cutting?headAt(u):{x:HOME[0],y:HOME[1],cut:false};
+      const bx=INX+.5+h.x,hy=PY+.5+h.y;
+      box(bx-.14,hy-.14,ZT+.3,.28,.28,5.4-(ZT+.3),COL.rail);
+      box(bx-.5,3.0,6.7,1,9,.7,COL.blue);box(bx-.7,hy-.7,5.4,1.4,1.4,2.2,COL.white);
+      box(14.3,11.5,6.2,17,.5,.5,COL.rail);
+      if(cutting&&h.cut)g.glow(bx,hy,ZT,1.9,.65+.35*Math.abs(Math.sin(t*31)));
+      // cabina: cristal y marco delanteros
+      poly([P(14,2.8,8.6),P(31.5,2.8,8.6),P(31.5,12.2,8.6),P(14,12.2,8.6)],'rgba(200,226,238,.14)');
+      poly([P(14,12.2,2.4),P(31.5,12.2,2.4),P(31.5,12.2,8.6),P(14,12.2,8.6)],'rgba(200,226,238,.2)','rgba(31,90,126,.25)');
+      poly([P(31.5,2.8,2.4),P(31.5,12.2,2.4),P(31.5,12.2,8.6),P(31.5,2.8,8.6)],'rgba(185,214,228,.26)','rgba(31,90,126,.25)');
+      poly([P(14,12.2,2.4),P(31.5,12.2,2.4),P(31.5,12.2,2.75),P(14,12.2,2.75)],COL.accent);
+      box(14,11.8,2.4,.4,.4,6.2,COL.blueD);box(31.1,11.8,2.4,.4,.4,6.2,COL.blueD);box(31.1,2.8,2.4,.4,.4,6.2,COL.blueD);
+      box(14,11.8,8.6,17.5,.4,.4,COL.blueD);box(31.1,2.8,8.6,.4,9.4,.4,COL.blueD);
+      const run=t>=1.8&&t<CUT1+.3;
+      box(30.4,3.2,9,.4,.4,1.6,COL.rail);box(30.3,3.1,10.6,.6,.6,.6,run?'#3fbf7f':'#e0a33a',{top:run?'#6fe0a5':'#f2c46a'});
+      // fuente láser y consola
+      box(32.6,3,0,3.6,4.6,5.5,COL.blue);poly([P(32.6,7.6,1.2),P(36.2,7.6,1.2),P(36.2,7.6,1.5),P(32.6,7.6,1.5)],COL.accent);
+      box(32.6,9.2,0,1.6,2.4,4.6,COL.white);poly([P(34.2,9.5,2.8),P(34.2,11.3,2.8),P(34.2,11.3,4.2),P(34.2,9.5,4.2)],COL.glass);
+      label('Corte láser 2D',22.7,7.5,9.1);
+      return t<CUT0?0:t<CUT1?1:t<10?2:3;
+    }
+    return {T,still:5,draw};
   }
 
-  let last=-1, start=performance.now(), raf=0, visible=true;
-  function setStep(i){ if(i===last) return; last=i; stepsEl.forEach((li,j)=>li.classList.toggle('on',j===i)); }
+  // ---------- Escena 3 · Corte de tubos ----------
+  function S3(g){
+    const {P,box,poly,label}=g;
+    const T=12,XC=31.8,FY=7,FZ=2.6,L=14.5,F0=29.6,R0=F0-L;
+    const C0=1.4,CD=2.35,DIST=[5.2,3,3,3];
+    const cs=c=>C0+c*CD;
+    function tube(x0,x1,y,z){
+      if(x1-x0<=.01)return;g.metal(x0,y-.5,z,x1-x0,1,1);
+      poly([P(x1,y-.33,z+.17),P(x1,y+.33,z+.17),P(x1,y+.33,z+.83),P(x1,y-.33,z+.83)],'#5d6b75');
+    }
+    function draw(t){
+      g.floor(9,0,43,14);
+      let A=0,cuts=0;for(let c=0;c<4;c++){A+=DIST[c]*seg(t,cs(c),cs(c)+.8);if(t>=cs(c)+1.5)cuts++}
+      const load=seg(t,0,1.2);
+      const front=R0+A+L-3*cuts;
+      // estante con tubos
+      box(13,1,0,17,3.6,2.2,COL.blueD);for(const x of [14,21,28])box(x,1,2.2,.4,3.6,.4,COL.rail);
+      tube(R0,F0,1.9,FZ);tube(R0,F0,3.1,FZ);
+      // bancada
+      box(13,5.6,0,17,2.8,2.2,COL.blue);for(const x of [16,20,24,28])box(x,6.3,2.2,.6,1.4,.4,COL.rail);
+      // mandril trasero
+      const chuckX=t<10.8?R0+A:lerp(R0+A,R0,seg(t,10.8,11.8));
+      box(chuckX-1.3,5.3,2.2,1.3,3.4,2.6,COL.white,{right:'#c9d1d7'});
+      // tubo en carga o en línea (el retal final se retira)
+      if(t<1.2)tube(R0,F0,lerp(4.3,FY,load),FZ+.9*Math.sin(Math.PI*load));
+      else if(t<11.4){g.alpha(t<10.8?1:1-lin(t,10.8,11.4));tube(R0+A,Math.min(front,30),FY,FZ);g.alpha(1)}
+      // mandril delantero
+      box(30,5.3,2.0,1.2,3.4,3.4,COL.white,{right:'#c9d1d7'});
+      poly([P(31.2,FY-.75,2.75),P(31.2,FY+.75,2.75),P(31.2,FY+.75,4.45),P(31.2,FY-.75,4.45)],'#8a98a3');
+      // mesa de salida
+      box(33.4,5.6,0,8.4,2.8,2.2,COL.blue);for(const x of [34,36,38,40])box(x,6.3,2.2,.6,1.4,.4,COL.rail);
+      if(t>=1.2&&front>31.2&&t<10.8)tube(31.2,front,FY,FZ);
+      // piezas cortadas
+      const falling=[];
+      for(let c=0;c<4;c++){
+        const t0=cs(c)+1.5;if(t<t0)continue;
+        const f1=seg(t,t0,t0+.4),f2=seg(t,t0+.4,t0+.85);
+        const x0=lerp(XC+.15,34.6,f1);
+        if(f2<=0)tube(x0,x0+3,FY,FZ);
+        else falling.push({x0,y:lerp(FY,10.6+c*.62,f2),z:lerp(FZ,.35,f2)+.6*Math.sin(Math.PI*f2)});
+      }
+      // cabezal
+      const cut=[0,1,2,3].some(c=>t>=cs(c)+.8&&t<cs(c)+1.5);
+      box(XC-.12,FY-.12,FZ+1.25,.24,.24,1.4,COL.rail);box(XC-.55,FY-.55,FZ+2.65,1.1,1.1,1.5,COL.white);
+      if(cut){const w=t*9;g.glow(XC,FY+.45*Math.cos(w),FZ+.55+.45*Math.sin(w),1.7,.7+.3*Math.abs(Math.sin(t*37)))}
+      // contenedor
+      box(33.6,9.6,0,7.6,3.2,.3,COL.steel);box(33.6,9.6,.3,7.6,.2,1.4,COL.steel);box(33.6,9.6,.3,.2,3.2,1.4,COL.steel);
+      falling.forEach(p=>tube(p.x0,p.x0+3,p.y,p.z));
+      box(33.6,12.6,.3,7.6,.2,1.4,COL.steel);box(41,9.6,.3,.2,3.2,1.4,COL.steel);
+      // cerramiento de la zona de corte
+      const x0=29.7,x1=33.4,y0=4.4,y1=9.4,z0=2.2,z1=7.6;
+      poly([P(x0,y0,z1),P(x1,y0,z1),P(x1,y1,z1),P(x0,y1,z1)],'rgba(200,226,238,.16)');
+      poly([P(x0,y1,z0),P(x1,y1,z0),P(x1,y1,z1),P(x0,y1,z1)],'rgba(200,226,238,.2)','rgba(31,90,126,.25)');
+      poly([P(x1,y0,z0),P(x1,y1,z0),P(x1,y1,z1),P(x1,y0,z1)],'rgba(185,214,228,.26)','rgba(31,90,126,.25)');
+      box(x0,y1-.35,z0,.35,.35,z1-z0,COL.blueD);box(x1-.35,y1-.35,z0,.35,.35,z1-z0,COL.blueD);box(x1-.35,y0,z0,.35,.35,z1-z0,COL.blueD);
+      box(x0,y1-.35,z1,x1-x0,.35,.35,COL.blueD);box(x1-.35,y0,z1,.35,y1-y0,.35,COL.blueD);
+      box(10.6,5.8,0,1.8,2.4,4.6,COL.white);poly([P(12.4,6.1,2.8),P(12.4,7.9,2.8),P(12.4,7.9,4.2),P(12.4,6.1,4.2)],COL.glass);
+      label('Corte de tubos',31.6,6.9,7.9);
+      if(t<C0)return 0;if(t>=10.8)return 3;
+      const r=t-cs(Math.min(3,Math.floor((t-C0)/CD)));
+      return r<.8?1:r<1.5?2:3;
+    }
+    return {T,still:cs(1)+1.1,draw};
+  }
+
+  // ---------- Escena 4 · Plegadora ----------
+  function S4(g){
+    const {P,box,poly,label}=g;
+    const T=10,X0=6,X1=16,YC=7.5,ZD=4.9,WL=2.5,TH=.15,STROKE=2.6;
+        // la pieza se dobla a 90°: el ala trasera sube 20° y la delantera 70° (a 45° quedaría de canto en la vista)
+    const ANG=[20*Math.PI/180,70*Math.PI/180];
+    function wing(x0,x1,yc,zb,f,dir){
+      const th=(dir>0?ANG[1]:ANG[0])*f,ye=yc+dir*WL*Math.cos(th),ze=zb+WL*Math.sin(th);
+      poly([P(x0,yc,zb),P(x1,yc,zb),P(x1,ye,ze),P(x0,ye,ze)],dir>0?(th>Math.PI/4?'#b9c3ca':'#d3dadf'):'#c9d1d7','rgba(40,60,75,.3)');
+      if(dir>0)poly([P(x0,ye,ze),P(x1,ye,ze),P(x1,ye,ze-TH),P(x0,ye,ze-TH)],'#9eaab3');
+    }
+    function endCap(x1,yc,zb,f){
+      const b=ANG[0]*f,a=ANG[1]*f,cb=Math.cos(b)*WL,sb=Math.sin(b)*WL,cf=Math.cos(a)*WL,sf=Math.sin(a)*WL;
+      poly([P(x1,yc-cb,zb+sb),P(x1,yc,zb),P(x1,yc+cf,zb+sf),P(x1,yc+cf,zb+sf-TH),P(x1,yc,zb-TH),P(x1,yc-cb,zb+sb-TH)],'#8d99a3');
+    }
+    const piece=(dx,dy,zb,f,part)=>{
+      const x0=X0+dx,x1=X1+dx,yc=YC+dy;
+      if(part!=='front')wing(x0,x1,yc,zb,f,-1);
+      if(part!=='back'){wing(x0,x1,yc,zb,f,1);endCap(x1,yc,zb,f)}
+    };
+    const CART={x:21,y:11,z:1.2},CYC=13.25,CZ=CART.z+.15;
+    function draw(t){
+      g.floor(0,0,33,16.5);
+      const slide=1-seg(t,0,1.8),gb=seg(t,1.8,2.4)-seg(t,5.2,6);
+      const tip=ZD+TH+STROKE-STROKE*seg(t,2.4,3.6)+STROKE*seg(t,5.2,6.2)-.35*(seg(t,3.6,5.2)-seg(t,5.2,5.6));
+      const th=seg(t,3.6,5.2),zb=ZD+TH-.35*seg(t,3.6,5.2);
+      // tope trasero
+      box(5,3.2,ZD-.7,12,.6,.6,COL.rail);
+      for(const fx of [7.5,13.9])box(fx,3.8,ZD-.4,.6,lerp(.5,1.1,gb),.8,COL.accent,{top:'#7fdcea'});
+      // bastidor izquierdo, bancada y matriz
+      box(3,5,0,1.2,5,13,COL.blue);
+      box(4.2,6.6,0,13.6,1.8,4.2,COL.blueD);
+      box(4.6,7.1,4.2,12.8,.8,.7,COL.rail);poly([P(4.6,7.5,ZD+.001),P(17.4,7.5,ZD+.001),P(17.4,7.56,ZD+.001),P(4.6,7.56,ZD+.001)],'#1c242b');
+      for(const ax of [7,14.3])box(ax,8.4,ZD-.5,.7,3.6,.5,COL.rail);
+      // chapa: ala trasera
+      const moving=t>=6.2;
+      if(!moving)piece(0,slide*5.5,zb,th,'back');
+      // punzón y trancha
+      box(4.6,7.42,tip,12.8,.16,.5,COL.rail);box(4.6,7.3,tip+.5,12.8,.4,1.9,COL.steel);
+      box(4.2,6.6,tip+2.4,13.6,1.8,2.2,COL.white,{right:'#c9d1d7'});
+      poly([P(4.2,8.4,tip+2.6),P(17.8,8.4,tip+2.6),P(17.8,8.4,tip+2.85),P(4.2,8.4,tip+2.85)],COL.accent);
+      if(!moving)piece(0,slide*5.5,zb,th,'front');
+      // bastidor derecho, cilindros y consola
+      box(17.8,5,0,1.2,5,13,COL.blue);
+      for(const cx of [3.2,18])box(cx,6.6,13,.8,1.8,1.6,COL.steel);
+      box(20.2,10.4,0,.3,.3,6,COL.rail);box(19.6,10.2,6,1.6,.5,2.2,COL.white);poly([P(19.75,10.7,6.4),P(21.05,10.7,6.4),P(21.05,10.7,7.9),P(19.75,10.7,7.9)],COL.glass);
+      // carro con piezas plegadas
+      box(CART.x,CART.y,.4,10.5,4.5,.8,COL.blue);for(const wx of [21.6,30.4])box(wx,14.6,0,.6,.5,.5,COL.rail);
+      for(let i=0;i<2;i++)piece(CART.x+.25-X0,CYC-YC,CZ+i*.35,1);
+      if(moving){
+        const a=seg(t,6.2,7.2),b=seg(t,7.2,8.6);
+        const zEnd=CZ+2*.35,zA=zb+1.4;
+        const dy=lerp(0,CYC-YC,a),dx=lerp(0,CART.x+.25-X0,b);
+        const z=b>0?lerp(zA,zEnd,b)+1.2*Math.sin(Math.PI*b):lerp(zb,zA,a);
+        piece(dx,dy,z,1);
+      }
+      label('Plegadora',11,7.5,15.2);
+      return t<1.8?0:t<3.6?1:t<5.2?2:3;
+    }
+    return {T,still:4.6,draw};
+  }
+
+  // ---------- Escena 5 · Soldadura láser ----------
+  function S5(g){
+    const {P,box,poly,label,line,dot}=g;
+    const T=10,ZT=3,SX0=10,SX1=18,SY=8.2,SZ=3.25;
+    const S=[14,2.3,3.1],LK=6.2,HOME=[14,6.4,7.2];
+    const weldX=t=>lerp(SX0,SX1,lin(t,2.4,6.4));
+    function tipAt(t){
+      const st=[SX0,SY+.45,SZ+.45];
+      if(t<1.8)return HOME;
+      if(t<2.4){const f=seg(t,1.8,2.4);return HOME.map((v,i)=>lerp(v,st[i],f))}
+      if(t<6.4)return [weldX(t),st[1],st[2]];
+      const en=[SX1,st[1],st[2]],f=seg(t,6.4,7.3);return en.map((v,i)=>lerp(v,HOME[i],f));
+    }
+    function arm(tip){
+      const W=[tip[0],tip[1]-.7,tip[2]+2.1];
+      const d=[W[0]-S[0],W[1]-S[1],W[2]-S[2]],dl=Math.hypot(...d),u=d.map(v=>v/dl);
+      let n=[-u[2]*u[0],-u[2]*u[1],1-u[2]*u[2]];const nl=Math.hypot(...n)||1;n=n.map(v=>v/nl);
+      const h=Math.sqrt(Math.max(0,LK*LK-(dl/2)*(dl/2)));
+      const E=[0,1,2].map(i=>S[i]+d[i]/2+n[i]*h);
+      line([S,E],'#163f58',1.25);line([S,E],COL.blue,.95);
+      line([E,W],'#163f58',1);line([E,W],'#e9edf0',.72);
+      dot(S,.7,COL.white);dot(E,.62,COL.white);dot(E,.3,COL.blue);
+      line([W,tip],COL.rail,.42);dot(W,.45,COL.blueD);
+    }
+    function seam(dx,t){
+      const x1=t<2.4?SX0:weldX(t);if(x1<=SX0+.01)return;
+      const n=24;for(let i=0;i<n;i++){
+        const a=lerp(SX0,x1,i/n),b=lerp(SX0,x1,(i+1)/n);
+        const tAt=2.4+(b-SX0)/(SX1-SX0)*4,age=Math.max(0,t-tAt);
+        const col=age<.35?'#fff4cf':age<1?'#f2a33a':age<2?'#b88a55':'#7f8b94';
+        line([[a+dx,SY+.06,SZ+.06],[b+dx,SY+.06,SZ+.06]],col,.22,'butt');
+      }
+    }
+    function draw(t){
+      g.floor(0,0,32,15);
+      // fuente láser, cable y base del robot
+      box(1.5,2,0,4,4,5.5,COL.blue);poly([P(1.5,6,1.4),P(5.5,6,1.4),P(5.5,6,1.75),P(1.5,6,1.75)],COL.accent);
+      poly([P(2.2,6,2.6),P(4.8,6,2.6),P(4.8,6,4.6),P(2.2,6,4.6)],'#f2f4f6');
+      line([[5.5,4,.15],[9,2.9,.12],[12.9,2.3,.15]],COL.rail,.22);
+      box(12.9,1.2,0,2.2,2.2,1.4,COL.white,{right:'#c9d1d7'});box(13.3,1.6,1.4,1.4,1.4,1.2,COL.blue);
+      // mesa de soldadura
+      box(8,4,0,12,7,ZT,COL.steel,{top:'#c4ccd2'});
+      if(!g.m){g.ctx.fillStyle='rgba(61,74,84,.35)';for(let x=9;x<20;x+=1.5)for(let y=5;y<11;y+=1.5){const p=P(x,y,ZT);g.ctx.fillRect(p[0]-1,p[1]-1,2,2)}}
+      // transportador de salida
+      box(20.4,4.6,0,10.6,5.8,ZT,COL.blue);
+      if(!g.m)for(let x=21;x<31;x+=1)line([[x,4.8,ZT+.01],[x,10.2,ZT+.01]],'rgba(255,255,255,.35)',.12,'butt');
+      // pieza: base plegada en L y tubo
+      const dx=-11*(1-seg(t,0,1.4))+12*seg(t,7.6,9.2);
+      const fade=Math.min(lin(t,0,.4),1-lin(t,9,9.8));
+      g.alpha(fade);
+      g.metal(9.5+dx,5,ZT,9,4.5,.25);g.metal(9.5+dx,5,ZT+.25,9,.25,2.2);
+      const tz=4*(1-seg(t,1,1.8));
+      g.alpha(Math.min(fade,lin(t,.7,1.1)));
+      g.metal(SX0+dx,7,SZ+tz,SX1-SX0,1.2,1.2);
+      poly([P(SX1+dx,7.2,SZ+tz+.2),P(SX1+dx,8,SZ+tz+.2),P(SX1+dx,8,SZ+tz+1),P(SX1+dx,7.2,SZ+tz+1)],'#5d6b75');
+      g.alpha(fade);seam(dx,t);g.alpha(1);
+      // robot
+      arm(tipAt(t));
+      if(t>=2.4&&t<6.4)g.glow(weldX(t),SY,SZ+.1,2.2,.7+.3*Math.abs(Math.sin(t*29)));
+      label('Soldadura láser',14,6.4,10.6);
+      return t<2.4?0:t<6.4?1:t<7.6?2:3;
+    }
+    return {T,still:4.4,draw};
+  }
+
+  // ---------- Escena 6 · Expedición ----------
+  function S6(g){
+    const {P,box,poly,label}=g;
+    const T=12,CZ=1.6,PX0=4,PX1=33;
+    const FILM={top:'rgba(225,240,247,.42)',left:'rgba(205,228,238,.42)',right:'rgba(185,212,226,.48)',edge:'rgba(110,160,190,.5)'};
+    function pallet(px,t,a){
+      box(px,6.4,CZ,5.2,.7,.35,COL.wood);box(px,8.15,CZ,5.2,.7,.35,COL.wood);box(px,9.9,CZ,5.2,.7,.35,COL.wood);
+      box(px,6.4,CZ+.35,5.2,4.2,.25,COL.wood,{top:'#cfa97c'});
+      for(let i=0;i<3;i++){
+        const st=.6+i*1;if(t<st)continue;const f=seg(t,st,st+.85),z=CZ+.6+i*1.15+5*(1-f);
+        g.alpha(Math.min(a,lin(t,st,st+.25)));
+        g.metal(px+.3,6.8,z,4.6,3.4,.22);g.metal(px+.5,7.7,z+.22,4.2,.9,.9);
+        poly([P(px+4.7,7.85,z+.37),P(px+4.7,8.45,z+.37),P(px+4.7,8.45,z+.97),P(px+4.7,7.85,z+.97)],'#5d6b75');
+        g.alpha(a);
+      }
+      const fh=3.6*seg(t,3.6,5.2);
+      if(fh>.02)box(px+.15,6.6,CZ+.5,4.9,3.8,fh,'#ffffff',FILM);
+    }
+    function draw(t){
+      g.floor(0,0,52,15.5);
+      const px=lerp(PX0,PX1,seg(t,5.4,9.4));
+      // transportador de rodillos
+      box(2,6,0,29,5,CZ,COL.blue);
+      if(!g.m)for(let x=2.6;x<31;x+=1.2)g.line([[x,6.3,CZ+.01],[x,10.7,CZ+.01]],'rgba(255,255,255,.4)',.14,'butt');
+      box(2,6,CZ,29,.3,.3,COL.rail);
+      const a=lin(t,0,.5);g.alpha(a);pallet(px,t,a);g.alpha(1);
+      box(2,10.7,CZ,29,.3,.3,COL.rail);
+      // envolvedora
+      const hz=CZ+.5+3.6*seg(t,3.6,5.2)-3.6*seg(t,5.2,6);
+      box(6.4,12.2,0,.5,.5,7.2,COL.white,{right:'#c9d1d7'});box(6.2,11.4,hz-.4,.9,1.3,.8,COL.blue);
+      // muelle y camión
+      box(30.6,6,CZ-.25,1.4,5,.25,COL.rail);
+      box(31,4.5,1,15,8,.5,'#2b3640');
+      for(const wx of [39.5,41.2,43])box(wx,12.3,0,1.3,.4,1.3,'#1f2933');
+      box(31,4.5,1.5,15,8,7.5,COL.white,{top:'#f6f8f9',right:'#d3dade'});
+      poly([P(31,12.5,2.2),P(46,12.5,2.2),P(46,12.5,2.9),P(31,12.5,2.9)],COL.blue);
+      poly([P(31,12.5,2.9),P(46,12.5,2.9),P(46,12.5,3.1),P(31,12.5,3.1)],COL.accent);
+      g.textY('KREXON',33,12.5,5,2.1,COL.blue);
+      box(46.3,5,0,4.6,7,1.2,'#2b3640');box(46.3,5,1.2,4.4,7,5.6,COL.blue);
+      poly([P(50.7,5.6,4.2),P(50.7,11.4,4.2),P(50.7,11.4,6.3),P(50.7,5.6,6.3)],COL.glass);
+      box(48.2,12,0,1.3,.4,1.3,'#1f2933');
+      label('Expedición',38.5,8.5,9.2);
+      return t<3.6?0:t<5.4?1:t<8.2?2:3;
+    }
+    return {T,still:4.4,draw};
+  }
+
+  // ---------- Contenido de las escenas ----------
+  const SCENES=[
+    {make:S1,tab:'Almacén',eyebrow:'Escena 1 · Almacén de chapa',title:'Del almacén a la máquina, sin manipular la chapa',
+     lead:'Automatizamos la carga para que tu láser no se detenga: el almacén entrega la chapa y el pórtico la coloca en la mesa de corte.',
+     steps:[['Almacén de chapa','El cajón sale con la chapa lista.'],['Carga por ventosas','El pórtico la recoge por vacío.'],['Traslado a la mesa','La deposita en la mesa de corte.'],['Entrada a corte','La mesa entra y empieza el corte.']],
+     aria:'Animación: un almacén automático entrega una chapa, un pórtico con ventosas la traslada a la mesa y la mesa entra en la máquina de corte láser.'},
+    {make:S2,tab:'Corte 2D',eyebrow:'Escena 2 · Corte láser 2D',title:'La chapa entra y salen las piezas cortadas',
+     lead:'El cabezal recorre la chapa y corta cada pieza con precisión. Al terminar, la mesa sale con las piezas listas para el siguiente paso.',
+     steps:[['Entrada de la chapa','La mesa lleva la chapa a la cabina.'],['Corte de piezas','El cabezal corta agujeros y contornos.'],['Salida de la mesa','La chapa cortada sale de la cabina.'],['Recogida de piezas','Las piezas pasan al contenedor.']],
+     aria:'Animación: la mesa entra en la cabina de corte láser, el cabezal corta seis piezas y la mesa sale para recogerlas.'},
+    {make:S3,tab:'Tubos',eyebrow:'Escena 3 · Corte de tubos',title:'De la barra de tubo a la pieza a medida',
+     lead:'La cortadora de tubos avanza la barra con sus mandriles y la corta a la longitud exacta, pieza tras pieza.',
+     steps:[['Carga de la barra','El tubo pasa del estante a la línea.'],['Avance con mandriles','El mandril empuja el tubo a medida.'],['Corte a medida','El cabezal corta todo el perfil.'],['Descarga de piezas','Las piezas caen al contenedor.']],
+     aria:'Animación: un tubo se carga en la cortadora, avanza y se corta en piezas que caen a un contenedor.'},
+    {make:S4,tab:'Plegado',eyebrow:'Escena 4 · Plegadora',title:'Plegado preciso en cada golpe',
+     lead:'La chapa se apoya en la matriz, el tope trasero fija la posición y el punzón la dobla al ángulo exacto.',
+     steps:[['Colocación de la chapa','La pieza se apoya en la matriz.'],['Tope y bajada','El tope la fija y el punzón baja.'],['Plegado','La chapa se dobla a 90°.'],['Pieza terminada','Sale al carro, lista para soldar.']],
+     aria:'Animación: una plegadora dobla una chapa en forma de V y la pieza pasa a un carro.'},
+    {make:S5,tab:'Soldadura',eyebrow:'Escena 5 · Soldadura láser',title:'Uniones limpias y rápidas con soldadura láser',
+     lead:'Un robot de soldadura láser une la pieza plegada con el tubo en un solo recorrido, sin apenas deformación.',
+     steps:[['Piezas en posición','La base y el tubo se colocan en la mesa.'],['Soldadura láser','El robot recorre el cordón.'],['Unión terminada','El cordón se enfría y queda limpio.'],['Al siguiente puesto','El conjunto sale por la cinta.']],
+     aria:'Animación: un brazo robot suelda con láser un tubo sobre una pieza plegada.'},
+    {make:S6,tab:'Expedición',eyebrow:'Escena 6 · Expedición',title:'Del taller al cliente',
+     lead:'Los conjuntos terminados se apilan en el palé, se embalan y salen por el muelle de carga hacia el cliente.',
+     steps:[['Carga del palé','Los conjuntos se apilan en el palé.'],['Embalaje','La envolvedora protege la carga.'],['Hacia el muelle','El palé avanza por los rodillos.'],['Carga en el camión','El pedido sale hacia el cliente.']],
+     aria:'Animación: los conjuntos terminados se apilan en un palé, se embalan y el palé entra en un camión.'}
+  ];
+
+  const main=document.getElementById('scenes'),idx=document.getElementById('idx');
+  const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  SCENES.forEach((S,i)=>{
+    const n=i+1;
+    idx.insertAdjacentHTML('beforeend','<li><a href="#e'+n+'"><i>'+n+'</i>'+esc(S.tab)+'</a></li>');
+    main.insertAdjacentHTML('beforeend',
+      '<section class="flow'+(i%2?' rev':'')+'" id="e'+n+'" aria-labelledby="h-e'+n+'"><div class="wrap flow-grid"><div>'+
+      '<span class="eyebrow">'+esc(S.eyebrow)+'</span><h2 id="h-e'+n+'">'+esc(S.title)+'</h2><p class="flow-lead">'+esc(S.lead)+'</p>'+
+      '<ol class="steps">'+S.steps.map((s,j)=>'<li><span>'+(j+1)+'</span><b>'+esc(s[0])+'</b><small>'+esc(s[1])+'</small></li>').join('')+'</ol></div>'+
+      '<div class="stage"><canvas role="img" aria-label="'+esc(S.aria)+'"></canvas></div></div></section>');
+  });
+
+  const fijo=new URLSearchParams(location.search).get('t');
+  const live=[...main.querySelectorAll('.flow')].map((sec,i)=>{
+    const cv=sec.querySelector('canvas'),g=Iso(cv),sc=SCENES[i].make(g),lis=[...sec.querySelectorAll('.steps li')];
+    let last=-1;
+    return {sc,g,cv,vis:false,t0:performance.now(),
+      setStep(j){if(j===last)return;last=j;lis.forEach((li,k)=>li.classList.toggle('on',k===j))},
+      render(t){g.clear();this.setStep(sc.draw(t))},
+      still(){return fijo!==null?((+fijo)%sc.T+sc.T)%sc.T:sc.still}};
+  });
+
+  let raf=0;
+  const animate=!RM&&fijo===null;
   function frame(now){
-    const t=((now-start)/1000)%T;
-    setStep(draw(t));
+    for(const o of live)if(o.vis)o.render(((now-o.t0)/1000)%o.sc.T);
     raf=requestAnimationFrame(frame);
   }
-  function play(){ if(!raf&&visible&&!document.hidden&&!RM){ raf=requestAnimationFrame(frame);} }
-  function stop(){ cancelAnimationFrame(raf); raf=0; }
-
-  resize();
-  const fijo=new URLSearchParams(location.search).get('t');
-  if(fijo!==null){ const tf=+fijo; const redraw=()=>setStep(draw(tf)); redraw(); addEventListener('resize',()=>{resize();redraw()}); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(redraw); return; }
-  if(RM){ setStep(draw(5)); }
-  addEventListener('resize',()=>{ resize(); if(RM) draw(5); });
-  if('IntersectionObserver' in window) new IntersectionObserver(e=>{ visible=e[0].isIntersecting; visible?play():stop(); }).observe(cv);
-  document.addEventListener('visibilitychange',()=>{ document.hidden?stop():play(); });
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if(RM) draw(5); });
+  function play(){if(animate&&!raf&&!document.hidden)raf=requestAnimationFrame(frame)}
+  function stop(){cancelAnimationFrame(raf);raf=0}
+  function refit(){live.forEach(o=>{o.g.fit(o.sc);if(!animate)o.render(o.still())})}
+  refit();
+  addEventListener('resize',refit);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(refit);
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{const o=live.find(l=>l.cv===e.target);if(o)o.vis=e.isIntersecting}),{rootMargin:'80px'});
+    live.forEach(o=>io.observe(o.cv));
+  }else live.forEach(o=>o.vis=true);
+  document.addEventListener('visibilitychange',()=>{document.hidden?stop():play()});
   play();
 })();
 </script>
