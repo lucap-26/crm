@@ -927,26 +927,13 @@ footer .foot-col ul{margin:0;padding:0}
 .mq-pic.mq-pic-contain{background:#fff}
 .mq-pic.mq-pic-contain img{object-fit:contain}
 
-/* ---------- Animaciones isométricas (Servicios, Corte plano 2D, Plegadoras) ---------- */
-.anim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:48px;align-items:center;margin-top:72px;padding-top:64px;border-top:1px solid var(--line)}
-.anim-eye{display:block;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--rule,#2997AA);margin-bottom:12px}
-.anim-txt h3{font-size:clamp(24px,2.4vw,34px);font-weight:600;line-height:1.12;letter-spacing:-.02em;color:var(--ink);text-wrap:balance;margin:0}
-.anim-txt>p{margin:14px 0 0;font-size:17px;line-height:1.6;color:var(--text);max-width:46ch}
-.anim-steps{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--line)}
-.anim-steps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:2px 12px;padding:11px 0 11px 14px;border-bottom:1px solid var(--line);border-left:3px solid transparent;transition:border-color .3s ease,background-color .3s ease}
-.anim-steps li span{grid-row:span 2;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--muted,#8c8c8c);font-weight:600;font-size:14px;transition:background-color .3s ease,color .3s ease}
-.anim-steps li b{font-weight:600;color:var(--ink);font-size:16px}
-.anim-steps li small{font-size:14px;color:var(--muted,#8c8c8c);line-height:1.45}
-.anim-steps li.on{border-left-color:var(--rule,#2997AA);background:rgba(41,151,170,.06)}
-.anim-steps li.on span{background:var(--brand);color:#fff}
-.anim-more{margin-top:22px}
-.anim-stage{position:relative;aspect-ratio:1.3/1;max-height:560px;width:100%;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#f7f9fa 0%,#eef1f3 100%)}
+/* ---------- Animaciones isométricas (Servicios y Contacto): solo la ilustración ---------- */
+.anim-stage{position:relative;width:100%;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#f7f9fa 0%,#eef1f3 100%)}
 .anim-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-@media (max-width:900px){
-  .anim{grid-template-columns:minmax(0,1fr);gap:24px;margin-top:48px;padding-top:44px}
-  .anim-stage{order:-1}
-}
-@media (prefers-reduced-motion:reduce){.anim-steps li,.anim-steps li span{transition:none}}
+.anim-servicios{margin-top:48px;aspect-ratio:2.2/1;max-height:480px}
+.ct-grid{align-items:start}
+.anim-contacto{margin-top:32px;aspect-ratio:2/1;max-width:560px;max-height:280px;background:linear-gradient(180deg,#2a2d2f 0%,#25282a 100%)}
+@media (max-width:900px){.anim-servicios{margin-top:36px;aspect-ratio:1.5/1}}
 
 /* ==========================================================
    VERSIÓN 3 · Sistema de DESIGN-krexon.md
@@ -1703,16 +1690,6 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
       </ul>
     </details>
     <p class="pdf-msg" role="status" aria-live="polite" hidden></p>
-    <div class="anim">
-      <div class="anim-txt">
-        <span class="anim-eye">Cómo funciona</span>
-        <h3 id="h-anim-corte-plano">La chapa entra y salen las piezas cortadas</h3>
-        <p>El cabezal recorre la chapa y corta cada pieza con precisión: primero los agujeros y después el contorno. Al terminar, la mesa sale con las piezas listas para el siguiente paso.</p>
-        <ol class="anim-steps"><li><span>1</span><b>Entrada de la chapa</b><small>La mesa lleva la chapa a la cabina.</small></li><li><span>2</span><b>Corte de piezas</b><small>El cabezal corta agujeros y contornos.</small></li><li><span>3</span><b>Salida de la mesa</b><small>La chapa cortada sale de la cabina.</small></li><li><span>4</span><b>Recogida de piezas</b><small>Las piezas pasan al contenedor.</small></li></ol>
-        
-      </div>
-      <div class="anim-stage"><canvas data-anim="2" role="img" aria-label="Animación: la mesa entra en la cabina de corte láser, el cabezal corta seis piezas y la mesa sale para recogerlas."></canvas></div>
-    </div>
   </div>
 </section>
 
@@ -2293,16 +2270,6 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
       </ul>
     </details>
     <p class="pdf-msg" role="status" aria-live="polite" hidden></p>
-    <div class="anim">
-      <div class="anim-txt">
-        <span class="anim-eye">Cómo funciona</span>
-        <h3 id="h-anim-plegadoras">Plegado preciso en cada golpe</h3>
-        <p>La chapa se apoya en la matriz, el tope trasero fija la posición y el punzón la dobla al ángulo exacto, pieza tras pieza.</p>
-        <ol class="anim-steps"><li><span>1</span><b>Colocación de la chapa</b><small>La pieza se apoya en la matriz.</small></li><li><span>2</span><b>Tope y bajada</b><small>El tope la fija y el punzón baja.</small></li><li><span>3</span><b>Plegado</b><small>La chapa se dobla a 90°.</small></li><li><span>4</span><b>Pieza terminada</b><small>Sale al carro, lista para soldar.</small></li></ol>
-        
-      </div>
-      <div class="anim-stage"><canvas data-anim="4" role="img" aria-label="Animación: una plegadora dobla una chapa a 90 grados y la pieza pasa a un carro."></canvas></div>
-    </div>
   </div>
 </section>
 <!--GEN:FIN-->
@@ -2624,16 +2591,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
       <article class="sv-card"><h3>Movilidad y logística de maquinaria</h3><p>Gestión integral de traslados e instalaciones complejas. Precisión técnica y movilidad sin fronteras.</p><a class="more" href="#contacto">Consultar</a></article>
       <article class="sv-card"><h3>Servicios financieros</h3><p>Instrumentos de inversión a medida, diseñados para optimizar el retorno (ROI) y facilitar la adquisición de tecnología de vanguardia.</p><a class="more" href="#contacto">Consultar</a></article>
     </div>
-    <div class="anim">
-      <div class="anim-txt">
-        <span class="anim-eye">Desarrollo de procesos productivos</span>
-        <h3 id="h-anim-servicios">Del almacén a la máquina, sin manipular la chapa</h3>
-        <p>Diseñamos procesos a medida para cada taller. Por ejemplo, esta célula automatizada: el almacén entrega la chapa y el pórtico la coloca en la mesa de corte para que el láser no se detenga.</p>
-        <ol class="anim-steps"><li><span>1</span><b>Almacén de chapa</b><small>El cajón sale con la chapa lista.</small></li><li><span>2</span><b>Carga por ventosas</b><small>El pórtico la recoge por vacío.</small></li><li><span>3</span><b>Traslado a la mesa</b><small>La deposita en la mesa de corte.</small></li><li><span>4</span><b>Entrada a corte</b><small>La mesa entra y empieza el corte.</small></li></ol>
-        <a class="more anim-more" href="#automatizacion">Ver automatización</a>
-      </div>
-      <div class="anim-stage"><canvas data-anim="1" role="img" aria-label="Animación: un almacén automático entrega una chapa, un pórtico con ventosas la traslada a la mesa y la mesa entra en la máquina de corte láser."></canvas></div>
-    </div>
+    <div class="anim-stage anim-servicios"><canvas data-anim="1" role="img" aria-label="Animación: un almacén automático entrega una chapa, un pórtico con ventosas la traslada a la mesa y la mesa entra en la máquina de corte láser."></canvas></div>
   </div>
 </section>
 
@@ -2837,6 +2795,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
       <a class="ct-mail" href="mailto:info@krexon.com"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>info@krexon.com</a>
       <a class="wa-btn" href="https://wa.me/34623968619" data-wa target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Escríbenos por WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a>
       <p class="ct-hours"><b>Horario de atención:</b> 8:00 h a 17:30 h</p>
+      <div class="anim-stage anim-contacto"><canvas data-anim="6" role="img" aria-label="Animación: los conjuntos terminados se apilan en un palé, se embalan y el palé entra en un camión de Krexon."></canvas></div>
     </div>
 
     <form class="ct-form" id="ctForm" novalidate aria-labelledby="ct-ft">
@@ -3460,7 +3419,7 @@ laserScene(document.getElementById('ctaCanvas'),{cx:.8,cy:.5,r:.4});
 
 </script>
 <script>
-// Animaciones isométricas (Servicios, Corte plano 2D y Plegadoras). Dibujadas en <canvas>, sin librerías.
+// Animaciones isométricas (Servicios y Contacto). Dibujadas en <canvas>, sin librerías.
 (function(){
   'use strict';
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -3608,156 +3567,56 @@ laserScene(document.getElementById('ctaCanvas'),{cx:.8,cy:.5,r:.4});
     return {T,still:5,draw};
   }
 
-  // ---------- Escena 2 · Corte láser 2D ----------
-  function S2(g){
+  // ---------- Escena 6 · Expedición ----------
+  function S6(g){
     const {P,box,poly,label}=g;
-    const T=12,TH=.22,OUTX=1.5,INX=16.5,PY=3.5,PZ=2.4,ZT=PZ+.5+TH+.005;
-    const parts=[];for(let r=0;r<2;r++)for(let c=0;c<3;c++)parts.push({x:.8+c*3.5,y:.7+r*3.3,w:2.8,d:2.6});
-    const outline=p=>{const c=.45,x0=p.x,y0=p.y,x1=p.x+p.w,y1=p.y+p.d;return [[x0+c,y0],[x1,y0],[x1,y1-c],[x1-c,y1],[x0,y1],[x0,y0+c],[x0+c,y0]]};
-    const hole=p=>{const cx=p.x+p.w/2,cy=p.y+p.d/2,a=[];for(let i=0;i<=16;i++){const q=i/16*Math.PI*2;a.push([cx+.55*Math.cos(q),cy+.55*Math.sin(q)])}return a};
-    const HOME=[11.4,3.5],path=[];let cur=HOME;
-    const add=(pts,cut)=>{for(const p of pts){path.push({a:cur,b:p,cut});cur=p}};
-    parts.forEach(p=>{const h=hole(p);add([h[0]],false);add(h.slice(1),true);const o=outline(p);add([o[0]],false);add(o.slice(1),true)});
-    add([HOME],false);
-    let tot=0;path.forEach(s=>{s.len=Math.hypot(s.b[0]-s.a[0],s.b[1]-s.a[1])*(s.cut?1:.3);s.s0=tot;tot+=s.len});
-    const CUT0=2.2,CUT1=8.2;
-    function headAt(u){
-      for(const s of path){if(u<s.s0+s.len){const f=(u-s.s0)/s.len;return {x:lerp(s.a[0],s.b[0],f),y:lerp(s.a[1],s.b[1],f),cut:s.cut}}}
-      return {x:HOME[0],y:HOME[1],cut:false};
-    }
-    function trail(ox,oy,u,alpha){
-      if(g.m||alpha<=0||u<=0)return;const c=g.ctx;c.save();c.globalAlpha=alpha;c.strokeStyle='rgba(28,40,50,.85)';c.lineWidth=Math.max(1,g.k*.08);c.lineJoin='round';c.beginPath();
-      for(const s of path){if(s.s0>=u)break;if(!s.cut)continue;const f=Math.min(1,(u-s.s0)/s.len);
-        const a=P(ox+s.a[0],oy+s.a[1],ZT),b=P(ox+lerp(s.a[0],s.b[0],f),oy+lerp(s.a[1],s.b[1],f),ZT);c.moveTo(a[0],a[1]);c.lineTo(b[0],b[1])}
-      c.stroke();c.restore();
-    }
-    function partAt(p,wx,wy,wz){
-      const o=outline(p).slice(0,-1),h=hole(p);
-      poly(o.map(q=>P(wx+q[0]-p.x,wy+q[1]-p.y,wz)),'#9eaab3');
-      poly(o.map(q=>P(wx+q[0]-p.x,wy+q[1]-p.y,wz+TH)),'#dfe5e9','rgba(40,60,75,.35)');
-      poly(h.map(q=>P(wx+q[0]-p.x,wy+q[1]-p.y,wz+TH)),'#7b8892');
-    }
-    const BIN={x:2.5,y:12.4};
-    const binTarget=i=>[BIN.x+.3+(i%3)*2.85,BIN.y+.2,.35+Math.floor(i/3)*.24];
-    function draw(t){
-      g.floor(0,0,37,16.5);
-      const px=lerp(OUTX,INX,seg(t,0,1.8))-(INX-OUTX)*seg(t,8.5,10);
-      const u=clamp((t-CUT0)/(CUT1-CUT0))*tot;
-      const fresh=1-seg(t,11.4,12);
-      // mesa de carga y bancada
-      box(1,3.2,0,13,8.6,PZ,COL.blue);box(14,2.8,0,17.5,9.4,PZ,COL.blueD);
-      // cabina: lo de detrás
-      box(14,2.8,2.4,.4,.4,6.2,COL.blueD);box(14,2.8,8.6,17.5,.4,.4,COL.blueD);box(14,2.8,8.6,.4,9.4,.4,COL.blueD);
-      box(14.3,3.0,6.2,17,.5,.5,COL.rail);
-      // contenedor de piezas (fondo)
-      box(BIN.x,BIN.y,0,9,3,.3,COL.steel);box(BIN.x,BIN.y,.3,9,.2,1.6,COL.steel);box(BIN.x,BIN.y,.3,.2,3,1.6,COL.steel);
-      // palé de la mesa con la chapa
-      box(px,PY,PZ,12,8,.5,COL.white);
-      for(let i=0;i<6;i++)poly([P(px+.6+i*2.1,PY+.3,PZ+.51),P(px+.75+i*2.1,PY+.3,PZ+.51),P(px+.75+i*2.1,PY+7.7,PZ+.51),P(px+.6+i*2.1,PY+7.7,PZ+.51)],'rgba(31,90,126,.18)');
-      const sx=px+.5,sy=PY+.5;
-      g.metal(sx,sy,PZ+.5,11,7,TH);
-      trail(sx,sy,t<CUT0?0:u,t<CUT0?0:fresh);
-      // piezas que se recogen
-      parts.forEach((p,i)=>{
-        const st=10+i*.18;if(t<st)return;
-        g.alpha(fresh);poly(outline(p).slice(0,-1).map(q=>P(sx+q[0],sy+q[1],ZT)),'rgba(52,64,74,.85)');g.alpha(1);
-      });
-      parts.forEach((p,i)=>{
-        const st=10+i*.18;if(t<st)return;const f=seg(t,st,st+.9),tg=binTarget(i);
-        const wx=lerp(sx+p.x,tg[0],f),wy=lerp(sy+p.y,tg[1],f),wz=lerp(ZT-TH,tg[2],f)+3*Math.sin(Math.PI*f);
-        partAt(p,wx,wy,wz);
-      });
-      box(BIN.x,BIN.y+2.8,.3,9,.2,1.6,COL.steel);box(BIN.x+8.8,BIN.y,.3,.2,3,1.6,COL.steel);
-      // puente y cabezal
-      const cutting=t>=CUT0&&t<CUT1,h=cutting?headAt(u):{x:HOME[0],y:HOME[1],cut:false};
-      const bx=INX+.5+h.x,hy=PY+.5+h.y;
-      box(bx-.14,hy-.14,ZT+.3,.28,.28,5.4-(ZT+.3),COL.rail);
-      box(bx-.5,3.0,6.7,1,9,.7,COL.blue);box(bx-.7,hy-.7,5.4,1.4,1.4,2.2,COL.white);
-      box(14.3,11.5,6.2,17,.5,.5,COL.rail);
-      if(cutting&&h.cut)g.glow(bx,hy,ZT,1.9,.65+.35*Math.abs(Math.sin(t*31)));
-      // cabina: cristal y marco delanteros
-      poly([P(14,2.8,8.6),P(31.5,2.8,8.6),P(31.5,12.2,8.6),P(14,12.2,8.6)],'rgba(200,226,238,.14)');
-      poly([P(14,12.2,2.4),P(31.5,12.2,2.4),P(31.5,12.2,8.6),P(14,12.2,8.6)],'rgba(200,226,238,.2)','rgba(31,90,126,.25)');
-      poly([P(31.5,2.8,2.4),P(31.5,12.2,2.4),P(31.5,12.2,8.6),P(31.5,2.8,8.6)],'rgba(185,214,228,.26)','rgba(31,90,126,.25)');
-      poly([P(14,12.2,2.4),P(31.5,12.2,2.4),P(31.5,12.2,2.75),P(14,12.2,2.75)],COL.accent);
-      box(14,11.8,2.4,.4,.4,6.2,COL.blueD);box(31.1,11.8,2.4,.4,.4,6.2,COL.blueD);box(31.1,2.8,2.4,.4,.4,6.2,COL.blueD);
-      box(14,11.8,8.6,17.5,.4,.4,COL.blueD);box(31.1,2.8,8.6,.4,9.4,.4,COL.blueD);
-      const run=t>=1.8&&t<CUT1+.3;
-      box(30.4,3.2,9,.4,.4,1.6,COL.rail);box(30.3,3.1,10.6,.6,.6,.6,run?'#3fbf7f':'#e0a33a',{top:run?'#6fe0a5':'#f2c46a'});
-      // fuente láser y consola
-      box(32.6,3,0,3.6,4.6,5.5,COL.blue);poly([P(32.6,7.6,1.2),P(36.2,7.6,1.2),P(36.2,7.6,1.5),P(32.6,7.6,1.5)],COL.accent);
-      box(32.6,9.2,0,1.6,2.4,4.6,COL.white);poly([P(34.2,9.5,2.8),P(34.2,11.3,2.8),P(34.2,11.3,4.2),P(34.2,9.5,4.2)],COL.glass);
-      label('Corte láser 2D',22.7,7.5,9.1);
-      return t<CUT0?0:t<CUT1?1:t<10?2:3;
-    }
-    return {T,still:5,draw};
-  }
-
-  // ---------- Escena 4 · Plegadora ----------
-  function S4(g){
-    const {P,box,poly,label}=g;
-    const T=10,X0=6,X1=16,YC=7.5,ZD=4.9,WL=2.5,TH=.15,STROKE=2.6;
-        // la pieza se dobla a 90°: el ala trasera sube 20° y la delantera 70° (a 45° quedaría de canto en la vista)
-    const ANG=[20*Math.PI/180,70*Math.PI/180];
-    function wing(x0,x1,yc,zb,f,dir){
-      const th=(dir>0?ANG[1]:ANG[0])*f,ye=yc+dir*WL*Math.cos(th),ze=zb+WL*Math.sin(th);
-      poly([P(x0,yc,zb),P(x1,yc,zb),P(x1,ye,ze),P(x0,ye,ze)],dir>0?(th>Math.PI/4?'#b9c3ca':'#d3dadf'):'#c9d1d7','rgba(40,60,75,.3)');
-      if(dir>0)poly([P(x0,ye,ze),P(x1,ye,ze),P(x1,ye,ze-TH),P(x0,ye,ze-TH)],'#9eaab3');
-    }
-    function endCap(x1,yc,zb,f){
-      const b=ANG[0]*f,a=ANG[1]*f,cb=Math.cos(b)*WL,sb=Math.sin(b)*WL,cf=Math.cos(a)*WL,sf=Math.sin(a)*WL;
-      poly([P(x1,yc-cb,zb+sb),P(x1,yc,zb),P(x1,yc+cf,zb+sf),P(x1,yc+cf,zb+sf-TH),P(x1,yc,zb-TH),P(x1,yc-cb,zb+sb-TH)],'#8d99a3');
-    }
-    const piece=(dx,dy,zb,f,part)=>{
-      const x0=X0+dx,x1=X1+dx,yc=YC+dy;
-      if(part!=='front')wing(x0,x1,yc,zb,f,-1);
-      if(part!=='back'){wing(x0,x1,yc,zb,f,1);endCap(x1,yc,zb,f)}
-    };
-    const CART={x:21,y:11,z:1.2},CYC=13.25,CZ=CART.z+.15;
-    function draw(t){
-      g.floor(0,0,33,16.5);
-      const slide=1-seg(t,0,1.8),gb=seg(t,1.8,2.4)-seg(t,5.2,6);
-      const tip=ZD+TH+STROKE-STROKE*seg(t,2.4,3.6)+STROKE*seg(t,5.2,6.2)-.35*(seg(t,3.6,5.2)-seg(t,5.2,5.6));
-      const th=seg(t,3.6,5.2),zb=ZD+TH-.35*seg(t,3.6,5.2);
-      // tope trasero
-      box(5,3.2,ZD-.7,12,.6,.6,COL.rail);
-      for(const fx of [7.5,13.9])box(fx,3.8,ZD-.4,.6,lerp(.5,1.1,gb),.8,COL.accent,{top:'#7fdcea'});
-      // bastidor izquierdo, bancada y matriz
-      box(3,5,0,1.2,5,13,COL.blue);
-      box(4.2,6.6,0,13.6,1.8,4.2,COL.blueD);
-      box(4.6,7.1,4.2,12.8,.8,.7,COL.rail);poly([P(4.6,7.5,ZD+.001),P(17.4,7.5,ZD+.001),P(17.4,7.56,ZD+.001),P(4.6,7.56,ZD+.001)],'#1c242b');
-      for(const ax of [7,14.3])box(ax,8.4,ZD-.5,.7,3.6,.5,COL.rail);
-      // chapa: ala trasera
-      const moving=t>=6.2;
-      if(!moving)piece(0,slide*5.5,zb,th,'back');
-      // punzón y trancha
-      box(4.6,7.42,tip,12.8,.16,.5,COL.rail);box(4.6,7.3,tip+.5,12.8,.4,1.9,COL.steel);
-      box(4.2,6.6,tip+2.4,13.6,1.8,2.2,COL.white,{right:'#c9d1d7'});
-      poly([P(4.2,8.4,tip+2.6),P(17.8,8.4,tip+2.6),P(17.8,8.4,tip+2.85),P(4.2,8.4,tip+2.85)],COL.accent);
-      if(!moving)piece(0,slide*5.5,zb,th,'front');
-      // bastidor derecho, cilindros y consola
-      box(17.8,5,0,1.2,5,13,COL.blue);
-      for(const cx of [3.2,18])box(cx,6.6,13,.8,1.8,1.6,COL.steel);
-      box(20.2,10.4,0,.3,.3,6,COL.rail);box(19.6,10.2,6,1.6,.5,2.2,COL.white);poly([P(19.75,10.7,6.4),P(21.05,10.7,6.4),P(21.05,10.7,7.9),P(19.75,10.7,7.9)],COL.glass);
-      // carro con piezas plegadas
-      box(CART.x,CART.y,.4,10.5,4.5,.8,COL.blue);for(const wx of [21.6,30.4])box(wx,14.6,0,.6,.5,.5,COL.rail);
-      for(let i=0;i<2;i++)piece(CART.x+.25-X0,CYC-YC,CZ+i*.35,1);
-      if(moving){
-        const a=seg(t,6.2,7.2),b=seg(t,7.2,8.6);
-        const zEnd=CZ+2*.35,zA=zb+1.4;
-        const dy=lerp(0,CYC-YC,a),dx=lerp(0,CART.x+.25-X0,b);
-        const z=b>0?lerp(zA,zEnd,b)+1.2*Math.sin(Math.PI*b):lerp(zb,zA,a);
-        piece(dx,dy,z,1);
+    const T=12,CZ=1.6,PX0=4,PX1=33;
+    const FILM={top:'rgba(225,240,247,.42)',left:'rgba(205,228,238,.42)',right:'rgba(185,212,226,.48)',edge:'rgba(110,160,190,.5)'};
+    function pallet(px,t,a){
+      box(px,6.4,CZ,5.2,.7,.35,COL.wood);box(px,8.15,CZ,5.2,.7,.35,COL.wood);box(px,9.9,CZ,5.2,.7,.35,COL.wood);
+      box(px,6.4,CZ+.35,5.2,4.2,.25,COL.wood,{top:'#cfa97c'});
+      for(let i=0;i<3;i++){
+        const st=.6+i*1;if(t<st)continue;const f=seg(t,st,st+.85),z=CZ+.6+i*1.15+5*(1-f);
+        g.alpha(Math.min(a,lin(t,st,st+.25)));
+        g.metal(px+.3,6.8,z,4.6,3.4,.22);g.metal(px+.5,7.7,z+.22,4.2,.9,.9);
+        poly([P(px+4.7,7.85,z+.37),P(px+4.7,8.45,z+.37),P(px+4.7,8.45,z+.97),P(px+4.7,7.85,z+.97)],'#5d6b75');
+        g.alpha(a);
       }
-      label('Plegadora',11,7.5,15.2);
-      return t<1.8?0:t<3.6?1:t<5.2?2:3;
+      const fh=3.6*seg(t,3.6,5.2);
+      if(fh>.02)box(px+.15,6.6,CZ+.5,4.9,3.8,fh,'#ffffff',FILM);
     }
-    return {T,still:4.6,draw};
+    function draw(t){
+      g.floor(0,0,52,15.5);
+      const px=lerp(PX0,PX1,seg(t,5.4,9.4));
+      // transportador de rodillos
+      box(2,6,0,29,5,CZ,COL.blue);
+      if(!g.m)for(let x=2.6;x<31;x+=1.2)g.line([[x,6.3,CZ+.01],[x,10.7,CZ+.01]],'rgba(255,255,255,.4)',.14,'butt');
+      box(2,6,CZ,29,.3,.3,COL.rail);
+      const a=lin(t,0,.5);g.alpha(a);pallet(px,t,a);g.alpha(1);
+      box(2,10.7,CZ,29,.3,.3,COL.rail);
+      // envolvedora
+      const hz=CZ+.5+3.6*seg(t,3.6,5.2)-3.6*seg(t,5.2,6);
+      box(6.4,12.2,0,.5,.5,7.2,COL.white,{right:'#c9d1d7'});box(6.2,11.4,hz-.4,.9,1.3,.8,COL.blue);
+      // muelle y camión
+      box(30.6,6,CZ-.25,1.4,5,.25,COL.rail);
+      box(31,4.5,1,15,8,.5,'#2b3640');
+      for(const wx of [39.5,41.2,43])box(wx,12.3,0,1.3,.4,1.3,'#1f2933');
+      box(31,4.5,1.5,15,8,7.5,COL.white,{top:'#f6f8f9',right:'#d3dade'});
+      poly([P(31,12.5,2.2),P(46,12.5,2.2),P(46,12.5,2.9),P(31,12.5,2.9)],COL.blue);
+      poly([P(31,12.5,2.9),P(46,12.5,2.9),P(46,12.5,3.1),P(31,12.5,3.1)],COL.accent);
+      g.textY('KREXON',33,12.5,5,2.1,COL.blue);
+      box(46.3,5,0,4.6,7,1.2,'#2b3640');box(46.3,5,1.2,4.4,7,5.6,COL.blue);
+      poly([P(50.7,5.6,4.2),P(50.7,11.4,4.2),P(50.7,11.4,6.3),P(50.7,5.6,6.3)],COL.glass);
+      box(48.2,12,0,1.3,.4,1.3,'#1f2933');
+      label('Expedición',38.5,8.5,9.2);
+      return t<3.6?0:t<5.4?1:t<8.2?2:3;
+    }
+    return {T,still:4.4,draw};
   }
 
 
   // ---------- Arranque: cada <canvas data-anim="N"> pinta su escena ----------
-  const MAKE={1:S1,2:S2,4:S4};
+  const MAKE={1:S1,6:S6};
   const live=[];
   document.querySelectorAll('canvas[data-anim]').forEach(cv=>{
     const make=MAKE[cv.dataset.anim];if(!make)return;
