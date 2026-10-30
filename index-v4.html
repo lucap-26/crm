@@ -895,6 +895,33 @@ footer p a{text-decoration:underline;text-underline-offset:3px}
 @media (max-width:1000px){.lg-sum-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.lg-sum{padding:24px 20px}.lg-sum-grid{grid-template-columns:minmax(0,1fr);gap:16px}.lg-row{grid-template-columns:minmax(0,1fr);padding:22px 0}}
 
+/* Pie de página: marca, Explora, Conecta y franja inferior */
+footer{padding:84px 0 0}
+footer .foot{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:56px}
+footer .foot-brand img{width:160px;margin-bottom:22px}
+footer .foot-claim{margin:0 0 22px;max-width:34ch;font-size:16px;line-height:1.6;color:#b9c1c9}
+footer .foot-contact{list-style:none}
+footer .foot-contact li{margin-bottom:10px}
+footer .foot-contact a,footer .foot-col a{display:inline-flex;align-items:center;gap:12px;font-size:16.5px;opacity:1;color:#e7ebee}
+footer .foot-contact svg,footer .foot-col svg{width:19px;height:19px;flex:none;color:#9fb4c2;transition:color .2s ease}
+footer .foot-hours{margin-top:14px;font-size:14px;color:#8f99a3}
+footer .foot-col h4{display:block;margin-bottom:22px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#8f99a3}
+footer .foot-col ul{list-style:none}
+footer .foot-col li{margin-bottom:14px}
+footer .foot-col a:hover,footer .foot-contact a:hover{color:#fff;text-decoration:none}
+footer .foot-col a:hover svg,footer .foot-contact a:hover svg{color:#7fdcea}
+footer .foot-col a span:not(.sr-only){border-bottom:1px solid transparent}
+footer .foot-bar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:64px;padding:24px 0 30px;border-top:1px solid rgba(255,255,255,.1)}
+footer .foot-bar p{margin:0;font-size:13.5px;color:#8f99a3}
+footer .foot-bar a{color:#b9c1c9;text-decoration:underline;text-underline-offset:3px}
+footer .foot-bar a:hover{color:#fff}
+@media (max-width:900px){footer .foot{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}footer .foot-brand{grid-column:1/-1}}
+@media (max-width:640px){footer{padding-top:64px}footer .foot{grid-template-columns:minmax(0,1fr);gap:40px}footer .foot-bar{margin-top:44px;flex-direction:column}}
+footer .foot-bar{justify-content:flex-start;gap:8px 28px}
+footer .foot-col{line-height:1.5}
+footer .foot-col h4{margin-top:0;line-height:1.4}
+footer .foot-col ul{margin:0;padding:0}
+
 /* ==========================================================
    VERSIÓN 3 · Sistema de DESIGN-krexon.md
    Referencia medida: tcicutting.com (estructura y calidad),
@@ -1318,6 +1345,8 @@ header:not(.light) .menu>.menu-list>li>a{text-shadow:0 1px 8px rgba(0,0,0,.35)}
 /* Política de privacidad (v4) */
 .lg-sum{background:var(--soft-2);border-radius:0}
 .lg-sum-grid dt{color:var(--rule)}
+/* Pie (v4): grafito con una línea fina de color Krexon arriba */
+footer{background:#1f2122;border-top:3px solid var(--rule)}
 
 </style>
 </head>
@@ -2764,28 +2793,36 @@ header:not(.light) .menu>.menu-list>li>a{text-shadow:0 1px 8px rgba(0,0,0,.35)}
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div>
-        <img src="https://krexon.com/wp-content/uploads/2025/11/krexon-logo-footer.png" alt="Krexon" onerror="this.outerHTML='<b style=&quot;font-size:28px;display:block;margin-bottom:22px&quot;>KREXON</b>'">
-        <a href="tel:+34623968619">+34 623 968 619</a><br>
-        <a href="mailto:info@krexon.com">info@krexon.com</a>
-        <p>Copyright © 2026 Krexon · <a href="#privacidad">Política de privacidad</a></p>
+      <div class="foot-brand">
+        <img src="https://krexon.com/wp-content/uploads/2025/11/krexon-logo-footer.png" alt="Krexon" onerror="this.outerHTML='<b style=&quot;font-size:28px;display:block;margin-bottom:22px&quot;>
+        <p class="foot-claim">Maquinaria industrial de corte por láser, plegado y automatización.</p>
+        <ul class="foot-contact">
+          <li><a href="tel:+34623968619"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+34 623 968 619</a></li>
+          <li><a href="mailto:info@krexon.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>info@krexon.com</a></li>
+        </ul>
+        <p class="foot-hours">Horario de atención: 8:00 h a 17:30 h</p>
       </div>
-      <ul>
-        <li><a href="#maquinaria">Maquinaria</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-      <ul>
-        <li><a href="#corte-plano">Corte plano 2D</a></li>
-        <li><a href="#corte-tubos">Corte de tubos</a></li>
-        <li><a href="#corte-combinado">Corte combinado (plano y tubos)</a></li>
-        <li><a href="#soldadura-limpieza">Soldadura / limpieza láser</a></li>
-        <li><a href="#plegadoras">Plegadoras</a></li>
-        <li><a href="#automatizacion">Automatización</a></li>
-        <li><a href="#corte-co2">Máquinas de corte CO2</a></li>
-        <li><a href="#servicio-tecnico">Recambios y consumibles</a></li>
-      </ul>
+      <nav class="foot-col" aria-labelledby="foot-explora">
+        <h4 id="foot-explora">Explora</h4>
+        <ul>
+          <li><a href="#maquinaria">Maquinaria</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="foot-col">
+        <h4 id="foot-conecta">Conecta</h4>
+        <ul aria-labelledby="foot-conecta">
+          <li><a href="https://www.linkedin.com/company/krexon/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn<span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+          <!--INSTAGRAM: <li><a href="URL_INSTAGRAM" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>Instagram<span class="sr-only"> (se abre en otra pestaña)</span></a></li> -->
+          <li><a href="https://wa.me/34623968619" data-wa target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.22-.08-.39-.12-.55.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <p>© 2026 Krexon. Todos los derechos reservados.</p>
+      <p><a href="#privacidad">Política de privacidad</a></p>
     </div>
   </div>
 </footer>
@@ -2851,7 +2888,7 @@ addEventListener('resize',()=>{if(innerWidth>1000)setMenu(false)});
 
 /* Reveal al scroll */
 (function(){
-  const sel=['.machines .head','.card','.fact','.cta h2','.cta p','.cta .btn','.foot>div,.foot>ul'];
+  const sel=['.machines .head','.card','.fact','.cta h2','.cta p','.cta .btn','.foot>div,.foot>ul,.foot>nav'];
   const els=[];
   sel.forEach(s=>document.querySelectorAll(s).forEach((el,i)=>{el.classList.add('reveal');el.style.setProperty('--d',(i%4)*.09+'s');els.push(el)}));
   if(RM||!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}
