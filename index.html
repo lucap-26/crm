@@ -135,7 +135,6 @@ header.scrolled .nav{height:70px}
 
 /* ---------- Banner final ---------- */
 .cta{position:relative;background:var(--ink);color:#fff;overflow:hidden;padding:130px 0}
-.cta canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
 .cta::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(900px 400px at 15% 50%,rgba(31,90,126,.55),transparent 70%)}
 .cta .wrap{position:relative;z-index:2}
 .cta h2{color:#fff;font-size:clamp(34px,5vw,68px);margin-bottom:24px}
@@ -934,6 +933,10 @@ footer .foot-col ul{margin:0;padding:0}
 .ct-grid{align-items:start}
 .anim-contacto{margin-top:32px;aspect-ratio:2/1;max-width:560px;max-height:280px;background:linear-gradient(180deg,#2a2d2f 0%,#25282a 100%)}
 @media (max-width:900px){.anim-servicios{margin-top:36px;aspect-ratio:1.5/1}}
+.cta .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:40px;align-items:center}
+.cta-txt>*:last-child{margin-bottom:0}
+.anim-cta{aspect-ratio:1.3/1;max-height:460px;background:none;border-radius:0}
+@media (max-width:900px){.cta .wrap{grid-template-columns:minmax(0,1fr);gap:8px}.anim-cta{max-width:520px;margin:0 auto}}
 
 /* ==========================================================
    VERSIÓN 3 · Sistema de DESIGN-krexon.md
@@ -2692,12 +2695,14 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
 
 <!-- BANNER FINAL -->
 <section class="cta view-home">
-  <canvas id="ctaCanvas" aria-hidden="true"></canvas>
   <div class="wrap">
+    <div class="cta-txt">
     <h2>Redefinimos la productividad<br>y <span class="grad">la eficiencia</span></h2>
     <p>Consolidamos nuestro liderazgo en Europa, América y Asia en maquinaria láser industrial, combinando experiencia, innovación y tecnología de punta</p>
     <a class="btn btn-light" href="#contacto">Optimiza tu producción hoy
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="anim-stage anim-cta"><canvas data-anim="2" role="img" aria-label="Animación: la mesa entra en la cabina de corte láser, el cabezal corta seis piezas y la mesa sale para recogerlas."></canvas></div>
   </div>
 </section>
 
@@ -3055,69 +3060,6 @@ document.querySelectorAll('.card .pic img').forEach(img=>{
   }
 })();
 
-/* ---------- Animación de corte láser (canvas) ---------- */
-function laserScene(cv,opts){
-  const ctx=cv.getContext('2d');let W,H,dpr,paths=[];
-  function size(){dpr=Math.min(devicePixelRatio||1,2);const r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
-  function build(){
-    const wide=W>900;
-    const cx=W*(wide?opts.cx:.5),cy=H*(wide?opts.cy:.62),R=Math.min(W*(wide?.5:.9),H*.9)*opts.r;
-    const circ=[],gear=[];
-    for(let i=0;i<=160;i++){const a=i/160*Math.PI*2;circ.push([cx+Math.cos(a)*R*.32,cy+Math.sin(a)*R*.32])}
-    for(let i=0;i<=520;i++){const a=i/520*Math.PI*2;const r=R*(1+.1*Math.tanh(5*Math.sin(a*12)));gear.push([cx+Math.cos(a)*r,cy+Math.sin(a)*r])}
-    paths=[circ,gear];
-  }
-  size();build();addEventListener('resize',()=>{size();build()});
-  let pi=0,idx=0,hold=0,fade=0,parts=[];const SPEED=3.2;
-  function sheet(){
-    const g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,'#16223a');g.addColorStop(.5,'#22314d');g.addColorStop(1,'#101a2e');
-    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
-    ctx.globalAlpha=.06;ctx.strokeStyle='#fff';ctx.lineWidth=1;
-    for(let y=0;y<H;y+=5){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
-    ctx.globalAlpha=1;ctx.strokeStyle='rgba(255,255,255,.06)';
-    for(let x=0;x<W;x+=64){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
-    for(let y=0;y<H;y+=64){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
-  }
-  function stroke(pts,upTo,w,color){
-    if(upTo<2)return;ctx.beginPath();ctx.moveTo(pts[0][0],pts[0][1]);
-    for(let i=1;i<=upTo;i++)ctx.lineTo(pts[i][0],pts[i][1]);
-    ctx.lineWidth=w;ctx.strokeStyle=color;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();
-  }
-  function frame(){
-    sheet();
-    for(let k=0;k<pi;k++){stroke(paths[k],paths[k].length-1,5,'#050a14');stroke(paths[k],paths[k].length-1,1.2,'rgba(111,211,227,.35)')}
-    const cur=paths[pi],i=Math.floor(idx);let hx=W/2,hy=-20,hot=false;
-    if(cur&&hold<=0){
-      const up=Math.min(i,cur.length-1);stroke(cur,up,5,'#050a14');
-      const tail=Math.max(0,up-45);
-      for(let j=tail;j<up;j++){const a=(j-tail)/45;ctx.beginPath();ctx.moveTo(cur[j][0],cur[j][1]);ctx.lineTo(cur[j+1][0],cur[j+1][1]);
-        ctx.strokeStyle=`rgba(${60+a*70|0},${170+a*60|0},${200+a*40|0},${a*.9})`;ctx.lineWidth=2+a*3;ctx.stroke()}
-      hx=cur[up][0];hy=cur[up][1];hot=true;idx+=SPEED;
-      if(i>=cur.length-1){pi++;idx=0;if(pi>=paths.length)hold=90}
-    }else if(hold>0){hold--;if(hold===0)fade=1;hx=paths[0][0][0];hy=paths[0][0][1]}
-    if(hot)for(let n=0;n<4;n++){const a=Math.random()*Math.PI*2,sp=1+Math.random()*3.5;parts.push({x:hx,y:hy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-1.2,l:1,d:.025+Math.random()*.035})}
-    ctx.globalCompositeOperation='lighter';parts=parts.filter(p=>p.l>0);
-    for(const p of parts){p.x+=p.vx;p.y+=p.vy;p.vy+=.12;p.vx*=.985;p.l-=p.d;
-      ctx.strokeStyle=`rgba(255,${170+p.l*70|0},${90+p.l*60|0},${p.l})`;ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x-p.vx*2.2,p.y-p.vy*2.2);ctx.stroke()}
-    if(hot){const g=ctx.createRadialGradient(hx,hy,0,hx,hy,50);
-      g.addColorStop(0,'rgba(235,252,255,1)');g.addColorStop(.18,'rgba(111,211,227,.9)');g.addColorStop(.5,'rgba(41,151,170,.38)');g.addColorStop(1,'rgba(41,151,170,0)');
-      ctx.fillStyle=g;ctx.beginPath();ctx.arc(hx,hy,50,0,7);ctx.fill()}
-    ctx.globalCompositeOperation='source-over';
-    if(hot||hold>0){const x=hx,y=hy;
-      if(hot){const bg=ctx.createLinearGradient(x,0,x,y);bg.addColorStop(0,'rgba(41,151,170,0)');bg.addColorStop(1,'rgba(150,230,245,.9)');ctx.fillStyle=bg;ctx.fillRect(x-1.2,0,2.4,y)}
-      ctx.fillStyle='#2b3a56';ctx.strokeStyle='#4a5d7f';ctx.lineWidth=1;
-      ctx.beginPath();ctx.moveTo(x-16,Math.max(0,y-60));ctx.lineTo(x+16,Math.max(0,y-60));ctx.lineTo(x+7,y-10);ctx.lineTo(x-7,y-10);ctx.closePath();ctx.fill();ctx.stroke();
-      ctx.fillStyle='#6fd3e3';ctx.fillRect(x-3,y-12,6,3)}
-    if(fade>0){ctx.fillStyle=`rgba(15,23,42,${1-fade})`;ctx.fillRect(0,0,W,H);fade-=.04;if(fade<=0){pi=0;idx=0;parts=[]}}
-    const v=ctx.createRadialGradient(W/2,H/2,Math.min(W,H)*.3,W/2,H/2,Math.max(W,H)*.75);
-    v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(0,0,0,.55)');ctx.fillStyle=v;ctx.fillRect(0,0,W,H);
-  }
-  let visible=true;new IntersectionObserver(e=>visible=e[0].isIntersecting).observe(cv);
-  function loop(){if(visible&&!document.hidden)frame();requestAnimationFrame(loop)}
-  if(RM){pi=paths.length;frame()}else loop();
-}
-
-laserScene(document.getElementById('ctaCanvas'),{cx:.8,cy:.5,r:.4});
 </script>
 <script>
 /* Krexon · apartados de maquinaria: despliegue de cada máquina y fichas PDF */
@@ -3419,7 +3361,7 @@ laserScene(document.getElementById('ctaCanvas'),{cx:.8,cy:.5,r:.4});
 
 </script>
 <script>
-// Animaciones isométricas (Servicios y Contacto). Dibujadas en <canvas>, sin librerías.
+// Animaciones isométricas (Servicios, banner final y Contacto). Dibujadas en <canvas>, sin librerías.
 (function(){
   'use strict';
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -3567,6 +3509,91 @@ laserScene(document.getElementById('ctaCanvas'),{cx:.8,cy:.5,r:.4});
     return {T,still:5,draw};
   }
 
+  // ---------- Escena 2 · Corte láser 2D ----------
+  function S2(g){
+    const {P,box,poly,label}=g;
+    const T=12,TH=.22,OUTX=1.5,INX=16.5,PY=3.5,PZ=2.4,ZT=PZ+.5+TH+.005;
+    const parts=[];for(let r=0;r<2;r++)for(let c=0;c<3;c++)parts.push({x:.8+c*3.5,y:.7+r*3.3,w:2.8,d:2.6});
+    const outline=p=>{const c=.45,x0=p.x,y0=p.y,x1=p.x+p.w,y1=p.y+p.d;return [[x0+c,y0],[x1,y0],[x1,y1-c],[x1-c,y1],[x0,y1],[x0,y0+c],[x0+c,y0]]};
+    const hole=p=>{const cx=p.x+p.w/2,cy=p.y+p.d/2,a=[];for(let i=0;i<=16;i++){const q=i/16*Math.PI*2;a.push([cx+.55*Math.cos(q),cy+.55*Math.sin(q)])}return a};
+    const HOME=[11.4,3.5],path=[];let cur=HOME;
+    const add=(pts,cut)=>{for(const p of pts){path.push({a:cur,b:p,cut});cur=p}};
+    parts.forEach(p=>{const h=hole(p);add([h[0]],false);add(h.slice(1),true);const o=outline(p);add([o[0]],false);add(o.slice(1),true)});
+    add([HOME],false);
+    let tot=0;path.forEach(s=>{s.len=Math.hypot(s.b[0]-s.a[0],s.b[1]-s.a[1])*(s.cut?1:.3);s.s0=tot;tot+=s.len});
+    const CUT0=2.2,CUT1=8.2;
+    function headAt(u){
+      for(const s of path){if(u<s.s0+s.len){const f=(u-s.s0)/s.len;return {x:lerp(s.a[0],s.b[0],f),y:lerp(s.a[1],s.b[1],f),cut:s.cut}}}
+      return {x:HOME[0],y:HOME[1],cut:false};
+    }
+    function trail(ox,oy,u,alpha){
+      if(g.m||alpha<=0||u<=0)return;const c=g.ctx;c.save();c.globalAlpha=alpha;c.strokeStyle='rgba(28,40,50,.85)';c.lineWidth=Math.max(1,g.k*.08);c.lineJoin='round';c.beginPath();
+      for(const s of path){if(s.s0>=u)break;if(!s.cut)continue;const f=Math.min(1,(u-s.s0)/s.len);
+        const a=P(ox+s.a[0],oy+s.a[1],ZT),b=P(ox+lerp(s.a[0],s.b[0],f),oy+lerp(s.a[1],s.b[1],f),ZT);c.moveTo(a[0],a[1]);c.lineTo(b[0],b[1])}
+      c.stroke();c.restore();
+    }
+    function partAt(p,wx,wy,wz){
+      const o=outline(p).slice(0,-1),h=hole(p);
+      poly(o.map(q=>P(wx+q[0]-p.x,wy+q[1]-p.y,wz)),'#9eaab3');
+      poly(o.map(q=>P(wx+q[0]-p.x,wy+q[1]-p.y,wz+TH)),'#dfe5e9','rgba(40,60,75,.35)');
+      poly(h.map(q=>P(wx+q[0]-p.x,wy+q[1]-p.y,wz+TH)),'#7b8892');
+    }
+    const BIN={x:2.5,y:12.4};
+    const binTarget=i=>[BIN.x+.3+(i%3)*2.85,BIN.y+.2,.35+Math.floor(i/3)*.24];
+    function draw(t){
+      g.floor(0,0,37,16.5);
+      const px=lerp(OUTX,INX,seg(t,0,1.8))-(INX-OUTX)*seg(t,8.5,10);
+      const u=clamp((t-CUT0)/(CUT1-CUT0))*tot;
+      const fresh=1-seg(t,11.4,12);
+      // mesa de carga y bancada
+      box(1,3.2,0,13,8.6,PZ,COL.blue);box(14,2.8,0,17.5,9.4,PZ,COL.blueD);
+      // cabina: lo de detrás
+      box(14,2.8,2.4,.4,.4,6.2,COL.blueD);box(14,2.8,8.6,17.5,.4,.4,COL.blueD);box(14,2.8,8.6,.4,9.4,.4,COL.blueD);
+      box(14.3,3.0,6.2,17,.5,.5,COL.rail);
+      // contenedor de piezas (fondo)
+      box(BIN.x,BIN.y,0,9,3,.3,COL.steel);box(BIN.x,BIN.y,.3,9,.2,1.6,COL.steel);box(BIN.x,BIN.y,.3,.2,3,1.6,COL.steel);
+      // palé de la mesa con la chapa
+      box(px,PY,PZ,12,8,.5,COL.white);
+      for(let i=0;i<6;i++)poly([P(px+.6+i*2.1,PY+.3,PZ+.51),P(px+.75+i*2.1,PY+.3,PZ+.51),P(px+.75+i*2.1,PY+7.7,PZ+.51),P(px+.6+i*2.1,PY+7.7,PZ+.51)],'rgba(31,90,126,.18)');
+      const sx=px+.5,sy=PY+.5;
+      g.metal(sx,sy,PZ+.5,11,7,TH);
+      trail(sx,sy,t<CUT0?0:u,t<CUT0?0:fresh);
+      // piezas que se recogen
+      parts.forEach((p,i)=>{
+        const st=10+i*.18;if(t<st)return;
+        g.alpha(fresh);poly(outline(p).slice(0,-1).map(q=>P(sx+q[0],sy+q[1],ZT)),'rgba(52,64,74,.85)');g.alpha(1);
+      });
+      parts.forEach((p,i)=>{
+        const st=10+i*.18;if(t<st)return;const f=seg(t,st,st+.9),tg=binTarget(i);
+        const wx=lerp(sx+p.x,tg[0],f),wy=lerp(sy+p.y,tg[1],f),wz=lerp(ZT-TH,tg[2],f)+3*Math.sin(Math.PI*f);
+        partAt(p,wx,wy,wz);
+      });
+      box(BIN.x,BIN.y+2.8,.3,9,.2,1.6,COL.steel);box(BIN.x+8.8,BIN.y,.3,.2,3,1.6,COL.steel);
+      // puente y cabezal
+      const cutting=t>=CUT0&&t<CUT1,h=cutting?headAt(u):{x:HOME[0],y:HOME[1],cut:false};
+      const bx=INX+.5+h.x,hy=PY+.5+h.y;
+      box(bx-.14,hy-.14,ZT+.3,.28,.28,5.4-(ZT+.3),COL.rail);
+      box(bx-.5,3.0,6.7,1,9,.7,COL.blue);box(bx-.7,hy-.7,5.4,1.4,1.4,2.2,COL.white);
+      box(14.3,11.5,6.2,17,.5,.5,COL.rail);
+      if(cutting&&h.cut)g.glow(bx,hy,ZT,1.9,.65+.35*Math.abs(Math.sin(t*31)));
+      // cabina: cristal y marco delanteros
+      poly([P(14,2.8,8.6),P(31.5,2.8,8.6),P(31.5,12.2,8.6),P(14,12.2,8.6)],'rgba(200,226,238,.14)');
+      poly([P(14,12.2,2.4),P(31.5,12.2,2.4),P(31.5,12.2,8.6),P(14,12.2,8.6)],'rgba(200,226,238,.2)','rgba(31,90,126,.25)');
+      poly([P(31.5,2.8,2.4),P(31.5,12.2,2.4),P(31.5,12.2,8.6),P(31.5,2.8,8.6)],'rgba(185,214,228,.26)','rgba(31,90,126,.25)');
+      poly([P(14,12.2,2.4),P(31.5,12.2,2.4),P(31.5,12.2,2.75),P(14,12.2,2.75)],COL.accent);
+      box(14,11.8,2.4,.4,.4,6.2,COL.blueD);box(31.1,11.8,2.4,.4,.4,6.2,COL.blueD);box(31.1,2.8,2.4,.4,.4,6.2,COL.blueD);
+      box(14,11.8,8.6,17.5,.4,.4,COL.blueD);box(31.1,2.8,8.6,.4,9.4,.4,COL.blueD);
+      const run=t>=1.8&&t<CUT1+.3;
+      box(30.4,3.2,9,.4,.4,1.6,COL.rail);box(30.3,3.1,10.6,.6,.6,.6,run?'#3fbf7f':'#e0a33a',{top:run?'#6fe0a5':'#f2c46a'});
+      // fuente láser y consola
+      box(32.6,3,0,3.6,4.6,5.5,COL.blue);poly([P(32.6,7.6,1.2),P(36.2,7.6,1.2),P(36.2,7.6,1.5),P(32.6,7.6,1.5)],COL.accent);
+      box(32.6,9.2,0,1.6,2.4,4.6,COL.white);poly([P(34.2,9.5,2.8),P(34.2,11.3,2.8),P(34.2,11.3,4.2),P(34.2,9.5,4.2)],COL.glass);
+      label('Corte láser 2D',22.7,7.5,9.1);
+      return t<CUT0?0:t<CUT1?1:t<10?2:3;
+    }
+    return {T,still:5,draw};
+  }
+
   // ---------- Escena 6 · Expedición ----------
   function S6(g){
     const {P,box,poly,label}=g;
@@ -3616,7 +3643,7 @@ laserScene(document.getElementById('ctaCanvas'),{cx:.8,cy:.5,r:.4});
 
 
   // ---------- Arranque: cada <canvas data-anim="N"> pinta su escena ----------
-  const MAKE={1:S1,6:S6};
+  const MAKE={1:S1,2:S2,6:S6};
   const live=[];
   document.querySelectorAll('canvas[data-anim]').forEach(cv=>{
     const make=MAKE[cv.dataset.anim];if(!make)return;
