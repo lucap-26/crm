@@ -17,8 +17,9 @@
 ## Contenido
 - **Datos de K3015HC**: la web muestra 1,5–12 kW, 6050 × 2030 mm y 2.900 kg de la serie; el PDF dice 1,5–6 kW, 3000 × 1500 mm y 1.100 kg. Decidir si se ajustan al PDF.
 - **Datos de K3015HM**: comprobar contra su PDF (12–30 kW según el nombre del archivo; la web muestra 6–30 kW).
+- **Datos de K3015C**: la web muestra 1,5–6 kW y formato hasta 6050 × 2030 mm; el PDF dice 3000 × 1500 mm, tubo 500–6000 mm y Ø 20–220 mm, 100 m/min y 1.100 kg.
 - **Datos de K3015NP**: la web muestra 1,5–12 kW, 30 mm y 6050 × 2030 mm de la serie; el PDF dice 1,5–6 kW, 3000 × 1500 mm, 100 m/min y 1.100 kg. Decidir si se ajustan al PDF.
-- **Fichas en PDF**: faltan las de 13 máquinas (nombres esperados en `docs/LEEME.txt`). Plegadoras ya hecho: las tres usan `docs/krexon-catalogo-plegadoras-2026.pdf` (catálogo en inglés). K3015HC (antes Serie HC), K3015NP (cabina semicerrada, antes Serie NP) y K3015HM (corte combinado, antes Serie HM) ya tienen su ficha. La NP de cabina abierta sigue sin PDF.
+- **Fichas en PDF**: faltan las de 12 máquinas (nombres esperados en `docs/LEEME.txt`). Plegadoras ya hecho: las tres usan `docs/krexon-catalogo-plegadoras-2026.pdf` (catálogo en inglés). K3015HC (antes Serie HC), K3015NP (cabina semicerrada, antes Serie NP) K3015HM y K3015C (corte combinado, antes Serie HM y Serie C) ya tienen su ficha. La NP de cabina abierta sigue sin PDF.
 - **Foto `ws`** (soldadora portátil): se ve "SENFENG" en la bobina.
 - **Códigos de modelo** en algunas fotos (p. ej. "SF-3015NP") que no coinciden con las series de la web.
 - **Foto para "Recambios y consumibles"** (ahora sin foto propia).
