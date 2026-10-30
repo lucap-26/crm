@@ -924,6 +924,8 @@ footer .foot-col ul{margin:0;padding:0}
 /* Ficha: tamaños de mesa disponibles */
 .mtam{margin:2px 0;padding:12px 16px;border-left:3px solid var(--brand-2);background:var(--soft);font-size:15px;line-height:1.5;color:var(--ink)}
 .mtam b{font-weight:600}
+.mq-pic.mq-pic-contain{background:#fff}
+.mq-pic.mq-pic-contain img{object-fit:contain}
 
 /* ==========================================================
    VERSIÓN 3 · Sistema de DESIGN-krexon.md
@@ -1352,6 +1354,12 @@ header:not(.light) .menu>.menu-list>li>a{text-shadow:0 1px 8px rgba(0,0,0,.35)}
 footer{background:#1f2122;border-top:3px solid var(--rule)}
 .mtam{background:var(--soft-2);border-left-color:var(--rule)}
 @media (min-width:901px){.mtam{font-size:14px;padding:9px 14px}}
+/* Recambios y consumibles con foto de piezas (fondo blanco fundido con la baldosa) */
+.pick-sec .pick a[href="#servicio-tecnico"]{background:#e9ecef}
+.pick-sec .pick a[href="#servicio-tecnico"] strong{color:var(--ink)}
+.pick-sec .pick a[href="#servicio-tecnico"] em{color:var(--action)}
+.pick-sec .pick a[href="#servicio-tecnico"]::after{background:url(img/recambios.webp) center 70%/contain no-repeat;mix-blend-mode:multiply;-webkit-mask-image:none;mask-image:none;inset:auto 8% 4% 8%;height:66%}
+.mq-pic.mq-pic-contain{background:var(--fog)}
 
 </style>
 </head>
@@ -1434,7 +1442,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
     <ul class="hl-grid">
       <li><a href="#nosotros"><small>Nosotros</small><strong>Somos expertos en tecnología de corte de materiales</strong><i aria-hidden="true">→</i></a></li>
       <li><a href="#servicios"><small>Servicios</small><strong>Instalación, asistencia técnica, recambios, formación y más</strong><i aria-hidden="true">→</i></a></li>
-      <li><a href="#contacto"><small>Contacto</small><strong>¿Dudas? Te asesoramos</strong><i aria-hidden="true">→</i></a></li>
+      <li><a href="#contacto"><small>Contacto</small><strong>¿Dudas?<br>Te asesoramos</strong><i aria-hidden="true">→</i></a></li>
     </ul>
   </div>
 </section>
@@ -1523,7 +1531,7 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
           </div>
         </article>
         <article class="mq-panel" data-mq="servicio-tecnico">
-          <div class="mq-pic"><img loading="lazy" src="img/np.webp" alt="Máquina de corte láser de estructura abierta" width="1280" height="832"></div>
+          <div class="mq-pic mq-pic-contain"><img loading="lazy" src="img/recambios.webp" alt="Recambios y consumibles para cabezal de corte láser: boquillas, lentes, anillos cerámicos y piezas del cabezal" width="550" height="550"></div>
           <div class="mq-txt">
             <h3>Recambios y consumibles</h3>
             <p>Recambios, consumibles y servicio técnico para tu máquina. Cuéntanos qué necesitas en tres pasos y te contactamos.</p>
@@ -2652,7 +2660,6 @@ footer{background:#1f2122;border-top:3px solid var(--rule)}
 <section class="pick-sec view-home" aria-labelledby="h-pick">
   <div class="wrap">
     <div class="pick-head">
-      <span class="eyebrow">Maquinaria</span>
       <h2 id="h-pick">Tecnologías disponibles</h2>
     </div>
     <nav class="pick" id="elige-maquina" aria-label="Elige tu máquina">
