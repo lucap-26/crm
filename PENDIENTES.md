@@ -16,7 +16,8 @@
 
 ## Contenido
 - **Datos de K3015HC-1.5-6kW**: la web muestra 1,5–12 kW, 6050 × 2030 mm y 2.900 kg de la serie; el PDF dice 1,5–6 kW, 3000 × 1500 mm y 1.100 kg. Decidir si se ajustan al PDF.
-- **Fichas en PDF**: faltan las de 15 máquinas (nombres esperados en `docs/LEEME.txt`). Plegadoras ya hecho: las tres usan `docs/krexon-catalogo-plegadoras-2026.pdf` (catálogo en inglés). K3015HC-1.5-6kW (antes Serie HC) ya tiene su ficha.
+- **Datos de K3015NP_1.5-6kW**: la web muestra 1,5–12 kW, 30 mm y 6050 × 2030 mm de la serie; el PDF dice 1,5–6 kW, 3000 × 1500 mm, 100 m/min y 1.100 kg. Decidir si se ajustan al PDF.
+- **Fichas en PDF**: faltan las de 14 máquinas (nombres esperados en `docs/LEEME.txt`). Plegadoras ya hecho: las tres usan `docs/krexon-catalogo-plegadoras-2026.pdf` (catálogo en inglés). K3015HC-1.5-6kW (antes Serie HC) y K3015NP_1.5-6kW (cabina semicerrada, antes Serie NP) ya tienen su ficha. La NP de cabina abierta sigue sin PDF.
 - **Foto `ws`** (soldadora portátil): se ve "SENFENG" en la bobina.
 - **Códigos de modelo** en algunas fotos (p. ej. "SF-3015NP") que no coinciden con las series de la web.
 - **Foto para "Recambios y consumibles"** (ahora sin foto propia).
