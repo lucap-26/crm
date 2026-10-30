@@ -15,7 +15,8 @@
 - **Revisión legal**: que un asesor o gestoría revise la política de privacidad (y el aviso legal cuando esté).
 
 ## Contenido
-- **Fichas en PDF**: faltan las de 16 máquinas (nombres esperados en `docs/LEEME.txt`). Plegadoras ya hecho: las tres usan `docs/krexon-catalogo-plegadoras-2026.pdf` (catálogo en inglés).
+- **Datos de K3015HC-1.5-6kW**: la web muestra 1,5–12 kW, 6050 × 2030 mm y 2.900 kg de la serie; el PDF dice 1,5–6 kW, 3000 × 1500 mm y 1.100 kg. Decidir si se ajustan al PDF.
+- **Fichas en PDF**: faltan las de 15 máquinas (nombres esperados en `docs/LEEME.txt`). Plegadoras ya hecho: las tres usan `docs/krexon-catalogo-plegadoras-2026.pdf` (catálogo en inglés). K3015HC-1.5-6kW (antes Serie HC) ya tiene su ficha.
 - **Foto `ws`** (soldadora portátil): se ve "SENFENG" en la bobina.
 - **Códigos de modelo** en algunas fotos (p. ej. "SF-3015NP") que no coinciden con las series de la web.
 - **Foto para "Recambios y consumibles"** (ahora sin foto propia).
@@ -29,6 +30,9 @@
   `/corte-combinado-plancha-tubos-laser-fibra/`, `/home/`).
 - Guardar las letras (Google Fonts) dentro de la web y quitar esa mención de la política de privacidad.
 - No borrar WordPress ni LucusHost hasta comprobar que todo va bien.
+
+## Reglas acordadas
+- **PDF de máquinas**: cada PDF que llegue se guarda con su nombre en `docs/` y la máquina pasa a llamarse igual que el PDF (sin «.pdf»).
 
 ## Copias de seguridad
 - **Punto inicial**: ramas `punto-inicial` (web) y `punto-inicial-fuentes` (archivos de trabajo); publicado en `/index-v3.html`.
