@@ -25,7 +25,6 @@
 - **Fichas en PDF**: faltan las de 10 máquinas (nombres esperados en `docs/LEEME.txt`). Plegadoras ya hecho: las tres usan `docs/krexon-catalogo-plegadoras-2026.pdf` (catálogo en inglés). K3015HC (antes Serie HC), K3015NP (cabina semicerrada, antes Serie NP) K3015HM y K3015C (corte combinado, antes Serie HM y Serie C) ya tienen su ficha. Corte de tubos (Serie T y Serie NT) usa el catálogo general `docs/Tube.pdf`. La NP de cabina abierta sigue sin PDF.
 - **Foto `ws`** (soldadora portátil): se ve "SENFENG" en la bobina.
 - **Códigos de modelo** en algunas fotos (p. ej. "SF-3015NP") que no coinciden con las series de la web.
-- **Foto para "Recambios y consumibles"** (ahora sin foto propia).
 - **Permiso de los proveedores** (Senfeng, Gweike) para usar sus textos y datos técnicos.
 
 ## Para subir la web a krexon.com
