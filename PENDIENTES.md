@@ -11,7 +11,7 @@
 - **Sociedad titular de Krexon**: la política de privacidad usa ILUTRARE SL (CIF B67259804),
   tomada de lanmoon.org. Confirmar que Krexon pertenece a esa sociedad.
 - **Teléfono de WhatsApp**: confirmar que +34 623 968 619 tiene WhatsApp (en textos antiguos salía también +34 611 523 034).
-- **Activar los formularios**: los tres formularios envían a info@krexon.com mediante FormSubmit. Falta la activación: enviar una prueba desde la web y pulsar «Activate Form» en el correo que FormSubmit manda a info@krexon.com. Si se cambia de dominio (krexon.com), repetir la prueba por si pide activarlo de nuevo. Mientras no esté activado, el formulario abre el programa de correo del usuario con el mensaje escrito.
+- **Activar los formularios**: los tres formularios envían a info@krexon.com mediante FormSubmit. Envío DESACTIVADO hasta tener permiso (`ENVIO.activo = false` en app.js). Para activarlo: poner `activo: true`, enviar una prueba desde la web y pulsar «Activate Form» en el correo que FormSubmit manda a info@krexon.com. Si se cambia de dominio (krexon.com), repetir la prueba por si pide activarlo de nuevo. Mientras no esté activado, el formulario abre el programa de correo del usuario con el mensaje escrito.
 - **Revisión legal**: que un asesor o gestoría revise la política de privacidad (y el aviso legal cuando esté).
 
 ## Contenido
